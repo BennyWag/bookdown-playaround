@@ -1,3 +1,3 @@
-# Data manipulation in R using dplyr
+# This is the basis to create our bookdown code collection
 
-A brief introduction to tidy data manipulation in R
+Let's play around here to try things out.
