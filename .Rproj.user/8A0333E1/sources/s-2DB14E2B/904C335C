@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591857650526.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2416853744",
+    "id" : "904C335C",
+    "lastKnownWriteTime" : 1589962700,
+    "last_content_update" : 1589962700,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/extracting raster fractions by mask.Rmd",
+    "project_path" : "extracting raster fractions by mask.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
