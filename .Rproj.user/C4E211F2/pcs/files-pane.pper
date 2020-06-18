@@ -2,6 +2,7 @@
     "path" : "~/GitHub/bookdown-playaround",
     "sortOrder" : [
         {
+            "ascending" : true,
             "columnIndex" : 2
         }
     ]
