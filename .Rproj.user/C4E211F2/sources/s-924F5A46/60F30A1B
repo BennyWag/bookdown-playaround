@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1592461739906.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "60F30A1B",
+    "lastKnownWriteTime" : 1592461546,
+    "last_content_update" : 1592461546,
+    "path" : "~/GitHub/bookdown-playaround/02-spatial_tut.Rmd",
+    "project_path" : "02-spatial_tut.Rmd",
+    "properties" : {
+        "cursorPosition" : "2,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

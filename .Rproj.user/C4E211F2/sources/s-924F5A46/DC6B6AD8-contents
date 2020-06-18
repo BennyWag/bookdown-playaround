@@ -1,0 +1,281 @@
+# `dplyr` - A brief introduction to tidy data manipulation
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r, echo=FALSE, fig.align='center', out.width = "250"}
+knitr::include_graphics("data/dplyr.png")
+```
+
+
+## Introducing the koala dataset
+
+Today we will have a look at some koala data. You can download the dataset for this tutorial [here](https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1). Futhermore you need to install the `tidyverse` package, which contains `dplyr`. 
+
+```{r, eval=F}
+install.packages('tidyverse')
+```
+
+First we need to load the dataset we're working with.
+
+```{r loading data}
+koala<-read.csv('data/koala.csv')
+```
+
+It should contain the following colums:
+
+```{r columns}
+names(koala)
+```
+
+Lets look at a structure and summary of this dataset:
+
+```{r data structure}
+str(koala)
+summary(koala)
+```
+
+We can see that our dataset contains the positions of each koala in Latitude and Longitude (`X` and `Y`) as well as variables describing their physiology, behavior and how they were recorded. This is typical presence-only wildlife data, combining observations with some data describing each individual, which could e.g. be used for distribution modeling or to test influences of other variables such as climate on behavior and physiology of this particular speces. Often in these types of studies, we are not interested in all the recorded variables and thus first need to 'clean' our data to make it easier to work with it. `dplyr` is a package desinged to make data 'cleaning' and manipulation of large datasets easier by introducing specific syntax. Let's see how it works and compares to base `R` functionality!
+
+## Working with `dplyr`
+
+Base `R` subsetting can be very tedious. Imagine we want to got the mean age for our koalas, but split it by sex. Getting one mean is easy:
+
+```{r mean}
+mean(koala[koala$sex == 'male', "age"],na.rm = TRUE)
+```
+
+Summarizing both sexes and savinf it in a table takes a few lines of code:
+
+```{r base r}
+
+female_mean<-mean(koala[koala$sex == 'female', "age"],na.rm = TRUE)
+
+male_mean<-mean(koala[koala$sex == 'male', "age"],na.rm = TRUE)
+
+means<-rbind(c(female_mean, male_mean))
+
+means<-as.data.frame(means)
+
+names(means)<-c('female', 'male')
+```
+
+Lets have a look at the results.
+
+```{r}
+means
+```
+
+That's all good, but with that many lines of code quite error prone ... `dplyr` makes data manipulation simpler. For this example, we would only require one line of code!
+
+```{r}
+library(dplyr)
+
+mean_age_koala<-koala%>%group_by(sex)%>%summarise(mean_age = mean(age))
+
+```
+
+```{r, echo=F}
+mean_age_koala
+```
+
+So simple, and looks even better than our base `R` table too! The main functions we will explore here are `dplyr`'s pipe `%>%`, `select()`, `filter()`, `group_by()`, `summarise()` and `mutate()`.
+
+### select() and dplyr's pipe
+
+If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the `select()` function. This will keep only the variables you select.
+
+```{r}
+koala_select<-select(koala, species, sex, age)
+```
+
+```{r, echo = F}
+head(koala_select)
+```
+
+If we open up `koala_select` we'll see that it only contains the species, sex and age columns. Above we used 'normal' `R` grammar, but the strengths of dplyr lie in combining several functions using pipes. Since the pipes grammar is unlike anything we've seen in R before, let's repeat what we've done above using pipes.
+
+```{r}
+koala_select_pipe<-koala%>%select(species, sex, age)
+```
+
+To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the koala dataframe and pass it on, using the pipe syntax `%>%`, to the next step, which is the `select()` function. In this case we don't specify which data object we use in the `select()` function since in gets that from the previous pipe.
+
+### filter()
+
+`filter()` is one of the most useful dplyr functions for data manipulation. Say you're conducting a study of only male koalas. You won't need any data on female koalas. So lets get rid of it!
+
+```{r}
+koala_filter<-koala%>%filter(sex == 'male')
+```
+
+Did it work?
+
+```{r}
+summary(koala_filter$sex)
+```
+
+No more females in the data! Let's test our knowledge with a challenge.
+
+### Challenge 1
+
+**Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the values for age, size and color for females only. How many rows and columns does your dataframe have and why?**
+
+*Extra challenge: out of this new dataset, filter only koalas >70cm in size. How many are there?*
+
+```{r, include = F}
+challenge1<-koala%>%filter(sex == 'female')%>%
+  select(age, size, color)
+```
+
+This should be your data structure:
+
+```{r}
+nrow(challenge1)
+ncol(challenge1)
+```
+
+We removed all the males, so our row number reduces from `r nrow(koala)` to 127. Then we filter our desired columns and are now at 3 instead of `r ncol(koala)`.
+
+```{r, include = F}
+challenge1.2<-challenge1%>%filter(size>70)
+```
+
+```{r}
+nrow(challenge1.2)
+```
+
+You can find the solutions to all challenges posed here at the end of the document. Don't peek!
+
+### group_by() and summarise()
+
+Now, we were supposed to be reducing the error prone repetitiveness of what can be done with base R, but up to now  we haven't done that since we would have to repeat the above for each sex. Instead of `filter()`, which will only pass observations that meet your criteria (in the above: `sex=="female"`), we can use `group_by()`, which will essentially use every unique criteria that you could have used in `filter()`. Let's see what happens with our data structure when using dplyr's `group_by()`.
+
+```{r}
+koala_group<-koala%>%group_by(sex)
+
+str(koala_group)
+```
+
+
+You will notice that the structure of the dataframe where we used `group_by()` (`koala_group`) is not the same as the original `koala` dataset. A grouped dataset can be thought of as a list where each item in the list is a data.frame which contains only the rows that correspond to the a particular value 'Sex' (at least in the example above).
+
+The above was a bit on the uneventful side because `group_by()` is only really useful in conjunction with `summarise()`. This will allow you to create new variable(s) by using functions that repeat for each of the  sex-specific data frames. That is to say, using the `group_by()` function, we split our original dataframe into multiple pieces, then we can run functions such as `mean()` or `sd()` within `summarise()`:
+
+```{r}
+koala_group_sum<-koala%>%group_by(sex)%>%
+  summarise(mean_age=mean(age))
+
+```
+
+```{r, echo = F}
+koala_group_sum
+```
+
+And there we go. We got what we wanted and summarised the mean age of our koalas for both sexes separately. And we did that using only one simple line of code! I think it is time for another challenge to test our skills!
+
+### Challenge 2
+
+**Calculate the average weight value per state and Sex. Which combination of state and sex has the heaviest and which combination had the lightest koalas?**
+
+```{r, include = F}
+challenge2<-koala%>%group_by(state, sex)%>%
+  summarise(mean_weight = mean(weight))
+```
+
+```{r, echo = F}
+challenge2
+```
+
+That is already quite powerful, but it gets even better! You're not limited to defining only one new variable in `summarise()`:
+
+```{r}
+challenge2_ext<-koala%>%group_by(state, sex)%>%
+  summarise(mean_weight = mean(weight),
+            sd_weight = sd(weight),
+            sample_no = n())
+```
+
+We can create a new dataframe with as many new variables as we want. Very useful for our inital data exploration! Let's get our hands another very useful function: `mutate()`.
+
+### mutate()
+
+We can  create an entirely new variables in our initial dataset prior to (or even after) summarizing information using `mutate()`. Let's say we're interested in the weight:size ratio of our Koalas. Also we want to give each individual a numeric identifier to be able to better work with our data later on.
+
+```{r}
+koala_mutate<-koala%>%mutate(weight_size_ratio = size/weight, ID = row_number())
+```
+
+```{r, echo = F}
+names(koala_mutate)
+```
+
+Our dataset now has two extra columns containing the variables we were interested in. If you do not want to manipulate your raw data, you can use mutate before grouping and summarising to create the summary table straight away:
+
+```{r}
+koala_mutate_weight_size<-koala%>%mutate(weight_size_ratio = size/weight)%>%
+  group_by(sex)%>%
+  summarise(mean_weight = mean(weight),
+            sd_weight = sd(weight),
+            mean_weight_size = mean (weight_size_ratio),
+            max_weight_size = max(weight_size_ratio))
+```
+
+```{r, echo = F}
+koala_mutate_weight_size
+```
+
+Great! Let's end the lesson with another challenge, combining all the functions we have looked at today.
+
+### Challenge 3
+
+***Calculate the average tail length and fur thickness for a group of 20 randomly selected males and females from New South Wales. Then arrange the mean tail length in descending order.*** 
+
+*Hint: Use the dplyr functions* `arrange()` *and* `sample_n()`*, they have similar  syntax to other dplyr functions. Look at the help by calling '?function', e.g.* `?arrange`*.* 
+
+```{r, include = F}
+challenge3<-koala%>%filter(state == 'New South Wales')%>%
+  group_by(sex)%>%
+  sample_n(20)%>%
+  summarise(mean_tail = mean(tail), mean_fur = mean(fur))%>%
+  arrange(desc(mean_tail))
+```
+
+```{r, echo = F}
+challenge3
+```
+
+Since we are sampling randomly, these will look different for each of you.
+
+### Solution to all challenges
+
+#### Challenge 1
+
+```{r}
+challenge1<-koala%>%filter(sex == 'female')%>%
+  select(age, size, color)
+```
+
+```{r}
+challenge1.2<-challenge1%>%filter(size>70)
+```
+
+#### Challenge 2
+
+```{r}
+challenge2<-koala%>%group_by(state, sex)%>%
+  summarise(mean_weight = mean(weight))
+```
+
+#### Challenge 3
+
+```{r}
+challenge3<-koala%>%filter(state == 'New South Wales')%>%
+  group_by(sex)%>%
+  sample_n(20)%>%
+  summarise(mean_tail = mean(tail), mean_fur = mean(fur))%>%
+  arrange(desc(mean_tail))
+```
+

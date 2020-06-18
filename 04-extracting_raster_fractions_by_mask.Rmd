@@ -1,9 +1,5 @@
----
-title: "Extracting raster fractions and area using a polygon mask"
-author: "Ben Wagner"
-date: "20/05/2020"
-output: html_document
----
+
+# Extracting raster fractions and area using a polygon mask
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
