@@ -1,0 +1,13 @@
+---
+title: "This is the name of our book"
+author: "Anu, Benny, and Kaitie"
+date: "14/05/2020"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+description: "This is our first attempt at making a book in R"
+---
+
+# Introduction
+
+We are testing this out to see if it might be a useful way for us to present our code.
