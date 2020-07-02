@@ -26,4 +26,4 @@ We currently cover:
 
 ## Disclaimer
 
-If you enjoy our tutorials and code snippets, feel free to use and share this book and code compiled in it for the best purposes you can think of. Nevertheless, while doing so, please acknowledge our work and share the link to the source of this book or the github page at: **https://github.com/BennyWag/bookdown-playaround**.
+If you enjoy our tutorials and code snippets, feel free to use and share this book and code compiled in it for the best purposes you can think of. Nevertheless, while doing so, please acknowledge our work and share the link to the source of this book or the github page at: **https://github.com/BennyWag/bookdown-playaround**. 
