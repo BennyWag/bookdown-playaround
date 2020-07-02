@@ -1,4 +1,3 @@
-
 # Working with spatial data in `R`
 
 
@@ -34,27 +33,20 @@ head(koala) # see the first few rows in the console
 ```
 
 ```
-##                  species        X         Y      state   region    sex
-## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male
-## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female
-## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male
-## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male
-## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female
-## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male
-##     weight     size      fur     tail age      color joey        behav
-## 1 7.119754 70.80159 1.858696 1.168241   8       grey   No     Sleeping
-## 2 5.451345 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping
-## 3 6.630577 68.65867 2.479280 1.056640   1 light grey   No Just Chillin
-## 4 6.470019 72.98919 1.923974 1.801244   1       grey   No     Sleeping
-## 5 5.620447 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping
-## 6 7.287674 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding
-##             obs
-## 1  Spotlighting
-## 2 Opportunistic
-## 3  Spotlighting
-## 4  Stagwatching
-## 5  Stagwatching
-## 6 Opportunistic
+##                  species        X         Y      state   region    sex   weight
+## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male 7.119754
+## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female 5.451345
+## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male 6.630577
+## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male 6.470019
+## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female 5.620447
+## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male 7.287674
+##       size      fur     tail age      color joey        behav           obs
+## 1 70.80159 1.858696 1.168241   8       grey   No     Sleeping  Spotlighting
+## 2 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping Opportunistic
+## 3 68.65867 2.479280 1.056640   1 light grey   No Just Chillin  Spotlighting
+## 4 72.98919 1.923974 1.801244   1       grey   No     Sleeping  Stagwatching
+## 5 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping  Stagwatching
+## 6 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding Opportunistic
 ```
 
 As we can see it contains lots of variables related to each of the observed koalas, such as `sex`, `weight` or in which `state` the observation was made. Additionally, whoever collected this data was so kind to also include the `X` and `Y` coordinates, where the observation was made. This we can use to transform this into an `sf` (simple feature) object.
@@ -97,8 +89,8 @@ plot(koala_sf)
 ```
 
 ```
-## Warning: plotting the first 10 out of 13 attributes; use max.plot = 13 to
-## plot all
+## Warning: plotting the first 10 out of 13 attributes; use max.plot = 13 to plot
+## all
 ```
 
 <img src="02-spatial_tut_files/figure-html/unnamed-chunk-5-1.png" width="672" />
@@ -124,12 +116,12 @@ states <- st_read("data/Australia/Australia_proj.shp")
 ```
 
 ```
-## Reading layer `Australia_proj' from data source `C:\Users\khh\Documents\GitHub\bookdown-playaround\data\Australia\Australia_proj.shp' using driver `ESRI Shapefile'
+## Reading layer `Australia_proj' from data source `D:\OneDrive\OneDrive - The University of Melbourne\Github\bookdown-playaround\data\Australia\Australia_proj.shp' using driver `ESRI Shapefile'
 ## Simple feature collection with 8 features and 15 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: -2063975 ymin: -4965263 xmax: 1891143 ymax: -1285856
-## proj4string:    +proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs
+## projected CRS:  GDA94 / Geoscience Australia Lambert
 ```
 
 ```r
@@ -161,22 +153,49 @@ st_crs(states)
 
 ```
 ## Coordinate Reference System:
-##   No user input
+##   User input: GDA94 / Geoscience Australia Lambert 
 ##   wkt:
-## PROJCS["GDA94_Geoscience_Australia_Lambert",
-##     GEOGCS["GCS_GDA_1994",
-##         DATUM["Geocentric_Datum_of_Australia_1994",
-##             SPHEROID["GRS_1980",6378137,298.257222101]],
-##         PRIMEM["Greenwich",0],
-##         UNIT["Degree",0.017453292519943295]],
-##     PROJECTION["Lambert_Conformal_Conic_2SP"],
-##     PARAMETER["standard_parallel_1",-18],
-##     PARAMETER["standard_parallel_2",-36],
-##     PARAMETER["latitude_of_origin",0],
-##     PARAMETER["central_meridian",134],
-##     PARAMETER["false_easting",0],
-##     PARAMETER["false_northing",0],
-##     UNIT["Meter",1]]
+## PROJCRS["GDA94 / Geoscience Australia Lambert",
+##     BASEGEOGCRS["GDA94",
+##         DATUM["Geocentric Datum of Australia 1994",
+##             ELLIPSOID["GRS 1980",6378137,298.257222101,
+##                 LENGTHUNIT["metre",1]]],
+##         PRIMEM["Greenwich",0,
+##             ANGLEUNIT["degree",0.0174532925199433]],
+##         ID["EPSG",4283]],
+##     CONVERSION["Geoscience Australia Standard National Scale Lambert Projection",
+##         METHOD["Lambert Conic Conformal (2SP)",
+##             ID["EPSG",9802]],
+##         PARAMETER["Latitude of false origin",0,
+##             ANGLEUNIT["degree",0.0174532925199433],
+##             ID["EPSG",8821]],
+##         PARAMETER["Longitude of false origin",134,
+##             ANGLEUNIT["degree",0.0174532925199433],
+##             ID["EPSG",8822]],
+##         PARAMETER["Latitude of 1st standard parallel",-18,
+##             ANGLEUNIT["degree",0.0174532925199433],
+##             ID["EPSG",8823]],
+##         PARAMETER["Latitude of 2nd standard parallel",-36,
+##             ANGLEUNIT["degree",0.0174532925199433],
+##             ID["EPSG",8824]],
+##         PARAMETER["Easting at false origin",0,
+##             LENGTHUNIT["metre",1],
+##             ID["EPSG",8826]],
+##         PARAMETER["Northing at false origin",0,
+##             LENGTHUNIT["metre",1],
+##             ID["EPSG",8827]]],
+##     CS[Cartesian,2],
+##         AXIS["(E)",east,
+##             ORDER[1],
+##             LENGTHUNIT["metre",1]],
+##         AXIS["(N)",north,
+##             ORDER[2],
+##             LENGTHUNIT["metre",1]],
+##     USAGE[
+##         SCOPE["unknown"],
+##         AREA["Australia - onshore"],
+##         BBOX[-43.7,112.85,-9.86,153.69]],
+##     ID["EPSG",3112]]
 ```
 
 ```r
@@ -187,16 +206,24 @@ st_crs(koala_sf)
 ## Coordinate Reference System:
 ##   User input: EPSG:4326 
 ##   wkt:
-## GEOGCS["WGS 84",
-##     DATUM["WGS_1984",
-##         SPHEROID["WGS 84",6378137,298.257223563,
-##             AUTHORITY["EPSG","7030"]],
-##         AUTHORITY["EPSG","6326"]],
+## GEOGCRS["WGS 84",
+##     DATUM["World Geodetic System 1984",
+##         ELLIPSOID["WGS 84",6378137,298.257223563,
+##             LENGTHUNIT["metre",1]]],
 ##     PRIMEM["Greenwich",0,
-##         AUTHORITY["EPSG","8901"]],
-##     UNIT["degree",0.0174532925199433,
-##         AUTHORITY["EPSG","9122"]],
-##     AUTHORITY["EPSG","4326"]]
+##         ANGLEUNIT["degree",0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS["geodetic latitude (Lat)",north,
+##             ORDER[1],
+##             ANGLEUNIT["degree",0.0174532925199433]],
+##         AXIS["geodetic longitude (Lon)",east,
+##             ORDER[2],
+##             ANGLEUNIT["degree",0.0174532925199433]],
+##     USAGE[
+##         SCOPE["unknown"],
+##         AREA["World"],
+##         BBOX[-90,-180,90,180]],
+##     ID["EPSG",4326]]
 ```
 
 Damn, they do not match. Our Australia shapefile has a different (weird) projection. If you feel it's tedious to check the CRS in the console, simply type 
@@ -256,8 +283,8 @@ australia_koala_area<-st_crop(states_proj, koala_sf)
 ```
 
 ```
-## Warning: attribute variables are assumed to be spatially constant
-## throughout all geometries
+## Warning: attribute variables are assumed to be spatially constant throughout all
+## geometries
 ```
 
 ```r
@@ -440,9 +467,9 @@ summary(dem)
 ```
 ##                DEM
 ## Min.       0.00000
-## 1st Qu.   89.43125
-## Median   156.95216
-## 3rd Qu.  399.96889
+## 1st Qu.   89.61272
+## Median   158.57568
+## 3rd Qu.  401.80006
 ## Max.    2139.29932
 ## NA's       0.00000
 ```

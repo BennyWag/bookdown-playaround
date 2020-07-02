@@ -2,7 +2,7 @@
 
 
 
-<img src="data/dplyr.png" width="250" style="display: block; margin: auto;" />
+<img src="data/dplyr-doc/dplyr.png" width="250" style="display: block; margin: auto;" />
 
 
 ## Introducing the koala dataset
@@ -398,8 +398,8 @@ Great! Let's end the lesson with another challenge, combining all the functions 
 ## # A tibble: 2 x 3
 ##   sex    mean_tail mean_fur
 ##   <fct>      <dbl>    <dbl>
-## 1 male        1.55     2.81
-## 2 female      1.43     2.48
+## 1 male        1.57     2.91
+## 2 female      1.38     2.44
 ```
 
 Since we are sampling randomly, these will look different for each of you.

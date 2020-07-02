@@ -86,12 +86,16 @@ output
 
 If your function assigns multiple variables, you can use `return()` to determine the data that is output from the function. This can be useful if your function includes writing a data set, or includes another process that is not intended to return anything to R as well as some process intended to return data to the R environment.
 
+```{r, eval = F}
+dir.create('outputs')
+```
+
 ```{r}
 #Let's see what happens without using the return() function
 fun4 <- function (x, y){
   val <- mean(x) + y
   dist <- rnorm(1:10, mean = x, sd = 1)
-  write.csv(dist, "filename.csv")
+  write.csv(dist, "outputs/filename.csv")
 }
 
 
@@ -106,7 +110,7 @@ Our output here is NULL because the default output for a function will come from
 fun4 <- function (x, y){
   val <- mean(x) + y
   dist <- rnorm(1:10, mean = x, sd = 1)
-  write.csv(dist, "filename.csv")
+  write.csv(dist, "outputs/filename.csv")
   return(dist)
 }
 

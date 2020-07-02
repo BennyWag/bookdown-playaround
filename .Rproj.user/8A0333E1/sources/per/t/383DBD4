@@ -7,8 +7,8 @@
     "folds" : "",
     "hash" : "1158550476",
     "id" : "383DBD4",
-    "lastKnownWriteTime" : 1593661943,
-    "last_content_update" : 1593661943259,
+    "lastKnownWriteTime" : 1593663288,
+    "last_content_update" : 1593663288,
     "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
@@ -18,7 +18,7 @@
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 1,
+    "relative_order" : 2,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"

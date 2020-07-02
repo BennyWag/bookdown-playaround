@@ -5,18 +5,20 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1709511733",
+    "hash" : "3427095943",
     "id" : "AE72B63E",
-    "lastKnownWriteTime" : 1593657436,
-    "last_content_update" : 1593657436,
+    "lastKnownWriteTime" : 1593664510,
+    "last_content_update" : 1593664510057,
     "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/03-ApplyFuncs.Rmd",
     "project_path" : "03-ApplyFuncs.Rmd",
     "properties" : {
+        "cursorPosition" : "89,19",
+        "scrollLine" : "68"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 4,
+    "relative_order" : 5,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"

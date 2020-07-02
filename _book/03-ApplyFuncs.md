@@ -2,13 +2,11 @@
 ## Introduction
 
 Most data analysis in R requires executing a particular task on multiple data observations, groups of observations, or separate data sets. Many novice users begin with the strategy of assigning a new variable for each input:
-```{r include=FALSE}
-dataset1 <- 2
-dataset2 <- 4
-```
 
 
-```{r}
+
+
+```r
 x1 <- dataset1
 x2 <- dataset2
 
@@ -31,7 +29,8 @@ Functions in R take an input value, apply a process, and generate an output. R p
 
 Here is a very simple function:
 
-```{r}
+
+```r
 fun1 <- function (x, y){
   x + y
 }
@@ -39,30 +38,45 @@ fun1 <- function (x, y){
 
 Here, `x` and `y` are identified as the required input variables. The code written within the brackets describes the mathematical operation to be applied to the input variables.
 
-```{r}
+
+```r
 fun1(x = 7, y = 12)
+```
+
+```
+## [1] 19
 ```
   
   
 A function can be applied to a vector of inputs. In this scenario, the function will be applied to each pair of values in the vector sequence:
 
-```{r}
+
+```r
 vals_x <- c(4, 7, 1)
 vals_y <- c(2, 1, 3)
 
 fun1(x = vals_x, y = vals_y)
 ```
+
+```
+## [1] 6 8 4
+```
 #### Nesting functions
 
 Functions can also include other functions, which is particularly useful in the context of repeating complex data analyses. Here is a basic example:
 
-```{r}
+
+```r
 fun2 <- function (x, y){
   mean(x) + y
 }
 
 
 fun2(x = vals_x, y = vals_y)
+```
+
+```
+## [1] 6 5 7
 ```
 
 It is important to note that in this situation, the internal function (`mean()`) takes a vector of input values. This function will calculate the mean of the `vals_x` vector and then add this to each separate value of `vals_y`.
@@ -73,7 +87,8 @@ This can be very useful, but it's critical that you know exactly how your functi
 
 In some more complex analyses, the nested functions may generate data that needs to be stored as variables so they can be used as input for the next process. Here is a function that calculates the mean of our x values, adds y, and then generates 10 numbers from a normal distribution with a mean of the value calculated in the first step.
 
-```{r}
+
+```r
 fun3 <- function (x, y){
   val <- mean(x) + y
   dist <- rnorm(1:10, mean = val, sd = 1)
@@ -84,13 +99,20 @@ output <- fun3(x = vals_x, y = 3)
 output
 ```
 
+```
+##  [1] 7.554585 7.920238 9.748693 7.809139 5.262744 6.753669 5.826839 6.942398
+##  [9] 7.480080 6.853031
+```
+
 If your function assigns multiple variables, you can use `return()` to determine the data that is output from the function. This can be useful if your function includes writing a data set, or includes another process that is not intended to return anything to R as well as some process intended to return data to the R environment.
 
-```{r, eval = F}
+
+```r
 dir.create('outputs')
 ```
 
-```{r}
+
+```r
 #Let's see what happens without using the return() function
 fun4 <- function (x, y){
   val <- mean(x) + y
@@ -103,9 +125,14 @@ output <- fun4(x = vals_x, y = 3)
 output
 ```
 
+```
+## NULL
+```
+
 Our output here is NULL because the default output for a function will come from the last command within the function. Here, `write.csv()` does not produce data to be returned to R. If we add `return()`, our function will write the .csv and also return the data we want into the environment:
 
-```{r}
+
+```r
 #Now let's add return()
 fun4 <- function (x, y){
   val <- mean(x) + y
@@ -117,6 +144,11 @@ fun4 <- function (x, y){
 
 output <- fun4(x = vals_x, y = 3)
 output
+```
+
+```
+##  [1]  3.90388145  6.32701755  0.06465997  5.28340805  7.34896131 -0.03013360
+##  [7]  4.12175337  6.72243732  0.85574013  2.55421347
 ```
 
 Much better!
@@ -140,11 +172,25 @@ If this doesn't make much sense, don't stress! We will walk though an example of
 
 Let's generate a theoretical transition matrix for a "before" and "after" data set that shows the number of transitions from one type to another.
 
-```{r}
+
+```r
 before <- rpois(1000, lambda = 1)
 after <- rpois(1000, lambda = 1)
 tab <- table(before, after)
 tab
+```
+
+```
+##       after
+## before   0   1   2   3   4   5
+##      0 133 133  69  24   6   2
+##      1 135 135  56  28   7   0
+##      2  70  66  30  12   2   0
+##      3  21  28  17   4   0   0
+##      4   6   4   6   2   0   0
+##      5   0   1   0   0   0   0
+##      6   0   1   1   0   0   0
+##      7   0   0   1   0   0   0
 ```
 
 We would like to convert this table to the relative probability for each transition- that is, what is the probability that an object of type "0" in the "before" dataset transitions to a 1? To a 2? 3?
@@ -157,10 +203,23 @@ In this scenario, we set `MARGIN = 1` so it will perform the function row wise. 
 
 *Note: The `t()` function surrounding the command transposes the data set so it returns the matrix in the original orientation (before as rows and after as columns)
 
-```{r}
+
+```r
 rel_prob <- t(apply(tab, MARGIN = 1, FUN = function (i) {i/sum(i)} ))
 rel_prob
+```
 
+```
+##       after
+## before         0         1         2          3          4           5
+##      0 0.3623978 0.3623978 0.1880109 0.06539510 0.01634877 0.005449591
+##      1 0.3739612 0.3739612 0.1551247 0.07756233 0.01939058 0.000000000
+##      2 0.3888889 0.3666667 0.1666667 0.06666667 0.01111111 0.000000000
+##      3 0.3000000 0.4000000 0.2428571 0.05714286 0.00000000 0.000000000
+##      4 0.3333333 0.2222222 0.3333333 0.11111111 0.00000000 0.000000000
+##      5 0.0000000 1.0000000 0.0000000 0.00000000 0.00000000 0.000000000
+##      6 0.0000000 0.5000000 0.5000000 0.00000000 0.00000000 0.000000000
+##      7 0.0000000 0.0000000 1.0000000 0.00000000 0.00000000 0.000000000
 ```
 
 Hurray! Please not that there are other ways to perform the same task, but this one is a conceptually a simple example :)
@@ -169,22 +228,39 @@ Hurray! Please not that there are other ways to perform the same task, but this 
 
 Let's check out the Loblolly dataset. It contains the height, age, and seed source of a sample of Loblolly pines.
 
-```{r}
+
+```r
 library(datasets)
 
 data(Loblolly)
 head(Loblolly)
 ```
 
+```
+##    height age Seed
+## 1    4.51   3  301
+## 15  10.89   5  301
+## 29  28.72  10  301
+## 43  41.74  15  301
+## 57  52.70  20  301
+## 71  60.92  25  301
+```
+
 The data set includes a range of ages. Let's see if we can write a function that calculates the mean height for each age group.
 
-```{r}
+
+```r
 #Create a list with each unique age group
 ages <- unique(Loblolly$age)
 ages
 ```
 
-```{r}
+```
+## [1]  3  5 10 15 20 25
+```
+
+
+```r
 #Create a function that calculates the mean height for each age group
 fun5 <- function (x){
   agegroup <- subset(Loblolly, age == x)
@@ -195,15 +271,24 @@ fun5 <- function (x){
 fun5(ages)
 ```
 
+```
+## [1] 32.3644
+```
+
 Hmmm, this returns one value rather than a separate mean for each group. Why is that?
 In this function, x is a vector, and so the subset function selects the cases where age is equal to any of the values included in the `ages` vector. Because we have selected every value of age, we will get the mean height for the entire dataset.
 
 If we would like a vector of the means for each height, we will can use `sapply`.
 
-```{r}
+
+```r
 #Create a function that calculates the mean height for each age group
 mean_heights <- sapply(X = ages, FUN = fun5)
 mean_heights
+```
+
+```
+## [1]  4.237857 10.205000 27.442143 40.543571 51.468571 60.289286
 ```
 
 Excellent! We now have a vector with the mean height for each age group!
@@ -212,16 +297,38 @@ Excellent! We now have a vector with the mean height for each age group!
 
 You can use the `lapply` function to get the same information, but in a list format.
 
-```{r}
+
+```r
 heights <- lapply(X = ages, FUN = fun5)
 heights
+```
+
+```
+## [[1]]
+## [1] 4.237857
+## 
+## [[2]]
+## [1] 10.205
+## 
+## [[3]]
+## [1] 27.44214
+## 
+## [[4]]
+## [1] 40.54357
+## 
+## [[5]]
+## [1] 51.46857
+## 
+## [[6]]
+## [1] 60.28929
 ```
 
 In this scenario, `sapply` might be a better fit. `lapply` is generally more useful if your output is a an object like a `data.frame` or produces objects of different types.
 
 Let's write a function that creates a subsetted `data.frame` for each value of tree age.
 
-```{r}
+
+```r
 ages <- unique(Loblolly$age)
 
 func6 <- function (x){
@@ -234,13 +341,50 @@ sub_df <- lapply(ages, func6)
 sub_df[1:2]
 ```
 
+```
+## [[1]]
+##    height age Seed
+## 1    4.51   3  301
+## 2    4.55   3  303
+## 3    4.79   3  305
+## 4    3.91   3  307
+## 5    4.81   3  309
+## 6    3.88   3  311
+## 7    4.32   3  315
+## 8    4.57   3  319
+## 9    3.77   3  321
+## 10   4.33   3  323
+## 11   4.38   3  325
+## 12   4.12   3  327
+## 13   3.93   3  329
+## 14   3.46   3  331
+## 
+## [[2]]
+##    height age Seed
+## 15  10.89   5  301
+## 16  10.92   5  303
+## 17  11.37   5  305
+## 18   9.48   5  307
+## 19  11.20   5  309
+## 20   9.40   5  311
+## 21  10.43   5  315
+## 22  10.57   5  319
+## 23   9.03   5  321
+## 24  10.79   5  323
+## 25  10.48   5  325
+## 26   9.92   5  327
+## 27   9.34   5  329
+## 28   9.05   5  331
+```
+
 ### `mapply`
 
 `mapply` is an extremely useful function that is a great way to avoid using `for` loops! With `mapply`, you can use multiple input variables and it will iterate through each pair (or trio or more) of variables as inputs for the function.
 
 Let's say we would like to generate a theoretical normal distribution of tree height for each age group based on the mean and standard deviation of height. We will need a vector of means and a vector of heights to use as input values. We have already genereated a vector of means in our `sapply` example, so we will use a similar equation to generate a vector of sd.
 
-```{r}
+
+```r
 fun6 <- function (x){
   agegroup <- subset(Loblolly, age == x)
   sd(agegroup$height)
@@ -250,9 +394,14 @@ sd_height <- sapply(ages, fun6)
 sd_height
 ```
 
+```
+## [1] 0.4036026 0.8155767 1.5378866 1.9508444 2.2118278 2.2688339
+```
+
 Now, we can write a function that takes the two variables and applied it to each pair of input values to generate 6 six distributions.
 
-```{r}
+
+```r
 fun7 <- function (x, y){
   rnorm(100, mean = x, sd = y)
 }
@@ -260,6 +409,23 @@ fun7 <- function (x, y){
 height_dists <- mapply(FUN = fun7, x = mean_heights, y = sd_height)
 colnames(height_dists) <- ages #This names the columns by the tree age
 summary(height_dists)
+```
+
+```
+##        3               5                10              15       
+##  Min.   :3.294   Min.   : 8.571   Min.   :24.15   Min.   :35.35  
+##  1st Qu.:3.904   1st Qu.: 9.731   1st Qu.:26.63   1st Qu.:38.70  
+##  Median :4.203   Median :10.181   Median :27.54   Median :40.11  
+##  Mean   :4.210   Mean   :10.166   Mean   :27.46   Mean   :40.05  
+##  3rd Qu.:4.493   3rd Qu.:10.675   3rd Qu.:28.30   3rd Qu.:41.56  
+##  Max.   :5.000   Max.   :13.224   Max.   :30.42   Max.   :45.51  
+##        20              25       
+##  Min.   :45.12   Min.   :53.89  
+##  1st Qu.:50.00   1st Qu.:58.64  
+##  Median :51.09   Median :60.07  
+##  Mean   :51.01   Mean   :59.99  
+##  3rd Qu.:52.44   3rd Qu.:61.47  
+##  Max.   :55.19   Max.   :65.90
 ```
 
 ## Loops

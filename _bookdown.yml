@@ -1,7 +1,7 @@
-book_filename: "Test Book"
+book_filename: "R Tutorials"
 new_session: yes
 language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
-output_dir: "web"
+output_dir: "_book"

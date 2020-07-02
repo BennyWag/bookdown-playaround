@@ -7,18 +7,18 @@
     "folds" : "",
     "hash" : "2134172627",
     "id" : "1399D351",
-    "lastKnownWriteTime" : 1593661844,
-    "last_content_update" : 1593661844575,
+    "lastKnownWriteTime" : 1593663287,
+    "last_content_update" : 1593663287,
     "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/01-dplyr_tut.Rmd",
     "project_path" : "01-dplyr_tut.Rmd",
     "properties" : {
-        "cursorPosition" : "0,0",
-        "scrollLine" : "0"
+        "cursorPosition" : "273,0",
+        "scrollLine" : "227"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 2,
+    "relative_order" : 3,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"
