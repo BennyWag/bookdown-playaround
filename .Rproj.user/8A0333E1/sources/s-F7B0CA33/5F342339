@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593657860714.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "500224986",
+    "id" : "5F342339",
+    "lastKnownWriteTime" : 1593661848,
+    "last_content_update" : 1593661848116,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/02-spatial_tut.Rmd",
+    "project_path" : "02-spatial_tut.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

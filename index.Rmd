@@ -10,4 +10,20 @@ description: "Introductory R"
 
 # Introduction
 
-We can write something about why we're doing this here
+This is a (hopefully) continuously increasing collection of `R` tutorials and code collections relevant for Forest Ecosystem Sciences, curated by three R enthusiasts at the School of Ecosystem and Forest Sciences - Uni Melbourne. 
+
+Nevertheless, most tutorials can be useful for anyone starting out in `R` or looking to broaden their skills and learn something new, that we had to learn ourselves.
+
+We currently cover:
+
+- Introductions to using the `tidyverse` packages `dplyr` and `ggplot2`, for easy data manipulation and visualization
+- An Introduction to using spatial data in R with both the `sf` and `raster` packages.
+- Introduction to basic linear and generalized linear modeling in `R`
+- A tutorial on functions and loops in `R` and the use of `lapply` and `mapply`
+- A tutorial on using the package `lidR` to process pointclouds from LiDAR data and photogrammetry
+- Code chunks for area calculations of rasters and fractions in classified rasters
+- more is coming ... watch this space!
+
+## Disclaimer
+
+If you enjoy our tutorials and code snippets, feel free to use and share this book and code compiled in it for the best purposes you can think of. Nevertheless, while doing so, please acknowledge our work and share the link to the source of this book or the github page at: **https://github.com/BennyWag/bookdown-playaround**.

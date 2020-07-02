@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593659326640.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3538653654",
+    "id" : "9DAC67FC",
+    "lastKnownWriteTime" : 1593659612,
+    "last_content_update" : 1593659612449,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/06-extracting_raster_fractions_by_mask.Rmd",
+    "project_path" : "06-extracting_raster_fractions_by_mask.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
