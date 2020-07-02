@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Functions, loops, and apply | Intro to R for Forest Ecosystem Science</title>
+  <title>Chapter 6 Functions, loops, and apply | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Functions, loops, and apply | Intro to R for Forest Ecosystem Science" />
+  <meta property="og:title" content="Chapter 6 Functions, loops, and apply | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Functions, loops, and apply | Intro to R for Forest Ecosystem Science" />
+  <meta name="twitter:title" content="Chapter 6 Functions, loops, and apply | Intro to R for Forest Ecosystem Science" />
   
   <meta name="twitter:description" content="Introductory R" />
   
@@ -49,12 +49,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -63,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -142,72 +145,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>2.2.8</b> Solution to all challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>3</b> Working with spatial data in <code>R</code></a><ul>
-<li class="chapter" data-level="3.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>3.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="3.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>3.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>3.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>4</b> Introduction to linear models in R</a></li>
+<li class="chapter" data-level="5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>5</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>5.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="5.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>5.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.2.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>3.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="3.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="3.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>3.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="5.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>5.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="5.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>5.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>5.4.1</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>3.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="3.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>3.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="3.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>3.6.1</b> Challenge 3</a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>3.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>3.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="3.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>3.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="3.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>3.7.3</b> Challenge 3</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>4</b> Functions, loops, and <code>apply</code></a><ul>
-<li class="chapter" data-level="4.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>4.2</b> Writing basic functions</a></li>
-<li class="chapter" data-level="4.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>4.3</b> Using <code>apply</code> functions</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>4.3.1</b> <code>apply</code></a></li>
-<li class="chapter" data-level="4.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>4.3.2</b> <code>sapply</code></a></li>
-<li class="chapter" data-level="4.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>4.3.3</b> <code>lapply</code></a></li>
-<li class="chapter" data-level="4.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>4.3.4</b> <code>mapply</code></a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>4.4</b> Loops</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>5</b> Spatial tools for forestry and ecological applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>5.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
-<li class="chapter" data-level="5.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>5.2</b> Working with LiDAR data in R</a></li>
-<li class="chapter" data-level="5.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>5.3</b> Step 1. Loading and visualizing pointclouds</a></li>
-<li class="chapter" data-level="5.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>5.4</b> Step 2. Computing a canopy height model</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>5.4.1</b> Ground detection and normalizing a point cloud</a></li>
-<li class="chapter" data-level="5.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>5.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="5.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.4.3</b> Challenge 1</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>5.5</b> Step 3. Individual tree segmentation</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>5.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="5.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>5.5.2</b> Challenge 2</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>5.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="5.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>5.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="5.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="5.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>5.6.1</b> Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>5.7</b> Wrapping up</a></li>
-<li class="chapter" data-level="5.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>5.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>5.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="5.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>5.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="5.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>5.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="5.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>5.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>5.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="5.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>5.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="5.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>5.7.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>6</b> Calculating class area from raster</a><ul>
-<li class="chapter" data-level="6.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>6.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>6.1.1</b> Creating dummy data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>6.1.2</b> Preparing the raster for area calculation</a></li>
-<li class="chapter" data-level="6.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>6.1.3</b> Compiling a comprehensive table</a></li>
+<li class="chapter" data-level="6" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>6</b> Functions, loops, and <code>apply</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>6.2</b> Writing basic functions</a></li>
+<li class="chapter" data-level="6.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>6.3</b> Using <code>apply</code> functions</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>6.3.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>6.3.2</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>6.3.3</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>6.3.4</b> <code>mapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>6.4</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>7</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>7.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
+<li class="chapter" data-level="7.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>7.2</b> Working with LiDAR data in R</a></li>
+<li class="chapter" data-level="7.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>7.3</b> Step 1. Loading and visualizing pointclouds</a></li>
+<li class="chapter" data-level="7.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>7.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>7.4.1</b> Ground detection and normalizing a point cloud</a></li>
+<li class="chapter" data-level="7.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>7.4.2</b> Building the initial CHM</a></li>
+<li class="chapter" data-level="7.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.4.3</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>7.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>7.5.1</b> Delineating the crowns</a></li>
+<li class="chapter" data-level="7.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.5.2</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>7.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>7.7</b> Wrapping up</a></li>
+<li class="chapter" data-level="7.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>7.8</b> Solutions to the challenges</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>7.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>7</b> Extracting raster fractions and area using a polygon mask</a><ul>
-<li class="chapter" data-level="7.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>7.1</b> Problem statement</a></li>
-<li class="chapter" data-level="7.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>7.2</b> Creating some dummy raster data</a></li>
-<li class="chapter" data-level="7.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>7.3</b> Create some reserves</a></li>
-<li class="chapter" data-level="7.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>7.4</b> Extracting data</a></li>
-<li class="chapter" data-level="7.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>7.5</b> Plotting the results</a></li>
+<li class="chapter" data-level="8" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>8</b> Calculating class area from raster</a><ul>
+<li class="chapter" data-level="8.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>8.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>8.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>8.1.2</b> Preparing the raster for area calculation</a></li>
+<li class="chapter" data-level="8.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>8.1.3</b> Compiling a comprehensive table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>9</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="9.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>9.1</b> Problem statement</a></li>
+<li class="chapter" data-level="9.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>9.2</b> Creating some dummy raster data</a></li>
+<li class="chapter" data-level="9.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>9.3</b> Create some reserves</a></li>
+<li class="chapter" data-level="9.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>9.4</b> Extracting data</a></li>
+<li class="chapter" data-level="9.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>9.5</b> Plotting the results</a></li>
 </ul></li>
 </ul>
 
@@ -227,94 +232,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="functions-loops-and-apply" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Functions, loops, and <code>apply</code></h1>
+<h1><span class="header-section-number">Chapter 6</span> Functions, loops, and <code>apply</code></h1>
 <div id="introduction" class="section level2">
-<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<h2><span class="header-section-number">6.1</span> Introduction</h2>
 <p>Most data analysis in R requires executing a particular task on multiple data observations, groups of observations, or separate data sets. Many novice users begin with the strategy of assigning a new variable for each input:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">x1 &lt;-<span class="st"> </span>dataset1</a>
-<a class="sourceLine" id="cb97-2" title="2">x2 &lt;-<span class="st"> </span>dataset2</a>
-<a class="sourceLine" id="cb97-3" title="3"></a>
-<a class="sourceLine" id="cb97-4" title="4">meanx1 &lt;-<span class="st"> </span><span class="kw">mean</span>(x1)</a>
-<a class="sourceLine" id="cb97-5" title="5">meanx2 &lt;-<span class="st"> </span><span class="kw">mean</span>(x2)</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="functions-loops-and-apply.html#cb171-1"></a>x1 &lt;-<span class="st"> </span>dataset1</span>
+<span id="cb171-2"><a href="functions-loops-and-apply.html#cb171-2"></a>x2 &lt;-<span class="st"> </span>dataset2</span>
+<span id="cb171-3"><a href="functions-loops-and-apply.html#cb171-3"></a></span>
+<span id="cb171-4"><a href="functions-loops-and-apply.html#cb171-4"></a>meanx1 &lt;-<span class="st"> </span><span class="kw">mean</span>(x1)</span>
+<span id="cb171-5"><a href="functions-loops-and-apply.html#cb171-5"></a>meanx2 &lt;-<span class="st"> </span><span class="kw">mean</span>(x2)</span></code></pre></div>
 <p>While this certainly works, it can be very time consuming and introduces substantial risk of user error. There are several alternative strategies that can be used to repeat mathematical operations or sequences of R functions for multiple variables or data sets that avoid this risk.</p>
 <p>The foundation for any of these strategies is a function to be repeated. Once you have a function that you would like to repeat on multiple inputs, there are a few approaches for iterating through each repetition.</p>
 <p>In this tutorial, we will focus on the <code>apply</code> functions, which are a set of base R functions that can be used to execute a particular chunk of code on multiple inputs and generate appropriate outputs. The <code>apply</code> functions are simple to use and create very neat code, but one limitation is that they can only be used in operations for which the order of iteration is not important.</p>
 <p>We will also introduce <code>for</code> and <code>while</code> loops, which can be used when the order of operations <em>does</em> matter.</p>
 </div>
 <div id="writing-basic-functions" class="section level2">
-<h2><span class="header-section-number">4.2</span> Writing basic functions</h2>
+<h2><span class="header-section-number">6.2</span> Writing basic functions</h2>
 <p>Functions in R take an input value, apply a process, and generate an output. R packages include numerous functions that can do nearly anything you desire, but research often requires specific processes or sequences of commands designed specifically to work with your data structure. You can write your own functions in R to perform these tasks.</p>
 <p>Here is a very simple function:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">fun1 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</a>
-<a class="sourceLine" id="cb98-2" title="2">  x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb98-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="functions-loops-and-apply.html#cb172-1"></a>fun1 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</span>
+<span id="cb172-2"><a href="functions-loops-and-apply.html#cb172-2"></a>  x <span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb172-3"><a href="functions-loops-and-apply.html#cb172-3"></a>}</span></code></pre></div>
 <p>Here, <code>x</code> and <code>y</code> are identified as the required input variables. The code written within the brackets describes the mathematical operation to be applied to the input variables.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">fun1</span>(<span class="dt">x =</span> <span class="dv">7</span>, <span class="dt">y =</span> <span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="functions-loops-and-apply.html#cb173-1"></a><span class="kw">fun1</span>(<span class="dt">x =</span> <span class="dv">7</span>, <span class="dt">y =</span> <span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## [1] 19</code></pre>
 <p>A function can be applied to a vector of inputs. In this scenario, the function will be applied to each pair of values in the vector sequence:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">vals_x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb101-2" title="2">vals_y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb101-3" title="3"></a>
-<a class="sourceLine" id="cb101-4" title="4"><span class="kw">fun1</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> vals_y)</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="functions-loops-and-apply.html#cb175-1"></a>vals_x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>)</span>
+<span id="cb175-2"><a href="functions-loops-and-apply.html#cb175-2"></a>vals_y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb175-3"><a href="functions-loops-and-apply.html#cb175-3"></a></span>
+<span id="cb175-4"><a href="functions-loops-and-apply.html#cb175-4"></a><span class="kw">fun1</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> vals_y)</span></code></pre></div>
 <pre><code>## [1] 6 8 4</code></pre>
 <div id="nesting-functions" class="section level4">
-<h4><span class="header-section-number">4.2.0.1</span> Nesting functions</h4>
+<h4><span class="header-section-number">6.2.0.1</span> Nesting functions</h4>
 <p>Functions can also include other functions, which is particularly useful in the context of repeating complex data analyses. Here is a basic example:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">fun2 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</a>
-<a class="sourceLine" id="cb103-2" title="2">  <span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb103-3" title="3">}</a>
-<a class="sourceLine" id="cb103-4" title="4"></a>
-<a class="sourceLine" id="cb103-5" title="5"></a>
-<a class="sourceLine" id="cb103-6" title="6"><span class="kw">fun2</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> vals_y)</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="functions-loops-and-apply.html#cb177-1"></a>fun2 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</span>
+<span id="cb177-2"><a href="functions-loops-and-apply.html#cb177-2"></a>  <span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb177-3"><a href="functions-loops-and-apply.html#cb177-3"></a>}</span>
+<span id="cb177-4"><a href="functions-loops-and-apply.html#cb177-4"></a></span>
+<span id="cb177-5"><a href="functions-loops-and-apply.html#cb177-5"></a></span>
+<span id="cb177-6"><a href="functions-loops-and-apply.html#cb177-6"></a><span class="kw">fun2</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> vals_y)</span></code></pre></div>
 <pre><code>## [1] 6 5 7</code></pre>
 <p>It is important to note that in this situation, the internal function (<code>mean()</code>) takes a vector of input values. This function will calculate the mean of the <code>vals_x</code> vector and then add this to each separate value of <code>vals_y</code>.</p>
 <p>This can be very useful, but it’s critical that you know exactly how your function processes input values or you may run into major problems!</p>
 </div>
 <div id="assigning-variables-within-functions-and-return" class="section level4">
-<h4><span class="header-section-number">4.2.0.2</span> Assigning variables within functions and <code>return()</code></h4>
+<h4><span class="header-section-number">6.2.0.2</span> Assigning variables within functions and <code>return()</code></h4>
 <p>In some more complex analyses, the nested functions may generate data that needs to be stored as variables so they can be used as input for the next process. Here is a function that calculates the mean of our x values, adds y, and then generates 10 numbers from a normal distribution with a mean of the value calculated in the first step.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">fun3 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</a>
-<a class="sourceLine" id="cb105-2" title="2">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb105-3" title="3">  dist &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> val, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb105-4" title="4">}</a>
-<a class="sourceLine" id="cb105-5" title="5"></a>
-<a class="sourceLine" id="cb105-6" title="6"></a>
-<a class="sourceLine" id="cb105-7" title="7">output &lt;-<span class="st"> </span><span class="kw">fun3</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb105-8" title="8">output</a></code></pre></div>
-<pre><code>##  [1] 8.027953 6.652956 6.710001 6.700189 7.478872 8.528269 7.168081 7.257157
-##  [9] 7.237757 7.056581</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="functions-loops-and-apply.html#cb179-1"></a>fun3 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</span>
+<span id="cb179-2"><a href="functions-loops-and-apply.html#cb179-2"></a>  val &lt;-<span class="st"> </span><span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb179-3"><a href="functions-loops-and-apply.html#cb179-3"></a>  dist &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> val, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb179-4"><a href="functions-loops-and-apply.html#cb179-4"></a>}</span>
+<span id="cb179-5"><a href="functions-loops-and-apply.html#cb179-5"></a></span>
+<span id="cb179-6"><a href="functions-loops-and-apply.html#cb179-6"></a></span>
+<span id="cb179-7"><a href="functions-loops-and-apply.html#cb179-7"></a>output &lt;-<span class="st"> </span><span class="kw">fun3</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> <span class="dv">3</span>)</span>
+<span id="cb179-8"><a href="functions-loops-and-apply.html#cb179-8"></a>output</span></code></pre></div>
+<pre><code>##  [1] 7.931658 5.545387 6.374753 6.983127 7.217930 5.885352 6.168017 6.970746
+##  [9] 7.734903 6.271112</code></pre>
 <p>If your function assigns multiple variables, you can use <code>return()</code> to determine the data that is output from the function. This can be useful if your function includes writing a data set, or includes another process that is not intended to return anything to R as well as some process intended to return data to the R environment.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">dir.create</span>(<span class="st">&#39;outputs&#39;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co">#Let&#39;s see what happens without using the return() function</span></a>
-<a class="sourceLine" id="cb108-2" title="2">fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</a>
-<a class="sourceLine" id="cb108-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb108-4" title="4">  dist &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> x, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb108-5" title="5">  <span class="kw">write.csv</span>(dist, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb108-6" title="6">}</a>
-<a class="sourceLine" id="cb108-7" title="7"></a>
-<a class="sourceLine" id="cb108-8" title="8"></a>
-<a class="sourceLine" id="cb108-9" title="9">output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb108-10" title="10">output</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="functions-loops-and-apply.html#cb181-1"></a><span class="kw">dir.create</span>(<span class="st">&#39;outputs&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="functions-loops-and-apply.html#cb182-1"></a><span class="co">#Let&#39;s see what happens without using the return() function</span></span>
+<span id="cb182-2"><a href="functions-loops-and-apply.html#cb182-2"></a>fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</span>
+<span id="cb182-3"><a href="functions-loops-and-apply.html#cb182-3"></a>  val &lt;-<span class="st"> </span><span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb182-4"><a href="functions-loops-and-apply.html#cb182-4"></a>  dist &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> x, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb182-5"><a href="functions-loops-and-apply.html#cb182-5"></a>  <span class="kw">write.csv</span>(dist, <span class="st">&quot;outputs/filename.csv&quot;</span>)</span>
+<span id="cb182-6"><a href="functions-loops-and-apply.html#cb182-6"></a>}</span>
+<span id="cb182-7"><a href="functions-loops-and-apply.html#cb182-7"></a></span>
+<span id="cb182-8"><a href="functions-loops-and-apply.html#cb182-8"></a></span>
+<span id="cb182-9"><a href="functions-loops-and-apply.html#cb182-9"></a>output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> <span class="dv">3</span>)</span>
+<span id="cb182-10"><a href="functions-loops-and-apply.html#cb182-10"></a>output</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Our output here is NULL because the default output for a function will come from the last command within the function. Here, <code>write.csv()</code> does not produce data to be returned to R. If we add <code>return()</code>, our function will write the .csv and also return the data we want into the environment:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="co">#Now let&#39;s add return()</span></a>
-<a class="sourceLine" id="cb110-2" title="2">fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</a>
-<a class="sourceLine" id="cb110-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb110-4" title="4">  dist &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> x, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb110-5" title="5">  <span class="kw">write.csv</span>(dist, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb110-6" title="6">  <span class="kw">return</span>(dist)</a>
-<a class="sourceLine" id="cb110-7" title="7">}</a>
-<a class="sourceLine" id="cb110-8" title="8"></a>
-<a class="sourceLine" id="cb110-9" title="9"></a>
-<a class="sourceLine" id="cb110-10" title="10">output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb110-11" title="11">output</a></code></pre></div>
-<pre><code>##  [1] 1.4882016 7.7739377 0.5915476 3.8264728 9.0731398 1.3346512 4.0727321
-##  [8] 6.9882593 2.6671801 4.8254556</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="functions-loops-and-apply.html#cb184-1"></a><span class="co">#Now let&#39;s add return()</span></span>
+<span id="cb184-2"><a href="functions-loops-and-apply.html#cb184-2"></a>fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</span>
+<span id="cb184-3"><a href="functions-loops-and-apply.html#cb184-3"></a>  val &lt;-<span class="st"> </span><span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span>y</span>
+<span id="cb184-4"><a href="functions-loops-and-apply.html#cb184-4"></a>  dist &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">mean =</span> x, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb184-5"><a href="functions-loops-and-apply.html#cb184-5"></a>  <span class="kw">write.csv</span>(dist, <span class="st">&quot;outputs/filename.csv&quot;</span>)</span>
+<span id="cb184-6"><a href="functions-loops-and-apply.html#cb184-6"></a>  <span class="kw">return</span>(dist)</span>
+<span id="cb184-7"><a href="functions-loops-and-apply.html#cb184-7"></a>}</span>
+<span id="cb184-8"><a href="functions-loops-and-apply.html#cb184-8"></a></span>
+<span id="cb184-9"><a href="functions-loops-and-apply.html#cb184-9"></a></span>
+<span id="cb184-10"><a href="functions-loops-and-apply.html#cb184-10"></a>output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">x =</span> vals_x, <span class="dt">y =</span> <span class="dv">3</span>)</span>
+<span id="cb184-11"><a href="functions-loops-and-apply.html#cb184-11"></a>output</span></code></pre></div>
+<pre><code>##  [1] 5.1749889 6.9205529 4.4044620 3.7289074 8.1392586 1.6327790 4.0210939
+##  [8] 6.3630142 0.9246099 3.1846137</code></pre>
 <p>Much better!</p>
 </div>
 </div>
 <div id="using-apply-functions" class="section level2">
-<h2><span class="header-section-number">4.3</span> Using <code>apply</code> functions</h2>
+<h2><span class="header-section-number">6.3</span> Using <code>apply</code> functions</h2>
 <p>Once you have written a function, you will likely need to execute that function on multiple data sets or variables. This is where the <code>apply</code> functions come in handy.</p>
 <p>The <code>apply</code> functions are a set of functions that can be used to, well, apply functions to lists, dataframes, and matrices. <code>apply</code> functions are similar to loops, but have a much simpler syntax.</p>
 <p>There are several different functions that can be used depending upon the inputs and desired outputs. We will work through the following <code>apply</code> functions:</p>
@@ -326,44 +331,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>If this doesn’t make much sense, don’t stress! We will walk though an example of each function and situations for which they might be useful.</p>
 <div id="apply" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> <code>apply</code></h3>
+<h3><span class="header-section-number">6.3.1</span> <code>apply</code></h3>
 <p>Let’s generate a theoretical transition matrix for a “before” and “after” data set that shows the number of transitions from one type to another.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">before &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dt">lambda =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb112-2" title="2">after &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dt">lambda =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb112-3" title="3">tab &lt;-<span class="st"> </span><span class="kw">table</span>(before, after)</a>
-<a class="sourceLine" id="cb112-4" title="4">tab</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="functions-loops-and-apply.html#cb186-1"></a>before &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dt">lambda =</span> <span class="dv">1</span>)</span>
+<span id="cb186-2"><a href="functions-loops-and-apply.html#cb186-2"></a>after &lt;-<span class="st"> </span><span class="kw">rpois</span>(<span class="dv">1000</span>, <span class="dt">lambda =</span> <span class="dv">1</span>)</span>
+<span id="cb186-3"><a href="functions-loops-and-apply.html#cb186-3"></a>tab &lt;-<span class="st"> </span><span class="kw">table</span>(before, after)</span>
+<span id="cb186-4"><a href="functions-loops-and-apply.html#cb186-4"></a>tab</span></code></pre></div>
 <pre><code>##       after
 ## before   0   1   2   3   4   5
-##      0 138 117  68  18   7   0
-##      1 130 139  71  32   4   2
-##      2  49  77  38  18   3   0
-##      3  29  25  16   2   1   0
-##      4   3   5   4   2   0   0
-##      5   0   0   1   1   0   0</code></pre>
+##      0 154 138  76  19   5   0
+##      1 119 146  67  26   3   0
+##      2  72  60  28  11   5   1
+##      3  22  20   9   3   0   0
+##      4   3   5   2   3   0   0
+##      5   1   0   0   1   0   0
+##      6   0   0   1   0   0   0</code></pre>
 <p>We would like to convert this table to the relative probability for each transition- that is, what is the probability that an object of type “0” in the “before” dataset transitions to a 1? To a 2? 3?</p>
 <p>To calculate the probability, we will need to get the sum of observations in each row, and then divide each transition in that particular row by the row sum. We can do this using the <code>apply</code> function.</p>
 <p><code>apply</code> has three arguments: <code>X</code> is the array to which the function will be applied. <code>MARGIN</code> is used to identify whether the function should be applied to the rows, columns, or both. ‘1’ is for rows, ‘2’ is for columns, and c(1,2) can be used for both. <code>FUN</code> is the function to be applied.</p>
 <p>In this scenario, we set <code>MARGIN = 1</code> so it will perform the function row wise. Up to this point, we have defined our functions outside of other commands, but in this scenario, it is a very simple function and so we can define the function within the command itself.</p>
 <p>*Note: The <code>t()</code> function surrounding the command transposes the data set so it returns the matrix in the original orientation (before as rows and after as columns)</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">rel_prob &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">apply</span>(tab, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span> (i) {i<span class="op">/</span><span class="kw">sum</span>(i)} ))</a>
-<a class="sourceLine" id="cb114-2" title="2">rel_prob</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="functions-loops-and-apply.html#cb188-1"></a>rel_prob &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">apply</span>(tab, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> <span class="cf">function</span> (i) {i<span class="op">/</span><span class="kw">sum</span>(i)} ))</span>
+<span id="cb188-2"><a href="functions-loops-and-apply.html#cb188-2"></a>rel_prob</span></code></pre></div>
 <pre><code>##       after
-## before         0         1         2          3          4           5
-##      0 0.3965517 0.3362069 0.1954023 0.05172414 0.02011494 0.000000000
-##      1 0.3439153 0.3677249 0.1878307 0.08465608 0.01058201 0.005291005
-##      2 0.2648649 0.4162162 0.2054054 0.09729730 0.01621622 0.000000000
-##      3 0.3972603 0.3424658 0.2191781 0.02739726 0.01369863 0.000000000
-##      4 0.2142857 0.3571429 0.2857143 0.14285714 0.00000000 0.000000000
-##      5 0.0000000 0.0000000 0.5000000 0.50000000 0.00000000 0.000000000</code></pre>
+## before         0         1         2          3           4           5
+##      0 0.3928571 0.3520408 0.1938776 0.04846939 0.012755102 0.000000000
+##      1 0.3296399 0.4044321 0.1855956 0.07202216 0.008310249 0.000000000
+##      2 0.4067797 0.3389831 0.1581921 0.06214689 0.028248588 0.005649718
+##      3 0.4074074 0.3703704 0.1666667 0.05555556 0.000000000 0.000000000
+##      4 0.2307692 0.3846154 0.1538462 0.23076923 0.000000000 0.000000000
+##      5 0.5000000 0.0000000 0.0000000 0.50000000 0.000000000 0.000000000
+##      6 0.0000000 0.0000000 1.0000000 0.00000000 0.000000000 0.000000000</code></pre>
 <p>Hurray! Please not that there are other ways to perform the same task, but this one is a conceptually a simple example :)</p>
 </div>
 <div id="sapply" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> <code>sapply</code></h3>
+<h3><span class="header-section-number">6.3.2</span> <code>sapply</code></h3>
 <p>Let’s check out the Loblolly dataset. It contains the height, age, and seed source of a sample of Loblolly pines.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">library</span>(datasets)</a>
-<a class="sourceLine" id="cb116-2" title="2"></a>
-<a class="sourceLine" id="cb116-3" title="3"><span class="kw">data</span>(Loblolly)</a>
-<a class="sourceLine" id="cb116-4" title="4"><span class="kw">head</span>(Loblolly)</a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="functions-loops-and-apply.html#cb190-1"></a><span class="kw">library</span>(datasets)</span>
+<span id="cb190-2"><a href="functions-loops-and-apply.html#cb190-2"></a></span>
+<span id="cb190-3"><a href="functions-loops-and-apply.html#cb190-3"></a><span class="kw">data</span>(Loblolly)</span>
+<span id="cb190-4"><a href="functions-loops-and-apply.html#cb190-4"></a><span class="kw">head</span>(Loblolly)</span></code></pre></div>
 <pre><code>##    height age Seed
 ## 1    4.51   3  301
 ## 15  10.89   5  301
@@ -372,33 +379,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 57  52.70  20  301
 ## 71  60.92  25  301</code></pre>
 <p>The data set includes a range of ages. Let’s see if we can write a function that calculates the mean height for each age group.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="co">#Create a list with each unique age group</span></a>
-<a class="sourceLine" id="cb118-2" title="2">ages &lt;-<span class="st"> </span><span class="kw">unique</span>(Loblolly<span class="op">$</span>age)</a>
-<a class="sourceLine" id="cb118-3" title="3">ages</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="functions-loops-and-apply.html#cb192-1"></a><span class="co">#Create a list with each unique age group</span></span>
+<span id="cb192-2"><a href="functions-loops-and-apply.html#cb192-2"></a>ages &lt;-<span class="st"> </span><span class="kw">unique</span>(Loblolly<span class="op">$</span>age)</span>
+<span id="cb192-3"><a href="functions-loops-and-apply.html#cb192-3"></a>ages</span></code></pre></div>
 <pre><code>## [1]  3  5 10 15 20 25</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="co">#Create a function that calculates the mean height for each age group</span></a>
-<a class="sourceLine" id="cb120-2" title="2">fun5 &lt;-<span class="st"> </span><span class="cf">function</span> (x){</a>
-<a class="sourceLine" id="cb120-3" title="3">  agegroup &lt;-<span class="st"> </span><span class="kw">subset</span>(Loblolly, age <span class="op">==</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb120-4" title="4">  mean_height &lt;-<span class="st"> </span><span class="kw">mean</span>(agegroup<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb120-5" title="5">  <span class="kw">return</span>(mean_height)</a>
-<a class="sourceLine" id="cb120-6" title="6">}</a>
-<a class="sourceLine" id="cb120-7" title="7"></a>
-<a class="sourceLine" id="cb120-8" title="8"><span class="kw">fun5</span>(ages)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="functions-loops-and-apply.html#cb194-1"></a><span class="co">#Create a function that calculates the mean height for each age group</span></span>
+<span id="cb194-2"><a href="functions-loops-and-apply.html#cb194-2"></a>fun5 &lt;-<span class="st"> </span><span class="cf">function</span> (x){</span>
+<span id="cb194-3"><a href="functions-loops-and-apply.html#cb194-3"></a>  agegroup &lt;-<span class="st"> </span><span class="kw">subset</span>(Loblolly, age <span class="op">==</span><span class="st"> </span>x)</span>
+<span id="cb194-4"><a href="functions-loops-and-apply.html#cb194-4"></a>  mean_height &lt;-<span class="st"> </span><span class="kw">mean</span>(agegroup<span class="op">$</span>height)</span>
+<span id="cb194-5"><a href="functions-loops-and-apply.html#cb194-5"></a>  <span class="kw">return</span>(mean_height)</span>
+<span id="cb194-6"><a href="functions-loops-and-apply.html#cb194-6"></a>}</span>
+<span id="cb194-7"><a href="functions-loops-and-apply.html#cb194-7"></a></span>
+<span id="cb194-8"><a href="functions-loops-and-apply.html#cb194-8"></a><span class="kw">fun5</span>(ages)</span></code></pre></div>
 <pre><code>## [1] 32.3644</code></pre>
 <p>Hmmm, this returns one value rather than a separate mean for each group. Why is that?
 In this function, x is a vector, and so the subset function selects the cases where age is equal to any of the values included in the <code>ages</code> vector. Because we have selected every value of age, we will get the mean height for the entire dataset.</p>
 <p>If we would like a vector of the means for each height, we will can use <code>sapply</code>.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="co">#Create a function that calculates the mean height for each age group</span></a>
-<a class="sourceLine" id="cb122-2" title="2">mean_heights &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X =</span> ages, <span class="dt">FUN =</span> fun5)</a>
-<a class="sourceLine" id="cb122-3" title="3">mean_heights</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="functions-loops-and-apply.html#cb196-1"></a><span class="co">#Create a function that calculates the mean height for each age group</span></span>
+<span id="cb196-2"><a href="functions-loops-and-apply.html#cb196-2"></a>mean_heights &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dt">X =</span> ages, <span class="dt">FUN =</span> fun5)</span>
+<span id="cb196-3"><a href="functions-loops-and-apply.html#cb196-3"></a>mean_heights</span></code></pre></div>
 <pre><code>## [1]  4.237857 10.205000 27.442143 40.543571 51.468571 60.289286</code></pre>
 <p>Excellent! We now have a vector with the mean height for each age group!</p>
 </div>
 <div id="lapply" class="section level3">
-<h3><span class="header-section-number">4.3.3</span> <code>lapply</code></h3>
+<h3><span class="header-section-number">6.3.3</span> <code>lapply</code></h3>
 <p>You can use the <code>lapply</code> function to get the same information, but in a list format.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1">heights &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dt">X =</span> ages, <span class="dt">FUN =</span> fun5)</a>
-<a class="sourceLine" id="cb124-2" title="2">heights</a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="functions-loops-and-apply.html#cb198-1"></a>heights &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dt">X =</span> ages, <span class="dt">FUN =</span> fun5)</span>
+<span id="cb198-2"><a href="functions-loops-and-apply.html#cb198-2"></a>heights</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 4.237857
 ## 
@@ -418,16 +425,16 @@ In this function, x is a vector, and so the subset function selects the cases wh
 ## [1] 60.28929</code></pre>
 <p>In this scenario, <code>sapply</code> might be a better fit. <code>lapply</code> is generally more useful if your output is a an object like a <code>data.frame</code> or produces objects of different types.</p>
 <p>Let’s write a function that creates a subsetted <code>data.frame</code> for each value of tree age.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">ages &lt;-<span class="st"> </span><span class="kw">unique</span>(Loblolly<span class="op">$</span>age)</a>
-<a class="sourceLine" id="cb126-2" title="2"></a>
-<a class="sourceLine" id="cb126-3" title="3">func6 &lt;-<span class="st"> </span><span class="cf">function</span> (x){</a>
-<a class="sourceLine" id="cb126-4" title="4">  <span class="kw">subset</span>(Loblolly, age <span class="op">==</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb126-5" title="5">}</a>
-<a class="sourceLine" id="cb126-6" title="6"></a>
-<a class="sourceLine" id="cb126-7" title="7">sub_df &lt;-<span class="st"> </span><span class="kw">lapply</span>(ages, func6)</a>
-<a class="sourceLine" id="cb126-8" title="8"></a>
-<a class="sourceLine" id="cb126-9" title="9"><span class="co">#Let&#39;s look at items 1 and 2 in the list</span></a>
-<a class="sourceLine" id="cb126-10" title="10">sub_df[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="functions-loops-and-apply.html#cb200-1"></a>ages &lt;-<span class="st"> </span><span class="kw">unique</span>(Loblolly<span class="op">$</span>age)</span>
+<span id="cb200-2"><a href="functions-loops-and-apply.html#cb200-2"></a></span>
+<span id="cb200-3"><a href="functions-loops-and-apply.html#cb200-3"></a>func6 &lt;-<span class="st"> </span><span class="cf">function</span> (x){</span>
+<span id="cb200-4"><a href="functions-loops-and-apply.html#cb200-4"></a>  <span class="kw">subset</span>(Loblolly, age <span class="op">==</span><span class="st"> </span>x)</span>
+<span id="cb200-5"><a href="functions-loops-and-apply.html#cb200-5"></a>}</span>
+<span id="cb200-6"><a href="functions-loops-and-apply.html#cb200-6"></a></span>
+<span id="cb200-7"><a href="functions-loops-and-apply.html#cb200-7"></a>sub_df &lt;-<span class="st"> </span><span class="kw">lapply</span>(ages, func6)</span>
+<span id="cb200-8"><a href="functions-loops-and-apply.html#cb200-8"></a></span>
+<span id="cb200-9"><a href="functions-loops-and-apply.html#cb200-9"></a><span class="co">#Let&#39;s look at items 1 and 2 in the list</span></span>
+<span id="cb200-10"><a href="functions-loops-and-apply.html#cb200-10"></a>sub_df[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [[1]]
 ##    height age Seed
 ## 1    4.51   3  301
@@ -463,43 +470,43 @@ In this function, x is a vector, and so the subset function selects the cases wh
 ## 28   9.05   5  331</code></pre>
 </div>
 <div id="mapply" class="section level3">
-<h3><span class="header-section-number">4.3.4</span> <code>mapply</code></h3>
+<h3><span class="header-section-number">6.3.4</span> <code>mapply</code></h3>
 <p><code>mapply</code> is an extremely useful function that is a great way to avoid using <code>for</code> loops! With <code>mapply</code>, you can use multiple input variables and it will iterate through each pair (or trio or more) of variables as inputs for the function.</p>
 <p>Let’s say we would like to generate a theoretical normal distribution of tree height for each age group based on the mean and standard deviation of height. We will need a vector of means and a vector of heights to use as input values. We have already genereated a vector of means in our <code>sapply</code> example, so we will use a similar equation to generate a vector of sd.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1">fun6 &lt;-<span class="st"> </span><span class="cf">function</span> (x){</a>
-<a class="sourceLine" id="cb128-2" title="2">  agegroup &lt;-<span class="st"> </span><span class="kw">subset</span>(Loblolly, age <span class="op">==</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb128-3" title="3">  <span class="kw">sd</span>(agegroup<span class="op">$</span>height)</a>
-<a class="sourceLine" id="cb128-4" title="4">}</a>
-<a class="sourceLine" id="cb128-5" title="5"></a>
-<a class="sourceLine" id="cb128-6" title="6">sd_height &lt;-<span class="st"> </span><span class="kw">sapply</span>(ages, fun6)</a>
-<a class="sourceLine" id="cb128-7" title="7">sd_height</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="functions-loops-and-apply.html#cb202-1"></a>fun6 &lt;-<span class="st"> </span><span class="cf">function</span> (x){</span>
+<span id="cb202-2"><a href="functions-loops-and-apply.html#cb202-2"></a>  agegroup &lt;-<span class="st"> </span><span class="kw">subset</span>(Loblolly, age <span class="op">==</span><span class="st"> </span>x)</span>
+<span id="cb202-3"><a href="functions-loops-and-apply.html#cb202-3"></a>  <span class="kw">sd</span>(agegroup<span class="op">$</span>height)</span>
+<span id="cb202-4"><a href="functions-loops-and-apply.html#cb202-4"></a>}</span>
+<span id="cb202-5"><a href="functions-loops-and-apply.html#cb202-5"></a></span>
+<span id="cb202-6"><a href="functions-loops-and-apply.html#cb202-6"></a>sd_height &lt;-<span class="st"> </span><span class="kw">sapply</span>(ages, fun6)</span>
+<span id="cb202-7"><a href="functions-loops-and-apply.html#cb202-7"></a>sd_height</span></code></pre></div>
 <pre><code>## [1] 0.4036026 0.8155767 1.5378866 1.9508444 2.2118278 2.2688339</code></pre>
 <p>Now, we can write a function that takes the two variables and applied it to each pair of input values to generate 6 six distributions.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">fun7 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</a>
-<a class="sourceLine" id="cb130-2" title="2">  <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> x, <span class="dt">sd =</span> y)</a>
-<a class="sourceLine" id="cb130-3" title="3">}</a>
-<a class="sourceLine" id="cb130-4" title="4"></a>
-<a class="sourceLine" id="cb130-5" title="5">height_dists &lt;-<span class="st"> </span><span class="kw">mapply</span>(<span class="dt">FUN =</span> fun7, <span class="dt">x =</span> mean_heights, <span class="dt">y =</span> sd_height)</a>
-<a class="sourceLine" id="cb130-6" title="6"><span class="kw">colnames</span>(height_dists) &lt;-<span class="st"> </span>ages <span class="co">#This names the columns by the tree age</span></a>
-<a class="sourceLine" id="cb130-7" title="7"><span class="kw">summary</span>(height_dists)</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="functions-loops-and-apply.html#cb204-1"></a>fun7 &lt;-<span class="st"> </span><span class="cf">function</span> (x, y){</span>
+<span id="cb204-2"><a href="functions-loops-and-apply.html#cb204-2"></a>  <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> x, <span class="dt">sd =</span> y)</span>
+<span id="cb204-3"><a href="functions-loops-and-apply.html#cb204-3"></a>}</span>
+<span id="cb204-4"><a href="functions-loops-and-apply.html#cb204-4"></a></span>
+<span id="cb204-5"><a href="functions-loops-and-apply.html#cb204-5"></a>height_dists &lt;-<span class="st"> </span><span class="kw">mapply</span>(<span class="dt">FUN =</span> fun7, <span class="dt">x =</span> mean_heights, <span class="dt">y =</span> sd_height)</span>
+<span id="cb204-6"><a href="functions-loops-and-apply.html#cb204-6"></a><span class="kw">colnames</span>(height_dists) &lt;-<span class="st"> </span>ages <span class="co">#This names the columns by the tree age</span></span>
+<span id="cb204-7"><a href="functions-loops-and-apply.html#cb204-7"></a><span class="kw">summary</span>(height_dists)</span></code></pre></div>
 <pre><code>##        3               5                10              15       
-##  Min.   :3.177   Min.   : 7.648   Min.   :24.16   Min.   :35.13  
-##  1st Qu.:3.916   1st Qu.: 9.797   1st Qu.:26.10   1st Qu.:39.08  
-##  Median :4.237   Median :10.172   Median :27.15   Median :40.62  
-##  Mean   :4.227   Mean   :10.245   Mean   :27.20   Mean   :40.79  
-##  3rd Qu.:4.525   3rd Qu.:10.709   3rd Qu.:28.22   3rd Qu.:42.22  
-##  Max.   :5.259   Max.   :12.147   Max.   :31.35   Max.   :46.80  
+##  Min.   :3.274   Min.   : 8.593   Min.   :23.56   Min.   :36.77  
+##  1st Qu.:3.920   1st Qu.: 9.726   1st Qu.:26.32   1st Qu.:39.59  
+##  Median :4.180   Median :10.222   Median :27.20   Median :40.72  
+##  Mean   :4.222   Mean   :10.218   Mean   :27.32   Mean   :40.75  
+##  3rd Qu.:4.488   3rd Qu.:10.771   3rd Qu.:28.36   3rd Qu.:42.08  
+##  Max.   :5.546   Max.   :12.078   Max.   :30.34   Max.   :46.49  
 ##        20              25       
-##  Min.   :47.22   Min.   :55.41  
-##  1st Qu.:50.18   1st Qu.:58.82  
-##  Median :51.27   Median :60.71  
-##  Mean   :51.47   Mean   :60.63  
-##  3rd Qu.:52.68   3rd Qu.:62.38  
-##  Max.   :55.86   Max.   :67.61</code></pre>
+##  Min.   :45.84   Min.   :55.24  
+##  1st Qu.:50.14   1st Qu.:58.82  
+##  Median :51.62   Median :60.86  
+##  Mean   :51.35   Mean   :60.52  
+##  3rd Qu.:52.78   3rd Qu.:62.22  
+##  Max.   :56.06   Max.   :65.39</code></pre>
 </div>
 </div>
 <div id="loops" class="section level2">
-<h2><span class="header-section-number">4.4</span> Loops</h2>
+<h2><span class="header-section-number">6.4</span> Loops</h2>
 <p>I haven’t done this part yet!</p>
 
 </div>
@@ -560,6 +567,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

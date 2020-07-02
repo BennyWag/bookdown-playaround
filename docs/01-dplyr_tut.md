@@ -146,6 +146,10 @@ library(dplyr)
 mean_age_koala<-koala%>%group_by(sex)%>%summarise(mean_age = mean(age))
 ```
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
 
 ```
 ## # A tibble: 2 x 2
@@ -281,9 +285,10 @@ str(koala_group)
 ##  $ obs    : Factor w/ 3 levels "Opportunistic",..: 2 1 2 3 3 1 3 2 2 2 ...
 ##  - attr(*, "groups")= tibble [2 x 2] (S3: tbl_df/tbl/data.frame)
 ##   ..$ sex  : Factor w/ 2 levels "female","male": 1 2
-##   ..$ .rows:List of 2
+##   ..$ .rows: list<int> [1:2] 
 ##   .. ..$ : int [1:127] 2 5 9 10 12 13 15 17 20 22 ...
 ##   .. ..$ : int [1:115] 1 3 4 6 7 8 11 14 16 18 ...
+##   .. ..@ ptype: int(0) 
 ##   ..- attr(*, ".drop")= logi TRUE
 ```
 
@@ -296,6 +301,10 @@ The above was a bit on the uneventful side because `group_by()` is only really u
 ```r
 koala_group_sum<-koala%>%group_by(sex)%>%
   summarise(mean_age=mean(age))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 
@@ -341,6 +350,10 @@ challenge2_ext<-koala%>%group_by(state, sex)%>%
             sample_no = n())
 ```
 
+```
+## `summarise()` regrouping output by 'state' (override with `.groups` argument)
+```
+
 We can create a new dataframe with as many new variables as we want. Very useful for our inital data exploration! Let's get our hands another very useful function: `mutate()`.
 
 ### mutate()
@@ -374,6 +387,10 @@ koala_mutate_weight_size<-koala%>%mutate(weight_size_ratio = size/weight)%>%
             max_weight_size = max(weight_size_ratio))
 ```
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
 
 ```
 ## # A tibble: 2 x 5
@@ -398,8 +415,8 @@ Great! Let's end the lesson with another challenge, combining all the functions 
 ## # A tibble: 2 x 3
 ##   sex    mean_tail mean_fur
 ##   <fct>      <dbl>    <dbl>
-## 1 male        1.48     2.88
-## 2 female      1.41     2.49
+## 1 male        1.55     2.97
+## 2 female      1.45     2.49
 ```
 
 Since we are sampling randomly, these will look different for each of you.
@@ -427,6 +444,10 @@ challenge2<-koala%>%group_by(state, sex)%>%
   summarise(mean_weight = mean(weight))
 ```
 
+```
+## `summarise()` regrouping output by 'state' (override with `.groups` argument)
+```
+
 #### Challenge 3
 
 
@@ -436,5 +457,9 @@ challenge3<-koala%>%filter(state == 'New South Wales')%>%
   sample_n(20)%>%
   summarise(mean_tail = mean(tail), mean_fur = mean(fur))%>%
   arrange(desc(mean_tail))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
