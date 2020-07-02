@@ -1,0 +1,25 @@
+{
+    "id": "203FA9DA",
+    "path": "E:/Github/forest-ecology-R-book/05-Lidar_in_R.Rmd",
+    "project_path": "05-Lidar_in_R.Rmd",
+    "type": "r_markdown",
+    "hash": "2056109572",
+    "contents": "",
+    "dirty": false,
+    "created": 1593676845153.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "last_setup_crc32": "618FC0B7970de3b4",
+        "cursorPosition": "35,0",
+        "scrollLine": "25"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1593676164,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1593676862785,
+    "read_only": false,
+    "read_only_alternatives": []
+}

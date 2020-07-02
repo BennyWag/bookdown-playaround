@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Spatial tools for forestry and ecological applications | Intro to R for Forest Ecosystem Science</title>
+  <title>Chapter 7 Spatial tools for forestry and ecological applications | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Spatial tools for forestry and ecological applications | Intro to R for Forest Ecosystem Science" />
+  <meta property="og:title" content="Chapter 7 Spatial tools for forestry and ecological applications | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Spatial tools for forestry and ecological applications | Intro to R for Forest Ecosystem Science" />
+  <meta name="twitter:title" content="Chapter 7 Spatial tools for forestry and ecological applications | Intro to R for Forest Ecosystem Science" />
   
   <meta name="twitter:description" content="Introductory R" />
   
@@ -49,12 +49,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -63,14 +64,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -79,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -142,72 +145,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>2.2.8</b> Solution to all challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>3</b> Working with spatial data in <code>R</code></a><ul>
-<li class="chapter" data-level="3.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>3.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="3.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>3.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>3.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>4</b> Introduction to linear models in R</a></li>
+<li class="chapter" data-level="5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>5</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>5.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="5.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>5.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.2.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>3.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="3.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="3.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>3.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="5.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>5.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="5.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>5.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>5.4.1</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>3.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="3.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>3.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="3.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>3.6.1</b> Challenge 3</a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>3.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>3.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="3.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>3.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="3.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>3.7.3</b> Challenge 3</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>4</b> Functions, loops, and <code>apply</code></a><ul>
-<li class="chapter" data-level="4.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>4.2</b> Writing basic functions</a></li>
-<li class="chapter" data-level="4.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>4.3</b> Using <code>apply</code> functions</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>4.3.1</b> <code>apply</code></a></li>
-<li class="chapter" data-level="4.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>4.3.2</b> <code>sapply</code></a></li>
-<li class="chapter" data-level="4.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>4.3.3</b> <code>lapply</code></a></li>
-<li class="chapter" data-level="4.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>4.3.4</b> <code>mapply</code></a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>4.4</b> Loops</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>5</b> Spatial tools for forestry and ecological applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>5.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
-<li class="chapter" data-level="5.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>5.2</b> Working with LiDAR data in R</a></li>
-<li class="chapter" data-level="5.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>5.3</b> Step 1. Loading and visualizing pointclouds</a></li>
-<li class="chapter" data-level="5.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>5.4</b> Step 2. Computing a canopy height model</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>5.4.1</b> Ground detection and normalizing a point cloud</a></li>
-<li class="chapter" data-level="5.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>5.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="5.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.4.3</b> Challenge 1</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>5.5</b> Step 3. Individual tree segmentation</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>5.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="5.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>5.5.2</b> Challenge 2</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>5.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="5.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>5.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="5.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
 <li class="chapter" data-level="5.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>5.6.1</b> Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>5.7</b> Wrapping up</a></li>
-<li class="chapter" data-level="5.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>5.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>5.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="5.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>5.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="5.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>5.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="5.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>5.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>5.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="5.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>5.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="5.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>5.7.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>6</b> Calculating class area from raster</a><ul>
-<li class="chapter" data-level="6.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>6.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>6.1.1</b> Creating dummy data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>6.1.2</b> Preparing the raster for area calculation</a></li>
-<li class="chapter" data-level="6.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>6.1.3</b> Compiling a comprehensive table</a></li>
+<li class="chapter" data-level="6" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>6</b> Functions, loops, and <code>apply</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>6.2</b> Writing basic functions</a></li>
+<li class="chapter" data-level="6.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>6.3</b> Using <code>apply</code> functions</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>6.3.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>6.3.2</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>6.3.3</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>6.3.4</b> <code>mapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>6.4</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>7</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>7.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
+<li class="chapter" data-level="7.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>7.2</b> Working with LiDAR data in R</a></li>
+<li class="chapter" data-level="7.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>7.3</b> Step 1. Loading and visualizing pointclouds</a></li>
+<li class="chapter" data-level="7.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>7.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>7.4.1</b> Ground detection and normalizing a point cloud</a></li>
+<li class="chapter" data-level="7.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>7.4.2</b> Building the initial CHM</a></li>
+<li class="chapter" data-level="7.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.4.3</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>7.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>7.5.1</b> Delineating the crowns</a></li>
+<li class="chapter" data-level="7.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.5.2</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>7.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>7.7</b> Wrapping up</a></li>
+<li class="chapter" data-level="7.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>7.8</b> Solutions to the challenges</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>7.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>7</b> Extracting raster fractions and area using a polygon mask</a><ul>
-<li class="chapter" data-level="7.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>7.1</b> Problem statement</a></li>
-<li class="chapter" data-level="7.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>7.2</b> Creating some dummy raster data</a></li>
-<li class="chapter" data-level="7.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>7.3</b> Create some reserves</a></li>
-<li class="chapter" data-level="7.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>7.4</b> Extracting data</a></li>
-<li class="chapter" data-level="7.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>7.5</b> Plotting the results</a></li>
+<li class="chapter" data-level="8" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>8</b> Calculating class area from raster</a><ul>
+<li class="chapter" data-level="8.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>8.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>8.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="8.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>8.1.2</b> Preparing the raster for area calculation</a></li>
+<li class="chapter" data-level="8.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>8.1.3</b> Compiling a comprehensive table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>9</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="9.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>9.1</b> Problem statement</a></li>
+<li class="chapter" data-level="9.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>9.2</b> Creating some dummy raster data</a></li>
+<li class="chapter" data-level="9.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>9.3</b> Create some reserves</a></li>
+<li class="chapter" data-level="9.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>9.4</b> Extracting data</a></li>
+<li class="chapter" data-level="9.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>9.5</b> Plotting the results</a></li>
 </ul></li>
 </ul>
 
@@ -227,124 +232,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="spatial-tools-for-forestry-and-ecological-applications" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Spatial tools for forestry and ecological applications</h1>
+<h1><span class="header-section-number">Chapter 7</span> Spatial tools for forestry and ecological applications</h1>
 <p><img src="data/lidR-doc/pc.gif" width="300" style="display: block; margin: auto;" /></p>
 <div id="an-introduction-to-processing-lidar-data-in-r" class="section level2">
-<h2><span class="header-section-number">5.1</span> An introduction to processing LiDAR data in <code>R</code></h2>
+<h2><span class="header-section-number">7.1</span> An introduction to processing LiDAR data in <code>R</code></h2>
 <p><em>NOTE: This tutorial is based on <code>lidR</code> function Syntax pre version 3.0. Older function names have been depreceated, but are still working, thus not affecting the workflow of this tutorial. Nevertheless, befor you start working on your own data, you might want to check for updated function names and new functionalites in lidR 3.0 <a href="https://github.com/Jean-Romain/lidR/blob/master/NEWS.md">here</a>.</em></p>
 </div>
 <div id="working-with-lidar-data-in-r" class="section level2">
-<h2><span class="header-section-number">5.2</span> Working with LiDAR data in R</h2>
+<h2><span class="header-section-number">7.2</span> Working with LiDAR data in R</h2>
 <p><code>lidR</code> is a R package to process, manipulate and visualize LiDAR (and photogrammetry) pointclouds for forestry applications. Useful functionality includes the simple and memory-efficient plotting and visualization of data, computation of canopy height models (CHMs), tree segmentation and the extraction of tree metrics such as tree height and crown area. For more advanced users it additionally offers batch functionality, called cataloging, to process large LiDAR chunks, which otherwise would be very computation intensive.</p>
 <p>This tutorial is a quick guide to getting familiar with the main functionality of <code>lidR</code> and based on the excellent package documentation that can be found <a href="https://github.com/Jean-Romain/lidR/wiki">here</a>. You can find the github page for <code>lidR</code> at <strong><a href="https://github.com/Jean-Romain/lidR" class="uri">https://github.com/Jean-Romain/lidR</a></strong> and the package documentation at <strong><a href="https://cran.r-project.org/web/packages/lidR/lidR.pdf" class="uri">https://cran.r-project.org/web/packages/lidR/lidR.pdf</a></strong>.</p>
 <p>We will be working with two example files (<code>Example.las</code> and <code>drawno.laz</code>), that you need to store in a <code>data/</code> folder in your project (or working) directory. The files can be downloaded <a href="https://www.dropbox.com/s/65yjdewy0c2n3lf/data.rar?dl=1">here</a>. Please make sure that you have downloaded and stored the two files before beginning the tutorial. You also need to install the following packages:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;lidR&#39;</span>, <span class="st">&#39;raster&#39;</span>, <span class="st">&#39;rgdal&#39;</span>, <span class="st">&#39;dplyr&#39;</span>, <span class="st">&#39;sf&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb206-1"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;lidR&#39;</span>, <span class="st">&#39;raster&#39;</span>, <span class="st">&#39;rgdal&#39;</span>, <span class="st">&#39;dplyr&#39;</span>, <span class="st">&#39;sf&#39;</span>))</span></code></pre></div>
 <p>We will also need the package <code>EBImage</code> for our tree segmentation, which is distributed as part of the <a href="http://bioconductor.org/packages/release/bioc/html/EBImage.html">Bioconductor</a> project. To install, run the following code:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a>
-<a class="sourceLine" id="cb133-2" title="2">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;EBImage&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb207-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span>
+<span id="cb207-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb207-2"></a>BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&quot;EBImage&quot;</span>)</span></code></pre></div>
 <p>If this prompts you to update existing packages (<code>Update all/some/none? [a/s/n]:</code>) in the console, type <code>n</code> and hit enter. Once all packages are installed, we need to call them:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb134-2" title="2"><span class="kw">library</span>(EBImage)</a>
-<a class="sourceLine" id="cb134-3" title="3"><span class="kw">library</span>(lidR)</a>
-<a class="sourceLine" id="cb134-4" title="4"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb134-5" title="5"><span class="kw">library</span>(rgdal)</a>
-<a class="sourceLine" id="cb134-6" title="6"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb208-1"></a><span class="kw">library</span>(raster)</span>
+<span id="cb208-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb208-2"></a><span class="kw">library</span>(EBImage)</span>
+<span id="cb208-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb208-3"></a><span class="kw">library</span>(lidR)</span>
+<span id="cb208-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb208-4"></a><span class="kw">library</span>(sf)</span>
+<span id="cb208-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb208-5"></a><span class="kw">library</span>(rgdal)</span>
+<span id="cb208-6"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb208-6"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
 </div>
 <div id="step-1.-loading-and-visualizing-pointclouds" class="section level2">
-<h2><span class="header-section-number">5.3</span> Step 1. Loading and visualizing pointclouds</h2>
+<h2><span class="header-section-number">7.3</span> Step 1. Loading and visualizing pointclouds</h2>
 <p>For those familiar with <code>R</code>, loading and plotting pointcloud files will be easy: we are using simple read and <code>plot</code> syntax. <code>lidR</code> can load both <code>.las</code> and <code>.laz</code> file formats. Let’s read one of our example files and plot it:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">forest&lt;-<span class="kw">readLAS</span>(<span class="st">&#39;data/drawno.laz&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb209-1"></a>forest&lt;-<span class="kw">readLAS</span>(<span class="st">&#39;data/drawno.laz&#39;</span>)</span></code></pre></div>
 <p>Using <code>print()</code> will give us a bit of information about the file we have just loaded, for example on the number of points and point density.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">print</span>(forest)</a></code></pre></div>
-<pre><code>## class        : LAS (LASF v1.2)
-## point format : 1
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb210-1"></a><span class="kw">print</span>(forest)</span></code></pre></div>
+<pre><code>## class        : LAS (v1.2 format 1)
 ## memory       : 11.5 Mb 
-## extent       :278200, 278300, 602200, 602300 (xmin, xmax, ymin, ymax)
+## extent       : 278200, 278300, 602200, 602300 (xmin, xmax, ymin, ymax)
 ## coord. ref.  : NA 
 ## area         : 9996.22 units²
 ## points       : 150.4 thousand points
-## density      : 15.05 points/units²
-## names        : X Y Z gpstime Intensity ReturnNumber NumberOfReturns ScanDirectionFlag EdgeOfFlightline Classification Synthetic_flag Keypoint_flag Withheld_flag ScanAngleRank UserData PointSourceID</code></pre>
+## density      : 15.05 points/units²</code></pre>
 <p>We can see that this particular file has ~150,000 points with a point density of ~15 per unit. We can also see that there is no coordinate reference system (crs) associated with this file, which is why the unit is unknown. This might lead to issues later on, so always check that your raw pointcloud has a crs assigned, before starting to work with it. For the purpose of this tutorial, we can overlook this. Let’s visualize our pointcloud!</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">plot</span>(forest)</a></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb212-1"></a><span class="kw">plot</span>(forest)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="data/lidR-doc/plot.png" alt="A new window will open and your plot will look something like this" width="500" />
 <p class="caption">
-Figure 5.1: A new window will open and your plot will look something like this
+Figure 7.1: A new window will open and your plot will look something like this
 </p>
 </div>
 <p>You can change the color of your point cloud using <code>colorPalette =</code>. Make sure to close the previous plot window before plotting a new one. Let’s try a few options:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="kw">plot</span>(forest,  <span class="dt">colorPalette =</span> <span class="kw">terrain.colors</span>(<span class="dv">50</span>))</a>
-<a class="sourceLine" id="cb139-2" title="2"><span class="kw">plot</span>(forest,  <span class="dt">colorPalette =</span> <span class="kw">heat.colors</span>(<span class="dv">50</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb213-1"></a><span class="kw">plot</span>(forest,  <span class="dt">colorPalette =</span> <span class="kw">terrain.colors</span>(<span class="dv">50</span>))</span>
+<span id="cb213-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb213-2"></a><span class="kw">plot</span>(forest,  <span class="dt">colorPalette =</span> <span class="kw">heat.colors</span>(<span class="dv">50</span>))</span></code></pre></div>
 </div>
 <div id="step-2.-computing-a-canopy-height-model" class="section level2">
-<h2><span class="header-section-number">5.4</span> Step 2. Computing a canopy height model</h2>
+<h2><span class="header-section-number">7.4</span> Step 2. Computing a canopy height model</h2>
 <p>Now that we have imported our LiDAR data in to <code>R</code>, we can start working with it using the functionality of the package. We want to compute a canopy height model (CHM) from our two example files. CHMs are rasterized versions of the forests captured using LiDAR. Each pixel value in this raster describes the height above ground. These CHMs are useful to get an idea about the forest structure of the area we are looking at. A CHM is derived from the pointcloud by subtracting a digital terrain model (DTM) describing the ground topography, from a digital surface model (DSM) describing points of the pointcloud above the ground:</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="data/lidR-doc/CHM.png" alt="The theory behind a CHM. Graphic: Colin Williams, NEON" width="500" />
 <p class="caption">
-Figure 5.2: The theory behind a CHM. Graphic: Colin Williams, NEON
+Figure 7.2: The theory behind a CHM. Graphic: Colin Williams, NEON
 </p>
 </div>
 <div id="ground-detection-and-normalizing-a-point-cloud" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> Ground detection and normalizing a point cloud</h3>
+<h3><span class="header-section-number">7.4.1</span> Ground detection and normalizing a point cloud</h3>
 <p>While we could now go ahead and calculate a DSM and DTM from our raw pointcloud, <code>lidR</code> has built-in functions to make this easier for us. First of all, we need to normalize our pointcloud, so that all ground points are set to 0. Since you might have noticed that our example forest is already normalized, we will load our other example and start using <code>lasground()</code></p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">raw_forest&lt;-<span class="kw">readLAS</span>(<span class="st">&#39;data/Example.las&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb214-1"></a>raw_forest&lt;-<span class="kw">readLAS</span>(<span class="st">&#39;data/Example.las&#39;</span>)</span></code></pre></div>
 <pre><code>## Warning: Invalid data: 194244 points with a number of returns equal to 0 found.</code></pre>
 <pre><code>## Warning: Invalid data: 194244 points with a &#39;return number&#39; greater than the
 ## &#39;number of returns&#39;.</code></pre>
 <p>Do not mind the warnings that pop up. These are associated to the data structure but are not a problem in this case. Let’s have a brief look at what this piece of forest looks like:</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="kw">plot</span>(raw_forest)</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb217-1"></a><span class="kw">plot</span>(raw_forest)</span></code></pre></div>
 <p>You will see that the terrain here is a bit undulated. To normalize ground elevation, we first need detect ground points in this raw data and save it as a new pointcloud:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">raw_forest_ground&lt;-<span class="kw">lasground</span>(raw_forest, <span class="kw">csf</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb218-1"></a>raw_forest_ground&lt;-<span class="kw">lasground</span>(raw_forest, <span class="kw">csf</span>())</span></code></pre></div>
 <pre><code>## Warning: Zero last return found. Cannot use the option &#39;last_returns&#39;, all the
 ## points will be used.</code></pre>
 <p><code>csf()</code> is one of two ground segmentation algorithms, built into <code>lidR</code>. If you want more detail on what it exactly does, call <code>?csf</code> in the console. We can visualize what this function has done with the raw data by plotting it and coloring it based on the classification we just ran:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">plot</span>(raw_forest_ground, <span class="dt">color =</span> <span class="st">&quot;Classification&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb220-1"></a><span class="kw">plot</span>(raw_forest_ground, <span class="dt">color =</span> <span class="st">&quot;Classification&quot;</span>)</span></code></pre></div>
 <p>Detected ground points are illustrated in blue, our trees in grey. You can check the same for our other example to confirm that this pointlcoud is already classified as we expected:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="kw">plot</span>(forest, <span class="dt">color =</span> <span class="st">&quot;Classification&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb221-1"></a><span class="kw">plot</span>(forest, <span class="dt">color =</span> <span class="st">&quot;Classification&quot;</span>)</span></code></pre></div>
 <p>Now that the points are detected, we can normalize our pointcloud, which sets all ground points to an elevation of 0.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">raw_forest_norm&lt;-<span class="kw">lasnormalize</span>(raw_forest_ground, <span class="kw">tin</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb222-1"></a>raw_forest_norm&lt;-<span class="kw">lasnormalize</span>(raw_forest_ground, <span class="kw">tin</span>())</span></code></pre></div>
 <p>Again <code>tin()</code> is the spatial interpolation algorithm at work here. We can see what has happened by plotting our raw and normalized data and comparing the point clouds:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">plot</span>(raw_forest)</a>
-<a class="sourceLine" id="cb149-2" title="2"><span class="kw">plot</span>(raw_forest_norm)</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb223-1"></a><span class="kw">plot</span>(raw_forest)</span>
+<span id="cb223-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb223-2"></a><span class="kw">plot</span>(raw_forest_norm)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="data/lidR-doc/norm.png" alt="We can see that the right, raw data exhibits ground topography, while the right, normalized pointcloud is completely flat" width="800" />
 <p class="caption">
-Figure 5.3: We can see that the right, raw data exhibits ground topography, while the right, normalized pointcloud is completely flat
+Figure 7.3: We can see that the right, raw data exhibits ground topography, while the right, normalized pointcloud is completely flat
 </p>
 </div>
 <p>We need the point cloud to be completely flat, to get the exact height of each tree above ground, without the influence topography might have on tree height. Now we are ready to start working on a CHM!</p>
 </div>
 <div id="building-the-initial-chm" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> Building the initial CHM</h3>
+<h3><span class="header-section-number">7.4.2</span> Building the initial CHM</h3>
 <p>To compute a CHM, we simply apply the <code>grid_canopy()</code> function to the normalized pointcloud, but need to give two extra arguments:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">chm1 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, <span class="kw">p2r</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb224-1"></a>chm1 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, <span class="kw">p2r</span>())</span></code></pre></div>
 <p>The first argument is the desired resolution of the output, in our case <code>0.5</code> meters. The second argument is the algorithm to compute the CHM. <code>lidR</code> has multiple algorithms built in, here we are using <code>p2r()</code> which attributes the height of the highest point found for each pixel of the output raster. Let’s look at our result:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="kw">plot</span>(chm1, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb225-1"></a><span class="kw">plot</span>(chm1, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Hmm, that doesn’t look too great yet. A lot of white space (empty pixels) indicates that we have pits resulting from the relatively low point density of this point cloud. These will lead to a lot of <code>NA</code> data later on, messing with our analyses, so we should aim at closing these pits by playing around with the arguments within the <code>grid_canopy()</code> function. A simple improvement proposed by Martin Isenburg in <a href="https://rapidlasso.com/2014/11/04/rasterizing-perfect-canopy-height-models-from-lidar/">lastools</a> (the underlying software to <code>lidR</code>) can be obtained by replacing each LiDAR return with a small disk. Since a laser has a width and a footprint, this tweak may simulate this fact. We add a subcircle of <code>0.2</code> diameter in our <code>p2r()</code> algorithm and can see what happens.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">chm2 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, <span class="kw">p2r</span>(<span class="fl">0.2</span>))</a>
-<a class="sourceLine" id="cb152-2" title="2"></a>
-<a class="sourceLine" id="cb152-3" title="3"><span class="kw">plot</span>(chm2, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb226-1"></a>chm2 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, <span class="kw">p2r</span>(<span class="fl">0.2</span>))</span>
+<span id="cb226-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb226-2"></a></span>
+<span id="cb226-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb226-3"></a><span class="kw">plot</span>(chm2, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>That looks much better already, but some pits still persist. Next we can try reducing the resolution a bit to counter these remaining empty pixels:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">chm3 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.75</span>, <span class="kw">p2r</span>(<span class="fl">0.2</span>))</a>
-<a class="sourceLine" id="cb153-2" title="2"></a>
-<a class="sourceLine" id="cb153-3" title="3"><span class="kw">plot</span>(chm3, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb227-1"></a>chm3 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.75</span>, <span class="kw">p2r</span>(<span class="fl">0.2</span>))</span>
+<span id="cb227-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb227-2"></a></span>
+<span id="cb227-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb227-3"></a><span class="kw">plot</span>(chm3, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>More pits closed, great! We might loose some detail here, as the pixel size is now larger, but we gain detail from replacing <code>NA</code>’s with height values. Note that playing around with these two parameters might take a while but eventually you may find the right approach that fits your data.</p>
 <p>Another popular approach to avoid the empty pixel problem consists of the interpolation of first returns with a triangulated irregular network (TIN) and then rasterizing it onto a grid to create the CHM. For this we need to use the algorithm <code>dstmin()</code> in <code>grid_canopy()</code>:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">chm4 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, <span class="kw">dsmtin</span>())</a>
-<a class="sourceLine" id="cb154-2" title="2"></a>
-<a class="sourceLine" id="cb154-3" title="3"><span class="kw">plot</span>(chm4, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb228-1"></a>chm4 &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, <span class="kw">dsmtin</span>())</span>
+<span id="cb228-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb228-2"></a></span>
+<span id="cb228-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb228-3"></a><span class="kw">plot</span>(chm4, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>As explained by Martin Isenburg, the result has no more empty pixels but is full of pits because <em>many laser pulses manage to deeply penetrate the canopy before producing the first return</em>. In the end you might need to apply multiple algorithms and functions to reach the best results. Here is just an example of how this might look like, using multiple options to get a decent result for this pointcloud:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">algo &lt;-<span class="st"> </span><span class="kw">pitfree</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>), <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">subcircle =</span> <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb155-2" title="2">chm5  &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, algo) </a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb229-1"></a>algo &lt;-<span class="st"> </span><span class="kw">pitfree</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>), <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">subcircle =</span> <span class="fl">0.2</span>)</span>
+<span id="cb229-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb229-2"></a>chm5  &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, algo) </span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>If you are interested in what you can do to improve your CHM, try <code>?grid_canopy</code> and have a look at the options available. Once we are happy with our CHM, we can have a look at some simple height stats by running <code>summary()</code> for this chunk of forest:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1"><span class="kw">summary</span>(chm5)</a></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb230-1"></a><span class="kw">summary</span>(chm5)</span></code></pre></div>
 <pre><code>##                  Z
 ## Min.      -0.14362
 ## 1st Qu.    0.00000
@@ -355,253 +358,260 @@ Figure 5.3: We can see that the right, raw data exhibits ground topography, whil
 <p>Let’s test our knowledge and create a CHM for the other example file!</p>
 </div>
 <div id="challenge-1" class="section level3">
-<h3><span class="header-section-number">5.4.3</span> Challenge 1</h3>
+<h3><span class="header-section-number">7.4.3</span> Challenge 1</h3>
 <p><strong>Produce a CHM for our other example file with as little pits as possible using the functions and algorithm options described above. Keep in mind the initial resolution and point density and play around with the functions having these in mind.</strong> <em>Remember that this pointcloud is already ground normalized, so your might need to adapt the code a bit…</em></p>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>Now that is a good looking CHM. Let’s get to using our CHM to segment individual trees as a basis of extracting tree metrics, without having ever to set foot into this forest!</p>
 </div>
 </div>
 <div id="step-3.-individual-tree-segmentation" class="section level2">
-<h2><span class="header-section-number">5.5</span> Step 3. Individual tree segmentation</h2>
+<h2><span class="header-section-number">7.5</span> Step 3. Individual tree segmentation</h2>
 <p>This step requires us to use a pitfree and smooth canopy height model. Smoothing is a post-process technique using the package <code>raster</code> that aims at removing sharp edges and pixels from the CHM by calculating focal (“moving window”) values for the neighborhood of focal cells using a matrix of weights. Let’s do this in one step to get our tree segmentation on the way:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="co"># create a new chm to work with</span></a>
-<a class="sourceLine" id="cb158-2" title="2"></a>
-<a class="sourceLine" id="cb158-3" title="3">algo &lt;-<span class="st"> </span><span class="kw">pitfree</span>(<span class="dt">thresholds =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>), <span class="dt">subcircle =</span> <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb158-4" title="4">chm  &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, algo) </a></code></pre></div>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="co"># smoothing post-process (here e.g. two pass (running focal twice), 3x3 median convolution)</span></a>
-<a class="sourceLine" id="cb159-2" title="2"></a>
-<a class="sourceLine" id="cb159-3" title="3">ker &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb159-4" title="4">chm &lt;-<span class="st"> </span><span class="kw">focal</span>(chm, <span class="dt">w =</span> ker, <span class="dt">fun =</span> median)</a>
-<a class="sourceLine" id="cb159-5" title="5">chm &lt;-<span class="st"> </span><span class="kw">focal</span>(chm, <span class="dt">w =</span> ker, <span class="dt">fun =</span> median)</a>
-<a class="sourceLine" id="cb159-6" title="6"></a>
-<a class="sourceLine" id="cb159-7" title="7"><span class="co"># check the smoothed raster</span></a>
-<a class="sourceLine" id="cb159-8" title="8"></a>
-<a class="sourceLine" id="cb159-9" title="9"><span class="kw">plot</span>(chm, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>)) </a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb232-1"></a><span class="co"># create a new chm to work with</span></span>
+<span id="cb232-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb232-2"></a></span>
+<span id="cb232-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb232-3"></a>algo &lt;-<span class="st"> </span><span class="kw">pitfree</span>(<span class="dt">thresholds =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>), <span class="dt">subcircle =</span> <span class="fl">0.2</span>)</span>
+<span id="cb232-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb232-4"></a>chm  &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(raw_forest_norm, <span class="fl">0.5</span>, algo) </span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-1"></a><span class="co"># smoothing post-process (here e.g. two pass (running focal twice), 3x3 median convolution)</span></span>
+<span id="cb233-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-2"></a></span>
+<span id="cb233-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-3"></a>ker &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb233-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-4"></a>chm &lt;-<span class="st"> </span><span class="kw">focal</span>(chm, <span class="dt">w =</span> ker, <span class="dt">fun =</span> median)</span>
+<span id="cb233-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-5"></a>chm &lt;-<span class="st"> </span><span class="kw">focal</span>(chm, <span class="dt">w =</span> ker, <span class="dt">fun =</span> median)</span>
+<span id="cb233-6"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-6"></a></span>
+<span id="cb233-7"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-7"></a><span class="co"># check the smoothed raster</span></span>
+<span id="cb233-8"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-8"></a></span>
+<span id="cb233-9"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb233-9"></a><span class="kw">plot</span>(chm, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>)) </span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>Comparing this raster to our previous ones, we can see that the ‘fuzziness’ around the edged has been removed. This will aid the next algorithm in finding the trees better. The segmentation using a CHM and normalized pointcloud is implemented in <code>lidR</code> using <code>lastrees()</code>. We will be using a <code>watershed</code> algorithm with a 4 meter threshold. A watershed transformation treats our raster like a topographic map and finds the lines in ‘depressions’ between our trees, treating the tree tops or crowns as ‘ridges’.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="co"># segment the trees</span></a>
-<a class="sourceLine" id="cb160-2" title="2"></a>
-<a class="sourceLine" id="cb160-3" title="3">algo &lt;-<span class="st"> </span>lidR<span class="op">::</span><span class="kw">watershed</span>(chm, <span class="dt">th =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb160-4" title="4">las &lt;-<span class="st"> </span><span class="kw">lastrees</span>(raw_forest_norm, algo)</a>
-<a class="sourceLine" id="cb160-5" title="5"></a>
-<a class="sourceLine" id="cb160-6" title="6"><span class="co"># remove points that are not assigned to a tree</span></a>
-<a class="sourceLine" id="cb160-7" title="7">trees &lt;-<span class="st"> </span><span class="kw">lasfilter</span>(las, <span class="op">!</span><span class="kw">is.na</span>(treeID))</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-1"></a><span class="co"># segment the trees</span></span>
+<span id="cb234-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-2"></a></span>
+<span id="cb234-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-3"></a>algo &lt;-<span class="st"> </span>lidR<span class="op">::</span><span class="kw">watershed</span>(chm, <span class="dt">th =</span> <span class="dv">4</span>)</span>
+<span id="cb234-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-4"></a>las &lt;-<span class="st"> </span><span class="kw">lastrees</span>(raw_forest_norm, algo)</span>
+<span id="cb234-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-5"></a></span>
+<span id="cb234-6"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-6"></a><span class="co"># remove points that are not assigned to a tree</span></span>
+<span id="cb234-7"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb234-7"></a>trees &lt;-<span class="st"> </span><span class="kw">lasfilter</span>(las, <span class="op">!</span><span class="kw">is.na</span>(treeID))</span></code></pre></div>
 <p>Let’s have a look at the now segmented pointcloud, which we called <code>trees</code>:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="kw">plot</span>(trees, <span class="dt">color =</span> <span class="st">&quot;treeID&quot;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb235-1"></a><span class="kw">plot</span>(trees, <span class="dt">color =</span> <span class="st">&quot;treeID&quot;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
 <img src="data/lidR-doc/seg.png" alt="Pretty, isn't it? Each tree got a color assigned to it!" width="800" />
 <p class="caption">
-Figure 5.4: Pretty, isn’t it? Each tree got a color assigned to it!
+Figure 7.4: Pretty, isn’t it? Each tree got a color assigned to it!
 </p>
 </div>
 <p>To check how well our tree segmentation performed, we can additional detect the position and center of each tree using <code>tree_detection()</code> and plot these on top of each other for quality control. To extract further structural metrics from our forest, we will need these treetops anyway.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">treetops&lt;-<span class="kw">tree_detection</span>(raw_forest_norm, <span class="kw">lmf</span>(<span class="dt">ws =</span> <span class="dv">5</span>, <span class="dt">hmin =</span> <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb162-2" title="2"><span class="kw">plot</span>(chm)</a>
-<a class="sourceLine" id="cb162-3" title="3"><span class="kw">plot</span>(treetops, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb236-1"></a>treetops&lt;-<span class="kw">tree_detection</span>(raw_forest_norm, <span class="kw">lmf</span>(<span class="dt">ws =</span> <span class="dv">5</span>, <span class="dt">hmin =</span> <span class="dv">10</span>))</span>
+<span id="cb236-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb236-2"></a><span class="kw">plot</span>(chm)</span>
+<span id="cb236-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb236-3"></a><span class="kw">plot</span>(treetops, <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>The arguments that go into the <code>lmf()</code> algorithm describe 1. the length or diameter of the moving window used to detect the local maxima (<code>ws</code>), which corresponds to the crown width. This metric would need to be confirmed by doing some field measurements. And 2. we are using <code>hmin</code> to define the minimum height of a tree in this forest, which we’d also need to ground truth before running this. This is the threshold below which a pixel or a point cannot be a local maxima (and thus a treetop). For this one, we assumed <code>hmin</code> to be 10 meters. If you don’t have ground measurements to tune your algorithm, you need to try a few different values until you’re happy with the results.</p>
 <p>We can even plot and evaluate our results in 3D:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="kw">plot</span>(trees, <span class="dt">color =</span> <span class="st">&#39;treeID&#39;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">add_treetops3d</span>(treetops)</a></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb237-1"></a><span class="kw">plot</span>(trees, <span class="dt">color =</span> <span class="st">&#39;treeID&#39;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">add_treetops3d</span>(treetops)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
 <img src="data/lidR-doc/ttops.png" alt="The treetops as red dots on top of our segmented pointcloud." width="800" />
 <p class="caption">
-Figure 5.5: The treetops as red dots on top of our segmented pointcloud.
+Figure 7.5: The treetops as red dots on top of our segmented pointcloud.
 </p>
 </div>
 <p>To make sure that these results are saved, we should write all these files from the <code>R</code> environment to our hard drive. That will also allow us to e.g. further work with them in a GIS or in a pointcloud viewer such as <a href="https://www.danielgm.net/cc/">CloudCompare</a>. We will create a folder for outputs first, then save our smooth CHM as a raster file (.tif), our normalized pointcloud as a LiDAR file (.las) and the treetops as a shapefile (.shp):</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">dir.create</span>(<span class="st">&#39;outputs&#39;</span>)</a>
-<a class="sourceLine" id="cb164-2" title="2"></a>
-<a class="sourceLine" id="cb164-3" title="3"><span class="kw">writeRaster</span>(chm, <span class="st">&#39;outputs/smooth_chm.tif&#39;</span>)</a>
-<a class="sourceLine" id="cb164-4" title="4"><span class="kw">writeLAS</span>(raw_forest_norm, <span class="st">&#39;outputs/normalized.las&#39;</span>)</a>
-<a class="sourceLine" id="cb164-5" title="5"><span class="kw">writeOGR</span>(treetops, <span class="st">&#39;.&#39;</span>, <span class="st">&#39;outputs/trees.shp&#39;</span>, <span class="dt">driver=</span><span class="st">&quot;ESRI Shapefile&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb238-1"></a><span class="kw">dir.create</span>(<span class="st">&#39;outputs&#39;</span>)</span>
+<span id="cb238-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb238-2"></a></span>
+<span id="cb238-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb238-3"></a><span class="kw">writeRaster</span>(chm, <span class="st">&#39;outputs/smooth_chm.tif&#39;</span>)</span>
+<span id="cb238-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb238-4"></a><span class="kw">writeLAS</span>(raw_forest_norm, <span class="st">&#39;outputs/normalized.las&#39;</span>)</span>
+<span id="cb238-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb238-5"></a><span class="kw">writeOGR</span>(treetops, <span class="st">&#39;.&#39;</span>, <span class="st">&#39;outputs/trees.shp&#39;</span>, <span class="dt">driver=</span><span class="st">&quot;ESRI Shapefile&quot;</span>)</span></code></pre></div>
 <p>We can now go on and compute some metrics from our segmented trees. We are today especially interested in extracting crown area and height for each of our segmented trees. First we need to derive a polygon for each crown that was segmented. For this <code>lidR</code> offers <code>tree_metrics()</code> and <code>tree_hulls()</code>, which work on the segmented pointcloud we derived earlier. We can then use <code>dplyr</code> to simply join both together to get a polygon shapefile containing crown area and height:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1">metric &lt;-<span class="st"> </span><span class="kw">tree_metrics</span>(trees, .stdtreemetrics)</a>
-<a class="sourceLine" id="cb165-2" title="2">hulls  &lt;-<span class="st"> </span><span class="kw">tree_hulls</span>(trees)</a>
-<a class="sourceLine" id="cb165-3" title="3"></a>
-<a class="sourceLine" id="cb165-4" title="4">hulls<span class="op">@</span>data &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(hulls<span class="op">@</span>data, metric<span class="op">@</span>data)</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb239-1"></a>metric &lt;-<span class="st"> </span><span class="kw">tree_metrics</span>(trees, .stdtreemetrics)</span>
+<span id="cb239-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb239-2"></a>hulls  &lt;-<span class="st"> </span><span class="kw">tree_hulls</span>(trees)</span>
+<span id="cb239-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb239-3"></a></span>
+<span id="cb239-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb239-4"></a>hulls<span class="op">@</span>data &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(hulls<span class="op">@</span>data, metric<span class="op">@</span>data)</span></code></pre></div>
 <pre><code>## Joining, by = &quot;treeID&quot;</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="kw">spplot</span>(hulls, <span class="st">&quot;Z&quot;</span>)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb241-1"></a><span class="kw">spplot</span>(hulls, <span class="st">&quot;Z&quot;</span>)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p><code>spplot</code> from <code>raster</code> allows us to plot these hulls based on <code>Z</code>, which is the tree height for each of the crowns we identified. We can also plot all these together on our CHM to visually check accuracy:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="kw">plot</span>(chm)</a>
-<a class="sourceLine" id="cb168-2" title="2"><span class="kw">plot</span>(hulls, <span class="dt">add =</span> T)</a>
-<a class="sourceLine" id="cb168-3" title="3"><span class="kw">plot</span>(treetops, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb242-1"></a><span class="kw">plot</span>(chm)</span>
+<span id="cb242-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb242-2"></a><span class="kw">plot</span>(hulls, <span class="dt">add =</span> T)</span>
+<span id="cb242-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb242-3"></a><span class="kw">plot</span>(treetops, <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>We can see some of our crowns and tree positions don’t seem quite right, so there might be some room for improvement. But always know that using pointclouds and CHMs is just an approximation of the reality by applying algorithms and models, trying to simulate the measured forest as close as possible. So we will never detect 100% of the trees and we will never delineate them perfectly. Nevertheless, using pointclouds, we will be able to measure thousands of trees in a very brief period of time, while when carrying out forest inventories we can only measure a few dozen per plot, requiring lots of hard labor. A general work flow using ground inventories and LiDAR data together would this be to collect an amount of data needed to get an idea of the structure of your forest on the plot level and tune your LiDAR algorithms by measuring actual trees. Then you can extrapolate your field measurements to a whole forest or larger landscape using the pointclouds collected outside your plot area.</p>
 <p>We want to get data on crown area and tree height together in a comprehensive table for further analysis. The <code>raster</code>package will help us calculating the area and converting our polygon shapefile to a simple feature using <code>sf</code> will make it easier to work with the data.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1">hulls<span class="op">$</span>area&lt;-<span class="kw">area</span>(hulls)</a>
-<a class="sourceLine" id="cb169-2" title="2"></a>
-<a class="sourceLine" id="cb169-3" title="3">tree_metrics&lt;-<span class="kw">st_as_sf</span>(hulls)</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb243-1"></a>hulls<span class="op">$</span>area&lt;-<span class="kw">area</span>(hulls)</span>
+<span id="cb243-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb243-2"></a></span>
+<span id="cb243-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb243-3"></a>tree_metrics&lt;-<span class="kw">st_as_sf</span>(hulls)</span></code></pre></div>
 <p><code>sf</code> treats a shapefile’s attribute table like a <code>data.frame</code> and as we can see, the <code>tree_metrics</code> simple feature already contains everything we need:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">head</span>(tree_metrics)</a></code></pre></div>
-<pre><code>## Simple feature collection with 6 features and 5 fields
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb244-1"></a><span class="kw">head</span>(tree_metrics)</span></code></pre></div>
+<pre><code>## Simple feature collection with 6 features and 8 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: 488041.5 ymin: 5189194 xmax: 488052.4 ymax: 5189222
-## CRS:            +proj=utm +zone=12 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0
-##   treeID      Z npoints convhull_area     area                       geometry
-## 1    332 22.471     234        42.749 42.74878 POLYGON ((488052.4 5189194,...
-## 2    347 22.740     114        21.355 21.35498 POLYGON ((488045.3 5189202,...
-## 3    215 24.805     158        40.559 40.55957 POLYGON ((488051.3 5189209,...
-## 4    351 20.266      91        21.656 21.65552 POLYGON ((488045.5 5189207,...
-## 5    271 22.861     146        35.303 35.30347 POLYGON ((488050.5 5189203,...
-## 6    353 20.852      51        10.223 10.22339 POLYGON ((488044.2 5189219,...</code></pre>
+## bbox:           xmin: 488041.5 ymin: 5189194 xmax: 488051.9 ymax: 5189222
+## projected CRS:  NAD83 / UTM zone 12N
+##   treeID     XTOP    YTOP   ZTOP      Z npoints convhull_area     area
+## 1    332 488046.6 5189194 22.471 22.471     232        41.959 41.95850
+## 2    347 488042.0 5189202 22.740 22.740     115        24.596 24.59595
+## 3    215 488048.3 5189210 24.805 24.805     156        40.740 40.73950
+## 4    351 488041.8 5189208 20.266 20.266      90        21.656 21.65552
+## 5    271 488048.1 5189203 22.861 22.861     142        35.895 35.89526
+## 6    353 488042.2 5189220 20.852 20.852      49        10.103 10.10254
+##                         geometry
+## 1 POLYGON ((488051.2 5189196,...
+## 2 POLYGON ((488045.7 5189201,...
+## 3 POLYGON ((488051.3 5189209,...
+## 4 POLYGON ((488045.5 5189207,...
+## 5 POLYGON ((488050.8 5189202,...
+## 6 POLYGON ((488044.5 5189218,...</code></pre>
 <p><code>Z</code> is the height of each tree, identified by <code>treeID</code> and <code>area</code> is the exact area of each tree crown. You may see that <code>convhull_area</code> was already calculated by <code>tree_metrics</code> and corresponds to the area, so we could also use that variable instead and not add a new column. Let’s convert this from a <code>sf</code> to a table and remove all unnecessary information by selecting only the variables we are interested in:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1">tree_table&lt;-<span class="kw">as.data.frame</span>(tree_metrics)<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="st">&#39;treeID&#39;</span>, <span class="st">&#39;Z&#39;</span>, <span class="st">&#39;area&#39;</span>)</a>
-<a class="sourceLine" id="cb172-2" title="2"><span class="kw">head</span>(tree_table)</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb246-1"></a>tree_table&lt;-<span class="kw">as.data.frame</span>(tree_metrics)<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="st">&#39;treeID&#39;</span>, <span class="st">&#39;Z&#39;</span>, <span class="st">&#39;area&#39;</span>)</span>
+<span id="cb246-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb246-2"></a><span class="kw">head</span>(tree_table)</span></code></pre></div>
 <pre><code>##   treeID      Z     area
-## 1    332 22.471 42.74878
-## 2    347 22.740 21.35498
-## 3    215 24.805 40.55957
+## 1    332 22.471 41.95850
+## 2    347 22.740 24.59595
+## 3    215 24.805 40.73950
 ## 4    351 20.266 21.65552
-## 5    271 22.861 35.30347
-## 6    353 20.852 10.22339</code></pre>
+## 5    271 22.861 35.89526
+## 6    353 20.852 10.10254</code></pre>
 <p>We can now also save the polygon shapefile of our crowns, to have everything ready for GIS processing or inspection. Additionally we want to save our metrics table as a <code>.csv</code>.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">st_write</span>(tree_metrics, <span class="st">&#39;outputs/trees_sf.shp&#39;</span>)</a>
-<a class="sourceLine" id="cb174-2" title="2"><span class="kw">write.csv</span>(tree_table, <span class="st">&#39;outputs/tree_table.csv&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb248-1"></a><span class="kw">st_write</span>(tree_metrics, <span class="st">&#39;outputs/trees_sf.shp&#39;</span>)</span>
+<span id="cb248-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb248-2"></a><span class="kw">write.csv</span>(tree_table, <span class="st">&#39;outputs/tree_table.csv&#39;</span>)</span></code></pre></div>
 <div id="delineating-the-crowns" class="section level3">
-<h3><span class="header-section-number">5.5.1</span> Delineating the crowns</h3>
+<h3><span class="header-section-number">7.5.1</span> Delineating the crowns</h3>
 <p>Now the hulls are great, but for some applications we might actually need to know the exact shape of each tree crown, rather than its approximate hull, for example when studying crown cover or leaf area index (LAI). We can delineate crowns in more detail working directly on the CHM, without the need of using the pointcloud any longer, after we derived the canopy height model. We can apply <code>watershed()</code> directly to the CHM:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">crowns &lt;-<span class="st"> </span>lidR<span class="op">::</span><span class="kw">watershed</span>(chm, <span class="dt">th =</span> <span class="dv">4</span>)()</a>
-<a class="sourceLine" id="cb175-2" title="2"><span class="kw">plot</span>(crowns, <span class="dt">col =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb249-1"></a>crowns &lt;-<span class="st"> </span>lidR<span class="op">::</span><span class="kw">watershed</span>(chm, <span class="dt">th =</span> <span class="dv">4</span>)()</span>
+<span id="cb249-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb249-2"></a><span class="kw">plot</span>(crowns, <span class="dt">col =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Now that we have a new raster called <code>crowns</code> where each tree is its own object, we can polygonize it to extract the contours and thus the more precise tree crowns <em>(Note that this might run for a while as it is quite computing intensive)</em>:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">contour &lt;-<span class="st"> </span><span class="kw">rasterToPolygons</span>(crowns, <span class="dt">dissolve =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb176-2" title="2"></a>
-<a class="sourceLine" id="cb176-3" title="3"><span class="kw">plot</span>(chm, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</a>
-<a class="sourceLine" id="cb176-4" title="4"><span class="kw">plot</span>(contour, <span class="dt">add =</span> T)</a>
-<a class="sourceLine" id="cb176-5" title="5"><span class="kw">plot</span>(treetops, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb250-1"></a>contour &lt;-<span class="st"> </span><span class="kw">rasterToPolygons</span>(crowns, <span class="dt">dissolve =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb250-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb250-2"></a></span>
+<span id="cb250-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb250-3"></a><span class="kw">plot</span>(chm, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</span>
+<span id="cb250-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb250-4"></a><span class="kw">plot</span>(contour, <span class="dt">add =</span> T)</span>
+<span id="cb250-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb250-5"></a><span class="kw">plot</span>(treetops, <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
 <p>Before we save this, we need to make sure all our data has the same spatial projection. We can do so using <code>crs()</code>.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="kw">crs</span>(chm)</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb251-1"></a><span class="kw">crs</span>(chm)</span></code></pre></div>
 <pre><code>## CRS arguments:
-##  +proj=utm +zone=12 +datum=NAD83 +units=m +no_defs +ellps=GRS80
-## +towgs84=0,0,0</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="kw">crs</span>(contour)</a></code></pre></div>
+##  +proj=utm +zone=12 +datum=NAD83 +units=m +no_defs</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb253-1"></a><span class="kw">crs</span>(contour)</span></code></pre></div>
 <pre><code>## CRS arguments: NA</code></pre>
 <p>Unfortunately <code>rasterToPolygons()</code> does not assign a coordinate reference system, so we have to do so ourselves. While we’re at it, let’s also transform this to the <code>sf</code> format:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">crs</span>(contour)&lt;-<span class="kw">crs</span>(chm)</a>
-<a class="sourceLine" id="cb181-2" title="2">contour&lt;-<span class="kw">st_as_sf</span>(contour)<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">treeID =</span> layer)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb255-1"></a><span class="kw">crs</span>(contour)&lt;-<span class="kw">crs</span>(chm)</span>
+<span id="cb255-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb255-2"></a>contour&lt;-<span class="kw">st_as_sf</span>(contour)<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">treeID =</span> layer)</span></code></pre></div>
 <p>Next we can save the delineated polygons:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">st_write</span>(contour, <span class="st">&#39;outputs/contour_sf.shp&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb256-1"></a><span class="kw">st_write</span>(contour, <span class="st">&#39;outputs/contour_sf.shp&#39;</span>)</span></code></pre></div>
 <p>Again we want to test our knowledge and apply what we’ve just learned to the other example file.</p>
 </div>
 <div id="challenge-2" class="section level3">
-<h3><span class="header-section-number">5.5.2</span> Challenge 2</h3>
+<h3><span class="header-section-number">7.5.2</span> Challenge 2</h3>
 <p><strong>Detect trees and treetops in our other example file based on the derived CHM and normalized pointcloud and plot smoothed CHM, hulls and detected treetops on top of one another</strong></p>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 </div>
 </div>
 <div id="additional-analysis-computing-a-digital-terrain-model-dtm" class="section level2">
-<h2><span class="header-section-number">5.6</span> Additional analysis: Computing a digital terrain model (DTM)</h2>
+<h2><span class="header-section-number">7.6</span> Additional analysis: Computing a digital terrain model (DTM)</h2>
 <p>For many applications and studies, it is important to have detailed topographic data to e.g. assess slope, aspect or potential for water runoff in the ecosystem you’re studying. As LiDAR data penetrates through the canopy and captures laser returns from the ground as well, we can use the data not only to look at above ground structure, but also derive very high resolution digital terrain models (DTMs) that may be helpful in our analysis. Do to so, we are using the classified pointcloud that has ground points detected (which we named <code>raw_forest_ground</code>). <code>grid_terrain()</code> interpolates the ground points and creates a rasterized digital terrain model. The algorithm uses the points classified as “ground” to compute the interpolation.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1">dtm &lt;-<span class="st"> </span><span class="kw">grid_terrain</span>(raw_forest_ground, <span class="dv">1</span>, <span class="dt">algorithm =</span> <span class="kw">kriging</span>(<span class="dt">k =</span> 10L))</a>
-<a class="sourceLine" id="cb183-2" title="2"></a>
-<a class="sourceLine" id="cb183-3" title="3"><span class="kw">plot</span>(dtm)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">summary</span>(dtm)</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb257-1"></a>dtm &lt;-<span class="st"> </span><span class="kw">grid_terrain</span>(raw_forest_ground, <span class="dv">1</span>, <span class="dt">algorithm =</span> <span class="kw">kriging</span>(<span class="dt">k =</span> 10L))</span>
+<span id="cb257-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb257-2"></a></span>
+<span id="cb257-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb257-3"></a><span class="kw">plot</span>(dtm)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb258-1"></a><span class="kw">summary</span>(dtm)</span></code></pre></div>
 <pre><code>##                Z
-## Min.    312.7797
-## 1st Qu. 324.2834
-## Median  329.7094
-## 3rd Qu. 334.8961
-## Max.    347.8688
+## Min.    312.7800
+## 1st Qu. 324.2830
+## Median  329.7095
+## 3rd Qu. 334.8963
+## Max.    347.8690
 ## NA&#39;s      8.0000</code></pre>
 <p>What you can see when plotting is the topography of the ground under the trees in a unit of meters above sea level (which is derived from the coordinates of each point). We can see that our elevation varies between 313 to 348. The second argument of the function is again the resolution, which we set to <code>1</code> (1x1 m). This is an amazingly high resolution, when you think that the next best (free) DTM available from the <a href="https://www2.jpl.nasa.gov/srtm/">Shuttle Radar Topography Mission</a> is 30x30 meters. Very high resolution DTMs can be used for detailed analyses of stream flow in hydrological applications, geomorphology or modeling soil wetness with Cartographic Depth to Water Indexes (DTW-index). We are using another algorithm here (<code>kriging</code>) that applies a KNN (k-nearest neighbor) approach, commonly used in DTM creation. We can plot our crowns on top to see where the trees are distributed and how topography might be influencing e.g. the height or crown shape of trees here:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="kw">plot</span>(dtm)</a>
-<a class="sourceLine" id="cb186-2" title="2"><span class="kw">plot</span>(contour<span class="op">$</span>geometry, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb260-1"></a><span class="kw">plot</span>(dtm)</span>
+<span id="cb260-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb260-2"></a><span class="kw">plot</span>(contour<span class="op">$</span>geometry, <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p>We can save our <code>dtm</code> the same way we saved our CHM before, using <code>writeRaster()</code>. <code>lidR</code> has some integrated LiDAR pointclouds to play around with, that might help illustrate this a bit better. Let’s look at one that has more depressions in the form of lakes, using a different algorithm as illustration:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">LASfile &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Topography.laz&quot;</span>, <span class="dt">package=</span><span class="st">&quot;lidR&quot;</span>)</a>
-<a class="sourceLine" id="cb187-2" title="2">las &lt;-<span class="st"> </span><span class="kw">readLAS</span>(LASfile)</a>
-<a class="sourceLine" id="cb187-3" title="3"></a>
-<a class="sourceLine" id="cb187-4" title="4">dtm1 &lt;-<span class="st"> </span><span class="kw">grid_terrain</span>(las, <span class="dt">algorithm =</span> <span class="kw">knnidw</span>(<span class="dt">k =</span> 6L, <span class="dt">p =</span> <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb187-5" title="5"></a>
-<a class="sourceLine" id="cb187-6" title="6"><span class="kw">plot</span>(dtm1)</a></code></pre></div>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb261-1"></a>LASfile &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Topography.laz&quot;</span>, <span class="dt">package=</span><span class="st">&quot;lidR&quot;</span>)</span>
+<span id="cb261-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb261-2"></a>las &lt;-<span class="st"> </span><span class="kw">readLAS</span>(LASfile)</span></code></pre></div>
+<pre><code>## Warning in showSRID(SRS_string, format = &quot;PROJ&quot;, multiline = &quot;NO&quot;): Discarded
+## datum NAD83_Canadian_Spatial_Reference_System in CRS definition</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb263-1"></a>dtm1 &lt;-<span class="st"> </span><span class="kw">grid_terrain</span>(las, <span class="dt">algorithm =</span> <span class="kw">knnidw</span>(<span class="dt">k =</span> 6L, <span class="dt">p =</span> <span class="dv">2</span>))</span>
+<span id="cb263-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb263-2"></a></span>
+<span id="cb263-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb263-3"></a><span class="kw">plot</span>(dtm1)</span></code></pre></div>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p><code>lidR</code> also allows to plot DTMs in 3D:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">plot_dtm3d</span>(dtm1)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb264-1"></a><span class="kw">plot_dtm3d</span>(dtm1)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-50"></span>
 <img src="data/lidR-doc/dtm.png" alt="The example data dtm in 3D" width="800" />
 <p class="caption">
-Figure 5.6: The example data dtm in 3D
+Figure 7.6: The example data dtm in 3D
 </p>
 </div>
 <p>Another integrated dataset can be called liked this. Feel free to use these to practice creating CHMs, segmenting trees, extracting tree metrics and calculating a DTM.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">LASfile2 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Megaplot.laz&quot;</span>, <span class="dt">package=</span><span class="st">&quot;lidR&quot;</span>)</a>
-<a class="sourceLine" id="cb189-2" title="2">las2 &lt;-<span class="st"> </span><span class="kw">readLAS</span>(LASfile)</a></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb265-1"></a>LASfile2 &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;Megaplot.laz&quot;</span>, <span class="dt">package=</span><span class="st">&quot;lidR&quot;</span>)</span>
+<span id="cb265-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb265-2"></a>las2 &lt;-<span class="st"> </span><span class="kw">readLAS</span>(LASfile)</span></code></pre></div>
 <p>Let’s try this on the other example too!</p>
 <div id="challenge-3" class="section level3">
-<h3><span class="header-section-number">5.6.1</span> Challenge 3</h3>
+<h3><span class="header-section-number">7.6.1</span> Challenge 3</h3>
 <p><strong>Create a digital terrain model for the other example (<code>forest</code>) and plot the detected treetops on top of the final DTM. Finally, save your DTM as a .tif file to your outputs folder!</strong></p>
-<p><img src="04-Lidar_in_R_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="05-Lidar_in_R_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 </div>
 </div>
 <div id="wrapping-up" class="section level2">
-<h2><span class="header-section-number">5.7</span> Wrapping up</h2>
+<h2><span class="header-section-number">7.7</span> Wrapping up</h2>
 <p>Good job everyone. You have learned how to get your LiDAR data into R and prepare it for further analysis by detecting ground points and normalizing the clouds. Doing that, we were able to derive a canopy height model and learned about how to improve it’s accuracy. Having derived that, we were able to extract metrics for each tree and delineate our crowns to look at single-tree attributes within our example forest. You were also able to compile your inventory data as a comprehensive table and save everything for further processing. Additionally we derived a very detailed digital terrain model. What follows now can be manifold, Maybe you are interested in the exact location and elevation above sea level of all your trees detected. <code>raster</code> allows you to easily extract data from a raster using a spatial vector such as a shape file by simply using <code>extract</code>:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">elevation&lt;-<span class="kw">extract</span>(dtm, treetops, <span class="dt">cellnumbers =</span> T, <span class="dt">df=</span>T)<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">treeID =</span> ID, <span class="dt">elevation =</span> Z)</a>
-<a class="sourceLine" id="cb190-2" title="2"></a>
-<a class="sourceLine" id="cb190-3" title="3">elevation&lt;-<span class="kw">cbind</span>(elevation,<span class="kw">coordinates</span>(dtm)[elevation[,<span class="dv">2</span>],])</a>
-<a class="sourceLine" id="cb190-4" title="4"></a>
-<a class="sourceLine" id="cb190-5" title="5">elevation&lt;-elevation<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="op">-</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb190-6" title="6"></a>
-<a class="sourceLine" id="cb190-7" title="7"><span class="kw">head</span>(elevation)</a></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-1"></a>elevation&lt;-<span class="kw">extract</span>(dtm, treetops, <span class="dt">cellnumbers =</span> T, <span class="dt">df=</span>T)<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">treeID =</span> ID, <span class="dt">elevation =</span> Z)</span>
+<span id="cb266-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-2"></a></span>
+<span id="cb266-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-3"></a>elevation&lt;-<span class="kw">cbind</span>(elevation,<span class="kw">coordinates</span>(dtm)[elevation[,<span class="dv">2</span>],])</span>
+<span id="cb266-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-4"></a></span>
+<span id="cb266-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-5"></a>elevation&lt;-elevation<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb266-6"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-6"></a></span>
+<span id="cb266-7"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb266-7"></a><span class="kw">head</span>(elevation)</span></code></pre></div>
 <pre><code>##   treeID elevation        x       y
-## 1      1  335.2109 488042.5 5189193
-## 2      2  335.0209 488046.5 5189195
-## 3      3  335.2547 488042.5 5189203
-## 4      4  334.8753 488040.5 5189208
-## 5      5  334.4009 488043.5 5189210
-## 6      6  333.5780 488044.5 5189222</code></pre>
+## 1      1   335.211 488042.5 5189193
+## 2      2   335.021 488046.5 5189195
+## 3      3   335.255 488042.5 5189203
+## 4      4   334.875 488040.5 5189208
+## 5      5   334.401 488043.5 5189210
+## 6      6   333.578 488044.5 5189222</code></pre>
 <p>You could think of other uses, e.g. if you have raster layers describing climatic variables of your forest, you could get precise data for each of your trees and see how it might have affected their growth. You can also use the delineated crowns to extract all pixel data from e.g. multispectral imagery of the crown area of your trees to try and model forest nutrition to make assumptions on the quality of the forest for certain arboreal species.</p>
 <p>If you have any questions or comments on this tutorial, feel free to write me an email and I’m happy to try and help out. I have a few other (more basic) tutorials compiled like this one if you are interested.</p>
 <p><strong>Good luck with any future LiDAR adventures in <code>R</code>!</strong></p>
 </div>
 <div id="solutions-to-the-challenges" class="section level2">
-<h2><span class="header-section-number">5.8</span> Solutions to the challenges</h2>
+<h2><span class="header-section-number">7.8</span> Solutions to the challenges</h2>
 <div id="challenge-1-1" class="section level3">
-<h3><span class="header-section-number">5.8.1</span> Challenge 1</h3>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">forest_norm &lt;-<span class="st"> </span><span class="kw">lasnormalize</span>(forest, <span class="kw">tin</span>())</a>
-<a class="sourceLine" id="cb192-2" title="2"></a>
-<a class="sourceLine" id="cb192-3" title="3">forest_chm &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(forest_norm, <span class="fl">0.25</span>, <span class="kw">pitfree</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>), <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">subcircle =</span> <span class="fl">0.2</span>))</a></code></pre></div>
+<h3><span class="header-section-number">7.8.1</span> Challenge 1</h3>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb268-1"></a>forest_norm &lt;-<span class="st"> </span><span class="kw">lasnormalize</span>(forest, <span class="kw">tin</span>())</span>
+<span id="cb268-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb268-2"></a></span>
+<span id="cb268-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb268-3"></a>forest_chm &lt;-<span class="st"> </span><span class="kw">grid_canopy</span>(forest_norm, <span class="fl">0.25</span>, <span class="kw">pitfree</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>), <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">subcircle =</span> <span class="fl">0.2</span>))</span></code></pre></div>
 </div>
 <div id="challenge-2-1" class="section level3">
-<h3><span class="header-section-number">5.8.2</span> Challenge 2</h3>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="co">#data to use:</span></a>
-<a class="sourceLine" id="cb193-2" title="2"></a>
-<a class="sourceLine" id="cb193-3" title="3"><span class="co">#forest_chm</span></a>
-<a class="sourceLine" id="cb193-4" title="4"><span class="co">#forest_norm</span></a>
-<a class="sourceLine" id="cb193-5" title="5"></a>
-<a class="sourceLine" id="cb193-6" title="6"><span class="co"># segment the trees</span></a>
-<a class="sourceLine" id="cb193-7" title="7"></a>
-<a class="sourceLine" id="cb193-8" title="8">algo &lt;-<span class="st"> </span>lidR<span class="op">::</span><span class="kw">watershed</span>(forest_chm, <span class="dt">th =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb193-9" title="9">las2  &lt;-<span class="st"> </span><span class="kw">lastrees</span>(forest_norm, algo)</a>
-<a class="sourceLine" id="cb193-10" title="10"></a>
-<a class="sourceLine" id="cb193-11" title="11">trees_forest &lt;-<span class="st"> </span><span class="kw">lasfilter</span>(las2, <span class="op">!</span><span class="kw">is.na</span>(treeID))</a>
-<a class="sourceLine" id="cb193-12" title="12"></a>
-<a class="sourceLine" id="cb193-13" title="13"><span class="kw">plot</span>(trees_forest, <span class="dt">color =</span> <span class="st">&quot;treeID&quot;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</a>
-<a class="sourceLine" id="cb193-14" title="14"></a>
-<a class="sourceLine" id="cb193-15" title="15"><span class="co"># find treetops and hulls</span></a>
-<a class="sourceLine" id="cb193-16" title="16"></a>
-<a class="sourceLine" id="cb193-17" title="17">treetops_forest&lt;-<span class="kw">tree_detection</span>(forest_norm, <span class="kw">lmf</span>(<span class="dt">ws =</span> <span class="dv">5</span>, <span class="dt">hmin =</span> <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb193-18" title="18"></a>
-<a class="sourceLine" id="cb193-19" title="19">metric_forest &lt;-<span class="st"> </span><span class="kw">tree_metrics</span>(trees_forest, .stdtreemetrics)</a>
-<a class="sourceLine" id="cb193-20" title="20">hulls_forest  &lt;-<span class="st"> </span><span class="kw">tree_hulls</span>(trees_forest)</a>
-<a class="sourceLine" id="cb193-21" title="21">hulls_forest<span class="op">@</span>data &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(hulls<span class="op">@</span>data, metric<span class="op">@</span>data)</a>
-<a class="sourceLine" id="cb193-22" title="22"></a>
-<a class="sourceLine" id="cb193-23" title="23"><span class="kw">plot</span>(forest_chm)</a>
-<a class="sourceLine" id="cb193-24" title="24"><span class="kw">plot</span>(hulls_forest, <span class="dt">add =</span> T)</a>
-<a class="sourceLine" id="cb193-25" title="25"><span class="kw">plot</span>(treetops_forest, <span class="dt">add =</span> T) </a></code></pre></div>
+<h3><span class="header-section-number">7.8.2</span> Challenge 2</h3>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-1"></a><span class="co">#data to use:</span></span>
+<span id="cb269-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-2"></a></span>
+<span id="cb269-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-3"></a><span class="co">#forest_chm</span></span>
+<span id="cb269-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-4"></a><span class="co">#forest_norm</span></span>
+<span id="cb269-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-5"></a></span>
+<span id="cb269-6"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-6"></a><span class="co"># segment the trees</span></span>
+<span id="cb269-7"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-7"></a></span>
+<span id="cb269-8"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-8"></a>algo &lt;-<span class="st"> </span>lidR<span class="op">::</span><span class="kw">watershed</span>(forest_chm, <span class="dt">th =</span> <span class="dv">4</span>)</span>
+<span id="cb269-9"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-9"></a>las2  &lt;-<span class="st"> </span><span class="kw">lastrees</span>(forest_norm, algo)</span>
+<span id="cb269-10"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-10"></a></span>
+<span id="cb269-11"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-11"></a>trees_forest &lt;-<span class="st"> </span><span class="kw">lasfilter</span>(las2, <span class="op">!</span><span class="kw">is.na</span>(treeID))</span>
+<span id="cb269-12"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-12"></a></span>
+<span id="cb269-13"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-13"></a><span class="kw">plot</span>(trees_forest, <span class="dt">color =</span> <span class="st">&quot;treeID&quot;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</span>
+<span id="cb269-14"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-14"></a></span>
+<span id="cb269-15"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-15"></a><span class="co"># find treetops and hulls</span></span>
+<span id="cb269-16"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-16"></a></span>
+<span id="cb269-17"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-17"></a>treetops_forest&lt;-<span class="kw">tree_detection</span>(forest_norm, <span class="kw">lmf</span>(<span class="dt">ws =</span> <span class="dv">5</span>, <span class="dt">hmin =</span> <span class="dv">10</span>))</span>
+<span id="cb269-18"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-18"></a></span>
+<span id="cb269-19"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-19"></a>metric_forest &lt;-<span class="st"> </span><span class="kw">tree_metrics</span>(trees_forest, .stdtreemetrics)</span>
+<span id="cb269-20"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-20"></a>hulls_forest  &lt;-<span class="st"> </span><span class="kw">tree_hulls</span>(trees_forest)</span>
+<span id="cb269-21"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-21"></a>hulls_forest<span class="op">@</span>data &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">left_join</span>(hulls<span class="op">@</span>data, metric<span class="op">@</span>data)</span>
+<span id="cb269-22"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-22"></a></span>
+<span id="cb269-23"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-23"></a><span class="kw">plot</span>(forest_chm)</span>
+<span id="cb269-24"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-24"></a><span class="kw">plot</span>(hulls_forest, <span class="dt">add =</span> T)</span>
+<span id="cb269-25"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb269-25"></a><span class="kw">plot</span>(treetops_forest, <span class="dt">add =</span> T) </span></code></pre></div>
 </div>
 <div id="challenge-3-1" class="section level3">
-<h3><span class="header-section-number">5.8.3</span> Challenge 3</h3>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">dtm2 &lt;-<span class="st"> </span><span class="kw">grid_terrain</span>(forest, <span class="dv">1</span>, <span class="dt">algorithm =</span> <span class="kw">kriging</span>(<span class="dt">k =</span> 10L))</a>
-<a class="sourceLine" id="cb194-2" title="2"></a>
-<a class="sourceLine" id="cb194-3" title="3"><span class="kw">writeRaster</span>(dtm2, <span class="st">&#39;outputs/forest_DTM.tif&#39;</span>)</a>
-<a class="sourceLine" id="cb194-4" title="4"></a>
-<a class="sourceLine" id="cb194-5" title="5"><span class="kw">plot</span>(dtm2)</a>
-<a class="sourceLine" id="cb194-6" title="6"><span class="kw">plot</span>(treetops_forest, <span class="dt">add =</span> T)</a></code></pre></div>
+<h3><span class="header-section-number">7.8.3</span> Challenge 3</h3>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb270-1"></a>dtm2 &lt;-<span class="st"> </span><span class="kw">grid_terrain</span>(forest, <span class="dv">1</span>, <span class="dt">algorithm =</span> <span class="kw">kriging</span>(<span class="dt">k =</span> 10L))</span>
+<span id="cb270-2"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb270-2"></a></span>
+<span id="cb270-3"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb270-3"></a><span class="kw">writeRaster</span>(dtm2, <span class="st">&#39;outputs/forest_DTM.tif&#39;</span>)</span>
+<span id="cb270-4"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb270-4"></a></span>
+<span id="cb270-5"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb270-5"></a><span class="kw">plot</span>(dtm2)</span>
+<span id="cb270-6"><a href="spatial-tools-for-forestry-and-ecological-applications.html#cb270-6"></a><span class="kw">plot</span>(treetops_forest, <span class="dt">add =</span> T)</span></code></pre></div>
 
 </div>
 </div>
@@ -662,6 +672,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
