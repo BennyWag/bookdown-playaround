@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593659321025.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1785811883",
+    "id" : "6388C7ED",
+    "lastKnownWriteTime" : 1593659613,
+    "last_content_update" : 1593659613795,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/bookdown-playaround/05-calculating_raster_class_area.Rmd",
+    "project_path" : "05-calculating_raster_class_area.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
