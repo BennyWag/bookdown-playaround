@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 dplyr - A brief introduction to tidy data manipulation | Intro to R for Forest Ecosystem Science</title>
+  <title>Chapter 3 dplyr - A brief introduction to tidy data manipulation | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 dplyr - A brief introduction to tidy data manipulation | Intro to R for Forest Ecosystem Science" />
+  <meta property="og:title" content="Chapter 3 dplyr - A brief introduction to tidy data manipulation | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 dplyr - A brief introduction to tidy data manipulation | Intro to R for Forest Ecosystem Science" />
+  <meta name="twitter:title" content="Chapter 3 dplyr - A brief introduction to tidy data manipulation | Intro to R for Forest Ecosystem Science" />
   
   <meta name="twitter:description" content="Introductory R" />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"/>
 <link rel="next" href="introduction-to-data-visualization-in-ggplot2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,13 +49,12 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +63,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +79,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,87 +129,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>1.1</b> Disclaimer</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>2</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
-<li class="chapter" data-level="2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#introducing-the-koala-dataset"><i class="fa fa-check"></i><b>2.1</b> Introducing the koala dataset</a></li>
-<li class="chapter" data-level="2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>2.2</b> Working with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="2.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>2.2.1</b> select() and dplyr’s pipe</a></li>
-<li class="chapter" data-level="2.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>2.2.2</b> filter()</a></li>
-<li class="chapter" data-level="2.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>2.2.3</b> Challenge 1</a></li>
-<li class="chapter" data-level="2.2.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#group_by-and-summarise"><i class="fa fa-check"></i><b>2.2.4</b> group_by() and summarise()</a></li>
-<li class="chapter" data-level="2.2.5" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>2.2.5</b> Challenge 2</a></li>
-<li class="chapter" data-level="2.2.6" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#mutate"><i class="fa fa-check"></i><b>2.2.6</b> mutate()</a></li>
-<li class="chapter" data-level="2.2.7" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>2.2.7</b> Challenge 3</a></li>
-<li class="chapter" data-level="2.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>2.2.8</b> Solution to all challenges</a></li>
+<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a><ul>
+<li class="chapter" data-level="2.1" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#r-projects"><i class="fa fa-check"></i><b>2.1</b> R Projects</a></li>
+<li class="chapter" data-level="2.2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#setting-up-the-r-studio-user-interface"><i class="fa fa-check"></i><b>2.2</b> Setting up the R-Studio User interface</a></li>
+<li class="chapter" data-level="2.3" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#code-folds-and-commenting"><i class="fa fa-check"></i><b>2.3</b> Code folds and commenting</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>3</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
+<li class="chapter" data-level="3.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#introducing-the-koala-dataset"><i class="fa fa-check"></i><b>3.1</b> Introducing the koala dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>3.2</b> Working with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>3.2.1</b> select() and dplyr’s pipe</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>3.2.2</b> filter()</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>3.2.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="3.2.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#group_by-and-summarise"><i class="fa fa-check"></i><b>3.2.4</b> group_by() and summarise()</a></li>
+<li class="chapter" data-level="3.2.5" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>3.2.5</b> Challenge 2</a></li>
+<li class="chapter" data-level="3.2.6" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#mutate"><i class="fa fa-check"></i><b>3.2.6</b> mutate()</a></li>
+<li class="chapter" data-level="3.2.7" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>3.2.7</b> Challenge 3</a></li>
+<li class="chapter" data-level="3.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>3.2.8</b> Solution to all challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
-<li class="chapter" data-level="4" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>4</b> Introduction to linear models in R</a></li>
-<li class="chapter" data-level="5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>5</b> Working with spatial data in <code>R</code></a><ul>
-<li class="chapter" data-level="5.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>5.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="5.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>5.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="5" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>5</b> Introduction to linear models in R</a></li>
+<li class="chapter" data-level="6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>6</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>6.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>6.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>6.2.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>5.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="5.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>5.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="5.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>5.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>6.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="6.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>6.4.1</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>5.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="5.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>5.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>6.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="6.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>6.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="6.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>6.6.1</b> Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>5.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>5.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="5.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>5.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="5.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>5.7.3</b> Challenge 3</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>6</b> Functions, loops, and <code>apply</code></a><ul>
-<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>6.2</b> Writing basic functions</a></li>
-<li class="chapter" data-level="6.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>6.3</b> Using <code>apply</code> functions</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>6.3.1</b> <code>apply</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>6.3.2</b> <code>sapply</code></a></li>
-<li class="chapter" data-level="6.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>6.3.3</b> <code>lapply</code></a></li>
-<li class="chapter" data-level="6.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>6.3.4</b> <code>mapply</code></a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>6.4</b> Loops</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>7</b> Spatial tools for forestry and ecological applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>7.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
-<li class="chapter" data-level="7.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>7.2</b> Working with LiDAR data in R</a></li>
-<li class="chapter" data-level="7.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>7.3</b> Step 1. Loading and visualizing pointclouds</a></li>
-<li class="chapter" data-level="7.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>7.4</b> Step 2. Computing a canopy height model</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>7.4.1</b> Ground detection and normalizing a point cloud</a></li>
-<li class="chapter" data-level="7.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>7.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="7.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.4.3</b> Challenge 1</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>7.5</b> Step 3. Individual tree segmentation</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>7.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="7.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.5.2</b> Challenge 2</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>7.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 3</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>7.7</b> Wrapping up</a></li>
-<li class="chapter" data-level="7.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>7.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="7.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="7.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="7.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>7.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="6.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>6.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>6.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="6.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>6.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="6.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>6.7.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>8</b> Calculating class area from raster</a><ul>
-<li class="chapter" data-level="8.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>8.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>8.1.1</b> Creating dummy data</a></li>
-<li class="chapter" data-level="8.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>8.1.2</b> Preparing the raster for area calculation</a></li>
-<li class="chapter" data-level="8.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>8.1.3</b> Compiling a comprehensive table</a></li>
+<li class="chapter" data-level="7" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>7</b> Functions, loops, and <code>apply</code></a><ul>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>7.2</b> Writing basic functions</a></li>
+<li class="chapter" data-level="7.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>7.3</b> Using <code>apply</code> functions</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>7.3.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>7.3.2</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>7.3.3</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="7.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>7.3.4</b> <code>mapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>7.4</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>8</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>8.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
+<li class="chapter" data-level="8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>8.2</b> Working with LiDAR data in R</a></li>
+<li class="chapter" data-level="8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>8.3</b> Step 1. Loading and visualizing pointclouds</a></li>
+<li class="chapter" data-level="8.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>8.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>8.4.1</b> Ground detection and normalizing a point cloud</a></li>
+<li class="chapter" data-level="8.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>8.4.2</b> Building the initial CHM</a></li>
+<li class="chapter" data-level="8.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>8.4.3</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>8.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>8.5.1</b> Delineating the crowns</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>8.5.2</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>8.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>8.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>8.7</b> Wrapping up</a></li>
+<li class="chapter" data-level="8.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>8.8</b> Solutions to the challenges</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>8.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="8.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>8.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="8.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>8.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>9</b> Extracting raster fractions and area using a polygon mask</a><ul>
-<li class="chapter" data-level="9.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>9.1</b> Problem statement</a></li>
-<li class="chapter" data-level="9.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>9.2</b> Creating some dummy raster data</a></li>
-<li class="chapter" data-level="9.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>9.3</b> Create some reserves</a></li>
-<li class="chapter" data-level="9.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>9.4</b> Extracting data</a></li>
-<li class="chapter" data-level="9.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>9.5</b> Plotting the results</a></li>
+<li class="chapter" data-level="9" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>9</b> Calculating class area from raster</a><ul>
+<li class="chapter" data-level="9.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>9.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>9.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>9.1.2</b> Preparing the raster for area calculation</a></li>
+<li class="chapter" data-level="9.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>9.1.3</b> Compiling a comprehensive table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>10</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="10.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>10.1</b> Problem statement</a></li>
+<li class="chapter" data-level="10.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>10.2</b> Creating some dummy raster data</a></li>
+<li class="chapter" data-level="10.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>10.3</b> Create some reserves</a></li>
+<li class="chapter" data-level="10.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>10.4</b> Extracting data</a></li>
+<li class="chapter" data-level="10.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>10.5</b> Plotting the results</a></li>
 </ul></li>
 </ul>
 
@@ -232,21 +234,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="dplyr---a-brief-introduction-to-tidy-data-manipulation" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> <code>dplyr</code> - A brief introduction to tidy data manipulation</h1>
+<h1><span class="header-section-number">Chapter 3</span> <code>dplyr</code> - A brief introduction to tidy data manipulation</h1>
 <p><img src="data/dplyr-doc/dplyr.png" width="250" style="display: block; margin: auto;" /></p>
 <div id="introducing-the-koala-dataset" class="section level2">
-<h2><span class="header-section-number">2.1</span> Introducing the koala dataset</h2>
+<h2><span class="header-section-number">3.1</span> Introducing the koala dataset</h2>
 <p>Today we will have a look at some koala data. You can download the dataset for this tutorial <a href="https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1">here</a>. Futhermore you need to install the <code>tidyverse</code> package, which contains <code>dplyr</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</a></code></pre></div>
 <p>First we need to load the dataset we’re working with.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb2-1"></a>koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a></code></pre></div>
 <p>It should contain the following colums:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb3-1"></a><span class="kw">names</span>(koala)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">names</span>(koala)</a></code></pre></div>
 <pre><code>##  [1] &quot;species&quot; &quot;X&quot;       &quot;Y&quot;       &quot;state&quot;   &quot;region&quot;  &quot;sex&quot;     &quot;weight&quot; 
 ##  [8] &quot;size&quot;    &quot;fur&quot;     &quot;tail&quot;    &quot;age&quot;     &quot;color&quot;   &quot;joey&quot;    &quot;behav&quot;  
 ## [15] &quot;obs&quot;</code></pre>
 <p>Lets look at a structure and summary of this dataset:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb5-1"></a><span class="kw">str</span>(koala)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">str</span>(koala)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:	242 obs. of  15 variables:
 ##  $ species: Factor w/ 1 level &quot;Phascolarctos cinereus&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ X      : num  153 148 153 153 153 ...
@@ -263,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ joey   : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 2 1 1 1 1 1 1 1 1 ...
 ##  $ behav  : Factor w/ 3 levels &quot;Feeding&quot;,&quot;Just Chillin&quot;,..: 3 3 2 3 3 1 2 3 1 3 ...
 ##  $ obs    : Factor w/ 3 levels &quot;Opportunistic&quot;,..: 2 1 2 3 3 1 3 2 2 2 ...</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb7-1"></a><span class="kw">summary</span>(koala)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">summary</span>(koala)</a></code></pre></div>
 <pre><code>##                    species          X               Y         
 ##  Phascolarctos cinereus:242   Min.   :138.6   Min.   :-39.00  
 ##                               1st Qu.:150.0   1st Qu.:-34.49  
@@ -295,29 +297,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can see that our dataset contains the positions of each koala in Latitude and Longitude (<code>X</code> and <code>Y</code>) as well as variables describing their physiology, behavior and how they were recorded. This is typical presence-only wildlife data, combining observations with some data describing each individual, which could e.g. be used for distribution modeling or to test influences of other variables such as climate on behavior and physiology of this particular speces. Often in these types of studies, we are not interested in all the recorded variables and thus first need to ‘clean’ our data to make it easier to work with it. <code>dplyr</code> is a package desinged to make data ‘cleaning’ and manipulation of large datasets easier by introducing specific syntax. Let’s see how it works and compares to base <code>R</code> functionality!</p>
 </div>
 <div id="working-with-dplyr" class="section level2">
-<h2><span class="header-section-number">2.2</span> Working with <code>dplyr</code></h2>
+<h2><span class="header-section-number">3.2</span> Working with <code>dplyr</code></h2>
 <p>Base <code>R</code> subsetting can be very tedious. Imagine we want to got the mean age for our koalas, but split it by sex. Getting one mean is easy:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb9-1"></a><span class="kw">mean</span>(koala[koala<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>, <span class="st">&quot;age&quot;</span>],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">mean</span>(koala[koala<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>, <span class="st">&quot;age&quot;</span>],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 6.626087</code></pre>
 <p>Summarizing both sexes and savinf it in a table takes a few lines of code:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-1"></a>female_mean&lt;-<span class="kw">mean</span>(koala[koala<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>, <span class="st">&quot;age&quot;</span>],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb11-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-2"></a></span>
-<span id="cb11-3"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-3"></a>male_mean&lt;-<span class="kw">mean</span>(koala[koala<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>, <span class="st">&quot;age&quot;</span>],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb11-4"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-4"></a></span>
-<span id="cb11-5"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-5"></a>means&lt;-<span class="kw">rbind</span>(<span class="kw">c</span>(female_mean, male_mean))</span>
-<span id="cb11-6"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-6"></a></span>
-<span id="cb11-7"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-7"></a>means&lt;-<span class="kw">as.data.frame</span>(means)</span>
-<span id="cb11-8"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-8"></a></span>
-<span id="cb11-9"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb11-9"></a><span class="kw">names</span>(means)&lt;-<span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">female_mean&lt;-<span class="kw">mean</span>(koala[koala<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>, <span class="st">&quot;age&quot;</span>],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb25-2" title="2"></a>
+<a class="sourceLine" id="cb25-3" title="3">male_mean&lt;-<span class="kw">mean</span>(koala[koala<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>, <span class="st">&quot;age&quot;</span>],<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb25-4" title="4"></a>
+<a class="sourceLine" id="cb25-5" title="5">means&lt;-<span class="kw">rbind</span>(<span class="kw">c</span>(female_mean, male_mean))</a>
+<a class="sourceLine" id="cb25-6" title="6"></a>
+<a class="sourceLine" id="cb25-7" title="7">means&lt;-<span class="kw">as.data.frame</span>(means)</a>
+<a class="sourceLine" id="cb25-8" title="8"></a>
+<a class="sourceLine" id="cb25-9" title="9"><span class="kw">names</span>(means)&lt;-<span class="kw">c</span>(<span class="st">&#39;female&#39;</span>, <span class="st">&#39;male&#39;</span>)</a></code></pre></div>
 <p>Lets have a look at the results.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb12-1"></a>means</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">means</a></code></pre></div>
 <pre><code>##     female     male
 ## 1 6.251969 6.626087</code></pre>
 <p>That’s all good, but with that many lines of code quite error prone … <code>dplyr</code> makes data manipulation simpler. For this example, we would only require one line of code!</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb14-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb14-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb14-2"></a></span>
-<span id="cb14-3"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb14-3"></a>mean_age_koala&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">mean_age =</span> <span class="kw">mean</span>(age))</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb28-2" title="2"></a>
+<a class="sourceLine" id="cb28-3" title="3">mean_age_koala&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">mean_age =</span> <span class="kw">mean</span>(age))</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   sex    mean_age
 ##   &lt;fct&gt;     &lt;dbl&gt;
@@ -325,9 +326,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 male       6.63</code></pre>
 <p>So simple, and looks even better than our base <code>R</code> table too! The main functions we will explore here are <code>dplyr</code>’s pipe <code>%&gt;%</code>, <code>select()</code>, <code>filter()</code>, <code>group_by()</code>, <code>summarise()</code> and <code>mutate()</code>.</p>
 <div id="select-and-dplyrs-pipe" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> select() and dplyr’s pipe</h3>
+<h3><span class="header-section-number">3.2.1</span> select() and dplyr’s pipe</h3>
 <p>If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the <code>select()</code> function. This will keep only the variables you select.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb17-1"></a>koala_select&lt;-<span class="kw">select</span>(koala, species, sex, age)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">koala_select&lt;-<span class="kw">select</span>(koala, species, sex, age)</a></code></pre></div>
 <pre><code>##                  species    sex age
 ## 1 Phascolarctos cinereus   male   8
 ## 2 Phascolarctos cinereus female  10
@@ -336,39 +337,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 Phascolarctos cinereus female  10
 ## 6 Phascolarctos cinereus   male  12</code></pre>
 <p>If we open up <code>koala_select</code> we’ll see that it only contains the species, sex and age columns. Above we used ‘normal’ <code>R</code> grammar, but the strengths of dplyr lie in combining several functions using pipes. Since the pipes grammar is unlike anything we’ve seen in R before, let’s repeat what we’ve done above using pipes.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb19-1"></a>koala_select_pipe&lt;-koala<span class="op">%&gt;%</span><span class="kw">select</span>(species, sex, age)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">koala_select_pipe&lt;-koala<span class="op">%&gt;%</span><span class="kw">select</span>(species, sex, age)</a></code></pre></div>
 <p>To help you understand why we wrote that in that way, let’s walk through it step by step. First we summon the koala dataframe and pass it on, using the pipe syntax <code>%&gt;%</code>, to the next step, which is the <code>select()</code> function. In this case we don’t specify which data object we use in the <code>select()</code> function since in gets that from the previous pipe.</p>
 </div>
 <div id="filter" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> filter()</h3>
+<h3><span class="header-section-number">3.2.2</span> filter()</h3>
 <p><code>filter()</code> is one of the most useful dplyr functions for data manipulation. Say you’re conducting a study of only male koalas. You won’t need any data on female koalas. So lets get rid of it!</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb20-1"></a>koala_filter&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">koala_filter&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>)</a></code></pre></div>
 <p>Did it work?</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb21-1"></a><span class="kw">summary</span>(koala_filter<span class="op">$</span>sex)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">summary</span>(koala_filter<span class="op">$</span>sex)</a></code></pre></div>
 <pre><code>## female   male 
 ##      0    115</code></pre>
 <p>No more females in the data! Let’s test our knowledge with a challenge.</p>
 </div>
 <div id="challenge-1" class="section level3">
-<h3><span class="header-section-number">2.2.3</span> Challenge 1</h3>
+<h3><span class="header-section-number">3.2.3</span> Challenge 1</h3>
 <p><strong>Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the values for age, size and color for females only. How many rows and columns does your dataframe have and why?</strong></p>
 <p><em>Extra challenge: out of this new dataset, filter only koalas &gt;70cm in size. How many are there?</em></p>
 <p>This should be your data structure:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb23-1"></a><span class="kw">nrow</span>(challenge1)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">nrow</span>(challenge1)</a></code></pre></div>
 <pre><code>## [1] 127</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb25-1"></a><span class="kw">ncol</span>(challenge1)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="kw">ncol</span>(challenge1)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>We removed all the males, so our row number reduces from 242 to 127. Then we filter our desired columns and are now at 3 instead of 15.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb27-1"></a><span class="kw">nrow</span>(challenge1<span class="fl">.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">nrow</span>(challenge1<span class="fl">.2</span>)</a></code></pre></div>
 <pre><code>## [1] 46</code></pre>
 <p>You can find the solutions to all challenges posed here at the end of the document. Don’t peek!</p>
 </div>
 <div id="group_by-and-summarise" class="section level3">
-<h3><span class="header-section-number">2.2.4</span> group_by() and summarise()</h3>
+<h3><span class="header-section-number">3.2.4</span> group_by() and summarise()</h3>
 <p>Now, we were supposed to be reducing the error prone repetitiveness of what can be done with base R, but up to now we haven’t done that since we would have to repeat the above for each sex. Instead of <code>filter()</code>, which will only pass observations that meet your criteria (in the above: <code>sex=="female"</code>), we can use <code>group_by()</code>, which will essentially use every unique criteria that you could have used in <code>filter()</code>. Let’s see what happens with our data structure when using dplyr’s <code>group_by()</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb29-1"></a>koala_group&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(sex)</span>
-<span id="cb29-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb29-2"></a></span>
-<span id="cb29-3"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb29-3"></a><span class="kw">str</span>(koala_group)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">koala_group&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(sex)</a>
+<a class="sourceLine" id="cb42-2" title="2"></a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="kw">str</span>(koala_group)</a></code></pre></div>
 <pre><code>## tibble [242 x 15] (S3: grouped_df/tbl_df/tbl/data.frame)
 ##  $ species: Factor w/ 1 level &quot;Phascolarctos cinereus&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ X      : num [1:242] 153 148 153 153 153 ...
@@ -387,16 +388,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ obs    : Factor w/ 3 levels &quot;Opportunistic&quot;,..: 2 1 2 3 3 1 3 2 2 2 ...
 ##  - attr(*, &quot;groups&quot;)= tibble [2 x 2] (S3: tbl_df/tbl/data.frame)
 ##   ..$ sex  : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 2
-##   ..$ .rows: list&lt;int&gt; [1:2] 
+##   ..$ .rows:List of 2
 ##   .. ..$ : int [1:127] 2 5 9 10 12 13 15 17 20 22 ...
 ##   .. ..$ : int [1:115] 1 3 4 6 7 8 11 14 16 18 ...
-##   .. ..@ ptype: int(0) 
 ##   ..- attr(*, &quot;.drop&quot;)= logi TRUE</code></pre>
 <p>You will notice that the structure of the dataframe where we used <code>group_by()</code> (<code>koala_group</code>) is not the same as the original <code>koala</code> dataset. A grouped dataset can be thought of as a list where each item in the list is a data.frame which contains only the rows that correspond to the a particular value ‘Sex’ (at least in the example above).</p>
 <p>The above was a bit on the uneventful side because <code>group_by()</code> is only really useful in conjunction with <code>summarise()</code>. This will allow you to create new variable(s) by using functions that repeat for each of the sex-specific data frames. That is to say, using the <code>group_by()</code> function, we split our original dataframe into multiple pieces, then we can run functions such as <code>mean()</code> or <code>sd()</code> within <code>summarise()</code>:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb31-1"></a>koala_group_sum&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span></span>
-<span id="cb31-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb31-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_age=</span><span class="kw">mean</span>(age))</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">koala_group_sum&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_age=</span><span class="kw">mean</span>(age))</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   sex    mean_age
 ##   &lt;fct&gt;     &lt;dbl&gt;
@@ -405,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>And there we go. We got what we wanted and summarised the mean age of our koalas for both sexes separately. And we did that using only one simple line of code! I think it is time for another challenge to test our skills!</p>
 </div>
 <div id="challenge-2" class="section level3">
-<h3><span class="header-section-number">2.2.5</span> Challenge 2</h3>
+<h3><span class="header-section-number">3.2.5</span> Challenge 2</h3>
 <p><strong>Calculate the average weight value per state and Sex. Which combination of state and sex has the heaviest and which combination had the lightest koalas?</strong></p>
 <pre><code>## # A tibble: 8 x 3
 ## # Groups:   state [4]
@@ -420,17 +419,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7 Victoria        female        7.58
 ## 8 Victoria        male          7.48</code></pre>
 <p>That is already quite powerful, but it gets even better! You’re not limited to defining only one new variable in <code>summarise()</code>:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb35-1"></a>challenge2_ext&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(state, sex)<span class="op">%&gt;%</span></span>
-<span id="cb35-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb35-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight),</span>
-<span id="cb35-3"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb35-3"></a>            <span class="dt">sd_weight =</span> <span class="kw">sd</span>(weight),</span>
-<span id="cb35-4"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb35-4"></a>            <span class="dt">sample_no =</span> <span class="kw">n</span>())</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;state&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">challenge2_ext&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(state, sex)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight),</a>
+<a class="sourceLine" id="cb47-3" title="3">            <span class="dt">sd_weight =</span> <span class="kw">sd</span>(weight),</a>
+<a class="sourceLine" id="cb47-4" title="4">            <span class="dt">sample_no =</span> <span class="kw">n</span>())</a></code></pre></div>
 <p>We can create a new dataframe with as many new variables as we want. Very useful for our inital data exploration! Let’s get our hands another very useful function: <code>mutate()</code>.</p>
 </div>
 <div id="mutate" class="section level3">
-<h3><span class="header-section-number">2.2.6</span> mutate()</h3>
+<h3><span class="header-section-number">3.2.6</span> mutate()</h3>
 <p>We can create an entirely new variables in our initial dataset prior to (or even after) summarizing information using <code>mutate()</code>. Let’s say we’re interested in the weight:size ratio of our Koalas. Also we want to give each individual a numeric identifier to be able to better work with our data later on.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb37-1"></a>koala_mutate&lt;-koala<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">weight_size_ratio =</span> size<span class="op">/</span>weight, <span class="dt">ID =</span> <span class="kw">row_number</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">koala_mutate&lt;-koala<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">weight_size_ratio =</span> size<span class="op">/</span>weight, <span class="dt">ID =</span> <span class="kw">row_number</span>())</a></code></pre></div>
 <pre><code>##  [1] &quot;species&quot;           &quot;X&quot;                 &quot;Y&quot;                
 ##  [4] &quot;state&quot;             &quot;region&quot;            &quot;sex&quot;              
 ##  [7] &quot;weight&quot;            &quot;size&quot;              &quot;fur&quot;              
@@ -438,13 +436,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [13] &quot;joey&quot;              &quot;behav&quot;             &quot;obs&quot;              
 ## [16] &quot;weight_size_ratio&quot; &quot;ID&quot;</code></pre>
 <p>Our dataset now has two extra columns containing the variables we were interested in. If you do not want to manipulate your raw data, you can use mutate before grouping and summarising to create the summary table straight away:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb39-1"></a>koala_mutate_weight_size&lt;-koala<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">weight_size_ratio =</span> size<span class="op">/</span>weight)<span class="op">%&gt;%</span></span>
-<span id="cb39-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb39-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span></span>
-<span id="cb39-3"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb39-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight),</span>
-<span id="cb39-4"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb39-4"></a>            <span class="dt">sd_weight =</span> <span class="kw">sd</span>(weight),</span>
-<span id="cb39-5"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb39-5"></a>            <span class="dt">mean_weight_size =</span> <span class="kw">mean</span> (weight_size_ratio),</span>
-<span id="cb39-6"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb39-6"></a>            <span class="dt">max_weight_size =</span> <span class="kw">max</span>(weight_size_ratio))</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">koala_mutate_weight_size&lt;-koala<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">weight_size_ratio =</span> size<span class="op">/</span>weight)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight),</a>
+<a class="sourceLine" id="cb50-4" title="4">            <span class="dt">sd_weight =</span> <span class="kw">sd</span>(weight),</a>
+<a class="sourceLine" id="cb50-5" title="5">            <span class="dt">mean_weight_size =</span> <span class="kw">mean</span> (weight_size_ratio),</a>
+<a class="sourceLine" id="cb50-6" title="6">            <span class="dt">max_weight_size =</span> <span class="kw">max</span>(weight_size_ratio))</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
 ##   sex    mean_weight sd_weight mean_weight_size max_weight_size
 ##   &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt;
@@ -453,38 +450,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Great! Let’s end the lesson with another challenge, combining all the functions we have looked at today.</p>
 </div>
 <div id="challenge-3" class="section level3">
-<h3><span class="header-section-number">2.2.7</span> Challenge 3</h3>
+<h3><span class="header-section-number">3.2.7</span> Challenge 3</h3>
 <p><strong><em>Calculate the average tail length and fur thickness for a group of 20 randomly selected males and females from New South Wales. Then arrange the mean tail length in descending order.</em></strong></p>
 <p><em>Hint: Use the dplyr functions</em> <code>arrange()</code> <em>and</em> <code>sample_n()</code><em>, they have similar syntax to other dplyr functions. Look at the help by calling ‘?function’, e.g.</em> <code>?arrange</code><em>.</em></p>
 <pre><code>## # A tibble: 2 x 3
 ##   sex    mean_tail mean_fur
 ##   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt;
-## 1 male        1.55     2.97
-## 2 female      1.45     2.49</code></pre>
+## 1 male        1.47     2.94
+## 2 female      1.41     2.41</code></pre>
 <p>Since we are sampling randomly, these will look different for each of you.</p>
 </div>
 <div id="solution-to-all-challenges" class="section level3">
-<h3><span class="header-section-number">2.2.8</span> Solution to all challenges</h3>
+<h3><span class="header-section-number">3.2.8</span> Solution to all challenges</h3>
 <div id="challenge-1-1" class="section level4">
-<h4><span class="header-section-number">2.2.8.1</span> Challenge 1</h4>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb43-1"></a>challenge1&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb43-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb43-2"></a><span class="st">  </span><span class="kw">select</span>(age, size, color)</span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb44-1"></a>challenge1<span class="fl">.2</span>&lt;-challenge1<span class="op">%&gt;%</span><span class="kw">filter</span>(size<span class="op">&gt;</span><span class="dv">70</span>)</span></code></pre></div>
+<h4><span class="header-section-number">3.2.8.1</span> Challenge 1</h4>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">challenge1&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">select</span>(age, size, color)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">challenge1<span class="fl">.2</span>&lt;-challenge1<span class="op">%&gt;%</span><span class="kw">filter</span>(size<span class="op">&gt;</span><span class="dv">70</span>)</a></code></pre></div>
 </div>
 <div id="challenge-2-1" class="section level4">
-<h4><span class="header-section-number">2.2.8.2</span> Challenge 2</h4>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb45-1"></a>challenge2&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(state, sex)<span class="op">%&gt;%</span></span>
-<span id="cb45-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb45-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight))</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;state&#39; (override with `.groups` argument)</code></pre>
+<h4><span class="header-section-number">3.2.8.2</span> Challenge 2</h4>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">challenge2&lt;-koala<span class="op">%&gt;%</span><span class="kw">group_by</span>(state, sex)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb55-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_weight =</span> <span class="kw">mean</span>(weight))</a></code></pre></div>
 </div>
 <div id="challenge-3-1" class="section level4">
-<h4><span class="header-section-number">2.2.8.3</span> Challenge 3</h4>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb47-1"></a>challenge3&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb47-2"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb47-2"></a><span class="st">  </span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span></span>
-<span id="cb47-3"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb47-3"></a><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">20</span>)<span class="op">%&gt;%</span></span>
-<span id="cb47-4"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb47-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_tail =</span> <span class="kw">mean</span>(tail), <span class="dt">mean_fur =</span> <span class="kw">mean</span>(fur))<span class="op">%&gt;%</span></span>
-<span id="cb47-5"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#cb47-5"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_tail))</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<h4><span class="header-section-number">3.2.8.3</span> Challenge 3</h4>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">challenge3&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(sex)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-3" title="3"><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">20</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_tail =</span> <span class="kw">mean</span>(tail), <span class="dt">mean_fur =</span> <span class="kw">mean</span>(fur))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-5" title="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(mean_tail))</a></code></pre></div>
 
 </div>
 </div>
@@ -495,7 +490,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="introduction-to-data-visualization-in-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

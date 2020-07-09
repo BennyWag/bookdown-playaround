@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594264326691.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3538653654",
+    "id" : "54407C90",
+    "lastKnownWriteTime" : 1594263725,
+    "last_content_update" : 1594263725,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/forest-ecology-R-book/08-extracting_raster_fractions_by_mask.Rmd",
+    "project_path" : "08-extracting_raster_fractions_by_mask.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
