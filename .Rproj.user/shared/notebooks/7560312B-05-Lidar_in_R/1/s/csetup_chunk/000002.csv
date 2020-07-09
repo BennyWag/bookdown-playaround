@@ -1,7 +1,0 @@
-"0","knitr::opts_chunk$set(echo = TRUE)"
-"0","library(raster)"
-"2","Loading required package: sp
-"
-"0","library(EBImage)"
-"2","Error in library(EBImage) : there is no package called ‘EBImage’
-"

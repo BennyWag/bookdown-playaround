@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594264315262.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3427095943",
+    "id" : "495BE630",
+    "lastKnownWriteTime" : 1594263725,
+    "last_content_update" : 1594263725,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/forest-ecology-R-book/05-ApplyFuncs.Rmd",
+    "project_path" : "05-ApplyFuncs.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

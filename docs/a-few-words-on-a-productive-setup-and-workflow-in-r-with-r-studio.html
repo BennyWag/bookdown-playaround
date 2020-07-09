@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 A few words on a productive setup and workflow in R with R-Studio | Intro to R for Forest Ecosystem Science</title>
+  <meta name="description" content="Introductory R" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 A few words on a productive setup and workflow in R with R-Studio | Intro to R for Forest Ecosystem Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Introductory R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 A few words on a productive setup and workflow in R with R-Studio | Intro to R for Forest Ecosystem Science" />
+  
+  <meta name="twitter:description" content="Introductory R" />
+  
+
+<meta name="author" content="Anu Singh, Benjamin Wagner, and Kaitlyn Hammond" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>1.1</b> Disclaimer</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a><ul>
+<li class="chapter" data-level="2.1" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#r-projects"><i class="fa fa-check"></i><b>2.1</b> R Projects</a></li>
+<li class="chapter" data-level="2.2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#setting-up-the-r-studio-user-interface"><i class="fa fa-check"></i><b>2.2</b> Setting up the R-Studio User interface</a></li>
+<li class="chapter" data-level="2.3" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#code-folds-and-commenting"><i class="fa fa-check"></i><b>2.3</b> Code folds and commenting</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>3</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
+<li class="chapter" data-level="3.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#introducing-the-koala-dataset"><i class="fa fa-check"></i><b>3.1</b> Introducing the koala dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>3.2</b> Working with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>3.2.1</b> select() and dplyr’s pipe</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>3.2.2</b> filter()</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>3.2.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="3.2.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#group_by-and-summarise"><i class="fa fa-check"></i><b>3.2.4</b> group_by() and summarise()</a></li>
+<li class="chapter" data-level="3.2.5" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>3.2.5</b> Challenge 2</a></li>
+<li class="chapter" data-level="3.2.6" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#mutate"><i class="fa fa-check"></i><b>3.2.6</b> mutate()</a></li>
+<li class="chapter" data-level="3.2.7" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>3.2.7</b> Challenge 3</a></li>
+<li class="chapter" data-level="3.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>3.2.8</b> Solution to all challenges</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="5" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>5</b> Introduction to linear models in R</a></li>
+<li class="chapter" data-level="6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>6</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>6.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>6.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>6.2.1</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>6.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="6.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>6.4.1</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>6.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="6.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>6.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="6.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>6.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>6.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>6.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="6.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>6.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="6.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>6.7.3</b> Challenge 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>7</b> Functions, loops, and <code>apply</code></a><ul>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>7.2</b> Writing basic functions</a></li>
+<li class="chapter" data-level="7.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>7.3</b> Using <code>apply</code> functions</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>7.3.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>7.3.2</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>7.3.3</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="7.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>7.3.4</b> <code>mapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>7.4</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>8</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>8.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
+<li class="chapter" data-level="8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>8.2</b> Working with LiDAR data in R</a></li>
+<li class="chapter" data-level="8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>8.3</b> Step 1. Loading and visualizing pointclouds</a></li>
+<li class="chapter" data-level="8.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>8.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>8.4.1</b> Ground detection and normalizing a point cloud</a></li>
+<li class="chapter" data-level="8.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>8.4.2</b> Building the initial CHM</a></li>
+<li class="chapter" data-level="8.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>8.4.3</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>8.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>8.5.1</b> Delineating the crowns</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>8.5.2</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>8.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>8.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>8.7</b> Wrapping up</a></li>
+<li class="chapter" data-level="8.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>8.8</b> Solutions to the challenges</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>8.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="8.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>8.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="8.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>8.8.3</b> Challenge 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>9</b> Calculating class area from raster</a><ul>
+<li class="chapter" data-level="9.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>9.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>9.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>9.1.2</b> Preparing the raster for area calculation</a></li>
+<li class="chapter" data-level="9.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>9.1.3</b> Compiling a comprehensive table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>10</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="10.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>10.1</b> Problem statement</a></li>
+<li class="chapter" data-level="10.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>10.2</b> Creating some dummy raster data</a></li>
+<li class="chapter" data-level="10.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>10.3</b> Create some reserves</a></li>
+<li class="chapter" data-level="10.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>10.4</b> Extracting data</a></li>
+<li class="chapter" data-level="10.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>10.5</b> Plotting the results</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro to R for Forest Ecosystem Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></h1>
+<p><img src="data/projects-doc/rstudio.png" width="300" style="display: block; margin: auto;" /></p>
+<p>Before we get our hands dirty with all the great functions and packages <code>R</code> has to offer, there are a few things that will make your <code>R</code> life much easier, if you adopt them early on (or even if you’re already a weathered expert but are still using <code>setwd()</code> ;-)).</p>
+<ol style="list-style-type: decimal">
+<li><p>Working with <code>R</code> Projects, which is made available through <em>R-Studio</em> is probably the most comprehensive way to set up a new project, without having to mingle around with working directories too much. It also makes your work share- and reproducible.</p></li>
+<li><p>Additionally, there are a few tweaks we can do with the user interface (UI) of <em>R-Studio</em> that will make it more intuitive.</p></li>
+<li><p>Last but not least, we will earn how to best set up a <code>R</code> script, so that you never loose track, even after thousands of lines of code!</p></li>
+</ol>
+<p>To illustrate working with projects, we will be using the koala dataset, which you will see throughout these pages again and a again as example data. You can download the data <a href="https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1">here</a>. For now, leave it in the folder that you have downloaded it to. In my case (on a Windows PC) it would be in <code>'C:\Users\username\Downloads'</code></p>
+<div id="r-projects" class="section level2">
+<h2><span class="header-section-number">2.1</span> R Projects</h2>
+<p>To understand what an R project does for you and why it is advantageous over just working within the general workspace of <em>R-Studio</em>, you need to understand file paths. There are <strong>absolute</strong> and <strong>relative</strong> file paths:</p>
+<p>An absolute (or full) file path is a path that points to a certain location in the system on your specific computer. This means, that it might not exist on another computer! A good example is the path I mentioned above (<code>'C:\Users\username\Downloads'</code>). The general <em>Downloads</em> folder on a Windows operating system is stored in the respective user folder, which will be different for each user. This absolute file path points to this location, regardless of the working directory we might have defined and includes what we call the <em>root directory</em>.</p>
+<p>Relative file paths on the other hand, start from a given working directory, avoiding the need to provide the full absolute path. These paths will work regardless of the <em>root directory</em>, as long as e.g. the folder that the relative file path refers to, is available on the computer. The relative file path is stored in an R project and thus saved even when you close <em>R-Studio</em>. When you give your project folder to someone else and they launch your project, all specified paths will work, as long as the project folder is the working directory and all needed files are stored within.</p>
+<p>Let’s illustrate this in a simple manner using our downloads folder, to which you have just downloaded the koala dataset. It is simple to load the data into <code>R</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;C:/Users/username/Downloads/koala.csv&#39;</span>)</a></code></pre></div>
+<p>In case you move the file though and return to the code you have just written, <code>R</code> won’t be able to load the data again, because it doesn’t exist in that directory. If you have learnt R as many of us from other people’s suggestions or online tutorials, you will probably have picked up that you have to use <code>setwd()</code> to best point <code>R</code> to where all files you want to work on or load into <code>R</code> are stored. This would be a sort of project folder where you put all your data, as well as scripts etc. associated with the analysis you’re doing. Let’s assume we create a folder called <em>project</em> directly on our C drive: <code>C:\project</code> . This is were we copied our koala data from the Downloads folder. What we would now do is:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">setwd</span>(<span class="st">&#39;C:/project&#39;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;koala.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">summary</span>(koala)</a></code></pre></div>
+<pre><code>##                    species          X               Y         
+##  Phascolarctos cinereus:242   Min.   :138.6   Min.   :-39.00  
+##                               1st Qu.:150.0   1st Qu.:-34.49  
+##                               Median :152.0   Median :-32.67  
+##                               Mean   :150.3   Mean   :-32.36  
+##                               3rd Qu.:152.9   3rd Qu.:-30.31  
+##                               Max.   :153.6   Max.   :-21.39  
+##              state          region        sex          weight      
+##  New South Wales:181   northern:165   female:127   Min.   : 5.406  
+##  Queensland     : 16   southern: 77   male  :115   1st Qu.: 6.574  
+##  South Australia: 14                               Median : 7.277  
+##  Victoria       : 31                               Mean   : 7.923  
+##                                                    3rd Qu.: 8.765  
+##                                                    Max.   :17.889  
+##       size            fur             tail            age       
+##  Min.   :64.81   Min.   :1.110   Min.   :1.004   Min.   : 1.00  
+##  1st Qu.:68.43   1st Qu.:2.410   1st Qu.:1.272   1st Qu.: 3.00  
+##  Median :70.27   Median :2.797   Median :1.534   Median : 7.00  
+##  Mean   :70.94   Mean   :2.896   Mean   :1.507   Mean   : 6.43  
+##  3rd Qu.:72.33   3rd Qu.:3.217   3rd Qu.:1.750   3rd Qu.: 9.00  
+##  Max.   :81.91   Max.   :5.876   Max.   :1.981   Max.   :12.00  
+##              color     joey              behav                obs    
+##  chocolate brown:21   No :185   Feeding     : 48   Opportunistic:65  
+##  dark grey      :36   Yes: 57   Just Chillin: 67   Spotlighting :94  
+##  grey           :69             Sleeping    :127   Stagwatching :83  
+##  grey-brown     :53                                                  
+##  light brown    :20                                                  
+##  light grey     :43</code></pre>
+<p>Which works fine: you are actually creating a relative file path on your system, which saves you time and effort by not having to point to each file separately again. You can now also save modified files into the same folder, because <code>R</code> knows where to save it.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">koala_state&lt;-koala[<span class="dv">4</span>] <span class="co">#create a subset only containing the state column (4th column of this data)</span></a>
+<a class="sourceLine" id="cb4-2" title="2"></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw">write.csv</span>(koala_state, <span class="st">&#39;subset.csv&#39;</span>, <span class="dt">row.names =</span> F)</a></code></pre></div>
+<p>There are two problems with this though:</p>
+<ol style="list-style-type: decimal">
+<li><p>If you want to share the super detailed analysis of that dataset you just did with someone else, they would need to change the code to fit their system using <code>setwd()</code> again to match their system. If they’re on a Mac and you’re on a PC, this becomes complicated.</p></li>
+<li><p><code>setwd()</code> is a function and it needs to be executed each time you open <code>R</code>. Your working directory is not saved, which can lead to other problems, especially when you move files around, change computers or (god forbid) loose data somehow.</p></li>
+</ol>
+<p>The better option to avoid all this is to use R projects!</p>
+<p>If you have R-Studio open, you can easily create a new project by clicking on the <strong>File</strong> tab and hitting <strong>New Project</strong>:</p>
+<p><img src="data/projects-doc/proj1.png" width="300" style="display: block; margin: auto;" /></p>
+<p>And you will see a window like this:</p>
+<p><img src="data/projects-doc/proj2.png" width="500" style="display: block; margin: auto;" /></p>
+<p>You can create a completely new directory here, but I prefer to set up the folder structure first. Let’s take a step back and do that in our <code>C:\project</code> directory first! In that empty folder, I like to create three base folders</p>
+<ol style="list-style-type: decimal">
+<li><code>data</code></li>
+<li><code>outputs</code></li>
+<li><code>scripts</code></li>
+</ol>
+<p>Of course you can name them however you want, but for me this works best. You can also add other folders or subfolders if you feel you need a different structure for your project already. You can also always create more folders later, even within <code>R</code> using <code>dir.create()</code>. Your folder should look something like this now:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="data/projects-doc/proj3.png" alt="**All folders will still be empty**" width="600" />
+<p class="caption">
+Figure 2.1: <strong>All folders will still be empty</strong>
+</p>
+</div>
+<p>Now we get back to the project creation window and click on <strong>Existing Directory</strong>:</p>
+<p><img src="data/projects-doc/proj4.png" width="500" style="display: block; margin: auto;" /></p>
+<p>Here you can browse to the project folder (or enter the directory yourself). This creates a new project, <em>R-Studio</em> does the rest. What this mainly does is fix your working directory to that folder. There will be some additional files associated with this folder that save your user history (such as what you put in the console) and, most importantly, the working directory itself. Each time you open the project in that folder (or opening it within <em>R-Studio</em>), you will already be set to go! Your folder will now have this additional file after creating the project, which you can use to open it, it will also save a continuous <code>.Rhistory</code> file:</p>
+<p><img src="data/projects-doc/proj5.png" width="600" style="display: block; margin: auto;" /></p>
+<p>Now we can go and fill up the project with all the data we need for our analysis! In our case. that is the <code>koala.csv</code> file. All data we are going to use is going into the <code>data</code> folder, so copy the table in there:</p>
+<p><img src="data/projects-doc/proj6.png" width="600" style="display: block; margin: auto;" /></p>
+<p>The way we work in the project now is referring to the sub-folders of our working directory using relative file paths. To load the koala data we do:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a></code></pre></div>
+<p>Processed data goes into the <code>outputs</code> folder:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">koala_state&lt;-koala[<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb6-2" title="2"></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">write.csv</span>(koala_state, <span class="st">&#39;outputs/subset.csv&#39;</span>, <span class="dt">row.names =</span> F)</a></code></pre></div>
+<p>Once you save your script file the first time, choose the <code>scripts</code> folder within your project folder to store it safely. If you later on need another folder, because maybe you got a lot of output files and need to sort them, you can create a new folder and write (or read) to/from it:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">koala_region&lt;-koala[<span class="dv">5</span>] <span class="co">#create a subset with only the region column</span></a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">dir.create</span>(<span class="st">&#39;outputs/region_analysis&#39;</span>)</a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="kw">write.csv</span>(koala_region, <span class="st">&#39;outputs/region_analysis/region_states.csv&#39;</span>, <span class="dt">row.names =</span> F)</a></code></pre></div>
+<p>If you have a large dataset, that you can’t move from its location to the project directory, you can still load it using the known syntax. You have to then specify the absolute file path:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">#Let&#39;s assume the file is in your downloads folder</span></a>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3">superlarge_file&lt;-<span class="kw">load</span>(<span class="st">&#39;C:/Users/username/Downloads/superlargefile.file&#39;</span>)</a></code></pre></div>
+<p>The beauty of this way of handling your data is, that if you keep all files associated with your project within the project folder, you can move the project folder around as much as you want, give it to collaborators or even store it on a new computer if yours has exploded (given you’re backing up your files daily, which I hope you do ;)) and everything will be exactly where it should be and you can run through all your code without issues! When using projects and you re-open it, the <em>R-Studio</em> session is exactly where you left it when you last saved your workspace (likely when exiting the program). All script files you had open are still open, and <code>.RData</code> (which is stored in your project folder as well) is loaded, which means all variables in your environment are also still there, so you won’t need to re-run any of your code. The only thing you need to do still is load packages and recompile any Plots, as pane is emptied.</p>
+<p>You will destroy the order by using <code>setwd()</code>, so keep your hands off it. If you have some new data that you want to use, copy it to the <code>data</code> or any respective folder you’re using, before loading the data into <code>R</code>. You can keep track of your directory in the <code>files</code> tab in <em>R-Studio</em>:</p>
+<p><img src="data/projects-doc/proj7.png" width="600" style="display: block; margin: auto;" /></p>
+<p>As you can see, you also can create new folders here using the buttons on top. If, by any chance your working directory has change (e.g. a function using different directories going astray…), you can rested the working directory to the project folder here as well. Using the green arrow, navigate to your project folder again and them press <strong>More</strong> and <em>Set As Working Directory</em>:</p>
+<p><img src="data/projects-doc/proj8.png" width="600" style="display: block; margin: auto;" /></p>
+<p>So, the one thing to remember when working in this way is: <strong>AVOID CHANGING YOUR WORKING DIRECTORY!</strong> or <strong>NEVER USE <code>setwd()</code>!</strong> . Both will break your code and you will either have to reset or rewrite. Especially in larger projects it becomes extremely tedious to keep track where you stored or saved data when using <code>setwd()</code> a lot. If you change computers or restructure your system, you will also need to change or restructure your <code>R</code> script (and/or file paths). But once you get used to this way of working, you will see it is very intuitive and saves a lot of time. If you still need to load data from elsewhere, use <em>absolute file paths</em> and for everything else, use your project folders and thus <em>relative file paths</em>.</p>
+<p>Hope you find that helpful :)</p>
+</div>
+<div id="setting-up-the-r-studio-user-interface" class="section level2">
+<h2><span class="header-section-number">2.2</span> Setting up the R-Studio User interface</h2>
+<p>When you first open up <em>R-Studio</em>, it probably looks something like this:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
+<img src="data/projects-doc/proj9.png" alt="**Image source is this useful [tutorial](https://bookdown.org/animestina/R_Manchester/) :)**" width="800" />
+<p class="caption">
+Figure 2.2: <strong>Image source is this useful <a href="https://bookdown.org/animestina/R_Manchester/">tutorial</a> :)</strong>
+</p>
+</div>
+<p>Your user interface (UI) is split into 4 windows and by default has the code editor in the top-left corner, and the Environment in the top-right. The code editor is where script files are created or opened and where you will spend most of your time. The console on the lower-left takes up a considerable amount of space, even though you only need it occasionally (whenever you run code that you don’t need to or don’t want to save to your script file). For my taste the window setup is counter-productive, because it takes the focus away from what is most important. You are going to work mainly with your script and environment pane. You can change the setup of your UI (and appearance) to make a bit more room and have <em>R-Studio</em> look like this:</p>
+<p><img src="data/projects-doc/proj10.png" width="900" style="display: block; margin: auto;" /></p>
+<p>You will have lots of space to view and write your script, have the console placed on the top-right so you can see what’s happening when running through your lines of code, and everything else (such as the Environment, Files and Plots panes) are tabbed neatly on the lower-right. Additionally I have changed the appearance to a dark theme, because staring at a white for longer screen can be quite exhausting for the eyes and I prefer my text background in dark. To change to these (or any other preferred settings), go to the <em>Tools</em> tab at the top and select <em>Global Options</em>:</p>
+<p><img src="data/projects-doc/proj11.png" width="300" style="display: block; margin: auto;" /></p>
+<p>In the new window, first click on <em>Pane Layout</em> and select these settings:</p>
+<p><img src="data/projects-doc/proj12.png" width="500" style="display: block; margin: auto;" /></p>
+<p>These are of course just recommendations based on my preferences and you can change as you go. Nevertheless I found that these setting work best when spending a lot of time in <em>R-Studio</em>. Now when you first set up the panes like this and no script is open, your <em>History</em> panel might still peek out. This is probably the least important pane and we can hide it by clicking on the small <em>reduce</em> button in the top right:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
+<img src="data/projects-doc/proj13.png" alt="**Click this one (once and then the one to the left of it once it shrunk halfway) to hide the History pane at the bottom and even open a new *untitled* script automatically.**" width="600" />
+<p class="caption">
+Figure 2.3: <strong>Click this one (once and then the one to the left of it once it shrunk halfway) to hide the History pane at the bottom and even open a new <em>untitled</em> script automatically.</strong>
+</p>
+</div>
+<p>Next we can change the appearance. In <em>Global Options</em>, click on <em>Appearance</em>. I use these settings, but there are lots of combinations and even more preferences:</p>
+<p><img src="data/projects-doc/proj14.png" width="500" style="display: block; margin: auto;" /></p>
+<p>You may need to restart once you have chosen a theme and editor font/theme, for the changes to become active. One thing I find important is the option of coloring <code>function</code> calls. This means any function is highlighted in a different color than the rest of your code, which makes it (in my opinion), more readable. To make these changes go to <em>Code</em> and to the <em>Display</em> tab:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
+<img src="data/projects-doc/proj15.png" alt="**These are the settings I use.**" width="500" />
+<p class="caption">
+Figure 2.4: <strong>These are the settings I use.</strong>
+</p>
+</div>
+<p>Most importantly, tick ‘Highlight R function calls’, everything else is option. ‘Show syntax highlighting in console input’ can be nice if you work in the console occasionally, as it will color written code in the same way it does in you script. I like to be able to scroll further than my lowest line, so that I don’t always write at the bottom of my document, so I tick ‘Allow scroll past end of document’. Try these out and see how you like either. You can always change settings later on if you feel something doesn’t make sense in your workflow.</p>
+<p>Happy <code>R</code>’ing in a professional setup! :)</p>
+</div>
+<div id="code-folds-and-commenting" class="section level2">
+<h2><span class="header-section-number">2.3</span> Code folds and commenting</h2>
+<p>One last thing that really helps organizing your scripts is using what is called <em>code folds</em> in <code>R</code>. You can imagine them like titles or headings in a Word document. They subdivide your code into parts and let you browse through them more easily. You can also collapse code folds to hide them, which is great for large scripts, where you can easily loose track of where you did what after a while. Folds will show a small triangle next to the line number, which you can use to collapse or open that section. You can add code folds manually by using a <code>#</code> and then following it by at least four <code>-</code>, <code>=</code> or <code>#</code>. If you have more than one code fold, by clicking the arrow to the left of the fold, you can then hide the code between two sections easily:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># loading packages ----</span></a>
+<a class="sourceLine" id="cb9-2" title="2"></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb9-4" title="4"></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co"># loading data and checking ----</span></a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb9-8" title="8"></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="kw">str</span>(koala)</a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="kw">summary</span>(koala)</a>
+<a class="sourceLine" id="cb9-11" title="11"></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co"># subsetting ----</span></a>
+<a class="sourceLine" id="cb9-13" title="13"></a>
+<a class="sourceLine" id="cb9-14" title="14">subset1&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="st">  </span><span class="kw">select</span>(age, weight, size, color)</a>
+<a class="sourceLine" id="cb9-16" title="16"></a>
+<a class="sourceLine" id="cb9-17" title="17">subset2&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="st">  </span><span class="kw">select</span>(age, weight, size, color)</a>
+<a class="sourceLine" id="cb9-19" title="19"></a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="co"># modelling ----</span></a>
+<a class="sourceLine" id="cb9-21" title="21"></a>
+<a class="sourceLine" id="cb9-22" title="22">model_female&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>size, <span class="dt">data =</span> subset1)</a>
+<a class="sourceLine" id="cb9-23" title="23"></a>
+<a class="sourceLine" id="cb9-24" title="24">model_male&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>size, <span class="dt">data =</span> subset2)</a>
+<a class="sourceLine" id="cb9-25" title="25"></a>
+<a class="sourceLine" id="cb9-26" title="26">model_all&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>size<span class="op">*</span>sex, <span class="dt">data =</span> koala)</a>
+<a class="sourceLine" id="cb9-27" title="27"></a>
+<a class="sourceLine" id="cb9-28" title="28"><span class="co"># checking models ----</span></a>
+<a class="sourceLine" id="cb9-29" title="29"></a>
+<a class="sourceLine" id="cb9-30" title="30"><span class="kw">summary</span>(model_female)</a>
+<a class="sourceLine" id="cb9-31" title="31"></a>
+<a class="sourceLine" id="cb9-32" title="32"><span class="kw">summary</span>(model_male)</a>
+<a class="sourceLine" id="cb9-33" title="33"></a>
+<a class="sourceLine" id="cb9-34" title="34"><span class="kw">summary</span>(model_all)</a></code></pre></div>
+<p>Now that you have set up the code in this way, you could for example hide sections that you are not currently working on to not loose track of the important code that you’re editing or adding to. Your code might then look like this, if you’re e.g. currently working on creating models:</p>
+<p><img src="data/projects-doc/proj16.png" width="700" style="display: block; margin: auto;" /></p>
+<p>Some examples for valid code folds are e.g.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#### Section ####</span></a>
+<a class="sourceLine" id="cb10-2" title="2"></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="co"># Section ----</span></a>
+<a class="sourceLine" id="cb10-4" title="4"></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="co"># Section ====</span></a>
+<a class="sourceLine" id="cb10-6" title="6"></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="co">#####</span></a>
+<a class="sourceLine" id="cb10-8" title="8"></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="co"># Section ------------------</span></a>
+<a class="sourceLine" id="cb10-10" title="10"></a>
+<a class="sourceLine" id="cb10-11" title="11"><span class="co">## Section =======</span></a></code></pre></div>
+<p>Anything that has one <code>#</code> in front and at least four <code>#</code>, <code>-</code> or <code>=</code> will work. The easiest way to insert a code break in <em>R-Studio</em> though is to use the keyboard shortcut <code>CTRL+Shift+R</code>, which will open a windows where you can enter a title for the new fold. This fold will then look like those:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># Section -----------------------------------------------------------------</span></a></code></pre></div>
+<p>If you have a lot of fold, you can easily navigate through them by clicking the <em>Jump to</em> menu at toe bottom-left of your editor window:</p>
+<p><img src="data/projects-doc/proj17.png" width="700" style="display: block; margin: auto;" /></p>
+<p>Which will open a drop-down menu with the titles of all your folds. When you click one, you will jump to the line of code, where the selected fold starts. Great stuff right?</p>
+<p>The <code>#</code> is also used in <code>R</code> to include comments into your code. Anything that come after at least a single <code>#</code> is not run, when executing the lines of code selected. This can be useful to add some notes into your code, or exclude lines of code from your script that you don’t want to run, but still keep in the script:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># loading packages ----</span></a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="kw">library</span>(tidyverse) <span class="co">#whenever I open R-Studion, I need to run this line!</span></a>
+<a class="sourceLine" id="cb12-4" title="4"></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="co"># loading data and checking ----</span></a>
+<a class="sourceLine" id="cb12-6" title="6"></a>
+<a class="sourceLine" id="cb12-7" title="7">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb12-8" title="8"></a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="kw">str</span>(koala)</a>
+<a class="sourceLine" id="cb12-10" title="10"><span class="kw">summary</span>(koala)</a>
+<a class="sourceLine" id="cb12-11" title="11"></a>
+<a class="sourceLine" id="cb12-12" title="12"><span class="co"># subsetting ----</span></a>
+<a class="sourceLine" id="cb12-13" title="13"></a>
+<a class="sourceLine" id="cb12-14" title="14">subset1&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-15" title="15"><span class="st">  </span><span class="kw">select</span>(age, weight, size, color)</a>
+<a class="sourceLine" id="cb12-16" title="16"></a>
+<a class="sourceLine" id="cb12-17" title="17">subset2&lt;-koala<span class="op">%&gt;%</span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-18" title="18"><span class="st">  </span><span class="kw">select</span>(age, weight, size, color)</a>
+<a class="sourceLine" id="cb12-19" title="19"></a>
+<a class="sourceLine" id="cb12-20" title="20"><span class="co"># modelling ----</span></a>
+<a class="sourceLine" id="cb12-21" title="21"> </a>
+<a class="sourceLine" id="cb12-22" title="22">model_female&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>size, <span class="dt">data =</span> subset1) <span class="co">#I want to check if a seperate model of male and female  makes sense</span></a>
+<a class="sourceLine" id="cb12-23" title="23"></a>
+<a class="sourceLine" id="cb12-24" title="24"><span class="co">#model_male&lt;-lm(weight~size, data = subset2) #no need to run this one at the moment</span></a>
+<a class="sourceLine" id="cb12-25" title="25"></a>
+<a class="sourceLine" id="cb12-26" title="26">model_all&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>size<span class="op">*</span>sex, <span class="dt">data =</span> koala) <span class="co">#this is the overall model using the entire data</span></a>
+<a class="sourceLine" id="cb12-27" title="27"></a>
+<a class="sourceLine" id="cb12-28" title="28"><span class="co"># checking models ----</span></a>
+<a class="sourceLine" id="cb12-29" title="29"></a>
+<a class="sourceLine" id="cb12-30" title="30"><span class="kw">summary</span>(model_female)</a>
+<a class="sourceLine" id="cb12-31" title="31"></a>
+<a class="sourceLine" id="cb12-32" title="32"><span class="co">#summary(model_male)</span></a>
+<a class="sourceLine" id="cb12-33" title="33"></a>
+<a class="sourceLine" id="cb12-34" title="34"><span class="co">#summary(model_all)</span></a></code></pre></div>
+<p>If you add a <code>#</code> after some lines of code like this:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">model_female&lt;-<span class="kw">lm</span>(weight<span class="op">~</span>size, <span class="dt">data =</span> subset1) <span class="co">#I want to check if a seperate model of male and female  makes sense</span></a></code></pre></div>
+<p>It will act as a comment to your code. This cane be useful if you won’t be touching your code in a while but will come back to it later, to follow up on what you’ve done in the past. A <code>#</code> at the start of the line will ‘comment-out’ that line, which means it won’t run when executing your code.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="co">#model_male&lt;-lm(weight~size, data = subset2) #no need to run this one at the moment</span></a></code></pre></div>
+<p>The code will still remain in your script and you can un-comment it at any time. There are also keyboard shortcuts to comment and un-comment, which can make it easier to comment-out many lines at ones. First you select the lines of code with your mouse, then,</p>
+<ol style="list-style-type: decimal">
+<li>to comment use <code>CTRL+Shift+C</code></li>
+<li>to un-comment use <code>CTRL+Shift+C</code> again and the <code>#</code> will be removed.</li>
+</ol>
+<p>This is easier than clicking through your code sometimes. Nevertheless, it can only be used to ‘comment-out’ code, not to add comments at the end of code lines.</p>
+<p>I hope these few tips will help you when starting out with <code>R</code> or make for a smoother workflow if you are already using <code>R</code> for a while but did not know about these few minor improvements, that can speed up your coding experience a lot!</p>
+<p>Happy coding :)</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

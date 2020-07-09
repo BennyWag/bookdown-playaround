@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1594264230386.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2134172627",
+    "id" : "6A5FB0AB",
+    "lastKnownWriteTime" : 1593669175,
+    "last_content_update" : 1593669175,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/forest-ecology-R-book/02-dplyr_tut.Rmd",
+    "project_path" : "02-dplyr_tut.Rmd",
+    "properties" : {
+        "cursorPosition" : "0,1",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Calculating class area from raster | Intro to R for Forest Ecosystem Science</title>
+  <title>Chapter 9 Calculating class area from raster | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Calculating class area from raster | Intro to R for Forest Ecosystem Science" />
+  <meta property="og:title" content="Chapter 9 Calculating class area from raster | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Calculating class area from raster | Intro to R for Forest Ecosystem Science" />
+  <meta name="twitter:title" content="Chapter 9 Calculating class area from raster | Intro to R for Forest Ecosystem Science" />
   
   <meta name="twitter:description" content="Introductory R" />
   
@@ -49,13 +49,12 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,16 +63,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -82,9 +79,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -132,87 +129,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>1.1</b> Disclaimer</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>2</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
-<li class="chapter" data-level="2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#introducing-the-koala-dataset"><i class="fa fa-check"></i><b>2.1</b> Introducing the koala dataset</a></li>
-<li class="chapter" data-level="2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>2.2</b> Working with <code>dplyr</code></a><ul>
-<li class="chapter" data-level="2.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>2.2.1</b> select() and dplyr’s pipe</a></li>
-<li class="chapter" data-level="2.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>2.2.2</b> filter()</a></li>
-<li class="chapter" data-level="2.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>2.2.3</b> Challenge 1</a></li>
-<li class="chapter" data-level="2.2.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#group_by-and-summarise"><i class="fa fa-check"></i><b>2.2.4</b> group_by() and summarise()</a></li>
-<li class="chapter" data-level="2.2.5" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>2.2.5</b> Challenge 2</a></li>
-<li class="chapter" data-level="2.2.6" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#mutate"><i class="fa fa-check"></i><b>2.2.6</b> mutate()</a></li>
-<li class="chapter" data-level="2.2.7" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>2.2.7</b> Challenge 3</a></li>
-<li class="chapter" data-level="2.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>2.2.8</b> Solution to all challenges</a></li>
+<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a><ul>
+<li class="chapter" data-level="2.1" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#r-projects"><i class="fa fa-check"></i><b>2.1</b> R Projects</a></li>
+<li class="chapter" data-level="2.2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#setting-up-the-r-studio-user-interface"><i class="fa fa-check"></i><b>2.2</b> Setting up the R-Studio User interface</a></li>
+<li class="chapter" data-level="2.3" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#code-folds-and-commenting"><i class="fa fa-check"></i><b>2.3</b> Code folds and commenting</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>3</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
+<li class="chapter" data-level="3.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#introducing-the-koala-dataset"><i class="fa fa-check"></i><b>3.1</b> Introducing the koala dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>3.2</b> Working with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>3.2.1</b> select() and dplyr’s pipe</a></li>
+<li class="chapter" data-level="3.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>3.2.2</b> filter()</a></li>
+<li class="chapter" data-level="3.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>3.2.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="3.2.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#group_by-and-summarise"><i class="fa fa-check"></i><b>3.2.4</b> group_by() and summarise()</a></li>
+<li class="chapter" data-level="3.2.5" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>3.2.5</b> Challenge 2</a></li>
+<li class="chapter" data-level="3.2.6" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#mutate"><i class="fa fa-check"></i><b>3.2.6</b> mutate()</a></li>
+<li class="chapter" data-level="3.2.7" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>3.2.7</b> Challenge 3</a></li>
+<li class="chapter" data-level="3.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>3.2.8</b> Solution to all challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
-<li class="chapter" data-level="4" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>4</b> Introduction to linear models in R</a></li>
-<li class="chapter" data-level="5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>5</b> Working with spatial data in <code>R</code></a><ul>
-<li class="chapter" data-level="5.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>5.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="5.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>5.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Introduction to data visualization in <code>GGPLOT2</code></a></li>
+<li class="chapter" data-level="5" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>5</b> Introduction to linear models in R</a></li>
+<li class="chapter" data-level="6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>6</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>6.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>6.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>6.2.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>5.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="5.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>5.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="5.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>5.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>6.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>6.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="6.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>6.4.1</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>5.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="5.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>5.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="5.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>5.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>6.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="6.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>6.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="6.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>6.6.1</b> Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>5.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>5.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="5.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>5.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="5.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>5.7.3</b> Challenge 3</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>6</b> Functions, loops, and <code>apply</code></a><ul>
-<li class="chapter" data-level="6.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>6.2</b> Writing basic functions</a></li>
-<li class="chapter" data-level="6.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>6.3</b> Using <code>apply</code> functions</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>6.3.1</b> <code>apply</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>6.3.2</b> <code>sapply</code></a></li>
-<li class="chapter" data-level="6.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>6.3.3</b> <code>lapply</code></a></li>
-<li class="chapter" data-level="6.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>6.3.4</b> <code>mapply</code></a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>6.4</b> Loops</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>7</b> Spatial tools for forestry and ecological applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>7.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
-<li class="chapter" data-level="7.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>7.2</b> Working with LiDAR data in R</a></li>
-<li class="chapter" data-level="7.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>7.3</b> Step 1. Loading and visualizing pointclouds</a></li>
-<li class="chapter" data-level="7.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>7.4</b> Step 2. Computing a canopy height model</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>7.4.1</b> Ground detection and normalizing a point cloud</a></li>
-<li class="chapter" data-level="7.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>7.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="7.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.4.3</b> Challenge 1</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>7.5</b> Step 3. Individual tree segmentation</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>7.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="7.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.5.2</b> Challenge 2</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>7.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 3</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>7.7</b> Wrapping up</a></li>
-<li class="chapter" data-level="7.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>7.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="7.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="7.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="7.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>7.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="6.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>6.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>6.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="6.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>6.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="6.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>6.7.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>8</b> Calculating class area from raster</a><ul>
-<li class="chapter" data-level="8.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>8.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>8.1.1</b> Creating dummy data</a></li>
-<li class="chapter" data-level="8.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>8.1.2</b> Preparing the raster for area calculation</a></li>
-<li class="chapter" data-level="8.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>8.1.3</b> Compiling a comprehensive table</a></li>
+<li class="chapter" data-level="7" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>7</b> Functions, loops, and <code>apply</code></a><ul>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>7.2</b> Writing basic functions</a></li>
+<li class="chapter" data-level="7.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>7.3</b> Using <code>apply</code> functions</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>7.3.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>7.3.2</b> <code>sapply</code></a></li>
+<li class="chapter" data-level="7.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>7.3.3</b> <code>lapply</code></a></li>
+<li class="chapter" data-level="7.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>7.3.4</b> <code>mapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>7.4</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>8</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>8.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
+<li class="chapter" data-level="8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>8.2</b> Working with LiDAR data in R</a></li>
+<li class="chapter" data-level="8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>8.3</b> Step 1. Loading and visualizing pointclouds</a></li>
+<li class="chapter" data-level="8.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>8.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>8.4.1</b> Ground detection and normalizing a point cloud</a></li>
+<li class="chapter" data-level="8.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>8.4.2</b> Building the initial CHM</a></li>
+<li class="chapter" data-level="8.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>8.4.3</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>8.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>8.5.1</b> Delineating the crowns</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>8.5.2</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>8.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>8.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>8.7</b> Wrapping up</a></li>
+<li class="chapter" data-level="8.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>8.8</b> Solutions to the challenges</a><ul>
+<li class="chapter" data-level="8.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>8.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="8.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>8.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="8.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>8.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>9</b> Extracting raster fractions and area using a polygon mask</a><ul>
-<li class="chapter" data-level="9.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>9.1</b> Problem statement</a></li>
-<li class="chapter" data-level="9.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>9.2</b> Creating some dummy raster data</a></li>
-<li class="chapter" data-level="9.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>9.3</b> Create some reserves</a></li>
-<li class="chapter" data-level="9.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>9.4</b> Extracting data</a></li>
-<li class="chapter" data-level="9.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>9.5</b> Plotting the results</a></li>
+<li class="chapter" data-level="9" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>9</b> Calculating class area from raster</a><ul>
+<li class="chapter" data-level="9.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>9.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data"><i class="fa fa-check"></i><b>9.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>9.1.2</b> Preparing the raster for area calculation</a></li>
+<li class="chapter" data-level="9.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>9.1.3</b> Compiling a comprehensive table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>10</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="10.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>10.1</b> Problem statement</a></li>
+<li class="chapter" data-level="10.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>10.2</b> Creating some dummy raster data</a></li>
+<li class="chapter" data-level="10.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>10.3</b> Create some reserves</a></li>
+<li class="chapter" data-level="10.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>10.4</b> Extracting data</a></li>
+<li class="chapter" data-level="10.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>10.5</b> Plotting the results</a></li>
 </ul></li>
 </ul>
 
@@ -232,81 +234,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="calculating-class-area-from-raster" class="section level1">
-<h1><span class="header-section-number">Chapter 8</span> Calculating class area from raster</h1>
+<h1><span class="header-section-number">Chapter 9</span> Calculating class area from raster</h1>
 <div id="simple-area-and-area-fraction-calculations-on-a-classified-raster" class="section level2">
-<h2><span class="header-section-number">8.1</span> Simple area and area fraction calculations on a classified raster</h2>
+<h2><span class="header-section-number">9.1</span> Simple area and area fraction calculations on a classified raster</h2>
 <p>For this tutorial you will need to load the following packages:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="calculating-class-area-from-raster.html#cb271-1"></a><span class="kw">library</span>(raster)</span>
-<span id="cb271-2"><a href="calculating-class-area-from-raster.html#cb271-2"></a><span class="kw">library</span>(sf)</span>
-<span id="cb271-3"><a href="calculating-class-area-from-raster.html#cb271-3"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" title="1"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb272-2" title="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb272-3" title="3"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>You will often come across the task of extracting the area each of your raster classes occupies within your entire raster area. There is a simple way of doing this using <code>raster</code> and <code>dplyr</code>. The output will be a comprehensive table. First let’s create some dummy data to work with:</p>
 <div id="creating-dummy-data" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Creating dummy data</h3>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="calculating-class-area-from-raster.html#cb272-1"></a>x &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</span>
-<span id="cb272-2"><a href="calculating-class-area-from-raster.html#cb272-2"></a></span>
-<span id="cb272-3"><a href="calculating-class-area-from-raster.html#cb272-3"></a><span class="kw">res</span>(x)&lt;-<span class="dv">100</span> <span class="co"># we are using a resolution of 100 x 100 so that each pixel is 1ha in size</span></span>
-<span id="cb272-4"><a href="calculating-class-area-from-raster.html#cb272-4"></a></span>
-<span id="cb272-5"><a href="calculating-class-area-from-raster.html#cb272-5"></a><span class="co">#populate the raster with values</span></span>
-<span id="cb272-6"><a href="calculating-class-area-from-raster.html#cb272-6"></a></span>
-<span id="cb272-7"><a href="calculating-class-area-from-raster.html#cb272-7"></a><span class="kw">values</span>(x)&lt;-base<span class="op">::</span><span class="kw">sample</span>(<span class="dv">5</span>, <span class="kw">ncell</span>(x), <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="dv">35</span>))</span>
-<span id="cb272-8"><a href="calculating-class-area-from-raster.html#cb272-8"></a></span>
-<span id="cb272-9"><a href="calculating-class-area-from-raster.html#cb272-9"></a></span>
-<span id="cb272-10"><a href="calculating-class-area-from-raster.html#cb272-10"></a><span class="kw">plot</span>(x)</span></code></pre></div>
-<p><img src="06-calculating_raster_class_area_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<h3><span class="header-section-number">9.1.1</span> Creating dummy data</h3>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1">x &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb273-2" title="2"></a>
+<a class="sourceLine" id="cb273-3" title="3"><span class="kw">res</span>(x)&lt;-<span class="dv">100</span> <span class="co"># we are using a resolution of 100 x 100 so that each pixel is 1ha in size</span></a>
+<a class="sourceLine" id="cb273-4" title="4"></a>
+<a class="sourceLine" id="cb273-5" title="5"><span class="co">#populate the raster with values</span></a>
+<a class="sourceLine" id="cb273-6" title="6"></a>
+<a class="sourceLine" id="cb273-7" title="7"><span class="kw">values</span>(x)&lt;-base<span class="op">::</span><span class="kw">sample</span>(<span class="dv">5</span>, <span class="kw">ncell</span>(x), <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="dv">35</span>))</a>
+<a class="sourceLine" id="cb273-8" title="8"></a>
+<a class="sourceLine" id="cb273-9" title="9"></a>
+<a class="sourceLine" id="cb273-10" title="10"><span class="kw">plot</span>(x)</a></code></pre></div>
+<p><img src="07-calculating_raster_class_area_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Our raster now contains 5 classes that could e.g. be land-use types such as forest, infrastructure or pasture. We additionally gave each class a probability of occurrence so that we can double check of our calculated areas are correct. In total, our raster <code>x</code> has 410^{4} cells.</p>
 </div>
 <div id="preparing-the-raster-for-area-calculation" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Preparing the raster for area calculation</h3>
+<h3><span class="header-section-number">9.1.2</span> Preparing the raster for area calculation</h3>
 <p>To get area metrics, we need to transform the raster into a data frame:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="calculating-class-area-from-raster.html#cb273-1"></a>rast_df&lt;-x<span class="op">%&gt;%</span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> T, <span class="dt">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" title="1">rast_df&lt;-x<span class="op">%&gt;%</span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> T, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <p>To count each pixel, we can assign an extra column to this dataframe with an <code>ID</code> <code>1</code> to be able to tally all cells. Additionally, we are extracting the resolution of our raster as a variable to our environment to later calculate the area.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="calculating-class-area-from-raster.html#cb274-1"></a>rast_df<span class="op">$</span>ID&lt;-<span class="dv">1</span></span>
-<span id="cb274-2"><a href="calculating-class-area-from-raster.html#cb274-2"></a></span>
-<span id="cb274-3"><a href="calculating-class-area-from-raster.html#cb274-3"></a>reso&lt;-<span class="kw">res</span>(x)[<span class="dv">1</span>]</span>
-<span id="cb274-4"><a href="calculating-class-area-from-raster.html#cb274-4"></a></span>
-<span id="cb274-5"><a href="calculating-class-area-from-raster.html#cb274-5"></a><span class="kw">head</span>(rast_df)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1">rast_df<span class="op">$</span>ID&lt;-<span class="dv">1</span></a>
+<a class="sourceLine" id="cb275-2" title="2"></a>
+<a class="sourceLine" id="cb275-3" title="3">reso&lt;-<span class="kw">res</span>(x)[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb275-4" title="4"></a>
+<a class="sourceLine" id="cb275-5" title="5"><span class="kw">head</span>(rast_df)</a></code></pre></div>
 <pre><code>##       x    y layer ID
-## 1 -9950 9950     5  1
+## 1 -9950 9950     2  1
 ## 2 -9850 9950     2  1
-## 3 -9750 9950     5  1
-## 4 -9650 9950     5  1
-## 5 -9550 9950     4  1
+## 3 -9750 9950     3  1
+## 4 -9650 9950     2  1
+## 5 -9550 9950     2  1
 ## 6 -9450 9950     3  1</code></pre>
 <p>The <code>layer</code> column contains the class each pixel was assigned to. This will be universal for any raster you put in. <code>ID</code> is the same for each row, this is only needed in the next step.</p>
 </div>
 <div id="compiling-a-comprehensive-table" class="section level3">
-<h3><span class="header-section-number">8.1.3</span> Compiling a comprehensive table</h3>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="calculating-class-area-from-raster.html#cb276-1"></a>area&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></span>
-<span id="cb276-2"><a href="calculating-class-area-from-raster.html#cb276-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_ha =</span> (pixelsum<span class="op">*</span>reso<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10000</span>)<span class="op">%&gt;%</span></span>
-<span id="cb276-3"><a href="calculating-class-area-from-raster.html#cb276-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></span>
-<span id="cb276-4"><a href="calculating-class-area-from-raster.html#cb276-4"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="calculating-class-area-from-raster.html#cb278-1"></a>area</span></code></pre></div>
+<h3><span class="header-section-number">9.1.3</span> Compiling a comprehensive table</h3>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1">area&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb277-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_ha =</span> (pixelsum<span class="op">*</span>reso<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10000</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb277-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb277-4" title="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</a>
+<a class="sourceLine" id="cb277-5" title="5"></a>
+<a class="sourceLine" id="cb277-6" title="6">area</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 5
 ##   class pixelsum area_ha  sumA   per
 ##   &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     1     4062    4062 40000 10.2 
-## 2     2    12017   12017 40000 30.0 
-## 3     3     7998    7998 40000 20.0 
-## 4     4     2046    2046 40000  5.12
-## 5     5    13877   13877 40000 34.7</code></pre>
+## 1     1     4108    4108 40000 10.3 
+## 2     2    11886   11886 40000 29.7 
+## 3     3     7991    7991 40000 20.0 
+## 4     4     2083    2083 40000  5.21
+## 5     5    13932   13932 40000 34.8</code></pre>
 <p>And there we go. Each class has it’s <code>pixelsum</code> calculated, then using the sum we can calculate the area in ha (or else, here you can alternate the code). In this case the pixel sum matches our <code>area_ha</code> because one pixel is already of size 1 ha. We can change the code to e.g. calculate <code>area_km2</code>.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="calculating-class-area-from-raster.html#cb280-1"></a>area_km2&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></span>
-<span id="cb280-2"><a href="calculating-class-area-from-raster.html#cb280-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_km2 =</span> pixelsum<span class="op">/</span><span class="dv">100</span>)<span class="op">%&gt;%</span></span>
-<span id="cb280-3"><a href="calculating-class-area-from-raster.html#cb280-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></span>
-<span id="cb280-4"><a href="calculating-class-area-from-raster.html#cb280-4"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="calculating-class-area-from-raster.html#cb282-1"></a>area_km2</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">area_km2&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb279-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_km2 =</span> pixelsum<span class="op">/</span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb279-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb279-4" title="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</a>
+<a class="sourceLine" id="cb279-5" title="5"></a>
+<a class="sourceLine" id="cb279-6" title="6">area_km2</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 5
 ##   class pixelsum area_km2  sumA   per
 ##   &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     1     4062     40.6 40000 10.2 
-## 2     2    12017    120.  40000 30.0 
-## 3     3     7998     80.0 40000 20.0 
-## 4     4     2046     20.5 40000  5.12
-## 5     5    13877    139.  40000 34.7</code></pre>
+## 1     1     4108     41.1 40000 10.3 
+## 2     2    11886    119.  40000 29.7 
+## 3     3     7991     79.9 40000 20.0 
+## 4     4     2083     20.8 40000  5.21
+## 5     5    13932    139.  40000 34.8</code></pre>
 <p>Next we calculate the sum of all pixels (<code>sumA</code>) using <code>mutate()</code> to get the total raster area. This should in this case be the same as <code>ncell(x)</code> (40000). To derive the percentage of the entire each class occupies, we just need to divide the <code>pixelsum</code> of each class by the total sum and multiply by 100. This should match our probabilities we assigned for each class when filling the raster with values:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="calculating-class-area-from-raster.html#cb284-1"></a>area_km2<span class="op">$</span>per <span class="op">==</span><span class="st"> </span><span class="kw">summary</span>(<span class="kw">as.factor</span>(<span class="kw">values</span>(x)))<span class="op">/</span><span class="dv">400</span></span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1">area_km2<span class="op">$</span>per <span class="op">==</span><span class="st"> </span><span class="kw">summary</span>(<span class="kw">as.factor</span>(<span class="kw">values</span>(x)))<span class="op">/</span><span class="dv">400</span></a></code></pre></div>
 <pre><code>##    1    2    3    4    5 
 ## TRUE TRUE TRUE TRUE TRUE</code></pre>
 <p>Enjoy trying it out on your own raster with some actual class ares!</p>
