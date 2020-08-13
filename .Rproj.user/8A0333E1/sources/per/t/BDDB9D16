@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597304670694.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2507139003",
+    "id" : "BDDB9D16",
+    "lastKnownWriteTime" : 1597304779,
+    "last_content_update" : 1597304779798,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/forest-ecology-R-book/04-prac_ggplot_glm.Rmd",
+    "project_path" : "04-prac_ggplot_glm.Rmd",
+    "properties" : {
+        "cursorPosition" : "6,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

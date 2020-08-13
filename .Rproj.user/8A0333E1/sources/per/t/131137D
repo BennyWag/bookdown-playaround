@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1597304917552.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2204064386",
+    "id" : "131137D",
+    "lastKnownWriteTime" : 1597304578,
+    "last_content_update" : 1597304578,
+    "path" : "D:/OneDrive/OneDrive - The University of Melbourne/Github/forest-ecology-R-book/02-dataset_description.Rmd",
+    "project_path" : "02-dataset_description.Rmd",
+    "properties" : {
+        "cursorPosition" : "3,47",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
