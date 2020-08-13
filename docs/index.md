@@ -16,6 +16,8 @@ Nevertheless, most tutorials can be useful for anyone starting out in `R` or loo
 
 We currently cover:
 
+- Setting up *RStudio*, working with projects and using code folds
+- A brief description on data and variables types
 - Introductions to using the `tidyverse` packages `dplyr` and `ggplot2`, for easy data manipulation and visualization
 - An Introduction to using spatial data in R with both the `sf` and `raster` packages.
 - Introduction to basic linear and generalized linear modeling in `R`
