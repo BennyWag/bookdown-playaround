@@ -262,7 +262,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mathematical-operations" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Mathematical operations</h3>
 <p>A quick reminder about mathematical and conditional operators in R:</p>
-<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 3.6.3</code></pre>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -373,49 +372,42 @@ Not equal to
 <h2><span class="header-section-number">7.2</span> What is an R function?</h2>
 <p>Functions in R take an input value, run a chunk of code, and generate an output. R packages include numerous functions that can do nearly anything you desire, but research often requires specific processes or sequences of commands designed specifically to work with your data structure. You can write your own functions in R to perform these tasks.</p>
 <p>Here is a very simple function:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">fun1 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
-<a class="sourceLine" id="cb190-2" title="2">  a <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb190-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">fun1 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb189-2" title="2">  a <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb189-3" title="3">}</a></code></pre></div>
 <p>Here, <code>a</code> and <code>b</code> are identified as the required input variables. The code written within the brackets describes the mathematical operation to be applied to the input variables.</p>
 <p>Let’s run the function on some numbers:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">fun1</span>(<span class="dt">a =</span> <span class="dv">7</span>, <span class="dt">b =</span> <span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">fun1</span>(<span class="dt">a =</span> <span class="dv">7</span>, <span class="dt">b =</span> <span class="dv">12</span>)</a></code></pre></div>
 <pre><code>## [1] 19</code></pre>
 <p>A function can be applied to a vector of inputs. In this scenario, the function will be applied to each pair of values in the vector sequence:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">vals_a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb193-2" title="2">vals_b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb193-3" title="3"></a>
-<a class="sourceLine" id="cb193-4" title="4"><span class="kw">fun1</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> vals_b)</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">vals_a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb192-2" title="2">vals_b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb192-3" title="3"></a>
+<a class="sourceLine" id="cb192-4" title="4"><span class="kw">fun1</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> vals_b)</a></code></pre></div>
 <pre><code>## [1] 6 8 4</code></pre>
 <p>User defined functions can include as many variables as you want, and the inputs can even be labeled with words:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">fun2 &lt;-<span class="st"> </span><span class="cf">function</span> (length, width, height){</a>
-<a class="sourceLine" id="cb195-2" title="2">  length <span class="op">*</span><span class="st"> </span>width <span class="op">*</span><span class="st"> </span>height</a>
-<a class="sourceLine" id="cb195-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">fun2 &lt;-<span class="st"> </span><span class="cf">function</span> (length, width, height){</a>
+<a class="sourceLine" id="cb194-2" title="2">  length <span class="op">*</span><span class="st"> </span>width <span class="op">*</span><span class="st"> </span>height</a>
+<a class="sourceLine" id="cb194-3" title="3">}</a></code></pre></div>
 <p>When executing a function, you don’t need to type up the variable names, but they should be in the correct order.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="kw">fun2</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">fun2</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>)</a></code></pre></div>
 <pre><code>## [1] 162</code></pre>
 </div>
 <div id="nesting-functions" class="section level2">
 <h2><span class="header-section-number">7.3</span> Nesting functions</h2>
 <p>Functions can also include other functions, which is particularly useful in the context of repeating complex data analyses. Here is a basic example:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">fun3 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
-<a class="sourceLine" id="cb198-2" title="2">  <span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb198-3" title="3">}</a>
-<a class="sourceLine" id="cb198-4" title="4"></a>
-<a class="sourceLine" id="cb198-5" title="5"></a>
-<a class="sourceLine" id="cb198-6" title="6"><span class="kw">fun3</span>(vals_a, vals_b)</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">fun3 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb197-2" title="2">  <span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb197-3" title="3">}</a>
+<a class="sourceLine" id="cb197-4" title="4"></a>
+<a class="sourceLine" id="cb197-5" title="5"></a>
+<a class="sourceLine" id="cb197-6" title="6"><span class="kw">fun3</span>(vals_a, vals_b)</a></code></pre></div>
 <pre><code>## [1] 6 5 7</code></pre>
 <p>It is important to note that in this situation, the internal function (<code>mean()</code>) takes a vector of input values. This function will calculate the mean of the <code>vals_a</code> vector and then add this to each separate value of <code>vals_b</code>.</p>
 <p>This can be very useful, but it’s critical that you know exactly how your function processes input values or you may run into problems!</p>
 <div id="some-basic-built-in-mathematical-functions" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Some basic built-in mathematical functions</h3>
 <p>Here are a base R functions that might be useful (most are self explanatory!):</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">Function &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mean()&quot;</span>, <span class="st">&quot;max()&quot;</span>, <span class="st">&quot;min()&quot;</span>, <span class="st">&quot;median()&quot;</span>, <span class="st">&quot;sum()&quot;</span>, <span class="st">&quot;var()&quot;</span>, <span class="st">&quot;cor()&quot;</span>, <span class="st">&quot;sd()&quot;</span>)</a>
-<a class="sourceLine" id="cb200-2" title="2">Description &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Maximum value&quot;</span>, <span class="st">&quot;Minimum value&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Sum&quot;</span>, <span class="st">&quot;Variance&quot;</span>, <span class="st">&quot;Correlation&quot;</span>,  <span class="st">&quot;Standard deviation&quot;</span>)</a>
-<a class="sourceLine" id="cb200-3" title="3">tab1 &lt;-<span class="st"> </span><span class="kw">cbind</span>(Function, Description)</a>
-<a class="sourceLine" id="cb200-4" title="4"></a>
-<a class="sourceLine" id="cb200-5" title="5"></a>
-<a class="sourceLine" id="cb200-6" title="6"><span class="kw">kable</span>(tab1) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb200-7" title="7"><span class="st">   </span><span class="kw">kable_styling</span>()</a></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -499,96 +491,99 @@ Standard deviation
 <div id="assigning-variables-within-functions" class="section level2">
 <h2><span class="header-section-number">7.4</span> Assigning variables within functions</h2>
 <p>In some more complex analyses, the nested functions may generate data that needs to be stored as variables so they can be used as input for the next process. Here is a function that calculates the mean of our a values, adds b, and then squares the value calculated in the first step.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
-<a class="sourceLine" id="cb201-2" title="2">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb201-3" title="3">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb201-4" title="4">}</a>
-<a class="sourceLine" id="cb201-5" title="5"></a>
-<a class="sourceLine" id="cb201-6" title="6"></a>
-<a class="sourceLine" id="cb201-7" title="7">output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb201-8" title="8">output</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb199-2" title="2">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb199-3" title="3">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb199-4" title="4">}</a>
+<a class="sourceLine" id="cb199-5" title="5"></a>
+<a class="sourceLine" id="cb199-6" title="6"></a>
+<a class="sourceLine" id="cb199-7" title="7">output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb199-8" title="8">output</a></code></pre></div>
 <pre><code>## [1] 49</code></pre>
 </div>
 <div id="challenge-1-2" class="section level2">
 <h2><span class="header-section-number">7.5</span> Challenge 1</h2>
-<p>Write a function that identifies the median value of a, adds the minimum value of a to the median value, and then calculates the square root of that value.</p>
-<p>Execute the function on this vector: a &lt;- c(1, 3, 4, 2, 8, 10, 3, 8)</p>
+<p><strong>Write a function that identifies the median value of a, adds the minimum value of a to the median value, and then calculates the square root of that value.</strong></p>
+<p>Execute the function on this vector: <code>a &lt;- c(1, 3, 4, 2, 8, 10, 3, 8)</code></p>
 </div>
 <div id="using-return" class="section level2">
 <h2><span class="header-section-number">7.6</span> Using <code>return()</code></h2>
 <p>If your function assigns multiple variables, you can use <code>return()</code> to determine the data that is output from the function. This can be useful if your function includes writing a data set, or includes another process that is not intended to return anything to R as well as some process intended to return data to the R environment.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="co">#Let&#39;s see what happens without using the return() function</span></a>
-<a class="sourceLine" id="cb203-2" title="2">fun5 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
-<a class="sourceLine" id="cb203-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb203-4" title="4">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb203-5" title="5">  <span class="kw">write.csv</span>(sqval, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb203-6" title="6">}</a></code></pre></div>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1">output &lt;-<span class="st"> </span><span class="kw">fun5</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb204-2" title="2">output</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1"><span class="co">#Let&#39;s see what happens without using the return() function</span></a>
+<a class="sourceLine" id="cb201-2" title="2">fun5 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb201-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb201-4" title="4">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb201-5" title="5">  <span class="kw">write.csv</span>(sqval, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb201-6" title="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1">output &lt;-<span class="st"> </span><span class="kw">fun5</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb202-2" title="2">output</a></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Our output here is NULL because the default output for a function will come from the last command within the function. Here, <code>write.csv()</code> does not produce data to be returned to R. If we add <code>return()</code>, our function will write the .csv and also return the data we want into the environment:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1"><span class="co">#Now let&#39;s add return()</span></a>
-<a class="sourceLine" id="cb206-2" title="2">fun6 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
-<a class="sourceLine" id="cb206-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
-<a class="sourceLine" id="cb206-4" title="4">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb206-5" title="5">  <span class="kw">write.csv</span>(sqval, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb206-6" title="6">  <span class="kw">return</span>(sqval)</a>
-<a class="sourceLine" id="cb206-7" title="7">}</a>
-<a class="sourceLine" id="cb206-8" title="8"></a>
-<a class="sourceLine" id="cb206-9" title="9"></a>
-<a class="sourceLine" id="cb206-10" title="10">output &lt;-<span class="st"> </span><span class="kw">fun6</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb206-11" title="11">output</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="co">#Now let&#39;s add return()</span></a>
+<a class="sourceLine" id="cb204-2" title="2">fun6 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb204-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb204-4" title="4">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb204-5" title="5">  <span class="kw">write.csv</span>(sqval, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb204-6" title="6">  <span class="kw">return</span>(sqval)</a>
+<a class="sourceLine" id="cb204-7" title="7">}</a>
+<a class="sourceLine" id="cb204-8" title="8"></a>
+<a class="sourceLine" id="cb204-9" title="9"></a>
+<a class="sourceLine" id="cb204-10" title="10">output &lt;-<span class="st"> </span><span class="kw">fun6</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb204-11" title="11">output</a></code></pre></div>
 <pre><code>## [1] 49</code></pre>
 <p>Much better!</p>
 </div>
 <div id="challenge-2-2" class="section level2">
 <h2><span class="header-section-number">7.7</span> Challenge 2</h2>
-<p>Write a function for two vectors a and b that:</p>
+<p><strong>Write a function for two vectors a and b that:</strong></p>
 <ol style="list-style-type: decimal">
 <li>Calculates the sum of the means of a and b and assigns this value to a variable “m”</li>
 <li>Calculates m to the power of 7 and assgins this value to a variable “s”</li>
 <li>Removes “m” from the environment (Hint: <code>rm()</code>)</li>
 <li>Returns the value of “s”</li>
 </ol>
+<p>Execute the function on the following vectors:</p>
+<p>a &lt;- c(7, 2, 4)
+b &lt;- c(20, 3, 5)</p>
 </div>
 <div id="solutions-to-challenges" class="section level2">
 <h2><span class="header-section-number">7.8</span> Solutions to challenges</h2>
 <div id="challenge-1-3" class="section level3">
 <h3><span class="header-section-number">7.8.1</span> Challenge 1</h3>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb208-2" title="2"></a>
-<a class="sourceLine" id="cb208-3" title="3"><span class="co">#One way:</span></a>
-<a class="sourceLine" id="cb208-4" title="4"></a>
-<a class="sourceLine" id="cb208-5" title="5">challenge1a &lt;-<span class="st"> </span><span class="cf">function</span>(a) {</a>
-<a class="sourceLine" id="cb208-6" title="6">  medval &lt;-<span class="st"> </span><span class="kw">median</span>(a)</a>
-<a class="sourceLine" id="cb208-7" title="7">  minval &lt;-<span class="st"> </span><span class="kw">min</span>(a)</a>
-<a class="sourceLine" id="cb208-8" title="8">  (medval <span class="op">+</span><span class="st"> </span>minval)<span class="op">^-</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb208-9" title="9">}</a>
-<a class="sourceLine" id="cb208-10" title="10"></a>
-<a class="sourceLine" id="cb208-11" title="11"><span class="kw">challenge1a</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb206-2" title="2"></a>
+<a class="sourceLine" id="cb206-3" title="3"><span class="co">#One way:</span></a>
+<a class="sourceLine" id="cb206-4" title="4"></a>
+<a class="sourceLine" id="cb206-5" title="5">challenge1a &lt;-<span class="st"> </span><span class="cf">function</span>(a) {</a>
+<a class="sourceLine" id="cb206-6" title="6">  medval &lt;-<span class="st"> </span><span class="kw">median</span>(a)</a>
+<a class="sourceLine" id="cb206-7" title="7">  minval &lt;-<span class="st"> </span><span class="kw">min</span>(a)</a>
+<a class="sourceLine" id="cb206-8" title="8">  (medval <span class="op">+</span><span class="st"> </span>minval)<span class="op">^-</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb206-9" title="9">}</a>
+<a class="sourceLine" id="cb206-10" title="10"></a>
+<a class="sourceLine" id="cb206-11" title="11"><span class="kw">challenge1a</span>(a)</a></code></pre></div>
 <pre><code>## [1] 0.04938272</code></pre>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1"><span class="co">#Even simpler:</span></a>
-<a class="sourceLine" id="cb210-2" title="2"></a>
-<a class="sourceLine" id="cb210-3" title="3">challenge1b &lt;-<span class="st"> </span><span class="cf">function</span>(a) {</a>
-<a class="sourceLine" id="cb210-4" title="4">  (<span class="kw">median</span>(a) <span class="op">+</span><span class="st"> </span><span class="kw">min</span>(a))<span class="op">^-</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb210-5" title="5">}</a>
-<a class="sourceLine" id="cb210-6" title="6"></a>
-<a class="sourceLine" id="cb210-7" title="7"><span class="kw">challenge1b</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1"><span class="co">#Even simpler:</span></a>
+<a class="sourceLine" id="cb208-2" title="2"></a>
+<a class="sourceLine" id="cb208-3" title="3">challenge1b &lt;-<span class="st"> </span><span class="cf">function</span>(a) {</a>
+<a class="sourceLine" id="cb208-4" title="4">  (<span class="kw">median</span>(a) <span class="op">+</span><span class="st"> </span><span class="kw">min</span>(a))<span class="op">^-</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb208-5" title="5">}</a>
+<a class="sourceLine" id="cb208-6" title="6"></a>
+<a class="sourceLine" id="cb208-7" title="7"><span class="kw">challenge1b</span>(a)</a></code></pre></div>
 <pre><code>## [1] 0.04938272</code></pre>
 </div>
 <div id="challenge-2-3" class="section level3">
 <h3><span class="header-section-number">7.8.2</span> Challenge 2</h3>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb212-2" title="2">b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">3</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb212-3" title="3"></a>
-<a class="sourceLine" id="cb212-4" title="4">challenge2 &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {</a>
-<a class="sourceLine" id="cb212-5" title="5">  m &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span><span class="kw">mean</span>(b)</a>
-<a class="sourceLine" id="cb212-6" title="6">  s &lt;-<span class="st"> </span>m<span class="op">^</span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb212-7" title="7">  <span class="kw">rm</span>(m)</a>
-<a class="sourceLine" id="cb212-8" title="8">  <span class="kw">return</span>(s)</a>
-<a class="sourceLine" id="cb212-9" title="9">}</a>
-<a class="sourceLine" id="cb212-10" title="10"></a>
-<a class="sourceLine" id="cb212-11" title="11"><span class="kw">challenge2</span>(a, b)</a></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb210-2" title="2">b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">3</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb210-3" title="3"></a>
+<a class="sourceLine" id="cb210-4" title="4">challenge2 &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {</a>
+<a class="sourceLine" id="cb210-5" title="5">  m &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span><span class="kw">mean</span>(b)</a>
+<a class="sourceLine" id="cb210-6" title="6">  s &lt;-<span class="st"> </span>m<span class="op">^</span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb210-7" title="7">  <span class="kw">rm</span>(m)</a>
+<a class="sourceLine" id="cb210-8" title="8">  <span class="kw">return</span>(s)</a>
+<a class="sourceLine" id="cb210-9" title="9">}</a>
+<a class="sourceLine" id="cb210-10" title="10"></a>
+<a class="sourceLine" id="cb210-11" title="11"><span class="kw">challenge2</span>(a, b)</a></code></pre></div>
 <pre><code>## [1] 89050880</code></pre>
 
 </div>

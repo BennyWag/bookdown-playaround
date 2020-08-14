@@ -257,39 +257,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simple-area-and-area-fraction-calculations-on-a-classified-raster" class="section level2">
 <h2><span class="header-section-number">11.1</span> Simple area and area fraction calculations on a classified raster</h2>
 <p>For this tutorial you will need to load the following packages:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb345-2" title="2"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb345-3" title="3"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb343-2" title="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb343-3" title="3"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>You will often come across the task of extracting the area each of your raster classes occupies within your entire raster area. There is a simple way of doing this using <code>raster</code> and <code>dplyr</code>. The output will be a comprehensive table. First let’s create some dummy data to work with:</p>
 <div id="creating-dummy-data-1" class="section level3">
 <h3><span class="header-section-number">11.1.1</span> Creating dummy data</h3>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1">x &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb346-2" title="2"></a>
-<a class="sourceLine" id="cb346-3" title="3"><span class="kw">res</span>(x)&lt;-<span class="dv">100</span> <span class="co"># we are using a resolution of 100 x 100 so that each pixel is 1ha in size</span></a>
-<a class="sourceLine" id="cb346-4" title="4"></a>
-<a class="sourceLine" id="cb346-5" title="5"><span class="co">#populate the raster with values</span></a>
-<a class="sourceLine" id="cb346-6" title="6"></a>
-<a class="sourceLine" id="cb346-7" title="7"><span class="kw">values</span>(x)&lt;-base<span class="op">::</span><span class="kw">sample</span>(<span class="dv">5</span>, <span class="kw">ncell</span>(x), <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="dv">35</span>))</a>
-<a class="sourceLine" id="cb346-8" title="8"></a>
-<a class="sourceLine" id="cb346-9" title="9"></a>
-<a class="sourceLine" id="cb346-10" title="10"><span class="kw">plot</span>(x)</a></code></pre></div>
-<p><img src="09-calculating_raster_class_area_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1">x &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb344-2" title="2"></a>
+<a class="sourceLine" id="cb344-3" title="3"><span class="kw">res</span>(x)&lt;-<span class="dv">100</span> <span class="co"># we are using a resolution of 100 x 100 so that each pixel is 1ha in size</span></a>
+<a class="sourceLine" id="cb344-4" title="4"></a>
+<a class="sourceLine" id="cb344-5" title="5"><span class="co">#populate the raster with values</span></a>
+<a class="sourceLine" id="cb344-6" title="6"></a>
+<a class="sourceLine" id="cb344-7" title="7"><span class="kw">values</span>(x)&lt;-base<span class="op">::</span><span class="kw">sample</span>(<span class="dv">5</span>, <span class="kw">ncell</span>(x), <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">20</span>,<span class="dv">5</span>,<span class="dv">35</span>))</a>
+<a class="sourceLine" id="cb344-8" title="8"></a>
+<a class="sourceLine" id="cb344-9" title="9"></a>
+<a class="sourceLine" id="cb344-10" title="10"><span class="kw">plot</span>(x)</a></code></pre></div>
+<p><img src="10-calculating_raster_class_area_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Our raster now contains 5 classes that could e.g. be land-use types such as forest, infrastructure or pasture. We additionally gave each class a probability of occurrence so that we can double check of our calculated areas are correct. In total, our raster <code>x</code> has 410^{4} cells.</p>
 </div>
 <div id="preparing-the-raster-for-area-calculation" class="section level3">
 <h3><span class="header-section-number">11.1.2</span> Preparing the raster for area calculation</h3>
 <p>To get area metrics, we need to transform the raster into a data frame:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1">rast_df&lt;-x<span class="op">%&gt;%</span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> T, <span class="dt">na.rm =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1">rast_df&lt;-x<span class="op">%&gt;%</span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> T, <span class="dt">na.rm =</span> T)</a></code></pre></div>
 <p>To count each pixel, we can assign an extra column to this dataframe with an <code>ID</code> <code>1</code> to be able to tally all cells. Additionally, we are extracting the resolution of our raster as a variable to our environment to later calculate the area.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" title="1">rast_df<span class="op">$</span>ID&lt;-<span class="dv">1</span></a>
-<a class="sourceLine" id="cb348-2" title="2"></a>
-<a class="sourceLine" id="cb348-3" title="3">reso&lt;-<span class="kw">res</span>(x)[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb348-4" title="4"></a>
-<a class="sourceLine" id="cb348-5" title="5"><span class="kw">head</span>(rast_df)</a></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1">rast_df<span class="op">$</span>ID&lt;-<span class="dv">1</span></a>
+<a class="sourceLine" id="cb346-2" title="2"></a>
+<a class="sourceLine" id="cb346-3" title="3">reso&lt;-<span class="kw">res</span>(x)[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb346-4" title="4"></a>
+<a class="sourceLine" id="cb346-5" title="5"><span class="kw">head</span>(rast_df)</a></code></pre></div>
 <pre><code>##       x    y layer ID
 ## 1 -9950 9950     1  1
-## 2 -9850 9950     3  1
-## 3 -9750 9950     3  1
+## 2 -9850 9950     2  1
+## 3 -9750 9950     5  1
 ## 4 -9650 9950     5  1
 ## 5 -9550 9950     5  1
 ## 6 -9450 9950     2  1</code></pre>
@@ -297,37 +297,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="compiling-a-comprehensive-table" class="section level3">
 <h3><span class="header-section-number">11.1.3</span> Compiling a comprehensive table</h3>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1">area&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb350-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_ha =</span> (pixelsum<span class="op">*</span>reso<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10000</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb350-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb350-4" title="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</a>
-<a class="sourceLine" id="cb350-5" title="5"></a>
-<a class="sourceLine" id="cb350-6" title="6">area</a></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" title="1">area&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_ha =</span> (pixelsum<span class="op">*</span>reso<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10000</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb348-4" title="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</a>
+<a class="sourceLine" id="cb348-5" title="5"></a>
+<a class="sourceLine" id="cb348-6" title="6">area</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 5
 ##   class pixelsum area_ha  sumA   per
 ##   &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     1     4061    4061 40000 10.2 
-## 2     2    11955   11955 40000 29.9 
-## 3     3     7966    7966 40000 19.9 
-## 4     4     1945    1945 40000  4.86
-## 5     5    14073   14073 40000 35.2</code></pre>
+## 1     1     3954    3954 40000  9.88
+## 2     2    11873   11873 40000 29.7 
+## 3     3     8046    8046 40000 20.1 
+## 4     4     2011    2011 40000  5.03
+## 5     5    14116   14116 40000 35.3</code></pre>
 <p>And there we go. Each class has it’s <code>pixelsum</code> calculated, then using the sum we can calculate the area in ha (or else, here you can alternate the code). In this case the pixel sum matches our <code>area_ha</code> because one pixel is already of size 1 ha. We can change the code to e.g. calculate <code>area_km2</code>.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1">area_km2&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb352-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_km2 =</span> pixelsum<span class="op">/</span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb352-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb352-4" title="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</a>
-<a class="sourceLine" id="cb352-5" title="5"></a>
-<a class="sourceLine" id="cb352-6" title="6">area_km2</a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1">area_km2&lt;-rast_df<span class="op">%&gt;%</span><span class="kw">group_by</span>(layer)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb350-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">area_km2 =</span> pixelsum<span class="op">/</span><span class="dv">100</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb350-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb350-4" title="4"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">class =</span> layer)</a>
+<a class="sourceLine" id="cb350-5" title="5"></a>
+<a class="sourceLine" id="cb350-6" title="6">area_km2</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 5
 ##   class pixelsum area_km2  sumA   per
 ##   &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1     1     4061     40.6 40000 10.2 
-## 2     2    11955    120.  40000 29.9 
-## 3     3     7966     79.7 40000 19.9 
-## 4     4     1945     19.4 40000  4.86
-## 5     5    14073    141.  40000 35.2</code></pre>
+## 1     1     3954     39.5 40000  9.88
+## 2     2    11873    119.  40000 29.7 
+## 3     3     8046     80.5 40000 20.1 
+## 4     4     2011     20.1 40000  5.03
+## 5     5    14116    141.  40000 35.3</code></pre>
 <p>Next we calculate the sum of all pixels (<code>sumA</code>) using <code>mutate()</code> to get the total raster area. This should in this case be the same as <code>ncell(x)</code> (40000). To derive the percentage of the entire each class occupies, we just need to divide the <code>pixelsum</code> of each class by the total sum and multiply by 100. This should match our probabilities we assigned for each class when filling the raster with values:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">area_km2<span class="op">$</span>per <span class="op">==</span><span class="st"> </span><span class="kw">summary</span>(<span class="kw">as.factor</span>(<span class="kw">values</span>(x)))<span class="op">/</span><span class="dv">400</span></a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1">area_km2<span class="op">$</span>per <span class="op">==</span><span class="st"> </span><span class="kw">summary</span>(<span class="kw">as.factor</span>(<span class="kw">values</span>(x)))<span class="op">/</span><span class="dv">400</span></a></code></pre></div>
 <pre><code>##    1    2    3    4    5 
 ## TRUE TRUE TRUE TRUE TRUE</code></pre>
 <p>Enjoy trying it out on your own raster with some actual class ares!</p>

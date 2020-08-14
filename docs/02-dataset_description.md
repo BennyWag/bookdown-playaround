@@ -284,10 +284,10 @@ summary(as.factor(koala$good_bad))
 
 ```
 ## evil good 
-##    1  241
+##    4  238
 ```
 
-1 of our koalas are evil :(
+4 of our koalas are evil :(
 
 There are other *variable type*s you will encounter, such as `dates`, or `logicals` (`TRUE` and `FALSE`), but we won't go into more detail here. You're already all set to dive into data manipulation and visualization using this data set now :)
 
@@ -391,7 +391,7 @@ summary(koala_states_min$sex)
 
 ```
 ## female   male 
-##    139    103
+##    125    117
 ```
 
 The weight depends on the sex and where the animal lives. Using a nested `ifelse()` statement will help us, to make assigning weights conditional on their sex:
@@ -527,7 +527,7 @@ mean(koala_states_min$age)
 ```
 
 ```
-## [1] 6.421488
+## [1] 6.041322
 ```
 
 ```r

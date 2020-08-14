@@ -11,11 +11,6 @@ This section will introduce basic function structure and show you how to write y
 
 A quick reminder about mathematical and conditional operators in R:
 
-
-```
-## Warning: package 'kableExtra' was built under R version 3.6.3
-```
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
@@ -161,17 +156,6 @@ This can be very useful, but it's critical that you know exactly how your functi
 
 Here are a base R functions that might be useful (most are self explanatory!):
 
-
-```r
-Function <- c("mean()", "max()", "min()", "median()", "sum()", "var()", "cor()", "sd()")
-Description <- c("Mean", "Maximum value", "Minimum value", "Median", "Sum", "Variance", "Correlation",  "Standard deviation")
-tab1 <- cbind(Function, Description)
-
-
-kable(tab1) %>%
-   kable_styling()
-```
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
@@ -239,9 +223,9 @@ output
 
 ## Challenge 1
 
-Write a function that identifies the median value of a, adds the minimum value of a to the median value, and then calculates the square root of that value.
+**Write a function that identifies the median value of a, adds the minimum value of a to the median value, and then calculates the square root of that value.**
 
-Execute the function on this vector: a <- c(1, 3, 4, 2, 8, 10, 3, 8)
+Execute the function on this vector: `a <- c(1, 3, 4, 2, 8, 10, 3, 8)`
 
 ## Using `return()`
 
@@ -293,12 +277,17 @@ Much better!
 
 ## Challenge 2
 
-Write a function for two vectors a and b that:
+**Write a function for two vectors a and b that:**
 
 1. Calculates the sum of the means of a and b and assigns this value to a variable "m"
 2. Calculates m to the power of 7 and assgins this value to a variable "s"
 3. Removes "m" from the environment (Hint: `rm()`) 
 4. Returns the value of "s"
+
+Execute the function on the following vectors:
+
+a <- c(7, 2, 4)
+b <- c(20, 3, 5)
 
 
 ## Solutions to challenges

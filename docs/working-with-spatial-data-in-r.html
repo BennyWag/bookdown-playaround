@@ -255,19 +255,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="working-with-spatial-data-in-r" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Working with spatial data in <code>R</code></h1>
 <p>Many of you will be familiar with using spatial data such as vector data in form of shapefiles or raster data in GIS software, which can handle these files intuitively. Nevertheless, GIS do have some disadvantages when it comes to either large data sets or automation processes. <code>R</code> offers a full integration of spatial tools and references such as <strong>GDAL</strong> or <strong>PROJ</strong> and some great packages to deal with this data seamlessly. Today we are going to learn how to use the package <code>sf</code> and have a brief detour towards raster data in <code>R</code>. You are going to need to install the following packages for this tutorial:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;sf&#39;</span>, <span class="st">&#39;raster&#39;</span>, <span class="st">&#39;viridis&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;sf&#39;</span>, <span class="st">&#39;raster&#39;</span>, <span class="st">&#39;viridis&#39;</span>))</a></code></pre></div>
 <p>And then call the packages:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb215-2" title="2"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb215-3" title="3"><span class="kw">library</span>(viridis)</a>
-<a class="sourceLine" id="cb215-4" title="4"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb213-2" title="2"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb213-3" title="3"><span class="kw">library</span>(viridis)</a>
+<a class="sourceLine" id="cb213-4" title="4"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>We will be working on a dataset of koala observations, that you can download <a href="https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1">here</a>, as well as a basic administrative Areas shapefile of Australia, which you can find <a href="https://www.dropbox.com/s/7edsxu5eezrzrqu/Australia.rar?dl=1">here</a>. For the last part we will be looking at rasters, with a digital elevation model (DEM) file as example. You can find it for download <a href="https://www.dropbox.com/s/u2j6a73t7nv0lww/DEM.tif?dl=0">here</a>. Please make sure these are stored within a <code>data/</code> folder in an <code>R</code> project (or working directory).</p>
 <div id="transforming-a-dataset-into-an-sf-object" class="section level2">
 <h2><span class="header-section-number">8.1</span> Transforming a dataset into an <code>sf</code> object</h2>
 <p>Let’s first load in our dataset and have a look at it’s structure</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">koala &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a>
-<a class="sourceLine" id="cb216-2" title="2"></a>
-<a class="sourceLine" id="cb216-3" title="3"><span class="kw">head</span>(koala) <span class="co"># see the first few rows in the console</span></a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">koala &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb214-2" title="2"></a>
+<a class="sourceLine" id="cb214-3" title="3"><span class="kw">head</span>(koala) <span class="co"># see the first few rows in the console</span></a></code></pre></div>
 <pre><code>##                  species        X         Y      state   region    sex
 ## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male
 ## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female
@@ -290,11 +290,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5  Stagwatching
 ## 6 Opportunistic</code></pre>
 <p>As we can see it contains lots of variables related to each of the observed koalas, such as <code>sex</code>, <code>weight</code> or in which <code>state</code> the observation was made. Additionally, whoever collected this data was so kind to also include the <code>X</code> and <code>Y</code> coordinates, where the observation was made. This we can use to transform this into an <code>sf</code> (simple feature) object.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1">koala_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(koala, </a>
-<a class="sourceLine" id="cb218-2" title="2">                     <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, </a>
-<a class="sourceLine" id="cb218-3" title="3">                                <span class="st">&quot;Y&quot;</span>), </a>
-<a class="sourceLine" id="cb218-4" title="4">                     <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
-<a class="sourceLine" id="cb218-5" title="5"><span class="kw">str</span>(koala_sf)</a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">koala_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(koala, </a>
+<a class="sourceLine" id="cb216-2" title="2">                     <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, </a>
+<a class="sourceLine" id="cb216-3" title="3">                                <span class="st">&quot;Y&quot;</span>), </a>
+<a class="sourceLine" id="cb216-4" title="4">                     <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
+<a class="sourceLine" id="cb216-5" title="5"><span class="kw">str</span>(koala_sf)</a></code></pre></div>
 <pre><code>## Classes &#39;sf&#39; and &#39;data.frame&#39;:   242 obs. of  14 variables:
 ##  $ species : Factor w/ 1 level &quot;Phascolarctos cinereus&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ state   : Factor w/ 4 levels &quot;New South Wales&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
@@ -314,35 +314,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  - attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: NA NA NA NA NA NA NA NA NA NA ...
 ##   ..- attr(*, &quot;names&quot;)= chr  &quot;species&quot; &quot;state&quot; &quot;region&quot; &quot;sex&quot; ...</code></pre>
 <p>The <code>sf</code> object is a <code>data.frame</code> with a <em>geometry list-column</em>. It supports different format and spatial references. The file as it exists in your <code>R</code> environment is what you would call the <em>Attribute table</em> in a GIS software. In <code>R</code> you can use and manipulate it as any other <code>data.frame</code>. When converting a table into a <code>sf</code> we need to indicate the columns containing coordinates using <code>coords = c()</code> and we can decide on a coordinate reference system using <code>crs=</code>. Here we decide to use WGS84 (CRS = 4326), a standard Mercator coordinate frame for the Earth given in Latitude and Longitude. We can plot our now spatial data with the standard base R command:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">plot</span>(koala_sf)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="kw">plot</span>(koala_sf)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>This will try to plot all columns (because they are now all spatially referenced). To only plot the geometries, you can:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="kw">plot</span>(koala_sf<span class="op">$</span>geometry)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1"><span class="kw">plot</span>(koala_sf<span class="op">$</span>geometry)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>So far so good, but we will need a bit more data to make a nice map!</p>
 </div>
 <div id="loading-shapefiles-into-r-transforming-and-plotting" class="section level2">
 <h2><span class="header-section-number">8.2</span> Loading shapefiles into <code>R</code>, transforming and plotting</h2>
 <p>You can load any vector file, such as .shp or .gpkg using <code>st_read</code>. Let’s get our Australia map into the environment and check it out:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1">states &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Australia/Australia_proj.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1">states &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Australia/Australia_proj.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `Australia_proj&#39; from data source `C:\Users\khh\Documents\GitHub\bookdown-playaround\data\Australia\Australia_proj.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 8 features and 15 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: -2063975 ymin: -4965263 xmax: 1891143 ymax: -1285856
 ## proj4string:    +proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">plot</span>(states<span class="op">$</span>geometry)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1"><span class="kw">plot</span>(states<span class="op">$</span>geometry)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Great, we even have states column, which will we will use a bit later. To plot, simply use base <code>R</code> syntax of plotting and then plotting another graph on top using <code>add = T</code>. Instead of calling <code>plot(file$geometry)</code>, we can also call <code>st_geometry()</code></p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </a>
-<a class="sourceLine" id="cb225-2" title="2">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb225-3" title="3"></a>
-<a class="sourceLine" id="cb225-4" title="4"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="co"># why does this not work?</span></a>
-<a class="sourceLine" id="cb225-5" title="5">     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb225-6" title="6">     <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </a>
+<a class="sourceLine" id="cb223-2" title="2">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb223-3" title="3"></a>
+<a class="sourceLine" id="cb223-4" title="4"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="co"># why does this not work?</span></a>
+<a class="sourceLine" id="cb223-5" title="5">     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
+<a class="sourceLine" id="cb223-6" title="6">     <span class="dt">add =</span> T)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Hm, our states are plotting fine, but where are our koala locations? Maybe we should check the coordinate reference system to see if they match… Here’s how that’s done:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1"><span class="kw">st_crs</span>(states)</a></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">st_crs</span>(states)</a></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   No user input
 ##   wkt:
@@ -360,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     PARAMETER[&quot;false_easting&quot;,0],
 ##     PARAMETER[&quot;false_northing&quot;,0],
 ##     UNIT[&quot;Meter&quot;,1]]</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="kw">st_crs</span>(koala_sf)</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1"><span class="kw">st_crs</span>(koala_sf)</a></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:4326 
 ##   wkt:
@@ -375,24 +375,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##         AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
 ##     AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</code></pre>
 <p>Damn, they do not match. Our Australia shapefile has a different (weird) projection. If you feel it’s tedious to check the CRS in the console, simply type</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">st_crs</span>(states)<span class="op">==</span><span class="kw">st_crs</span>(koala_sf)</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="kw">st_crs</span>(states)<span class="op">==</span><span class="kw">st_crs</span>(koala_sf)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p><code>FALSE</code> is returned, so they don’t match. We need to transform one of them to be able to plot our spatial points on top of the Australia map. <code>sf</code> has a simple solution for this using <code>st_transform()</code>. Let’s do that and plot straight away.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1">koala_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(koala_sf, <span class="dt">crs =</span> <span class="kw">st_crs</span>(states))</a>
-<a class="sourceLine" id="cb232-2" title="2"></a>
-<a class="sourceLine" id="cb232-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </a>
-<a class="sourceLine" id="cb232-4" title="4">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb232-5" title="5"></a>
-<a class="sourceLine" id="cb232-6" title="6"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_proj), </a>
-<a class="sourceLine" id="cb232-7" title="7">     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb232-8" title="8">     <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1">koala_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(koala_sf, <span class="dt">crs =</span> <span class="kw">st_crs</span>(states))</a>
+<a class="sourceLine" id="cb230-2" title="2"></a>
+<a class="sourceLine" id="cb230-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </a>
+<a class="sourceLine" id="cb230-4" title="4">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb230-5" title="5"></a>
+<a class="sourceLine" id="cb230-6" title="6"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_proj), </a>
+<a class="sourceLine" id="cb230-7" title="7">     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
+<a class="sourceLine" id="cb230-8" title="8">     <span class="dt">add =</span> T)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Excellent! In <code>st_transform</code> we can call any <code>crs</code> from another spatial file in the environment, our define our own using a <code>proj4string</code>. If we look at our plot, we can see that the coordinates on the axis look weird. We’d rather like latitude and longitude to make it look more comprehensive. That’s now up to you to fix it!</p>
 <div id="challenge-1-4" class="section level3">
 <h3><span class="header-section-number">8.2.1</span> Challenge 1</h3>
 <p><strong>Load the Australia_proj and koala data again and plot them on top of each other in Mercator projection (CRS: 4326). Note: check the spatial reference of the maps first!</strong></p>
 <p><em>Extra challenge: color the koala points based on state! Check <code>?sf::plot</code> for tips</em></p>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Looks good! You can find the solutions to all challenges posed here at the end of the document. Don’t peek!</p>
 <p>Let’s make our maps look even better.</p>
 </div>
@@ -400,46 +400,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="simple-geometric-operations" class="section level2">
 <h2><span class="header-section-number">8.3</span> Simple geometric operations</h2>
 <p><code>sf</code> supports any geometric operations you know from GIS software. We will just touch cropping here, but you can also merge, intersect, overlap and many more. For the purpose of mapping, <code>st_crop()</code> is most relevant. Let’s say we want to create a map of all our Koala locations, we won’t necessarily need to show all of Australia, knowing that Koalas are only distributed along the east coast. Let’s crop the Australia shapefile by the extent of our observations:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1">australia_koala_area&lt;-<span class="kw">st_crop</span>(states_proj, koala_sf)</a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1">australia_koala_area&lt;-<span class="kw">st_crop</span>(states_proj, koala_sf)</a></code></pre></div>
 <pre><code>## although coordinates are longitude/latitude, st_intersection assumes that they are planar</code></pre>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(australia_koala_area), <span class="dt">axes =</span> T)</a>
-<a class="sourceLine" id="cb235-2" title="2"></a>
-<a class="sourceLine" id="cb235-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(australia_koala_area), <span class="dt">axes =</span> T)</a>
+<a class="sourceLine" id="cb233-2" title="2"></a>
+<a class="sourceLine" id="cb233-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="dt">add =</span> T)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Great. Let’s say we want to save the new cropped shapefile to an <code>outputs/</code> folder in our project. For this we simply use <code>st_write()</code>:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="kw">st_write</span>(australia_koala_area, <span class="st">&#39;outputs/koala_shape.gpkg&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1"><span class="kw">st_write</span>(australia_koala_area, <span class="st">&#39;outputs/koala_shape.gpkg&#39;</span>)</a></code></pre></div>
 <p>You can choose different file extensions. Here we are saving a geopackage, as it results in only one file, rather than 4-6 for a .shp extension. Up to you ;) Let’s make a good looking map with our data!</p>
 </div>
 <div id="making-a-map-using-ggplot2" class="section level2">
 <h2><span class="header-section-number">8.4</span> Making a map using <code>ggplot2</code></h2>
 <p><code>ggplot2</code> supports plotting spatial data by calling <code>geom_sf()</code>, after defining your data to plot. In simple terms we can create a map of Australia by calling:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj) <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>()</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj) <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>()</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>which already looks a lot better than base R. But there are a lot of improvements to be made to create a publication-ready map. First we can assign colors based on columns in your data. We can also remove the standard grey ggplot background with a more map-friendly white grid using <code>theme_minimal()</code></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
+<a class="sourceLine" id="cb236-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
+<a class="sourceLine" id="cb236-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>We don’t really need a legend here, let’s remove it:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
+<a class="sourceLine" id="cb237-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
+<a class="sourceLine" id="cb237-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb237-4" title="4"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Using <code>coord_sf()</code> we can even change the projection while plotting in <code>ggplot2</code>, without the need of going back to reprojecting or transforming in <code>sf</code>.</p>
 <div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
 <a class="sourceLine" id="cb238-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
-<a class="sourceLine" id="cb238-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<p>We don’t really need a legend here, let’s remove it:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb239-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
-<a class="sourceLine" id="cb239-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb239-4" title="4"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
-<p>Using <code>coord_sf()</code> we can even change the projection while plotting in <code>ggplot2</code>, without the need of going back to reprojecting or transforming in <code>sf</code>.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb240-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
-<a class="sourceLine" id="cb240-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb240-4" title="4"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></a>
-<a class="sourceLine" id="cb240-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<a class="sourceLine" id="cb238-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb238-4" title="4"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></a>
+<a class="sourceLine" id="cb238-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Did you see what changed? Finally we can change the fore- and background color to make it look like proper map in a nice blue ocean:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb241-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb241-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb241-4" title="4"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb241-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
+<a class="sourceLine" id="cb239-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb239-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb239-4" title="4"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb239-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <div id="challenge-2-4" class="section level3">
 <h3><span class="header-section-number">8.4.1</span> Challenge 2</h3>
 <p><strong>Add the koala positions on top of the Australia map in ggplot2. Only plot the area that has koalas and color the points by sex of the individual. Please also give the map in Mercator projection</strong></p>
@@ -448,101 +448,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Add a second layer to your ggplot</li>
 <li>Define the crs</li>
 </ol>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>Good job! But unfortunately our cut-out looks like an island surrounded by seawater. If we want the map to look like a close-up of eastern Australia, we need to tell <code>ggplot2</code> to start plotting at x/y = 0:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb242-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb240-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>When working with these types of maps, you will often be asked to create an inset map that shows the entire area that you cropped from for reference. Let’s add a little Australia shape with a bounding box of our study area to our map. First we need to create the a base map with bounding box and save it to the environment:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1">inset&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj, <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb243-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb243-3" title="3"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">xmin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">1</span>], <span class="dt">xmax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb243-4" title="4">            <span class="dt">ymin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">3</span>], <span class="dt">ymax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">4</span>],</a>
-<a class="sourceLine" id="cb243-5" title="5">            <span class="dt">fill =</span> <span class="ot">NA</span>,  <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb243-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;&#39;</span>, <span class="dt">title =</span> <span class="st">&#39;&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb243-7" title="7"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb243-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a>
-<a class="sourceLine" id="cb243-9" title="9"></a>
-<a class="sourceLine" id="cb243-10" title="10">inset</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" title="1">inset&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj, <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb241-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb241-3" title="3"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">xmin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">1</span>], <span class="dt">xmax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">2</span>],</a>
+<a class="sourceLine" id="cb241-4" title="4">            <span class="dt">ymin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">3</span>], <span class="dt">ymax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">4</span>],</a>
+<a class="sourceLine" id="cb241-5" title="5">            <span class="dt">fill =</span> <span class="ot">NA</span>,  <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb241-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;&#39;</span>, <span class="dt">title =</span> <span class="st">&#39;&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb241-7" title="7"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb241-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a>
+<a class="sourceLine" id="cb241-9" title="9"></a>
+<a class="sourceLine" id="cb241-10" title="10">inset</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p><code>geom_rect</code> can create any rectangular shape within your ggplot based on <code>xmin</code>, <code>xmax</code> and so on. Since these are dependent on your scales, for mapping we can use the <code>extent</code> of our cropped area from before. <code>extent()</code> is part of the <code>raster</code> package:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1"><span class="kw">extent</span>(australia_koala_area)</a></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1"><span class="kw">extent</span>(australia_koala_area)</a></code></pre></div>
 <pre><code>## class      : Extent 
 ## xmin       : 138.5795 
 ## xmax       : 153.5651 
 ## ymin       : -39 
 ## ymax       : -21.3906</code></pre>
 <p>By using <code>[1]</code>, <code>[2]</code> and so on, we call the respective coordinate from the four rows that this function is giving us. Using <code>theme_void()</code> is getting rid of any axis and grids, so that we have the map only. We also need to save our map as an object:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1">map&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
-<a class="sourceLine" id="cb246-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb246-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb246-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb246-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb246-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))<span class="op">+</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb246-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb246-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1">map&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
+<a class="sourceLine" id="cb244-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb244-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb244-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb244-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb244-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))<span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb244-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb244-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
 <p>We use <code>annotation_custom()</code> and <code>ggplotGrob()</code> to place an inset into the main map:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1">map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1">map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <p>The size and position here is defined by <code>xmin =</code> etc. This needs a bit of fiddling around to get it right. Also be mindful that we are using a Mercator projection here and are in the southern hemisphere, so our <code>ymin</code> and <code>ymax</code> values need to be given in negative form. Now this is a proper map, ready to be put in your next publication! We will briefly talk about rasters, because you are likely to use them if you are working with shapefiles anyway. It is similarly easy to work with rasters in <code>R</code>:</p>
 </div>
 </div>
 <div id="r-raster-basics" class="section level2">
 <h2><span class="header-section-number">8.5</span> <code>R</code> raster basics</h2>
 <p>Raster support in <code>R</code> is made available using the package <code>raster</code>. One called, we can load and plot a raster using the same command. Let’s get our DEM to play with:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1">dem&lt;-<span class="kw">raster</span>(<span class="st">&#39;data/DEM.tif&#39;</span>)</a>
-<a class="sourceLine" id="cb248-2" title="2"></a>
-<a class="sourceLine" id="cb248-3" title="3"><span class="kw">summary</span>(dem)</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1">dem&lt;-<span class="kw">raster</span>(<span class="st">&#39;data/DEM.tif&#39;</span>)</a>
+<a class="sourceLine" id="cb246-2" title="2"></a>
+<a class="sourceLine" id="cb246-3" title="3"><span class="kw">summary</span>(dem)</a></code></pre></div>
 <pre><code>##                DEM
 ## Min.       0.00000
-## 1st Qu.   89.40395
-## Median   157.58083
-## 3rd Qu.  400.27560
-## Max.    2134.57617
+## 1st Qu.   89.23475
+## Median   157.27505
+## 3rd Qu.  397.71189
+## Max.    2140.81299
 ## NA&#39;s       0.00000</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="kw">plot</span>(dem)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1"><span class="kw">plot</span>(dem)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>In a raster, cell (or pixel) has a spatial reference and a value. In this case we have the elevation in meters for each degree (0.01, 0.01) in southeastern Australia.</p>
 <p>Let’s say we’re only interested in Victoria. We can use a spatial vector to mask out the state area from the raster. First we need to create a mask. We already know that our Australia shapefile contains a <code>STATE</code> column. We can use that to subset the shapefile and use the subset as a mask. Simple <code>dplyr</code> commands and <code>%&gt;%</code> work on <code>sf</code> features, which makes working with them so easy in <code>R</code>!</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1">vic&lt;-states_proj<span class="op">%&gt;%</span><span class="kw">filter</span>(STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem)) <span class="co"># we also transform the crs to be sure they match</span></a>
-<a class="sourceLine" id="cb251-2" title="2"></a>
-<a class="sourceLine" id="cb251-3" title="3"><span class="kw">plot</span>(dem)</a>
-<a class="sourceLine" id="cb251-4" title="4"><span class="kw">plot</span>(vic<span class="op">$</span>geometry, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1">vic&lt;-states_proj<span class="op">%&gt;%</span><span class="kw">filter</span>(STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem)) <span class="co"># we also transform the crs to be sure they match</span></a>
+<a class="sourceLine" id="cb249-2" title="2"></a>
+<a class="sourceLine" id="cb249-3" title="3"><span class="kw">plot</span>(dem)</a>
+<a class="sourceLine" id="cb249-4" title="4"><span class="kw">plot</span>(vic<span class="op">$</span>geometry, <span class="dt">add =</span> T)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>To remove anything outside of Victoria, we use <code>raster</code>’s <code>mask()</code> and end up with the DEM for Victoria only:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1">dem_vic&lt;-<span class="kw">mask</span>(dem, vic)</a>
-<a class="sourceLine" id="cb252-2" title="2"></a>
-<a class="sourceLine" id="cb252-3" title="3"><span class="kw">plot</span>(dem_vic)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1">dem_vic&lt;-<span class="kw">mask</span>(dem, vic)</a>
+<a class="sourceLine" id="cb250-2" title="2"></a>
+<a class="sourceLine" id="cb250-3" title="3"><span class="kw">plot</span>(dem_vic)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>We can now also filter our koala dataset to only have koalas in Victoria to plot over our DEM.</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1">koala_vic&lt;-koala_sf<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem))</a>
-<a class="sourceLine" id="cb253-2" title="2"></a>
-<a class="sourceLine" id="cb253-3" title="3"><span class="kw">plot</span>(dem_vic)</a>
-<a class="sourceLine" id="cb253-4" title="4"></a>
-<a class="sourceLine" id="cb253-5" title="5"><span class="kw">plot</span>(koala_vic<span class="op">$</span>geometry, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1">koala_vic&lt;-koala_sf<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem))</a>
+<a class="sourceLine" id="cb251-2" title="2"></a>
+<a class="sourceLine" id="cb251-3" title="3"><span class="kw">plot</span>(dem_vic)</a>
+<a class="sourceLine" id="cb251-4" title="4"></a>
+<a class="sourceLine" id="cb251-5" title="5"><span class="kw">plot</span>(koala_vic<span class="op">$</span>geometry, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">add =</span> T)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Often we are using rasters and spatial vector data together to extract data that is generally stored in raster form (such as elevation, mean temperatures or other topographic variables). For example if we are interested to see at which elevation our Koalas were observed in Victoria to make assumptions about their habitat preferences or temperature tolerances. If the CRS of both the raster and shapefile match, we can use <code>extract()</code> to add data from the raster to our spatial points as a new column:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1">koala_vic<span class="op">$</span>ele&lt;-raster<span class="op">::</span><span class="kw">extract</span>(dem_vic, koala_vic)</a>
-<a class="sourceLine" id="cb254-2" title="2"></a>
-<a class="sourceLine" id="cb254-3" title="3"><span class="kw">summary</span>(koala_vic<span class="op">$</span>ele)</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1">koala_vic<span class="op">$</span>ele&lt;-raster<span class="op">::</span><span class="kw">extract</span>(dem_vic, koala_vic)</a>
+<a class="sourceLine" id="cb252-2" title="2"></a>
+<a class="sourceLine" id="cb252-3" title="3"><span class="kw">summary</span>(koala_vic<span class="op">$</span>ele)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   16.62   67.95  185.34  218.54  349.87  648.06</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">hist</span>(koala_vic<span class="op">$</span>ele)</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1"><span class="kw">hist</span>(koala_vic<span class="op">$</span>ele)</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>We can see most observations were made below 200 meters. The median elevation for koalas in our dataset was 185. Again if we want to make nice and informative maps out of rasters, even in combination with spatial vector data, <code>ggplot2</code> is the way to go!</p>
 </div>
 <div id="plotting-rasters-in-ggplot2" class="section level2">
 <h2><span class="header-section-number">8.6</span> Plotting rasters in <code>ggplot2</code></h2>
 <p>Before we can plot a raster, we have to make it into a <code>data.frame</code> containing of columns <code>X</code> and <code>Y</code> as coordinates and a column containing the raster value of each pixel. Since rasters can be large and the resulting dataframes even larger, we first take a sample of the raster, which reduces the resolution:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1">sample_raster&lt;-<span class="kw">sampleRegular</span>(dem_vic, <span class="dt">size =</span> <span class="fl">5e5</span>, <span class="dt">asRaster =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-2" title="2"><span class="st">  </span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> <span class="ot">TRUE</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb257-3" title="3"><span class="st">  </span><span class="kw">setNames</span>(<span class="kw">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;layer&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1">sample_raster&lt;-<span class="kw">sampleRegular</span>(dem_vic, <span class="dt">size =</span> <span class="fl">5e5</span>, <span class="dt">asRaster =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb255-2" title="2"><span class="st">  </span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> <span class="ot">TRUE</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb255-3" title="3"><span class="st">  </span><span class="kw">setNames</span>(<span class="kw">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;layer&#39;</span>))</a></code></pre></div>
 <p>Make sure to always use <code>xy = TRUE</code>, so that the coordinates are included in the new <code>data.frame</code>. We now have a format that ggplot can work with using <code>geom_raster()</code></p>
 <pre><code>##             x        y    layer
 ## 902  140.9675 -33.9925 19.73859
@@ -551,68 +551,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2704 140.9675 -34.0125 53.28782
 ## 2705 140.9775 -34.0125 27.96507
 ## 2706 140.9875 -34.0125 20.13142</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb259-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>()</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
+<a class="sourceLine" id="cb257-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>()</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>Let’s make it look a bit prettier. The package <code>viridis</code> offers a few great color palettes for gradients of continuous variables:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb260-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb260-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&#39;A&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb260-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;Longitude&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Latitude&#39;</span>, <span class="dt">fill =</span> <span class="st">&#39;Elevation&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb260-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb260-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
+<a class="sourceLine" id="cb258-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb258-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&#39;A&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb258-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;Longitude&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Latitude&#39;</span>, <span class="dt">fill =</span> <span class="st">&#39;Elevation&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb258-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb258-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>We can plot additional layers on top of the raster by adding more <code>geom_</code>’s. That means we can plot rasters and spatial vectors together to make great maps for your papers and reports. I’m sure you can figure it out yourself for the next and final challenge!</p>
 <div id="challenge-3-2" class="section level3">
 <h3><span class="header-section-number">8.6.1</span> Challenge 3</h3>
 <p><strong>Add koala observations, color points by a categorical variable of your choice and change the color scheme.</strong></p>
 <p><em>hint: to add different types of data, each data layer needs its own data source!:</em>
 <em>(geom_raster(data = sample_raster, aes(x = x, y = y, fill = layer))+…</em>)</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb261-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb261-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb261-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb261-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </a>
-<a class="sourceLine" id="cb261-6" title="6">       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </a>
-<a class="sourceLine" id="cb261-7" title="7">       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb261-8" title="8"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb261-9" title="9"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
-<p><img src="06-spatial_tut_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb259-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
+<a class="sourceLine" id="cb259-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb259-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb259-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </a>
+<a class="sourceLine" id="cb259-6" title="6">       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </a>
+<a class="sourceLine" id="cb259-7" title="7">       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb259-8" title="8"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb259-9" title="9"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 </div>
 </div>
 <div id="solutions-to-challenges-1" class="section level2">
 <h2><span class="header-section-number">8.7</span> Solutions to Challenges</h2>
 <div id="challenge-1-5" class="section level3">
 <h3><span class="header-section-number">8.7.1</span> Challenge 1</h3>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">states_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(states, <span class="dt">crs =</span> <span class="kw">st_crs</span>(koala_sf))</a>
-<a class="sourceLine" id="cb262-2" title="2"></a>
-<a class="sourceLine" id="cb262-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states_proj), </a>
-<a class="sourceLine" id="cb262-4" title="4">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb262-5" title="5"></a>
-<a class="sourceLine" id="cb262-6" title="6"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), </a>
-<a class="sourceLine" id="cb262-7" title="7">     <span class="dt">col =</span> koala_sf<span class="op">$</span>state, </a>
-<a class="sourceLine" id="cb262-8" title="8">     <span class="dt">add =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1">states_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(states, <span class="dt">crs =</span> <span class="kw">st_crs</span>(koala_sf))</a>
+<a class="sourceLine" id="cb260-2" title="2"></a>
+<a class="sourceLine" id="cb260-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states_proj), </a>
+<a class="sourceLine" id="cb260-4" title="4">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb260-5" title="5"></a>
+<a class="sourceLine" id="cb260-6" title="6"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), </a>
+<a class="sourceLine" id="cb260-7" title="7">     <span class="dt">col =</span> koala_sf<span class="op">$</span>state, </a>
+<a class="sourceLine" id="cb260-8" title="8">     <span class="dt">add =</span> T)</a></code></pre></div>
 </div>
 <div id="challenge-2-5" class="section level3">
 <h3><span class="header-section-number">8.7.2</span> Challenge 2</h3>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
-<a class="sourceLine" id="cb263-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb263-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex))<span class="op">+</span></a>
-<a class="sourceLine" id="cb263-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb263-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb263-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
+<a class="sourceLine" id="cb261-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb261-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex))<span class="op">+</span></a>
+<a class="sourceLine" id="cb261-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb261-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb261-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</a></code></pre></div>
 </div>
 <div id="challenge-3-3" class="section level3">
 <h3><span class="header-section-number">8.7.3</span> Challenge 3</h3>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb264-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb264-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb264-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb264-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </a>
-<a class="sourceLine" id="cb264-6" title="6">       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </a>
-<a class="sourceLine" id="cb264-7" title="7">       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb264-8" title="8"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb264-9" title="9"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb262-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
+<a class="sourceLine" id="cb262-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb262-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb262-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </a>
+<a class="sourceLine" id="cb262-6" title="6">       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </a>
+<a class="sourceLine" id="cb262-7" title="7">       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb262-8" title="8"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb262-9" title="9"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
 
 </div>
 </div>
