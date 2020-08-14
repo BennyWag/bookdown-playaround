@@ -1,0 +1,2 @@
+"0","challenge1<-koala%>%filter(sex == 'female')%>%"
+"0","  select(age, size, color)"

@@ -1,0 +1,3 @@
+"0","koala_pivot<-koala_subsample%>%pivot_longer(cols = c(tail, tail2), names_to = 'tail_measure', values_to = 'tail_length')"
+"0",""
+"0","head(koala_pivot)"

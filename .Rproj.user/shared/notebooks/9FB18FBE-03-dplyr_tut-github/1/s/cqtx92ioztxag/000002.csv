@@ -1,0 +1,3 @@
+"0","koala_group_sum<-koala%>%group_by(sex)%>%"
+"0","  summarise(mean_age=mean(age))"
+"0",""

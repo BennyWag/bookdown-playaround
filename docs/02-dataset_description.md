@@ -49,37 +49,41 @@ koala$region
 ```
 
 ```
-##   [1] northern northern northern northern northern northern northern northern
-##   [9] northern northern northern northern northern northern northern northern
-##  [17] southern southern southern southern southern southern southern southern
-##  [25] southern southern southern southern southern southern southern southern
-##  [33] southern southern southern southern southern southern southern southern
-##  [41] southern southern southern southern southern southern southern southern
-##  [49] southern southern southern southern southern southern southern southern
-##  [57] southern southern southern southern southern northern northern northern
-##  [65] northern southern northern northern northern southern northern northern
-##  [73] southern northern northern southern northern northern northern northern
-##  [81] northern northern northern northern northern northern northern northern
-##  [89] northern northern southern northern northern northern northern southern
-##  [97] northern northern northern northern southern northern northern northern
-## [105] northern southern northern southern northern northern northern northern
-## [113] northern southern northern northern northern northern northern southern
-## [121] southern northern northern southern southern northern northern northern
-## [129] northern southern northern northern northern northern northern northern
-## [137] northern northern northern southern northern northern southern northern
-## [145] southern southern southern northern northern northern northern southern
-## [153] northern northern northern northern northern northern southern northern
-## [161] northern northern northern northern northern northern northern northern
-## [169] southern northern southern northern southern northern northern northern
-## [177] northern southern northern northern northern northern northern northern
-## [185] northern northern northern northern northern northern northern southern
-## [193] northern northern northern southern southern northern northern northern
-## [201] northern southern northern northern northern northern northern northern
-## [209] northern northern northern northern northern northern northern northern
-## [217] northern northern northern northern northern northern northern northern
-## [225] northern northern northern northern northern northern northern southern
-## [233] northern northern northern northern northern northern northern northern
-## [241] northern southern
+##   [1] northern northern northern northern northern northern northern
+##   [8] northern northern northern northern northern northern northern
+##  [15] northern northern southern southern southern southern southern
+##  [22] southern southern southern southern southern southern southern
+##  [29] southern southern southern southern southern southern southern
+##  [36] southern southern southern southern southern southern southern
+##  [43] southern southern southern southern southern southern southern
+##  [50] southern southern southern southern southern southern southern
+##  [57] southern southern southern southern southern northern northern
+##  [64] northern northern southern northern northern northern southern
+##  [71] northern northern southern northern northern southern northern
+##  [78] northern northern northern northern northern northern northern
+##  [85] northern northern northern northern northern northern southern
+##  [92] northern northern northern northern southern northern northern
+##  [99] northern northern southern northern northern northern northern
+## [106] southern northern southern northern northern northern northern
+## [113] northern southern northern northern northern northern northern
+## [120] southern southern northern northern southern southern northern
+## [127] northern northern northern southern northern northern northern
+## [134] northern northern northern northern northern northern southern
+## [141] northern northern southern northern southern southern southern
+## [148] northern northern northern northern southern northern northern
+## [155] northern northern northern northern southern northern northern
+## [162] northern northern northern northern northern northern northern
+## [169] southern northern southern northern southern northern northern
+## [176] northern northern southern northern northern northern northern
+## [183] northern northern northern northern northern northern northern
+## [190] northern northern southern northern northern northern southern
+## [197] southern northern northern northern northern southern northern
+## [204] northern northern northern northern northern northern northern
+## [211] northern northern northern northern northern northern northern
+## [218] northern northern northern northern northern northern northern
+## [225] northern northern northern northern northern northern northern
+## [232] southern northern northern northern northern northern northern
+## [239] northern northern northern southern
 ## Levels: northern southern
 ```
 
@@ -221,27 +225,27 @@ head(koala)
 ```
 
 ```
-##                  species        X         Y      state   region    sex   weight
-## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male 7.119754
-## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female 5.451345
-## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male 6.630577
-## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male 6.470019
-## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female 5.620447
-## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male 7.287674
-##       size      fur     tail age      color joey        behav           obs
-## 1 70.80159 1.858696 1.168241   8       grey   No     Sleeping  Spotlighting
-## 2 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping Opportunistic
-## 3 68.65867 2.479280 1.056640   1 light grey   No Just Chillin  Spotlighting
-## 4 72.98919 1.923974 1.801244   1       grey   No     Sleeping  Stagwatching
-## 5 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping  Stagwatching
-## 6 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding Opportunistic
-##   obs_code
-## 1        2
-## 2        1
-## 3        2
-## 4        3
-## 5        3
-## 6        1
+##                  species        X         Y      state   region    sex
+## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male
+## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female
+## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male
+## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male
+## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female
+## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male
+##     weight     size      fur     tail age      color joey        behav
+## 1 7.119754 70.80159 1.858696 1.168241   8       grey   No     Sleeping
+## 2 5.451345 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping
+## 3 6.630577 68.65867 2.479280 1.056640   1 light grey   No Just Chillin
+## 4 6.470019 72.98919 1.923974 1.801244   1       grey   No     Sleeping
+## 5 5.620447 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping
+## 6 7.287674 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding
+##             obs obs_code
+## 1  Spotlighting        2
+## 2 Opportunistic        1
+## 3  Spotlighting        2
+## 4  Stagwatching        3
+## 5  Stagwatching        3
+## 6 Opportunistic        1
 ```
 
 You can see e.g. *spotlighting* was assigned a `2`, while *Opportunistic* is now a `1`. Knowing these basic data transformations can be useful. This is especially often the case when assigning or merging data that is of type `character`, a *variable type*, we don't have in our data. Let's see what might be problematic about it:
@@ -280,10 +284,10 @@ summary(as.factor(koala$good_bad))
 
 ```
 ## evil good 
-##    5  237
+##    1  241
 ```
 
-5 of our koalas are evil :(
+1 of our koalas are evil :(
 
 There are other *variable type*s you will encounter, such as `dates`, or `logicals` (`TRUE` and `FALSE`), but we won't go into more detail here. You're already all set to dive into data manipulation and visualization using this data set now :)
 
@@ -329,12 +333,12 @@ states <- st_read('data/Australia/Australia_proj.shp')
 ```
 
 ```
-## Reading layer `Australia_proj' from data source `D:\OneDrive\OneDrive - The University of Melbourne\Github\forest-ecology-R-book\data\Australia\Australia_proj.shp' using driver `ESRI Shapefile'
+## Reading layer `Australia_proj' from data source `C:\Users\khh\Documents\GitHub\bookdown-playaround\data\Australia\Australia_proj.shp' using driver `ESRI Shapefile'
 ## Simple feature collection with 8 features and 15 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: -2063975 ymin: -4965263 xmax: 1891143 ymax: -1285856
-## projected CRS:  GDA94 / Geoscience Australia Lambert
+## proj4string:    +proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs
 ```
 
 ```r
@@ -387,7 +391,7 @@ summary(koala_states_min$sex)
 
 ```
 ## female   male 
-##    124    118
+##    139    103
 ```
 
 The weight depends on the sex and where the animal lives. Using a nested `ifelse()` statement will help us, to make assigning weights conditional on their sex:
@@ -523,7 +527,7 @@ mean(koala_states_min$age)
 ```
 
 ```
-## [1] 6.235537
+## [1] 6.421488
 ```
 
 ```r

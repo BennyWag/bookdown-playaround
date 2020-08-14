@@ -57,11 +57,11 @@ head(rast_df)
 
 ```
 ##       x    y layer ID
-## 1 -9950 9950     2  1
-## 2 -9850 9950     2  1
-## 3 -9750 9950     2  1
+## 1 -9950 9950     1  1
+## 2 -9850 9950     3  1
+## 3 -9750 9950     3  1
 ## 4 -9650 9950     5  1
-## 5 -9550 9950     2  1
+## 5 -9550 9950     5  1
 ## 6 -9450 9950     2  1
 ```
 
@@ -75,13 +75,7 @@ area<-rast_df%>%group_by(layer)%>%
   summarise(pixelsum = sum(ID), area_ha = (pixelsum*reso^2)/10000)%>%
   mutate(sumA = sum(pixelsum), per = 100*pixelsum/sumA)%>%
   rename(class = layer)
-```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 area
 ```
 
@@ -89,11 +83,11 @@ area
 ## # A tibble: 5 x 5
 ##   class pixelsum area_ha  sumA   per
 ##   <int>    <dbl>   <dbl> <dbl> <dbl>
-## 1     1     4088    4088 40000 10.2 
-## 2     2    11989   11989 40000 30.0 
-## 3     3     8133    8133 40000 20.3 
-## 4     4     2060    2060 40000  5.15
-## 5     5    13730   13730 40000 34.3
+## 1     1     4061    4061 40000 10.2 
+## 2     2    11955   11955 40000 29.9 
+## 3     3     7966    7966 40000 19.9 
+## 4     4     1945    1945 40000  4.86
+## 5     5    14073   14073 40000 35.2
 ```
 
 And there we go. Each class has it's `pixelsum` calculated, then using the sum we can calculate the area in ha (or else, here you can alternate the code). In this case the pixel sum matches our `area_ha` because one pixel is already of size 1 ha. We can change the code to e.g. calculate `area_km2`.
@@ -104,13 +98,7 @@ area_km2<-rast_df%>%group_by(layer)%>%
   summarise(pixelsum = sum(ID), area_km2 = pixelsum/100)%>%
   mutate(sumA = sum(pixelsum), per = 100*pixelsum/sumA)%>%
   rename(class = layer)
-```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 area_km2
 ```
 
@@ -118,11 +106,11 @@ area_km2
 ## # A tibble: 5 x 5
 ##   class pixelsum area_km2  sumA   per
 ##   <int>    <dbl>    <dbl> <dbl> <dbl>
-## 1     1     4088     40.9 40000 10.2 
-## 2     2    11989    120.  40000 30.0 
-## 3     3     8133     81.3 40000 20.3 
-## 4     4     2060     20.6 40000  5.15
-## 5     5    13730    137.  40000 34.3
+## 1     1     4061     40.6 40000 10.2 
+## 2     2    11955    120.  40000 29.9 
+## 3     3     7966     79.7 40000 19.9 
+## 4     4     1945     19.4 40000  4.86
+## 5     5    14073    141.  40000 35.2
 ```
 
 Next we calculate the sum of all pixels (`sumA`) using `mutate()` to get the total raster area. This should in this case be the same as `ncell(x)` (40000). To derive the percentage of the entire each class occupies, we just need to divide the `pixelsum` of each class by the total sum and multiply by 100. This should match our probabilities we assigned for each class when filling the raster with values:

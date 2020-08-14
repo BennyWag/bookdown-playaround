@@ -1,0 +1,7 @@
+"0","new_data<-rbind(cbind.data.frame(ID = 1:40, sex = 'male', "
+"0","                                 measurement = c('tail1', 'tail2', 'tail3', 'tail4')),"
+"0","                cbind.data.frame(ID = 1:40, sex = 'female',"
+"0","                                 measurement = c('tail1', 'tail2', 'tail3', 'tail4')))%>%"
+"0","  mutate(tail = runif(80, min = 1, max = 2), animal = rep(c(1:20), each = 4))"
+"0",""
+"0","head(new_data)"

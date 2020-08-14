@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Extracting raster fractions and area using a polygon mask | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Extracting raster fractions and area using a polygon mask | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
@@ -161,35 +162,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Introduction to data visualization in <code>ggplot2</code></a></li>
 <li class="chapter" data-level="6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear models in R</a></li>
-<li class="chapter" data-level="7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>7</b> Working with spatial data in <code>R</code></a><ul>
-<li class="chapter" data-level="7.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>7.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="7.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>7.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>7</b> Functions in R</a><ul>
+<li class="chapter" data-level="7.1" data-path="functions-in-r.html"><a href="functions-in-r.html#introduction-1"><i class="fa fa-check"></i><b>7.1</b> Introduction</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="functions-in-r.html"><a href="functions-in-r.html#mathematical-operations"><i class="fa fa-check"></i><b>7.1.1</b> Mathematical operations</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>7.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="7.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>7.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="7.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.2" data-path="functions-in-r.html"><a href="functions-in-r.html#what-is-an-r-function"><i class="fa fa-check"></i><b>7.2</b> What is an R function?</a></li>
+<li class="chapter" data-level="7.3" data-path="functions-in-r.html"><a href="functions-in-r.html#nesting-functions"><i class="fa fa-check"></i><b>7.3</b> Nesting functions</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="functions-in-r.html"><a href="functions-in-r.html#some-basic-built-in-mathematical-functions"><i class="fa fa-check"></i><b>7.3.1</b> Some basic built-in mathematical functions</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>7.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="7.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>7.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 3</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="7.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="7.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="7.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>7.7.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="7.4" data-path="functions-in-r.html"><a href="functions-in-r.html#assigning-variables-within-functions"><i class="fa fa-check"></i><b>7.4</b> Assigning variables within functions</a></li>
+<li class="chapter" data-level="7.5" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-2"><i class="fa fa-check"></i><b>7.5</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.6" data-path="functions-in-r.html"><a href="functions-in-r.html#using-return"><i class="fa fa-check"></i><b>7.6</b> Using <code>return()</code></a></li>
+<li class="chapter" data-level="7.7" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-2"><i class="fa fa-check"></i><b>7.7</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.8" data-path="functions-in-r.html"><a href="functions-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.8</b> Solutions to challenges</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-3"><i class="fa fa-check"></i><b>7.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.8.2" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-3"><i class="fa fa-check"></i><b>7.8.2</b> Challenge 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html"><i class="fa fa-check"></i><b>8</b> Functions, loops, and <code>apply</code></a><ul>
-<li class="chapter" data-level="8.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#writing-basic-functions"><i class="fa fa-check"></i><b>8.2</b> Writing basic functions</a></li>
-<li class="chapter" data-level="8.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#using-apply-functions"><i class="fa fa-check"></i><b>8.3</b> Using <code>apply</code> functions</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#apply"><i class="fa fa-check"></i><b>8.3.1</b> <code>apply</code></a></li>
-<li class="chapter" data-level="8.3.2" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>8.3.2</b> <code>sapply</code></a></li>
-<li class="chapter" data-level="8.3.3" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>8.3.3</b> <code>lapply</code></a></li>
-<li class="chapter" data-level="8.3.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#mapply"><i class="fa fa-check"></i><b>8.3.4</b> <code>mapply</code></a></li>
+<li class="chapter" data-level="8" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>8</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>8.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="8.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>8.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-4"><i class="fa fa-check"></i><b>8.2.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="functions-loops-and-apply.html"><a href="functions-loops-and-apply.html#loops"><i class="fa fa-check"></i><b>8.4</b> Loops</a></li>
+<li class="chapter" data-level="8.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>8.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="8.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>8.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-4"><i class="fa fa-check"></i><b>8.4.1</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>8.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="8.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>8.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="8.6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-2"><i class="fa fa-check"></i><b>8.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges-1"><i class="fa fa-check"></i><b>8.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-5"><i class="fa fa-check"></i><b>8.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="8.7.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-5"><i class="fa fa-check"></i><b>8.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="8.7.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-3"><i class="fa fa-check"></i><b>8.7.3</b> Challenge 3</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>9</b> Spatial tools for forestry and ecological applications</a><ul>
 <li class="chapter" data-level="9.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>9.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
@@ -198,20 +205,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>9.4</b> Step 2. Computing a canopy height model</a><ul>
 <li class="chapter" data-level="9.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>9.4.1</b> Ground detection and normalizing a point cloud</a></li>
 <li class="chapter" data-level="9.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>9.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="9.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>9.4.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.4.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-6"><i class="fa fa-check"></i><b>9.4.3</b> Challenge 1</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>9.5</b> Step 3. Individual tree segmentation</a><ul>
 <li class="chapter" data-level="9.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>9.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="9.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>9.5.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.5.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-6"><i class="fa fa-check"></i><b>9.5.2</b> Challenge 2</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>9.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.6.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-4"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 3</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>9.7</b> Wrapping up</a></li>
 <li class="chapter" data-level="9.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>9.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="9.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>9.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="9.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>9.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="9.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>9.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-7"><i class="fa fa-check"></i><b>9.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-7"><i class="fa fa-check"></i><b>9.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-5"><i class="fa fa-check"></i><b>9.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>10</b> Extracting raster fractions and area using a polygon mask</a><ul>
@@ -223,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>11</b> Calculating class area from raster</a><ul>
 <li class="chapter" data-level="11.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>11.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#creating-dummy-data"><i class="fa fa-check"></i><b>11.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="11.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data-1"><i class="fa fa-check"></i><b>11.1.1</b> Creating dummy data</a></li>
 <li class="chapter" data-level="11.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>11.1.2</b> Preparing the raster for area calculation</a></li>
 <li class="chapter" data-level="11.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>11.1.3</b> Compiling a comprehensive table</a></li>
 </ul></li>
@@ -250,166 +257,166 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="problem-statement" class="section level2">
 <h2><span class="header-section-number">10.1</span> Problem statement</h2>
 <p>For this tutorial you will need to load the following packages. Please install if you don’t have them yet.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb341-2" title="2"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb341-3" title="3"><span class="kw">library</span>(exactextractr)</a>
-<a class="sourceLine" id="cb341-4" title="4"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" title="1"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb327-2" title="2"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb327-3" title="3"><span class="kw">library</span>(exactextractr)</a>
+<a class="sourceLine" id="cb327-4" title="4"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>Say you have a raster of habitat suitability for a certain species. You could now be interested, how much suitable habitat lies within certain defined areas. For example we could check weather the species is adequately protected by extracting how much suitable area lies within National Parks or other reserves Additionally we can test, how much suitable (and unsuitable) area lies outside the areas you want to test to have an idea of the potential for further protection, or the danger to the species from e.g. land clearing outside of parks. In the end we additionally want to know which fraction of the total area both suitable and unsuitable habitat occupies with our parks, reserves and outside ares.</p>
 </div>
 <div id="creating-some-dummy-raster-data" class="section level2">
 <h2><span class="header-section-number">10.2</span> Creating some dummy raster data</h2>
 <p>First let’s get a raster to play around with:</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1">x &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb342-2" title="2"></a>
-<a class="sourceLine" id="cb342-3" title="3"><span class="kw">res</span>(x)&lt;-<span class="dv">100</span> <span class="co">#make the resolution 100 x 100 meter, so one cell is 1 ha in size</span></a>
-<a class="sourceLine" id="cb342-4" title="4"></a>
-<a class="sourceLine" id="cb342-5" title="5"><span class="kw">values</span>(x)&lt;-<span class="kw">runif</span>(<span class="kw">ncell</span>(x)) <span class="co">#populate the raster with random values between 0 - 1</span></a>
-<a class="sourceLine" id="cb342-6" title="6"></a>
-<a class="sourceLine" id="cb342-7" title="7"><span class="kw">plot</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1">x &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb328-2" title="2"></a>
+<a class="sourceLine" id="cb328-3" title="3"><span class="kw">res</span>(x)&lt;-<span class="dv">100</span> <span class="co">#make the resolution 100 x 100 meter, so one cell is 1 ha in size</span></a>
+<a class="sourceLine" id="cb328-4" title="4"></a>
+<a class="sourceLine" id="cb328-5" title="5"><span class="kw">values</span>(x)&lt;-<span class="kw">runif</span>(<span class="kw">ncell</span>(x)) <span class="co">#populate the raster with random values between 0 - 1</span></a>
+<a class="sourceLine" id="cb328-6" title="6"></a>
+<a class="sourceLine" id="cb328-7" title="7"><span class="kw">plot</span>(x)</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>This raster now contains makeshift values of habitat suitability on a percentage scale. Let’s say we found our cutoff point for suitable habitat at <code>0.5</code>. Any values below this cutoff are then defined as unsuitable for our target species. We can reclassify our raster accordingly:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1">x_re&lt;-<span class="kw">reclassify</span>(x, <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb343-2" title="2">                 <span class="fl">0.5</span>,<span class="ot">Inf</span>,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb343-3" title="3"></a>
-<a class="sourceLine" id="cb343-4" title="4"><span class="kw">plot</span>(x_re)</a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" title="1">x_re&lt;-<span class="kw">reclassify</span>(x, <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>,<span class="fl">0.5</span>,<span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb329-2" title="2">                 <span class="fl">0.5</span>,<span class="ot">Inf</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb329-3" title="3"></a>
+<a class="sourceLine" id="cb329-4" title="4"><span class="kw">plot</span>(x_re)</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p><code>0</code> now means non suitable and <code>1</code> suitable habitat. Since we randomized our values using <code>runif()</code> we have a equal distribution, meaning that 50% of the area is suitable and 50% of the area is unsuitable. This will help us in double-checking our results later but will probably never occur in real life examples.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1"><span class="kw">hist</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">hist</span>(x)</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1"><span class="kw">barplot</span>(x_re, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;darkred&#39;</span>,<span class="st">&#39;darkgreen&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1"><span class="kw">barplot</span>(x_re, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;darkred&#39;</span>,<span class="st">&#39;darkgreen&#39;</span>))</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <p>If we wanted to get different probabilities, we could also create our classified raster like this:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1">x_re2 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb346-2" title="2"></a>
-<a class="sourceLine" id="cb346-3" title="3"><span class="kw">res</span>(x_re2)&lt;-<span class="dv">100</span></a>
-<a class="sourceLine" id="cb346-4" title="4"></a>
-<a class="sourceLine" id="cb346-5" title="5"><span class="kw">values</span>(x_re2)&lt;-<span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">ncell</span>(x_re), <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">20</span>))</a>
-<a class="sourceLine" id="cb346-6" title="6"></a>
-<a class="sourceLine" id="cb346-7" title="7"><span class="kw">plot</span>(x_re2)</a></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" title="1">x_re2 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="dt">ncol=</span><span class="dv">100</span>, <span class="dt">nrow=</span><span class="dv">100</span>, <span class="dt">xmn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">xmx=</span><span class="dv">10000</span>, <span class="dt">ymn=</span><span class="op">-</span><span class="dv">10000</span>, <span class="dt">ymx=</span><span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb332-2" title="2"></a>
+<a class="sourceLine" id="cb332-3" title="3"><span class="kw">res</span>(x_re2)&lt;-<span class="dv">100</span></a>
+<a class="sourceLine" id="cb332-4" title="4"></a>
+<a class="sourceLine" id="cb332-5" title="5"><span class="kw">values</span>(x_re2)&lt;-<span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1</span>, <span class="kw">ncell</span>(x_re), <span class="dt">replace =</span> T, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">20</span>))</a>
+<a class="sourceLine" id="cb332-6" title="6"></a>
+<a class="sourceLine" id="cb332-7" title="7"><span class="kw">plot</span>(x_re2)</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Using <code>sample()</code> with <code>prob = c(80,20)</code>, assigns 80% of the area as unsuitable, but still on a normal pattern.</p>
 </div>
 <div id="create-some-reserves" class="section level2">
 <h2><span class="header-section-number">10.3</span> Create some reserves</h2>
 <p>We also needs some reserve areas to extract values from.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1"><span class="kw">extent</span>(x_re) <span class="co">#have a look at the extent of our raster to decide for extent of dummy areas</span></a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1"><span class="kw">extent</span>(x_re) <span class="co">#have a look at the extent of our raster to decide for extent of dummy areas</span></a></code></pre></div>
 <pre><code>## class      : Extent 
 ## xmin       : -10000 
 ## xmax       : 10000 
 ## ymin       : -10000 
 ## ymax       : 10000</code></pre>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" title="1"><span class="co">#create some extents</span></a>
-<a class="sourceLine" id="cb349-2" title="2">a&lt;-<span class="kw">extent</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">-5233</span>, <span class="dv">-2355</span>))</a>
-<a class="sourceLine" id="cb349-3" title="3">b&lt;-<span class="kw">extent</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">7000</span>, <span class="dv">6530</span>, <span class="dv">-400</span>, <span class="dv">4223</span>))</a>
-<a class="sourceLine" id="cb349-4" title="4">c&lt;-<span class="kw">extent</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">10000</span>, <span class="dv">-5427</span>, <span class="dv">-10000</span>, <span class="dv">-4785</span>))</a>
-<a class="sourceLine" id="cb349-5" title="5"></a>
-<a class="sourceLine" id="cb349-6" title="6"><span class="co">#transform them into polygons</span></a>
-<a class="sourceLine" id="cb349-7" title="7">a_sf&lt;-<span class="kw">as</span>(a, <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;res1&#39;</span>)  </a>
-<a class="sourceLine" id="cb349-8" title="8">b_sf&lt;-<span class="kw">as</span>(b, <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;res2&#39;</span>)    </a>
-<a class="sourceLine" id="cb349-9" title="9">c_sf&lt;-<span class="kw">as</span>(c, <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;res3&#39;</span>)  </a>
-<a class="sourceLine" id="cb349-10" title="10"></a>
-<a class="sourceLine" id="cb349-11" title="11"><span class="co">#get the total area to create our outside areas </span></a>
-<a class="sourceLine" id="cb349-12" title="12">all&lt;-<span class="kw">as</span>(<span class="kw">extent</span>(x_re), <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;outside&#39;</span>)  </a>
-<a class="sourceLine" id="cb349-13" title="13"></a>
-<a class="sourceLine" id="cb349-14" title="14"><span class="kw">plot</span>(x_re)</a>
-<a class="sourceLine" id="cb349-15" title="15"><span class="kw">plot</span>(a_sf<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">border =</span> <span class="st">&#39;red&#39;</span>)</a>
-<a class="sourceLine" id="cb349-16" title="16"><span class="kw">plot</span>(b_sf<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">border =</span> <span class="st">&#39;blue&#39;</span>)</a>
-<a class="sourceLine" id="cb349-17" title="17"><span class="kw">plot</span>(c_sf<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">border =</span> <span class="st">&#39;orange&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="co">#create some extents</span></a>
+<a class="sourceLine" id="cb335-2" title="2">a&lt;-<span class="kw">extent</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1000</span>, <span class="dv">1000</span>, <span class="dv">-5233</span>, <span class="dv">-2355</span>))</a>
+<a class="sourceLine" id="cb335-3" title="3">b&lt;-<span class="kw">extent</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">7000</span>, <span class="dv">6530</span>, <span class="dv">-400</span>, <span class="dv">4223</span>))</a>
+<a class="sourceLine" id="cb335-4" title="4">c&lt;-<span class="kw">extent</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">10000</span>, <span class="dv">-5427</span>, <span class="dv">-10000</span>, <span class="dv">-4785</span>))</a>
+<a class="sourceLine" id="cb335-5" title="5"></a>
+<a class="sourceLine" id="cb335-6" title="6"><span class="co">#transform them into polygons</span></a>
+<a class="sourceLine" id="cb335-7" title="7">a_sf&lt;-<span class="kw">as</span>(a, <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;res1&#39;</span>)  </a>
+<a class="sourceLine" id="cb335-8" title="8">b_sf&lt;-<span class="kw">as</span>(b, <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;res2&#39;</span>)    </a>
+<a class="sourceLine" id="cb335-9" title="9">c_sf&lt;-<span class="kw">as</span>(c, <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;res3&#39;</span>)  </a>
+<a class="sourceLine" id="cb335-10" title="10"></a>
+<a class="sourceLine" id="cb335-11" title="11"><span class="co">#get the total area to create our outside areas </span></a>
+<a class="sourceLine" id="cb335-12" title="12">all&lt;-<span class="kw">as</span>(<span class="kw">extent</span>(x_re), <span class="st">&#39;SpatialPolygons&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_as_sf</span>()<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">name =</span> <span class="st">&#39;outside&#39;</span>)  </a>
+<a class="sourceLine" id="cb335-13" title="13"></a>
+<a class="sourceLine" id="cb335-14" title="14"><span class="kw">plot</span>(x_re)</a>
+<a class="sourceLine" id="cb335-15" title="15"><span class="kw">plot</span>(a_sf<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">border =</span> <span class="st">&#39;red&#39;</span>)</a>
+<a class="sourceLine" id="cb335-16" title="16"><span class="kw">plot</span>(b_sf<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">border =</span> <span class="st">&#39;blue&#39;</span>)</a>
+<a class="sourceLine" id="cb335-17" title="17"><span class="kw">plot</span>(c_sf<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">border =</span> <span class="st">&#39;orange&#39;</span>)</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now we have three areas that we assume to be our reserves. We still need a polygon for all other areas, also we need to combine our polygons into one.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1"><span class="co">#bind reserves</span></a>
-<a class="sourceLine" id="cb350-2" title="2"></a>
-<a class="sourceLine" id="cb350-3" title="3">reserves&lt;-<span class="kw">rbind</span>(a_sf, b_sf, c_sf)</a>
-<a class="sourceLine" id="cb350-4" title="4"></a>
-<a class="sourceLine" id="cb350-5" title="5"><span class="co">#get the outside areas only</span></a>
-<a class="sourceLine" id="cb350-6" title="6"></a>
-<a class="sourceLine" id="cb350-7" title="7">outside&lt;-<span class="kw">st_difference</span>(all, <span class="kw">st_combine</span>(reserves))</a>
-<a class="sourceLine" id="cb350-8" title="8"></a>
-<a class="sourceLine" id="cb350-9" title="9"><span class="co">#bind all for extraction</span></a>
-<a class="sourceLine" id="cb350-10" title="10"></a>
-<a class="sourceLine" id="cb350-11" title="11">all_areas&lt;-<span class="kw">rbind</span>(reserves, outside)</a>
-<a class="sourceLine" id="cb350-12" title="12"></a>
-<a class="sourceLine" id="cb350-13" title="13"><span class="kw">plot</span>(x_re)</a>
-<a class="sourceLine" id="cb350-14" title="14"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(outside<span class="op">$</span>geometry), <span class="dt">border =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="dv">4</span>, <span class="dt">add =</span> T)</a>
-<a class="sourceLine" id="cb350-15" title="15"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(reserves), </a>
-<a class="sourceLine" id="cb350-16" title="16">     <span class="dt">border =</span> <span class="kw">as.factor</span>(reserves<span class="op">$</span>name), <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="co">#bind reserves</span></a>
+<a class="sourceLine" id="cb336-2" title="2"></a>
+<a class="sourceLine" id="cb336-3" title="3">reserves&lt;-<span class="kw">rbind</span>(a_sf, b_sf, c_sf)</a>
+<a class="sourceLine" id="cb336-4" title="4"></a>
+<a class="sourceLine" id="cb336-5" title="5"><span class="co">#get the outside areas only</span></a>
+<a class="sourceLine" id="cb336-6" title="6"></a>
+<a class="sourceLine" id="cb336-7" title="7">outside&lt;-<span class="kw">st_difference</span>(all, <span class="kw">st_combine</span>(reserves))</a>
+<a class="sourceLine" id="cb336-8" title="8"></a>
+<a class="sourceLine" id="cb336-9" title="9"><span class="co">#bind all for extraction</span></a>
+<a class="sourceLine" id="cb336-10" title="10"></a>
+<a class="sourceLine" id="cb336-11" title="11">all_areas&lt;-<span class="kw">rbind</span>(reserves, outside)</a>
+<a class="sourceLine" id="cb336-12" title="12"></a>
+<a class="sourceLine" id="cb336-13" title="13"><span class="kw">plot</span>(x_re)</a>
+<a class="sourceLine" id="cb336-14" title="14"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(outside<span class="op">$</span>geometry), <span class="dt">border =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="dv">4</span>, <span class="dt">add =</span> T)</a>
+<a class="sourceLine" id="cb336-15" title="15"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(reserves), </a>
+<a class="sourceLine" id="cb336-16" title="16">     <span class="dt">border =</span> <span class="kw">as.factor</span>(reserves<span class="op">$</span>name), <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span>T)</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The blue area is all raster area outside of our reserves. Our three reserves are colored in red, black and green.</p>
 </div>
 <div id="extracting-data" class="section level2">
 <h2><span class="header-section-number">10.4</span> Extracting data</h2>
 <p>To extract the cell data from each polygon, we use <code>exact_extract</code> from the package <code>exactextractr</code>, which is a quicker alternative to <code>raster::extract</code>. It extracts data from each feature separately in parallel and saves the extracted values into a list.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" title="1">extract&lt;-<span class="kw">exact_extract</span>(x_re,all_areas, <span class="dt">fun =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1">extract&lt;-<span class="kw">exact_extract</span>(x_re,all_areas, <span class="dt">fun =</span> <span class="ot">NULL</span>)</a></code></pre></div>
 <pre><code>## 
-  |                                                                            
-  |                                                                      |   0%
-  |                                                                            
-  |==================                                                    |  25%
-  |                                                                            
-  |===================================                                   |  50%
-  |                                                                            
-  |====================================================                  |  75%
-  |                                                                            
-  |======================================================================| 100%</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" title="1"><span class="cf">for</span>( i <span class="cf">in</span> <span class="kw">seq_along</span>(extract)){</a>
-<a class="sourceLine" id="cb353-2" title="2">  </a>
-<a class="sourceLine" id="cb353-3" title="3">  extract[[i]]<span class="op">$</span>ID &lt;-<span class="st"> </span><span class="kw">seq_along</span>(extract)[i]</a>
-<a class="sourceLine" id="cb353-4" title="4">}</a></code></pre></div>
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |================                                                 |  25%
+  |                                                                       
+  |================================                                 |  50%
+  |                                                                       
+  |=================================================                |  75%
+  |                                                                       
+  |=================================================================| 100%</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" title="1"><span class="cf">for</span>( i <span class="cf">in</span> <span class="kw">seq_along</span>(extract)){</a>
+<a class="sourceLine" id="cb339-2" title="2">  </a>
+<a class="sourceLine" id="cb339-3" title="3">  extract[[i]]<span class="op">$</span>ID &lt;-<span class="st"> </span><span class="kw">seq_along</span>(extract)[i]</a>
+<a class="sourceLine" id="cb339-4" title="4">}</a></code></pre></div>
 <p>In the second step, we assign an ID column to each table in the created list. This will help us in matching the extracted values to the name of the area polygon we extracted from. We convert out list into a table and then add the <code>lc</code> column to assign each value the name of the polygon it belongs to:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">extract_table&lt;-dplyr<span class="op">::</span><span class="kw">bind_rows</span>(extract)<span class="op">%&gt;%</span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb354-2" title="2"></a>
-<a class="sourceLine" id="cb354-3" title="3">extract_table<span class="op">$</span>lc &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all_areas<span class="op">$</span>name[extract_table<span class="op">$</span>ID])</a>
-<a class="sourceLine" id="cb354-4" title="4"></a>
-<a class="sourceLine" id="cb354-5" title="5"><span class="kw">head</span>(extract_table)</a></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1">extract_table&lt;-dplyr<span class="op">::</span><span class="kw">bind_rows</span>(extract)<span class="op">%&gt;%</span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb340-2" title="2"></a>
+<a class="sourceLine" id="cb340-3" title="3">extract_table<span class="op">$</span>lc &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all_areas<span class="op">$</span>name[extract_table<span class="op">$</span>ID])</a>
+<a class="sourceLine" id="cb340-4" title="4"></a>
+<a class="sourceLine" id="cb340-5" title="5"><span class="kw">head</span>(extract_table)</a></code></pre></div>
 <pre><code>##   value ID   lc
 ## 1     1  1 res1
-## 2     1  1 res1
-## 3     0  1 res1
+## 2     0  1 res1
+## 3     1  1 res1
 ## 4     1  1 res1
-## 5     1  1 res1
+## 5     0  1 res1
 ## 6     0  1 res1</code></pre>
 <p>We can now compile a summary table using <code>dplyr</code> syntax. To calculate the area, we are working with the resolution of the raster and will need to save it as a variable fist.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1">reso&lt;-<span class="kw">res</span>(x_re)[<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb356-2" title="2"></a>
-<a class="sourceLine" id="cb356-3" title="3">area_habitat&lt;-extract_table<span class="op">%&gt;%</span><span class="kw">group_by</span>(lc, value)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb356-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">areaha =</span> (pixelsum<span class="op">*</span>reso<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10000</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb356-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb356-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum_all =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">pertotal =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sum_all)</a></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;lc&#39; (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1">area_habitat</a></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1">reso&lt;-<span class="kw">res</span>(x_re)[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb342-2" title="2"></a>
+<a class="sourceLine" id="cb342-3" title="3">area_habitat&lt;-extract_table<span class="op">%&gt;%</span><span class="kw">group_by</span>(lc, value)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb342-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">pixelsum =</span> <span class="kw">sum</span>(ID), <span class="dt">areaha =</span> (pixelsum<span class="op">*</span>reso<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">10000</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb342-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sumA =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">per =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sumA)<span class="op">%&gt;%</span><span class="kw">ungroup</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb342-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum_all =</span> <span class="kw">sum</span>(pixelsum), <span class="dt">pertotal =</span> <span class="dv">100</span><span class="op">*</span>pixelsum<span class="op">/</span>sum_all)</a>
+<a class="sourceLine" id="cb342-7" title="7"></a>
+<a class="sourceLine" id="cb342-8" title="8">area_habitat</a></code></pre></div>
 <pre><code>## # A tibble: 8 x 8
 ##   lc      value pixelsum areaha   sumA   per sum_all pertotal
 ##   &lt;fct&gt;   &lt;dbl&gt;    &lt;int&gt;  &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;   &lt;int&gt;    &lt;dbl&gt;
-## 1 outside     0    61632  61632 123560  49.9  144258   42.7  
-## 2 outside     1    61928  61928 123560  50.1  144258   42.9  
-## 3 res1        0      309    309    600  51.5  144258    0.214
-## 4 res1        1      291    291    600  48.5  144258    0.202
-## 5 res2        0     6468   6468  12784  50.6  144258    4.48 
-## 6 res2        1     6316   6316  12784  49.4  144258    4.38 
-## 7 res3        0     3546   3546   7314  48.5  144258    2.46 
-## 8 res3        1     3768   3768   7314  51.5  144258    2.61</code></pre>
+## 1 outside     0    61844  61844 123560  50.1  144258   42.9  
+## 2 outside     1    61716  61716 123560  49.9  144258   42.8  
+## 3 res1        0      328    328    600  54.7  144258    0.227
+## 4 res1        1      272    272    600  45.3  144258    0.189
+## 5 res2        0     6414   6414  12784  50.2  144258    4.45 
+## 6 res2        1     6370   6370  12784  49.8  144258    4.42 
+## 7 res3        0     3714   3714   7314  50.8  144258    2.57 
+## 8 res3        1     3600   3600   7314  49.2  144258    2.50</code></pre>
 <p>What happens here is, we group by class (<code>lc</code> which refers to our polygon names) as well as value (0 for unsuitable and 1 for suitable habitat). We then tally all pixels using the <code>ID</code> column and calculate the area in ha from the <code>pixelsum</code>. In our case these match because the resolution is already 1 ha (each cell is 100x100 meters). Furthermore we can then tally all pixels to get the total raster area and from that calculate first the percentage of suitable and unsuitable habitat in each polygon and then (by using <code>ungroup()</code>) the fraction of this area compared to the total raster area.</p>
 </div>
 <div id="plotting-the-results" class="section level2">
 <h2><span class="header-section-number">10.5</span> Plotting the results</h2>
 <p>Using <code>ggplot2</code> we can then plot these results to better visualize them. The code below will work for any table that is in the format of our <code>area_habitat</code> table above, if you follow the steps of this guide.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">bar&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> area_habitat, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(<span class="kw">as.factor</span>(lc), <span class="op">-</span>pixelsum), <span class="dt">y =</span> per, <span class="dt">fill =</span> <span class="kw">as.factor</span>(value)))<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">position=</span><span class="kw">position_fill</span>(), <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-3" title="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>percent)<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-4" title="4"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(per, <span class="dt">digits =</span> <span class="dv">1</span>)), <span class="dt">check_overlap =</span> <span class="ot">TRUE</span>, <span class="dt">position=</span><span class="kw">position_fill</span>(),</a>
-<a class="sourceLine" id="cb360-5" title="5">            <span class="dt">vjust =</span> <span class="fl">1.2</span>, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-7" title="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>),</a>
-<a class="sourceLine" id="cb360-8" title="8">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>),</a>
-<a class="sourceLine" id="cb360-9" title="9">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>), </a>
-<a class="sourceLine" id="cb360-10" title="10">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-11" title="11"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Whatever this area is&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-12" title="12"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-13" title="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;area percentage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-14" title="14"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Outside&#39;</span>, <span class="st">&#39;Reserve 2&#39;</span>, <span class="st">&#39;Reserve 3&#39;</span>, <span class="st">&#39;Reserve 1&#39;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb360-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&#39;lightgrey&#39;</span>, <span class="st">&#39;darkgreen&#39;</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;unsuitable&#39;</span>, <span class="st">&#39;suitable&#39;</span>), <span class="dt">name =</span> <span class="st">&#39;&#39;</span>)</a>
-<a class="sourceLine" id="cb360-16" title="16"></a>
-<a class="sourceLine" id="cb360-17" title="17">bar</a></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1">bar&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> area_habitat, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(<span class="kw">as.factor</span>(lc), <span class="op">-</span>pixelsum), <span class="dt">y =</span> per, <span class="dt">fill =</span> <span class="kw">as.factor</span>(value)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&#39;identity&#39;</span>, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">position=</span><span class="kw">position_fill</span>(), <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-3" title="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">labels =</span> scales<span class="op">::</span>percent)<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-4" title="4"><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label=</span><span class="kw">round</span>(per, <span class="dt">digits =</span> <span class="dv">1</span>)), <span class="dt">check_overlap =</span> <span class="ot">TRUE</span>, <span class="dt">position=</span><span class="kw">position_fill</span>(),</a>
+<a class="sourceLine" id="cb344-5" title="5">            <span class="dt">vjust =</span> <span class="fl">1.2</span>, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-6" title="6"><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-7" title="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>),</a>
+<a class="sourceLine" id="cb344-8" title="8">        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>),</a>
+<a class="sourceLine" id="cb344-9" title="9">        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>), </a>
+<a class="sourceLine" id="cb344-10" title="10">        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>, <span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-11" title="11"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Whatever this area is&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-12" title="12"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&#39;&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-13" title="13"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&#39;area percentage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-14" title="14"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&#39;Outside&#39;</span>, <span class="st">&#39;Reserve 2&#39;</span>, <span class="st">&#39;Reserve 3&#39;</span>, <span class="st">&#39;Reserve 1&#39;</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb344-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&#39;lightgrey&#39;</span>, <span class="st">&#39;darkgreen&#39;</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;unsuitable&#39;</span>, <span class="st">&#39;suitable&#39;</span>), <span class="dt">name =</span> <span class="st">&#39;&#39;</span>)</a>
+<a class="sourceLine" id="cb344-16" title="16"></a>
+<a class="sourceLine" id="cb344-17" title="17">bar</a></code></pre></div>
 <p><img src="08-extracting_raster_fractions_by_mask_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Our plot shows for each area we wanted to test, which fraction is suitable and which unsuitable. As expected, in our example we have about a 50:50 distribution, but this may look quite different in a real-world example.</p>
 <p>Hope you can find a useful application for this code! :)</p>

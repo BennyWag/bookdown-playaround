@@ -1,0 +1,3 @@
+"0","koala_subsample<-koala%>%select(species, region, sex, tail, age)"
+"0",""
+"0","head(koala_subsample)"

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Functions in R | Intro to R for Forest Ecosystem Science</title>
+  <meta name="description" content="Introductory R" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Functions in R | Intro to R for Forest Ecosystem Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Introductory R" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Functions in R | Intro to R for Forest Ecosystem Science" />
+  
+  <meta name="twitter:description" content="Introductory R" />
+  
+
+<meta name="author" content="Anu Singh, Benjamin Wagner, and Kaitlyn Hammond" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-linear-models-in-r.html"/>
+<link rel="next" href="working-with-spatial-data-in-r.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>1.1</b> Disclaimer</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a><ul>
+<li class="chapter" data-level="2.1" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#r-projects"><i class="fa fa-check"></i><b>2.1</b> R Projects</a></li>
+<li class="chapter" data-level="2.2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#setting-up-the-r-studio-user-interface"><i class="fa fa-check"></i><b>2.2</b> Setting up the R-Studio User interface</a></li>
+<li class="chapter" data-level="2.3" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#code-folds-and-commenting"><i class="fa fa-check"></i><b>2.3</b> Code folds and commenting</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html"><i class="fa fa-check"></i><b>3</b> Introducing the koala dataset</a><ul>
+<li class="chapter" data-level="3.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#data-types-and-variable-types"><i class="fa fa-check"></i><b>3.1</b> <em>data types</em> and <em>variable types</em></a></li>
+<li class="chapter" data-level="3.2" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#changing-variable-types"><i class="fa fa-check"></i><b>3.2</b> Changing <em>variable types</em></a></li>
+<li class="chapter" data-level="3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#how-the-koala-dataset-was-collated"><i class="fa fa-check"></i><b>3.3</b> How the koala dataset was collated</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#loading-the-raw-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading the raw data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#adding-the-state-names-by-location"><i class="fa fa-check"></i><b>3.3.2</b> Adding the state names by location</a></li>
+<li class="chapter" data-level="3.3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#creating-dummy-data"><i class="fa fa-check"></i><b>3.3.3</b> Creating dummy data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#loading-and-checking-the-data"><i class="fa fa-check"></i><b>4.1</b> Loading and checking the data</a></li>
+<li class="chapter" data-level="4.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>4.2</b> Working with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>4.2.1</b> select() and dplyr’s pipe</a></li>
+<li class="chapter" data-level="4.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>4.2.2</b> filter()</a></li>
+<li class="chapter" data-level="4.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>4.2.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="4.2.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#group_by-and-summarise"><i class="fa fa-check"></i><b>4.2.4</b> group_by() and summarise()</a></li>
+<li class="chapter" data-level="4.2.5" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>4.2.5</b> Challenge 2</a></li>
+<li class="chapter" data-level="4.2.6" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#mutate"><i class="fa fa-check"></i><b>4.2.6</b> mutate()</a></li>
+<li class="chapter" data-level="4.2.7" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>4.2.7</b> Challenge 3</a></li>
+<li class="chapter" data-level="4.2.8" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#pivoting"><i class="fa fa-check"></i><b>4.2.8</b> Pivoting</a></li>
+<li class="chapter" data-level="4.2.9" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-4"><i class="fa fa-check"></i><b>4.2.9</b> Challenge 4</a></li>
+<li class="chapter" data-level="4.2.10" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-5"><i class="fa fa-check"></i><b>4.2.10</b> Challenge 5</a></li>
+<li class="chapter" data-level="4.2.11" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>4.2.11</b> Solution to all challenges</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Introduction to data visualization in <code>ggplot2</code></a></li>
+<li class="chapter" data-level="6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear models in R</a></li>
+<li class="chapter" data-level="7" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>7</b> Functions in R</a><ul>
+<li class="chapter" data-level="7.1" data-path="functions-in-r.html"><a href="functions-in-r.html#introduction-1"><i class="fa fa-check"></i><b>7.1</b> Introduction</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="functions-in-r.html"><a href="functions-in-r.html#mathematical-operations"><i class="fa fa-check"></i><b>7.1.1</b> Mathematical operations</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="functions-in-r.html"><a href="functions-in-r.html#what-is-an-r-function"><i class="fa fa-check"></i><b>7.2</b> What is an R function?</a></li>
+<li class="chapter" data-level="7.3" data-path="functions-in-r.html"><a href="functions-in-r.html#nesting-functions"><i class="fa fa-check"></i><b>7.3</b> Nesting functions</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="functions-in-r.html"><a href="functions-in-r.html#some-basic-built-in-mathematical-functions"><i class="fa fa-check"></i><b>7.3.1</b> Some basic built-in mathematical functions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="functions-in-r.html"><a href="functions-in-r.html#assigning-variables-within-functions"><i class="fa fa-check"></i><b>7.4</b> Assigning variables within functions</a></li>
+<li class="chapter" data-level="7.5" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-2"><i class="fa fa-check"></i><b>7.5</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.6" data-path="functions-in-r.html"><a href="functions-in-r.html#using-return"><i class="fa fa-check"></i><b>7.6</b> Using <code>return()</code></a></li>
+<li class="chapter" data-level="7.7" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-2"><i class="fa fa-check"></i><b>7.7</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.8" data-path="functions-in-r.html"><a href="functions-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.8</b> Solutions to challenges</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-3"><i class="fa fa-check"></i><b>7.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.8.2" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-3"><i class="fa fa-check"></i><b>7.8.2</b> Challenge 2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>8</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="8.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>8.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
+<li class="chapter" data-level="8.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>8.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-4"><i class="fa fa-check"></i><b>8.2.1</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>8.3</b> Simple geometric operations</a></li>
+<li class="chapter" data-level="8.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>8.4</b> Making a map using <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="8.4.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-4"><i class="fa fa-check"></i><b>8.4.1</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>8.5</b> <code>R</code> raster basics</a></li>
+<li class="chapter" data-level="8.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>8.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="8.6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-2"><i class="fa fa-check"></i><b>8.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges-1"><i class="fa fa-check"></i><b>8.7</b> Solutions to Challenges</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-5"><i class="fa fa-check"></i><b>8.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="8.7.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-5"><i class="fa fa-check"></i><b>8.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="8.7.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-3"><i class="fa fa-check"></i><b>8.7.3</b> Challenge 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>9</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="9.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>9.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
+<li class="chapter" data-level="9.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>9.2</b> Working with LiDAR data in R</a></li>
+<li class="chapter" data-level="9.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>9.3</b> Step 1. Loading and visualizing pointclouds</a></li>
+<li class="chapter" data-level="9.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>9.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>9.4.1</b> Ground detection and normalizing a point cloud</a></li>
+<li class="chapter" data-level="9.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>9.4.2</b> Building the initial CHM</a></li>
+<li class="chapter" data-level="9.4.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-6"><i class="fa fa-check"></i><b>9.4.3</b> Challenge 1</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>9.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>9.5.1</b> Delineating the crowns</a></li>
+<li class="chapter" data-level="9.5.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-6"><i class="fa fa-check"></i><b>9.5.2</b> Challenge 2</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>9.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-4"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 3</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>9.7</b> Wrapping up</a></li>
+<li class="chapter" data-level="9.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>9.8</b> Solutions to the challenges</a><ul>
+<li class="chapter" data-level="9.8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-7"><i class="fa fa-check"></i><b>9.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-7"><i class="fa fa-check"></i><b>9.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-5"><i class="fa fa-check"></i><b>9.8.3</b> Challenge 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>10</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="10.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>10.1</b> Problem statement</a></li>
+<li class="chapter" data-level="10.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>10.2</b> Creating some dummy raster data</a></li>
+<li class="chapter" data-level="10.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>10.3</b> Create some reserves</a></li>
+<li class="chapter" data-level="10.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>10.4</b> Extracting data</a></li>
+<li class="chapter" data-level="10.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>10.5</b> Plotting the results</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>11</b> Calculating class area from raster</a><ul>
+<li class="chapter" data-level="11.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>11.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data-1"><i class="fa fa-check"></i><b>11.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="11.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>11.1.2</b> Preparing the raster for area calculation</a></li>
+<li class="chapter" data-level="11.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>11.1.3</b> Compiling a comprehensive table</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intro to R for Forest Ecosystem Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions-in-r" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Functions in R</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> Introduction</h2>
+<p>Basic mathematical operations are the heart of data analysis. While statistical analysis can seem far removed from the arithmetic you learned in primary school, complex analyses are still built on very basic mathematics! As a computing language, the main purpose of R is to streamline these operations, allowing you to build up complex analyses with relatively little work. Even very basic, commonly used operations like <code>mean()</code> are actually functions. That is, they take basic inputs and evaluate some string of mathematical operations, and produce an output.</p>
+<p>There are many built-in R functions, and endless others available in R packages. One of the most useful tools in R is the ability to write user-defined functions that simplify your processing and reduce the risk of making simple errors.</p>
+<p>This section will introduce basic function structure and show you how to write your own.</p>
+<div id="mathematical-operations" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Mathematical operations</h3>
+<p>A quick reminder about mathematical and conditional operators in R:</p>
+<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 3.6.3</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Operator
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+Addition
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+Subtraction
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ul>
+<li></td>
+<td style="text-align:left;">
+Multiplication
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+/
+</td>
+<td style="text-align:left;">
+Division
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+^
+</td>
+<td style="text-align:left;">
+Exponential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+&gt;
+</td>
+<td style="text-align:left;">
+Greater than
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+&lt;
+</td>
+<td style="text-align:left;">
+Less than
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+==
+</td>
+<td style="text-align:left;">
+*Equal to
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+&gt;= and &lt;=
+</td>
+<td style="text-align:left;">
+Greater than/less than or equal to
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+!=
+</td>
+<td style="text-align:left;">
+Not equal to
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup>1</sup> The = symbol alone assigns a value; you need == for a conditional statement
+</td>
+</tr>
+</tfoot>
+</table></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="what-is-an-r-function" class="section level2">
+<h2><span class="header-section-number">7.2</span> What is an R function?</h2>
+<p>Functions in R take an input value, run a chunk of code, and generate an output. R packages include numerous functions that can do nearly anything you desire, but research often requires specific processes or sequences of commands designed specifically to work with your data structure. You can write your own functions in R to perform these tasks.</p>
+<p>Here is a very simple function:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">fun1 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb190-2" title="2">  a <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb190-3" title="3">}</a></code></pre></div>
+<p>Here, <code>a</code> and <code>b</code> are identified as the required input variables. The code written within the brackets describes the mathematical operation to be applied to the input variables.</p>
+<p>Let’s run the function on some numbers:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">fun1</span>(<span class="dt">a =</span> <span class="dv">7</span>, <span class="dt">b =</span> <span class="dv">12</span>)</a></code></pre></div>
+<pre><code>## [1] 19</code></pre>
+<p>A function can be applied to a vector of inputs. In this scenario, the function will be applied to each pair of values in the vector sequence:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">vals_a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb193-2" title="2">vals_b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb193-3" title="3"></a>
+<a class="sourceLine" id="cb193-4" title="4"><span class="kw">fun1</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> vals_b)</a></code></pre></div>
+<pre><code>## [1] 6 8 4</code></pre>
+<p>User defined functions can include as many variables as you want, and the inputs can even be labeled with words:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">fun2 &lt;-<span class="st"> </span><span class="cf">function</span> (length, width, height){</a>
+<a class="sourceLine" id="cb195-2" title="2">  length <span class="op">*</span><span class="st"> </span>width <span class="op">*</span><span class="st"> </span>height</a>
+<a class="sourceLine" id="cb195-3" title="3">}</a></code></pre></div>
+<p>When executing a function, you don’t need to type up the variable names, but they should be in the correct order.</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="kw">fun2</span>(<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">9</span>)</a></code></pre></div>
+<pre><code>## [1] 162</code></pre>
+</div>
+<div id="nesting-functions" class="section level2">
+<h2><span class="header-section-number">7.3</span> Nesting functions</h2>
+<p>Functions can also include other functions, which is particularly useful in the context of repeating complex data analyses. Here is a basic example:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">fun3 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb198-2" title="2">  <span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb198-3" title="3">}</a>
+<a class="sourceLine" id="cb198-4" title="4"></a>
+<a class="sourceLine" id="cb198-5" title="5"></a>
+<a class="sourceLine" id="cb198-6" title="6"><span class="kw">fun3</span>(vals_a, vals_b)</a></code></pre></div>
+<pre><code>## [1] 6 5 7</code></pre>
+<p>It is important to note that in this situation, the internal function (<code>mean()</code>) takes a vector of input values. This function will calculate the mean of the <code>vals_a</code> vector and then add this to each separate value of <code>vals_b</code>.</p>
+<p>This can be very useful, but it’s critical that you know exactly how your function processes input values or you may run into problems!</p>
+<div id="some-basic-built-in-mathematical-functions" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> Some basic built-in mathematical functions</h3>
+<p>Here are a base R functions that might be useful (most are self explanatory!):</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1">Function &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mean()&quot;</span>, <span class="st">&quot;max()&quot;</span>, <span class="st">&quot;min()&quot;</span>, <span class="st">&quot;median()&quot;</span>, <span class="st">&quot;sum()&quot;</span>, <span class="st">&quot;var()&quot;</span>, <span class="st">&quot;cor()&quot;</span>, <span class="st">&quot;sd()&quot;</span>)</a>
+<a class="sourceLine" id="cb200-2" title="2">Description &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Maximum value&quot;</span>, <span class="st">&quot;Minimum value&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Sum&quot;</span>, <span class="st">&quot;Variance&quot;</span>, <span class="st">&quot;Correlation&quot;</span>,  <span class="st">&quot;Standard deviation&quot;</span>)</a>
+<a class="sourceLine" id="cb200-3" title="3">tab1 &lt;-<span class="st"> </span><span class="kw">cbind</span>(Function, Description)</a>
+<a class="sourceLine" id="cb200-4" title="4"></a>
+<a class="sourceLine" id="cb200-5" title="5"></a>
+<a class="sourceLine" id="cb200-6" title="6"><span class="kw">kable</span>(tab1) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb200-7" title="7"><span class="st">   </span><span class="kw">kable_styling</span>()</a></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Function
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mean()
+</td>
+<td style="text-align:left;">
+Mean
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+max()
+</td>
+<td style="text-align:left;">
+Maximum value
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+min()
+</td>
+<td style="text-align:left;">
+Minimum value
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median()
+</td>
+<td style="text-align:left;">
+Median
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sum()
+</td>
+<td style="text-align:left;">
+Sum
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+var()
+</td>
+<td style="text-align:left;">
+Variance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cor()
+</td>
+<td style="text-align:left;">
+Correlation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd()
+</td>
+<td style="text-align:left;">
+Standard deviation
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="assigning-variables-within-functions" class="section level2">
+<h2><span class="header-section-number">7.4</span> Assigning variables within functions</h2>
+<p>In some more complex analyses, the nested functions may generate data that needs to be stored as variables so they can be used as input for the next process. Here is a function that calculates the mean of our a values, adds b, and then squares the value calculated in the first step.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">fun4 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb201-2" title="2">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb201-3" title="3">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb201-4" title="4">}</a>
+<a class="sourceLine" id="cb201-5" title="5"></a>
+<a class="sourceLine" id="cb201-6" title="6"></a>
+<a class="sourceLine" id="cb201-7" title="7">output &lt;-<span class="st"> </span><span class="kw">fun4</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb201-8" title="8">output</a></code></pre></div>
+<pre><code>## [1] 49</code></pre>
+</div>
+<div id="challenge-1-2" class="section level2">
+<h2><span class="header-section-number">7.5</span> Challenge 1</h2>
+<p>Write a function that identifies the median value of a, adds the minimum value of a to the median value, and then calculates the square root of that value.</p>
+<p>Execute the function on this vector: a &lt;- c(1, 3, 4, 2, 8, 10, 3, 8)</p>
+</div>
+<div id="using-return" class="section level2">
+<h2><span class="header-section-number">7.6</span> Using <code>return()</code></h2>
+<p>If your function assigns multiple variables, you can use <code>return()</code> to determine the data that is output from the function. This can be useful if your function includes writing a data set, or includes another process that is not intended to return anything to R as well as some process intended to return data to the R environment.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="co">#Let&#39;s see what happens without using the return() function</span></a>
+<a class="sourceLine" id="cb203-2" title="2">fun5 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb203-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb203-4" title="4">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb203-5" title="5">  <span class="kw">write.csv</span>(sqval, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb203-6" title="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1">output &lt;-<span class="st"> </span><span class="kw">fun5</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb204-2" title="2">output</a></code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>Our output here is NULL because the default output for a function will come from the last command within the function. Here, <code>write.csv()</code> does not produce data to be returned to R. If we add <code>return()</code>, our function will write the .csv and also return the data we want into the environment:</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1"><span class="co">#Now let&#39;s add return()</span></a>
+<a class="sourceLine" id="cb206-2" title="2">fun6 &lt;-<span class="st"> </span><span class="cf">function</span> (a, b){</a>
+<a class="sourceLine" id="cb206-3" title="3">  val &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span>b</a>
+<a class="sourceLine" id="cb206-4" title="4">  sqval &lt;-<span class="st"> </span>val<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb206-5" title="5">  <span class="kw">write.csv</span>(sqval, <span class="st">&quot;outputs/filename.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb206-6" title="6">  <span class="kw">return</span>(sqval)</a>
+<a class="sourceLine" id="cb206-7" title="7">}</a>
+<a class="sourceLine" id="cb206-8" title="8"></a>
+<a class="sourceLine" id="cb206-9" title="9"></a>
+<a class="sourceLine" id="cb206-10" title="10">output &lt;-<span class="st"> </span><span class="kw">fun6</span>(<span class="dt">a =</span> vals_a, <span class="dt">b =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb206-11" title="11">output</a></code></pre></div>
+<pre><code>## [1] 49</code></pre>
+<p>Much better!</p>
+</div>
+<div id="challenge-2-2" class="section level2">
+<h2><span class="header-section-number">7.7</span> Challenge 2</h2>
+<p>Write a function for two vectors a and b that:</p>
+<ol style="list-style-type: decimal">
+<li>Calculates the sum of the means of a and b and assigns this value to a variable “m”</li>
+<li>Calculates m to the power of 7 and assgins this value to a variable “s”</li>
+<li>Removes “m” from the environment (Hint: <code>rm()</code>)</li>
+<li>Returns the value of “s”</li>
+</ol>
+</div>
+<div id="solutions-to-challenges" class="section level2">
+<h2><span class="header-section-number">7.8</span> Solutions to challenges</h2>
+<div id="challenge-1-3" class="section level3">
+<h3><span class="header-section-number">7.8.1</span> Challenge 1</h3>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb208-2" title="2"></a>
+<a class="sourceLine" id="cb208-3" title="3"><span class="co">#One way:</span></a>
+<a class="sourceLine" id="cb208-4" title="4"></a>
+<a class="sourceLine" id="cb208-5" title="5">challenge1a &lt;-<span class="st"> </span><span class="cf">function</span>(a) {</a>
+<a class="sourceLine" id="cb208-6" title="6">  medval &lt;-<span class="st"> </span><span class="kw">median</span>(a)</a>
+<a class="sourceLine" id="cb208-7" title="7">  minval &lt;-<span class="st"> </span><span class="kw">min</span>(a)</a>
+<a class="sourceLine" id="cb208-8" title="8">  (medval <span class="op">+</span><span class="st"> </span>minval)<span class="op">^-</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb208-9" title="9">}</a>
+<a class="sourceLine" id="cb208-10" title="10"></a>
+<a class="sourceLine" id="cb208-11" title="11"><span class="kw">challenge1a</span>(a)</a></code></pre></div>
+<pre><code>## [1] 0.04938272</code></pre>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1"><span class="co">#Even simpler:</span></a>
+<a class="sourceLine" id="cb210-2" title="2"></a>
+<a class="sourceLine" id="cb210-3" title="3">challenge1b &lt;-<span class="st"> </span><span class="cf">function</span>(a) {</a>
+<a class="sourceLine" id="cb210-4" title="4">  (<span class="kw">median</span>(a) <span class="op">+</span><span class="st"> </span><span class="kw">min</span>(a))<span class="op">^-</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb210-5" title="5">}</a>
+<a class="sourceLine" id="cb210-6" title="6"></a>
+<a class="sourceLine" id="cb210-7" title="7"><span class="kw">challenge1b</span>(a)</a></code></pre></div>
+<pre><code>## [1] 0.04938272</code></pre>
+</div>
+<div id="challenge-2-3" class="section level3">
+<h3><span class="header-section-number">7.8.2</span> Challenge 2</h3>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb212-2" title="2">b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">3</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb212-3" title="3"></a>
+<a class="sourceLine" id="cb212-4" title="4">challenge2 &lt;-<span class="st"> </span><span class="cf">function</span>(a, b) {</a>
+<a class="sourceLine" id="cb212-5" title="5">  m &lt;-<span class="st"> </span><span class="kw">mean</span>(a) <span class="op">+</span><span class="st"> </span><span class="kw">mean</span>(b)</a>
+<a class="sourceLine" id="cb212-6" title="6">  s &lt;-<span class="st"> </span>m<span class="op">^</span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb212-7" title="7">  <span class="kw">rm</span>(m)</a>
+<a class="sourceLine" id="cb212-8" title="8">  <span class="kw">return</span>(s)</a>
+<a class="sourceLine" id="cb212-9" title="9">}</a>
+<a class="sourceLine" id="cb212-10" title="10"></a>
+<a class="sourceLine" id="cb212-11" title="11"><span class="kw">challenge2</span>(a, b)</a></code></pre></div>
+<pre><code>## [1] 89050880</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-linear-models-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-spatial-data-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -152,7 +152,7 @@ extract<-exact_extract(x_re,all_areas, fun = NULL)
 ```
 
 ```
-##   |                                                                              |                                                                      |   0%  |                                                                              |==================                                                    |  25%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================================                  |  75%  |                                                                              |======================================================================| 100%
+##   |                                                                         |                                                                 |   0%  |                                                                         |================                                                 |  25%  |                                                                         |================================                                 |  50%  |                                                                         |=================================================                |  75%  |                                                                         |=================================================================| 100%
 ```
 
 ```r
@@ -176,10 +176,10 @@ head(extract_table)
 ```
 ##   value ID   lc
 ## 1     1  1 res1
-## 2     1  1 res1
-## 3     0  1 res1
+## 2     0  1 res1
+## 3     1  1 res1
 ## 4     1  1 res1
-## 5     1  1 res1
+## 5     0  1 res1
 ## 6     0  1 res1
 ```
 
@@ -193,13 +193,7 @@ area_habitat<-extract_table%>%group_by(lc, value)%>%
   summarise(pixelsum = sum(ID), areaha = (pixelsum*reso^2)/10000)%>%
   mutate(sumA = sum(pixelsum), per = 100*pixelsum/sumA)%>%ungroup()%>%
   mutate(sum_all = sum(pixelsum), pertotal = 100*pixelsum/sum_all)
-```
 
-```
-## `summarise()` regrouping output by 'lc' (override with `.groups` argument)
-```
-
-```r
 area_habitat
 ```
 
@@ -207,14 +201,14 @@ area_habitat
 ## # A tibble: 8 x 8
 ##   lc      value pixelsum areaha   sumA   per sum_all pertotal
 ##   <fct>   <dbl>    <int>  <dbl>  <int> <dbl>   <int>    <dbl>
-## 1 outside     0    61632  61632 123560  49.9  144258   42.7  
-## 2 outside     1    61928  61928 123560  50.1  144258   42.9  
-## 3 res1        0      309    309    600  51.5  144258    0.214
-## 4 res1        1      291    291    600  48.5  144258    0.202
-## 5 res2        0     6468   6468  12784  50.6  144258    4.48 
-## 6 res2        1     6316   6316  12784  49.4  144258    4.38 
-## 7 res3        0     3546   3546   7314  48.5  144258    2.46 
-## 8 res3        1     3768   3768   7314  51.5  144258    2.61
+## 1 outside     0    61844  61844 123560  50.1  144258   42.9  
+## 2 outside     1    61716  61716 123560  49.9  144258   42.8  
+## 3 res1        0      328    328    600  54.7  144258    0.227
+## 4 res1        1      272    272    600  45.3  144258    0.189
+## 5 res2        0     6414   6414  12784  50.2  144258    4.45 
+## 6 res2        1     6370   6370  12784  49.8  144258    4.42 
+## 7 res3        0     3714   3714   7314  50.8  144258    2.57 
+## 8 res3        1     3600   3600   7314  49.2  144258    2.50
 ```
 What happens here is, we group by class (`lc` which refers to our polygon names) as well as value (0 for unsuitable and 1 for suitable habitat). We then tally all pixels using the `ID` column and calculate the area in ha from the `pixelsum`. In our case these match because the resolution is already 1 ha (each cell is 100x100 meters). Furthermore we can then tally all pixels to get the total raster area and from that calculate first the percentage of suitable and unsuitable habitat in each polygon and then (by using `ungroup()`) the fraction of this area compared to the total raster area.
 

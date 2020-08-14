@@ -511,7 +511,15 @@ For many applications and studies, it is important to have detailed topographic 
 
 ```r
 dtm <- grid_terrain(raw_forest_ground, 1, algorithm = kriging(k = 10L))
+```
 
+```
+## Registered S3 method overwritten by 'xts':
+##   method     from
+##   as.zoo.xts zoo
+```
+
+```r
 plot(dtm)
 ```
 

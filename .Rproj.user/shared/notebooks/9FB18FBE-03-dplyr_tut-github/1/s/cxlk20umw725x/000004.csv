@@ -1,0 +1,4 @@
+"0","ggplot(koala_pivot, aes(x=species, y=tail_length, fill = tail_measure)) + "
+"0","  geom_boxplot()+"
+"0","  facet_grid(~sex)"
+"0",""

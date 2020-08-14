@@ -1,0 +1,6 @@
+"0","koala_mutate_weight_size<-koala%>%mutate(weight_size_ratio = size/weight)%>%"
+"0","  group_by(sex)%>%"
+"0","  summarise(mean_weight = mean(weight),"
+"0","            sd_weight = sd(weight),"
+"0","            mean_weight_size = mean (weight_size_ratio),"
+"0","            max_weight_size = max(weight_size_ratio))"

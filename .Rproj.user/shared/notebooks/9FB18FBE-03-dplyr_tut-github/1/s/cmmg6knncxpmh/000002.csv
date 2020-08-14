@@ -1,0 +1,4 @@
+"0","library(dplyr)"
+"0",""
+"0","mean_age_koala<-koala%>%group_by(sex)%>%summarise(mean_age = mean(age))"
+"0",""

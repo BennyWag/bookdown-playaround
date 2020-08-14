@@ -1,0 +1,3 @@
+"0","koala_pivot_wide<-koala_pivot_subsample%>%pivot_wider(names_from = age_check, values_from = age)"
+"0",""
+"0","head(koala_pivot_wide)"
