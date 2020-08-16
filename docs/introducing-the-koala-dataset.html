@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Introducing the koala dataset | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Introducing the koala dataset | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 <link rel="prev" href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"/>
 <link rel="next" href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -127,26 +129,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>1.1</b> Disclaimer</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a><ul>
+<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#r-projects"><i class="fa fa-check"></i><b>2.1</b> R Projects</a></li>
 <li class="chapter" data-level="2.2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#setting-up-the-r-studio-user-interface"><i class="fa fa-check"></i><b>2.2</b> Setting up the R-Studio User interface</a></li>
 <li class="chapter" data-level="2.3" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#code-folds-and-commenting"><i class="fa fa-check"></i><b>2.3</b> Code folds and commenting</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html"><i class="fa fa-check"></i><b>3</b> Introducing the koala dataset</a><ul>
+<li class="chapter" data-level="3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html"><i class="fa fa-check"></i><b>3</b> Introducing the koala dataset</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#data-types-and-variable-types"><i class="fa fa-check"></i><b>3.1</b> <em>data types</em> and <em>variable types</em></a></li>
 <li class="chapter" data-level="3.2" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#changing-variable-types"><i class="fa fa-check"></i><b>3.2</b> Changing <em>variable types</em></a></li>
-<li class="chapter" data-level="3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#how-the-koala-dataset-was-collated"><i class="fa fa-check"></i><b>3.3</b> How the koala dataset was collated</a><ul>
+<li class="chapter" data-level="3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#how-the-koala-dataset-was-collated"><i class="fa fa-check"></i><b>3.3</b> How the koala dataset was collated</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#loading-the-raw-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading the raw data</a></li>
 <li class="chapter" data-level="3.3.2" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#adding-the-state-names-by-location"><i class="fa fa-check"></i><b>3.3.2</b> Adding the state names by location</a></li>
 <li class="chapter" data-level="3.3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#creating-dummy-data"><i class="fa fa-check"></i><b>3.3.3</b> Creating dummy data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
+<li class="chapter" data-level="4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#loading-and-checking-the-data"><i class="fa fa-check"></i><b>4.1</b> Loading and checking the data</a></li>
-<li class="chapter" data-level="4.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>4.2</b> Working with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>4.2</b> Working with <code>dplyr</code></a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>4.2.1</b> select() and dplyr’s pipe</a></li>
 <li class="chapter" data-level="4.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>4.2.2</b> filter()</a></li>
 <li class="chapter" data-level="4.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>4.2.3</b> Challenge 1</a></li>
@@ -160,94 +168,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.11" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>4.2.11</b> Solution to all challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Introduction to data visualization in <code>ggplot2</code></a></li>
-<li class="chapter" data-level="6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear models in R</a></li>
-<li class="chapter" data-level="7" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>7</b> Functions in R</a><ul>
-<li class="chapter" data-level="7.1" data-path="functions-in-r.html"><a href="functions-in-r.html#introduction-1"><i class="fa fa-check"></i><b>7.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Introduction to data visualization in <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#general-information-about-ggplot"><i class="fa fa-check"></i><b>5.1</b> General information about <strong>GGPLOT</strong></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#package-needed-for-the-analysis"><i class="fa fa-check"></i><b>5.1.1</b> Package needed for the analysis</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#be-patient-with-r-and-yourself-its-not-magic-but-rather-work"><i class="fa fa-check"></i><b>5.1.2</b> Be Patient with R and yourself, its not magic but rather work</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#make-your-first-graph"><i class="fa fa-check"></i><b>5.2</b> Make your first Graph</a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>5.3</b> <code>geom_point</code></a></li>
+<li class="chapter" data-level="5.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.4</b> Challenge 1</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>5.4.1</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#facet_wrap"><i class="fa fa-check"></i><b>5.4.2</b> <code>facet_wrap</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#reverse-the-condition-logic"><i class="fa fa-check"></i><b>5.4.3</b> Reverse the condition logic</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#challenge2"><i class="fa fa-check"></i><b>5.5</b> Challenge2</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#challenge3"><i class="fa fa-check"></i><b>5.6</b> Challenge3</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear models in R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#model-assumptions"><i class="fa fa-check"></i><b>6.1</b> Model Assumptions</a></li>
+<li class="chapter" data-level="6.2" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#linear-model"><i class="fa fa-check"></i><b>6.2</b> Linear model</a></li>
+<li class="chapter" data-level="6.3" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#correlation"><i class="fa fa-check"></i><b>6.3</b> Correlation</a></li>
+<li class="chapter" data-level="6.4" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#statistical-hypothesis"><i class="fa fa-check"></i><b>6.4</b> Statistical Hypothesis</a></li>
+<li class="chapter" data-level="6.5" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#anova"><i class="fa fa-check"></i><b>6.5</b> ANOVA</a></li>
+<li class="chapter" data-level="6.6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#build-the-model"><i class="fa fa-check"></i><b>6.6</b> <strong>Build the model </strong></a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#glm"><i class="fa fa-check"></i><b>6.6.1</b> GLM</a></li>
+<li class="chapter" data-level="6.6.2" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#but-there-are-some-limitations-of-glms-too-such-as"><i class="fa fa-check"></i><b>6.6.2</b> But there are some limitations of GLMs too, such as,</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>7</b> Functions in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="functions-in-r.html"><a href="functions-in-r.html#mathematical-operations"><i class="fa fa-check"></i><b>7.1.1</b> Mathematical operations</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="functions-in-r.html"><a href="functions-in-r.html#what-is-an-r-function"><i class="fa fa-check"></i><b>7.2</b> What is an R function?</a></li>
-<li class="chapter" data-level="7.3" data-path="functions-in-r.html"><a href="functions-in-r.html#nesting-functions"><i class="fa fa-check"></i><b>7.3</b> Nesting functions</a><ul>
+<li class="chapter" data-level="7.3" data-path="functions-in-r.html"><a href="functions-in-r.html#nesting-functions"><i class="fa fa-check"></i><b>7.3</b> Nesting functions</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="functions-in-r.html"><a href="functions-in-r.html#some-basic-built-in-mathematical-functions"><i class="fa fa-check"></i><b>7.3.1</b> Some basic built-in mathematical functions</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="functions-in-r.html"><a href="functions-in-r.html#assigning-variables-within-functions"><i class="fa fa-check"></i><b>7.4</b> Assigning variables within functions</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-2"><i class="fa fa-check"></i><b>7.4.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.4" data-path="functions-in-r.html"><a href="functions-in-r.html#assigning-variables-within-functions"><i class="fa fa-check"></i><b>7.4</b> Assigning variables within functions</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.4.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="functions-in-r.html"><a href="functions-in-r.html#using-return"><i class="fa fa-check"></i><b>7.5</b> Using <code>return()</code></a><ul>
-<li class="chapter" data-level="7.5.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-2"><i class="fa fa-check"></i><b>7.5.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.5" data-path="functions-in-r.html"><a href="functions-in-r.html#using-return"><i class="fa fa-check"></i><b>7.5</b> Using <code>return()</code></a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.5.1</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="functions-in-r.html"><a href="functions-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.6</b> Solutions to challenges</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="7.6.2" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-3"><i class="fa fa-check"></i><b>7.6.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.6" data-path="functions-in-r.html"><a href="functions-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.6</b> Solutions to challenges</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.6.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.6.2</b> Challenge 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="loops-and-apply.html"><a href="loops-and-apply.html"><i class="fa fa-check"></i><b>8</b> Loops and <code>apply</code></a><ul>
-<li class="chapter" data-level="8.1" data-path="loops-and-apply.html"><a href="loops-and-apply.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="loops-and-apply.html"><a href="loops-and-apply.html"><i class="fa fa-check"></i><b>8</b> Loops and <code>apply</code></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="loops-and-apply.html"><a href="loops-and-apply.html#so-what-do-you-want-to-repeat"><i class="fa fa-check"></i><b>8.2</b> So, what do you want to repeat?</a></li>
 <li class="chapter" data-level="8.3" data-path="loops-and-apply.html"><a href="loops-and-apply.html#dont-use-a-loop-when-you-can-use-apply"><i class="fa fa-check"></i><b>8.3</b> DON’T USE A LOOP WHEN YOU CAN USE APPLY!</a></li>
-<li class="chapter" data-level="8.4" data-path="loops-and-apply.html"><a href="loops-and-apply.html#the-apply-family"><i class="fa fa-check"></i><b>8.4</b> The <code>apply</code> family</a><ul>
+<li class="chapter" data-level="8.4" data-path="loops-and-apply.html"><a href="loops-and-apply.html#the-apply-family"><i class="fa fa-check"></i><b>8.4</b> The <code>apply</code> family</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="loops-and-apply.html"><a href="loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>8.4.1</b> <code>sapply</code></a></li>
 <li class="chapter" data-level="8.4.2" data-path="loops-and-apply.html"><a href="loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>8.4.2</b> <code>lapply</code></a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="loops-and-apply.html"><a href="loops-and-apply.html#for-loops"><i class="fa fa-check"></i><b>8.5</b> <code>for</code> loops</a><ul>
+<li class="chapter" data-level="8.5" data-path="loops-and-apply.html"><a href="loops-and-apply.html#for-loops"><i class="fa fa-check"></i><b>8.5</b> <code>for</code> loops</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="loops-and-apply.html"><a href="loops-and-apply.html#some-for-loop-hints"><i class="fa fa-check"></i><b>8.5.1</b> Some <code>for</code> loop hints</a></li>
 <li class="chapter" data-level="8.5.2" data-path="loops-and-apply.html"><a href="loops-and-apply.html#challenge"><i class="fa fa-check"></i><b>8.5.2</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="loops-and-apply.html"><a href="loops-and-apply.html#solutions-to-challenge"><i class="fa fa-check"></i><b>8.6</b> Solutions to challenge</a></li>
 <li class="chapter" data-level="8.7" data-path="loops-and-apply.html"><a href="loops-and-apply.html#bonus-changing-plot-labels"><i class="fa fa-check"></i><b>8.7</b> Bonus: Changing plot labels</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>9</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="9" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>9</b> Working with spatial data in <code>R</code></a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>9.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="9.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>9.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-4"><i class="fa fa-check"></i><b>9.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>9.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>9.2.1</b> Challenge 1</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>9.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="9.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>9.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="9.4.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-4"><i class="fa fa-check"></i><b>9.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>9.4</b> Making a map using <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>9.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.4.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#pimping-up-you-map"><i class="fa fa-check"></i><b>9.4.2</b> Pimping up you map</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-4"><i class="fa fa-check"></i><b>9.4.3</b> Challenge 4</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>9.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="9.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>9.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="9.6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-2"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#some-r-raster-basics"><i class="fa fa-check"></i><b>9.5</b> Some <code>R</code> raster basics</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#croppingmasking"><i class="fa fa-check"></i><b>9.5.1</b> Cropping/Masking</a></li>
+<li class="chapter" data-level="9.5.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-and-extracting-data"><i class="fa fa-check"></i><b>9.5.2</b> Plotting and extracting data</a></li>
 </ul></li>
-<li class="chapter" data-level="9.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges-1"><i class="fa fa-check"></i><b>9.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="9.7.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-5"><i class="fa fa-check"></i><b>9.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="9.7.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-5"><i class="fa fa-check"></i><b>9.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="9.7.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-3"><i class="fa fa-check"></i><b>9.7.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>9.6</b> Plotting rasters in <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-4-1"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 4</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-all-challenges"><i class="fa fa-check"></i><b>9.7</b> Solutions to all Challenges</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>9.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>9.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>9.7.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.7.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-4-2"><i class="fa fa-check"></i><b>9.7.4</b> Challenge 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>10</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="10" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>10</b> Spatial tools for forestry and ecological applications</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>10.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
 <li class="chapter" data-level="10.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>10.2</b> Working with LiDAR data in R</a></li>
 <li class="chapter" data-level="10.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>10.3</b> Step 1. Loading and visualizing pointclouds</a></li>
-<li class="chapter" data-level="10.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>10.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="10.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>10.4</b> Step 2. Computing a canopy height model</a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>10.4.1</b> Ground detection and normalizing a point cloud</a></li>
 <li class="chapter" data-level="10.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>10.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="10.4.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-6"><i class="fa fa-check"></i><b>10.4.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="10.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>10.4.3</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>10.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="10.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>10.5</b> Step 3. Individual tree segmentation</a>
+<ul>
 <li class="chapter" data-level="10.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>10.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="10.5.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-6"><i class="fa fa-check"></i><b>10.5.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="10.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>10.5.2</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>10.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-4"><i class="fa fa-check"></i><b>10.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="10.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>10.6</b> Additional analysis: Computing a digital terrain model (DTM)</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>10.6.1</b> Challenge 3</a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>10.7</b> Wrapping up</a></li>
-<li class="chapter" data-level="10.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>10.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="10.8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-7"><i class="fa fa-check"></i><b>10.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="10.8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-7"><i class="fa fa-check"></i><b>10.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="10.8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-5"><i class="fa fa-check"></i><b>10.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="10.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>10.8</b> Solutions to the challenges</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>10.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="10.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>10.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="10.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>10.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>11</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="11" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>11</b> Extracting raster fractions and area using a polygon mask</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>11.1</b> Problem statement</a></li>
 <li class="chapter" data-level="11.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>11.2</b> Creating some dummy raster data</a></li>
 <li class="chapter" data-level="11.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>11.3</b> Create some reserves</a></li>
 <li class="chapter" data-level="11.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>11.4</b> Extracting data</a></li>
 <li class="chapter" data-level="11.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>11.5</b> Plotting the results</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>12</b> Calculating class area from raster</a><ul>
-<li class="chapter" data-level="12.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>12.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data-1"><i class="fa fa-check"></i><b>12.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="12" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>12</b> Calculating class area from raster</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>12.1</b> Simple area and area fraction calculations on a classified raster</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#creating-dummy-data"><i class="fa fa-check"></i><b>12.1.1</b> Creating dummy data</a></li>
 <li class="chapter" data-level="12.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>12.1.2</b> Preparing the raster for area calculation</a></li>
 <li class="chapter" data-level="12.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>12.1.3</b> Compiling a comprehensive table</a></li>
 </ul></li>
@@ -269,16 +335,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introducing-the-koala-dataset" class="section level1">
+<div id="introducing-the-koala-dataset" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Introducing the koala dataset</h1>
 <p>Before we get started, we will have a peek at the dataset we’re working with. You can download the dataset for this tutorial <a href="https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1">here</a>. Put it in a <code>data</code> folder within your project (or working directory). You can now load it like:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introducing-the-koala-dataset.html#cb15-1" aria-hidden="true"></a>koala&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>, <span class="dt">stringsAsFactors =</span> T)</span></code></pre></div>
 <p>The koala dataset contains the positions of koalas from throughout their range in Latitude and Longitude (<code>X</code> and <code>Y</code>) as well as variables describing their physiology, behavior and how they were recorded. The position of each koala was extracted from the <a href="https://www.ala.org.au/">Atlas of Living Australia</a>. This is typical presence-only wildlife data, combining observations with some data describing each individual, which could e.g. be used for distribution modeling or to test influences of other variables such as climate on behavior and physiology of this particular species.</p>
-<div id="data-types-and-variable-types" class="section level2">
+<div id="data-types-and-variable-types" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> <em>data types</em> and <em>variable types</em></h2>
 <p>Let’s have a look at the data structure using <code>str()</code></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">str</span>(koala)</a></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    242 obs. of  15 variables:
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introducing-the-koala-dataset.html#cb16-1" aria-hidden="true"></a><span class="kw">str</span>(koala)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	242 obs. of  15 variables:
 ##  $ species: Factor w/ 1 level &quot;Phascolarctos cinereus&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ X      : num  153 148 153 153 153 ...
 ##  $ Y      : num  -27.5 -22.5 -27.5 -27.5 -27.5 ...
@@ -295,52 +361,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ behav  : Factor w/ 3 levels &quot;Feeding&quot;,&quot;Just Chillin&quot;,..: 3 3 2 3 3 1 2 3 1 3 ...
 ##  $ obs    : Factor w/ 3 levels &quot;Opportunistic&quot;,..: 2 1 2 3 3 1 3 2 2 2 ...</code></pre>
 <p>The first line tells us what we’re dealing with: a <code>data.frame</code> object containing 242 observations and 15 variables. <code>data.frames</code>s are a standard data type object used in <code>R</code>. You can compare it to an excel sheet. The observations are your rows, so this <code>data.frame</code> is 242 rows long. Variables are your columns, of which we have 15. You can select a specific column using the <code>$</code> operator, to, e.g., print a column’s variables into the console:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">koala<span class="op">$</span>region</a></code></pre></div>
-<pre><code>##   [1] northern northern northern northern northern northern northern
-##   [8] northern northern northern northern northern northern northern
-##  [15] northern northern southern southern southern southern southern
-##  [22] southern southern southern southern southern southern southern
-##  [29] southern southern southern southern southern southern southern
-##  [36] southern southern southern southern southern southern southern
-##  [43] southern southern southern southern southern southern southern
-##  [50] southern southern southern southern southern southern southern
-##  [57] southern southern southern southern southern northern northern
-##  [64] northern northern southern northern northern northern southern
-##  [71] northern northern southern northern northern southern northern
-##  [78] northern northern northern northern northern northern northern
-##  [85] northern northern northern northern northern northern southern
-##  [92] northern northern northern northern southern northern northern
-##  [99] northern northern southern northern northern northern northern
-## [106] southern northern southern northern northern northern northern
-## [113] northern southern northern northern northern northern northern
-## [120] southern southern northern northern southern southern northern
-## [127] northern northern northern southern northern northern northern
-## [134] northern northern northern northern northern northern southern
-## [141] northern northern southern northern southern southern southern
-## [148] northern northern northern northern southern northern northern
-## [155] northern northern northern northern southern northern northern
-## [162] northern northern northern northern northern northern northern
-## [169] southern northern southern northern southern northern northern
-## [176] northern northern southern northern northern northern northern
-## [183] northern northern northern northern northern northern northern
-## [190] northern northern southern northern northern northern southern
-## [197] southern northern northern northern northern southern northern
-## [204] northern northern northern northern northern northern northern
-## [211] northern northern northern northern northern northern northern
-## [218] northern northern northern northern northern northern northern
-## [225] northern northern northern northern northern northern northern
-## [232] southern northern northern northern northern northern northern
-## [239] northern northern northern southern
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introducing-the-koala-dataset.html#cb18-1" aria-hidden="true"></a>koala<span class="op">$</span>region</span></code></pre></div>
+<pre><code>##   [1] northern northern northern northern northern northern northern northern
+##   [9] northern northern northern northern northern northern northern northern
+##  [17] southern southern southern southern southern southern southern southern
+##  [25] southern southern southern southern southern southern southern southern
+##  [33] southern southern southern southern southern southern southern southern
+##  [41] southern southern southern southern southern southern southern southern
+##  [49] southern southern southern southern southern southern southern southern
+##  [57] southern southern southern southern southern northern northern northern
+##  [65] northern southern northern northern northern southern northern northern
+##  [73] southern northern northern southern northern northern northern northern
+##  [81] northern northern northern northern northern northern northern northern
+##  [89] northern northern southern northern northern northern northern southern
+##  [97] northern northern northern northern southern northern northern northern
+## [105] northern southern northern southern northern northern northern northern
+## [113] northern southern northern northern northern northern northern southern
+## [121] southern northern northern southern southern northern northern northern
+## [129] northern southern northern northern northern northern northern northern
+## [137] northern northern northern southern northern northern southern northern
+## [145] southern southern southern northern northern northern northern southern
+## [153] northern northern northern northern northern northern southern northern
+## [161] northern northern northern northern northern northern northern northern
+## [169] southern northern southern northern southern northern northern northern
+## [177] northern southern northern northern northern northern northern northern
+## [185] northern northern northern northern northern northern northern southern
+## [193] northern northern northern southern southern northern northern northern
+## [201] northern southern northern northern northern northern northern northern
+## [209] northern northern northern northern northern northern northern northern
+## [217] northern northern northern northern northern northern northern northern
+## [225] northern northern northern northern northern northern northern southern
+## [233] northern northern northern northern northern northern northern northern
+## [241] northern southern
 ## Levels: northern southern</code></pre>
 <p>While that isn’t very useful, it illustrates a basic function in R: how to define and address your data. It goes <code>data.frame$variable</code>, in this case <code>koala$region</code>, to access the <code>region</code> column of our data set. Using <code>summary()</code> on a variable gives us an overview of its distribution within the <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">summary</span>(koala<span class="op">$</span>region)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introducing-the-koala-dataset.html#cb20-1" aria-hidden="true"></a><span class="kw">summary</span>(koala<span class="op">$</span>region)</span></code></pre></div>
 <pre><code>## northern southern 
 ##      165       77</code></pre>
 <p>This is more helpful than printing all the values into the console. The reason why <code>R</code> is giving back a count is the <em>variable type</em>, this variable has been assigned. As you can see from the above <code>str(koala)</code>, the <code>region</code> variable is a <code>Factor</code>. <code>Factors</code> are the <em>variable type</em> which are used to categorize data and store it as so-called <em>levels</em>. They can store both <em>strings</em> (combinations of letters, usually words) and <em>integers</em> (real numbers without decimals). To have a better idea what this means, run:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">str</span>(koala<span class="op">$</span>region)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introducing-the-koala-dataset.html#cb22-1" aria-hidden="true"></a><span class="kw">str</span>(koala<span class="op">$</span>region)</span></code></pre></div>
 <pre><code>##  Factor w/ 2 levels &quot;northern&quot;,&quot;southern&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 <p>And you will see it returns you <em>variable type</em> <code>Factor</code> with two levels (northern and southern). This variables describes the the looks of koalas, as the southern animals are distinct in their morphology from their northern cousins, even though they’re the same species. <code>class()</code> will give you only the <em>variable type</em> type:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">class</span>(koala<span class="op">$</span>region)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introducing-the-koala-dataset.html#cb24-1" aria-hidden="true"></a><span class="kw">class</span>(koala<span class="op">$</span>region)</span></code></pre></div>
 <pre><code>## [1] &quot;factor&quot;</code></pre>
 <p>Other <code>Factor</code> variables in the data are:</p>
 <ol style="list-style-type: decimal">
@@ -352,7 +414,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>obs</code>: the type of observation made by the observer. Was it <em>opportunistic</em> and thus by chance, or maybe during a <em>spotlighting</em> survey?</li>
 </ol>
 <p>You can explore what sort of factor levels each of these variables have as we did before using <code>summary()</code></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">summary</span>(koala<span class="op">$</span>behav)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="introducing-the-koala-dataset.html#cb26-1" aria-hidden="true"></a><span class="kw">summary</span>(koala<span class="op">$</span>behav)</span></code></pre></div>
 <pre><code>##      Feeding Just Chillin     Sleeping 
 ##           48           67          127</code></pre>
 <p>Honoring their species as being one of the chillest marsupials on the planet, almost 1/3 of all koalas were <code>Just Chillin</code> ;).</p>
@@ -362,10 +424,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>int</code> or an integer <em>variable type</em></li>
 </ol>
 <p>Decimal values are called <code>num</code> or numeric in R. It is the default data type. If we assign a decimal value to a variable <code>x</code> it will always be of numeric type.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">x&lt;-<span class="fl">20.25</span></a>
-<a class="sourceLine" id="cb28-2" title="2">x</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="introducing-the-koala-dataset.html#cb28-1" aria-hidden="true"></a>x&lt;-<span class="fl">20.25</span></span>
+<span id="cb28-2"><a href="introducing-the-koala-dataset.html#cb28-2" aria-hidden="true"></a>x</span></code></pre></div>
 <pre><code>## [1] 20.25</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">class</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="introducing-the-koala-dataset.html#cb30-1" aria-hidden="true"></a><span class="kw">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>Numeric data in our <code>koala</code> dataset are the <code>X</code> and <code>Y</code> columns, which describe the geographic location of each observation and then four variables describing their individual physiology:</p>
 <ol style="list-style-type: decimal">
@@ -377,114 +439,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you’re wondering how these observations were made while only looking for koalas, you’ll find the surprising answer at the end of this document.</p>
 <p>The remaining variable type we have in our data is <code>int</code> or integer. These are non-decimal numbers. In our case the <code>age</code> is describer as an integer, a full number, describing the year of life each koala is in. It is hard to determine the exact age, so these variables will often be given as integer, rather than e.g. <code>age == 3.234</code>.</p>
 <p>If you want to assign integers, you need to specify so, as we have learned the standard variable type for numbers in <code>R</code> is <code>num</code>.:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">y =<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">8</span>) </a>
-<a class="sourceLine" id="cb32-2" title="2">y     </a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="introducing-the-koala-dataset.html#cb32-1" aria-hidden="true"></a>y =<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">8</span>) </span>
+<span id="cb32-2"><a href="introducing-the-koala-dataset.html#cb32-2" aria-hidden="true"></a>y     </span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">class</span>(y)  </a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="introducing-the-koala-dataset.html#cb34-1" aria-hidden="true"></a><span class="kw">class</span>(y)  </span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co">#We can also declare an integer by appending an L suffix.</span></a>
-<a class="sourceLine" id="cb36-2" title="2"></a>
-<a class="sourceLine" id="cb36-3" title="3">z =<span class="st"> </span>8L</a>
-<a class="sourceLine" id="cb36-4" title="4"><span class="kw">is.integer</span>(z)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="introducing-the-koala-dataset.html#cb36-1" aria-hidden="true"></a><span class="co">#We can also declare an integer by appending an L suffix.</span></span>
+<span id="cb36-2"><a href="introducing-the-koala-dataset.html#cb36-2" aria-hidden="true"></a></span>
+<span id="cb36-3"><a href="introducing-the-koala-dataset.html#cb36-3" aria-hidden="true"></a>z =<span class="st"> </span>8L</span>
+<span id="cb36-4"><a href="introducing-the-koala-dataset.html#cb36-4" aria-hidden="true"></a><span class="kw">is.integer</span>(z)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>The <code>is.xxx()</code> function can be useful to test for variable types in large datasets. It works with any data such as <code>is.integer</code>, <code>is.numeric</code> or <code>is.factor</code>.</p>
 </div>
-<div id="changing-variable-types" class="section level2">
+<div id="changing-variable-types" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Changing <em>variable types</em></h2>
 <p>We can shift data types around in <code>R</code> easily using <code>as.xxx()</code>. Let’s make a new variable in our dataset that numerically codes the observation types. This might be important for some modelling approaches that force you to use <code>numeric</code> or <code>integer</code> data:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">koala<span class="op">$</span>obs_code&lt;-<span class="kw">as.numeric</span>(koala<span class="op">$</span>obs) <span class="co">#this assigns a new column to the dataframe and fills it with the function we specify after the assign operator `&lt;-`</span></a>
-<a class="sourceLine" id="cb38-2" title="2"></a>
-<a class="sourceLine" id="cb38-3" title="3"><span class="kw">head</span>(koala)</a></code></pre></div>
-<pre><code>##                  species        X         Y      state   region    sex
-## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male
-## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female
-## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male
-## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male
-## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female
-## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male
-##     weight     size      fur     tail age      color joey        behav
-## 1 7.119754 70.80159 1.858696 1.168241   8       grey   No     Sleeping
-## 2 5.451345 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping
-## 3 6.630577 68.65867 2.479280 1.056640   1 light grey   No Just Chillin
-## 4 6.470019 72.98919 1.923974 1.801244   1       grey   No     Sleeping
-## 5 5.620447 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping
-## 6 7.287674 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding
-##             obs obs_code
-## 1  Spotlighting        2
-## 2 Opportunistic        1
-## 3  Spotlighting        2
-## 4  Stagwatching        3
-## 5  Stagwatching        3
-## 6 Opportunistic        1</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="introducing-the-koala-dataset.html#cb38-1" aria-hidden="true"></a>koala<span class="op">$</span>obs_code&lt;-<span class="kw">as.numeric</span>(koala<span class="op">$</span>obs) <span class="co">#this assigns a new column to the dataframe and fills it with the function we specify after the assign operator `&lt;-`</span></span>
+<span id="cb38-2"><a href="introducing-the-koala-dataset.html#cb38-2" aria-hidden="true"></a></span>
+<span id="cb38-3"><a href="introducing-the-koala-dataset.html#cb38-3" aria-hidden="true"></a><span class="kw">head</span>(koala)</span></code></pre></div>
+<pre><code>##                  species        X         Y      state   region    sex   weight
+## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male 7.119754
+## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female 5.451345
+## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male 6.630577
+## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male 6.470019
+## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female 5.620447
+## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male 7.287674
+##       size      fur     tail age      color joey        behav           obs
+## 1 70.80159 1.858696 1.168241   8       grey   No     Sleeping  Spotlighting
+## 2 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping Opportunistic
+## 3 68.65867 2.479280 1.056640   1 light grey   No Just Chillin  Spotlighting
+## 4 72.98919 1.923974 1.801244   1       grey   No     Sleeping  Stagwatching
+## 5 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping  Stagwatching
+## 6 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding Opportunistic
+##   obs_code
+## 1        2
+## 2        1
+## 3        2
+## 4        3
+## 5        3
+## 6        1</code></pre>
 <p>You can see e.g. <em>spotlighting</em> was assigned a <code>2</code>, while <em>Opportunistic</em> is now a <code>1</code>. Knowing these basic data transformations can be useful. This is especially often the case when assigning or merging data that is of type <code>character</code>, a <em>variable type</em>, we don’t have in our data. Let’s see what might be problematic about it:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">koala<span class="op">$</span>good_bad&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;good&#39;</span>, <span class="st">&#39;evil&#39;</span>), <span class="kw">nrow</span>(koala),  <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.99</span>, <span class="fl">0.01</span>), <span class="dt">replace =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="introducing-the-koala-dataset.html#cb40-1" aria-hidden="true"></a>koala<span class="op">$</span>good_bad&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;good&#39;</span>, <span class="st">&#39;evil&#39;</span>), <span class="kw">nrow</span>(koala),  <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.99</span>, <span class="fl">0.01</span>), <span class="dt">replace =</span> T)</span></code></pre></div>
 <p>Using <code>sample</code> we can randomly assign a new variable, that is picked from a specified vector (<code>c('good', 'evil')</code>), based on a specified probability (<code>prob=c(0.99, 0.05)</code>). Let’s get a summary of it to see how many of our koalas are bad by random probability of 5%:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="kw">summary</span>(koala<span class="op">$</span>good_bad)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="introducing-the-koala-dataset.html#cb41-1" aria-hidden="true"></a><span class="kw">summary</span>(koala<span class="op">$</span>good_bad)</span></code></pre></div>
 <pre><code>##    Length     Class      Mode 
 ##       242 character character</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">class</span>(koala<span class="op">$</span>good_bad)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="introducing-the-koala-dataset.html#cb43-1" aria-hidden="true"></a><span class="kw">class</span>(koala<span class="op">$</span>good_bad)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Hm, that isn’t very helpful, because we created a <code>character</code> type data, made up of strings (letters). If we transform it, we can get a better idea:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">summary</span>(<span class="kw">as.factor</span>(koala<span class="op">$</span>good_bad))</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="introducing-the-koala-dataset.html#cb45-1" aria-hidden="true"></a><span class="kw">summary</span>(<span class="kw">as.factor</span>(koala<span class="op">$</span>good_bad))</span></code></pre></div>
 <pre><code>## evil good 
-##    2  240</code></pre>
-<p>2 of our koalas are evil :(</p>
+##    5  237</code></pre>
+<p>5 of our koalas are evil :(</p>
 <p>There are other <em>variable type</em>s you will encounter, such as <code>dates</code>, or <code>logicals</code> (<code>TRUE</code> and <code>FALSE</code>), but we won’t go into more detail here. You’re already all set to dive into data manipulation and visualization using this data set now :)</p>
 </div>
-<div id="how-the-koala-dataset-was-collated" class="section level2">
+<div id="how-the-koala-dataset-was-collated" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> How the koala dataset was collated</h2>
 <p>Some of you might be interested how all this data came together. As mentioned before, the observation locations are all from the <a href="https://www.ala.org.au/">Atlas of Living Australia</a>. You can download species records from their database as GIS shapefiles or <code>.csv</code> tables, containing the species name and <code>X</code> and <code>Y</code> coordinates as latitude and longitude. Now while most of the variables in the dataset may be collected during surveys, we did not have access to recent koala data or data from another animal throughout its Australian distribution, so we just made it up wit the power of <code>R</code> :) Here is how its done!</p>
-<div id="loading-the-raw-data" class="section level3">
+<div id="loading-the-raw-data" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Loading the raw data</h3>
 <p>You can find the raw data <a href="https://www.dropbox.com/s/ffhmnei31ab5854/koala_raw.csv?dl=1">here</a>. It simply contained four columns of <code>genus</code>, <code>species</code>, <code>X</code> and <code>Y</code>:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">koala_raw&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala_raw.csv&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="introducing-the-koala-dataset.html#cb47-1" aria-hidden="true"></a>koala_raw&lt;-<span class="kw">read.csv</span>(<span class="st">&#39;data/koala_raw.csv&#39;</span>, <span class="dt">stringsAsFactors =</span> T)</span></code></pre></div>
 <p>Now the following steps are a bit more advanced and we will cover parts of it in our spatial data in <code>R</code> tutorial. This is simply to document how the dataset was collated and what can be done in R in a simple steps:</p>
 </div>
-<div id="adding-the-state-names-by-location" class="section level3">
+<div id="adding-the-state-names-by-location" class="section level3" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Adding the state names by location</h3>
 <p>We need to use some <code>tidyverse</code> packages and the spatial package <code>sf</code> to load shapefiles:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="introducing-the-koala-dataset.html#cb48-1" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
+<span id="cb48-2"><a href="introducing-the-koala-dataset.html#cb48-2" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>We need to load a layer of Australia and transform our koala observations into a spatial data type (a shapefile). You can find the Australia layer <a href="https://www.dropbox.com/s/7edsxu5eezrzrqu/Australia.rar?dl=1">here</a>. Put it in <code>data/Australia</code>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="co">#make shapefile from raw data</span></a>
-<a class="sourceLine" id="cb49-2" title="2"></a>
-<a class="sourceLine" id="cb49-3" title="3">koala_base_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(koala_raw, </a>
-<a class="sourceLine" id="cb49-4" title="4">                     <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;Longitude&quot;</span>, </a>
-<a class="sourceLine" id="cb49-5" title="5">                                <span class="st">&quot;Latitude&quot;</span>), </a>
-<a class="sourceLine" id="cb49-6" title="6">                     <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
-<a class="sourceLine" id="cb49-7" title="7"></a>
-<a class="sourceLine" id="cb49-8" title="8"><span class="co">#load states states layer</span></a>
-<a class="sourceLine" id="cb49-9" title="9"></a>
-<a class="sourceLine" id="cb49-10" title="10">states &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;data/Australia/Australia_proj.shp&#39;</span>)</a></code></pre></div>
-<pre><code>## Reading layer `Australia_proj&#39; from data source `C:\Users\khh\Documents\GitHub\bookdown-playaround\data\Australia\Australia_proj.shp&#39; using driver `ESRI Shapefile&#39;
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="introducing-the-koala-dataset.html#cb49-1" aria-hidden="true"></a><span class="co">#make shapefile from raw data</span></span>
+<span id="cb49-2"><a href="introducing-the-koala-dataset.html#cb49-2" aria-hidden="true"></a></span>
+<span id="cb49-3"><a href="introducing-the-koala-dataset.html#cb49-3" aria-hidden="true"></a>koala_base_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(koala_raw, </span>
+<span id="cb49-4"><a href="introducing-the-koala-dataset.html#cb49-4" aria-hidden="true"></a>                     <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;Longitude&quot;</span>, </span>
+<span id="cb49-5"><a href="introducing-the-koala-dataset.html#cb49-5" aria-hidden="true"></a>                                <span class="st">&quot;Latitude&quot;</span>), </span>
+<span id="cb49-6"><a href="introducing-the-koala-dataset.html#cb49-6" aria-hidden="true"></a>                     <span class="dt">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb49-7"><a href="introducing-the-koala-dataset.html#cb49-7" aria-hidden="true"></a></span>
+<span id="cb49-8"><a href="introducing-the-koala-dataset.html#cb49-8" aria-hidden="true"></a><span class="co">#load states states layer</span></span>
+<span id="cb49-9"><a href="introducing-the-koala-dataset.html#cb49-9" aria-hidden="true"></a></span>
+<span id="cb49-10"><a href="introducing-the-koala-dataset.html#cb49-10" aria-hidden="true"></a>states &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&#39;data/Australia/Australia_proj.shp&#39;</span>, <span class="dt">stringsAsFactors =</span> T)</span></code></pre></div>
+<pre><code>## Reading layer `Australia_proj&#39; from data source `D:\OneDrive\OneDrive - The University of Melbourne\Github\forest-ecology-R-book\data\Australia\Australia_proj.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 8 features and 15 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: -2063975 ymin: -4965263 xmax: 1891143 ymax: -1285856
-## proj4string:    +proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="co">#st_crs(states) #check CRS</span></a>
-<a class="sourceLine" id="cb51-2" title="2"></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="co">#reproject to match koala data</span></a>
-<a class="sourceLine" id="cb51-4" title="4"></a>
-<a class="sourceLine" id="cb51-5" title="5">states_proj&lt;-<span class="kw">st_transform</span>(states, <span class="dt">crs =</span> <span class="kw">st_crs</span>(koala_base_sf))</a>
-<a class="sourceLine" id="cb51-6" title="6"></a>
-<a class="sourceLine" id="cb51-7" title="7"><span class="co">#extract and reduce to interesting columns</span></a>
-<a class="sourceLine" id="cb51-8" title="8"></a>
-<a class="sourceLine" id="cb51-9" title="9">koala_states&lt;-<span class="kw">st_intersection</span>(koala_base_sf, states_proj)</a></code></pre></div>
+## projected CRS:  GDA94 / Geoscience Australia Lambert</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="introducing-the-koala-dataset.html#cb51-1" aria-hidden="true"></a><span class="co">#st_crs(states) #check CRS</span></span>
+<span id="cb51-2"><a href="introducing-the-koala-dataset.html#cb51-2" aria-hidden="true"></a></span>
+<span id="cb51-3"><a href="introducing-the-koala-dataset.html#cb51-3" aria-hidden="true"></a><span class="co">#reproject to match koala data</span></span>
+<span id="cb51-4"><a href="introducing-the-koala-dataset.html#cb51-4" aria-hidden="true"></a></span>
+<span id="cb51-5"><a href="introducing-the-koala-dataset.html#cb51-5" aria-hidden="true"></a>states_proj&lt;-<span class="kw">st_transform</span>(states, <span class="dt">crs =</span> <span class="kw">st_crs</span>(koala_base_sf))</span>
+<span id="cb51-6"><a href="introducing-the-koala-dataset.html#cb51-6" aria-hidden="true"></a></span>
+<span id="cb51-7"><a href="introducing-the-koala-dataset.html#cb51-7" aria-hidden="true"></a><span class="co">#extract and reduce to interesting columns</span></span>
+<span id="cb51-8"><a href="introducing-the-koala-dataset.html#cb51-8" aria-hidden="true"></a></span>
+<span id="cb51-9"><a href="introducing-the-koala-dataset.html#cb51-9" aria-hidden="true"></a>koala_states&lt;-<span class="kw">st_intersection</span>(koala_base_sf, states_proj)</span></code></pre></div>
 <pre><code>## although coordinates are longitude/latitude, st_intersection assumes that they are planar</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">koala_states_min&lt;-koala_states<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb53-2" title="2"></a>
-<a class="sourceLine" id="cb53-3" title="3"><span class="co">#check  visually</span></a>
-<a class="sourceLine" id="cb53-4" title="4"></a>
-<a class="sourceLine" id="cb53-5" title="5"><span class="kw">plot</span>(states_proj<span class="op">$</span>geometry)</a>
-<a class="sourceLine" id="cb53-6" title="6"></a>
-<a class="sourceLine" id="cb53-7" title="7"><span class="kw">plot</span>(koala_states_min<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">col =</span> koala_states_min<span class="op">$</span>STATENAME)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="introducing-the-koala-dataset.html#cb53-1" aria-hidden="true"></a>koala_states_min&lt;-koala_states<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">15</span>)</span>
+<span id="cb53-2"><a href="introducing-the-koala-dataset.html#cb53-2" aria-hidden="true"></a></span>
+<span id="cb53-3"><a href="introducing-the-koala-dataset.html#cb53-3" aria-hidden="true"></a><span class="co">#check  visually</span></span>
+<span id="cb53-4"><a href="introducing-the-koala-dataset.html#cb53-4" aria-hidden="true"></a></span>
+<span id="cb53-5"><a href="introducing-the-koala-dataset.html#cb53-5" aria-hidden="true"></a><span class="kw">plot</span>(states_proj<span class="op">$</span>geometry)</span>
+<span id="cb53-6"><a href="introducing-the-koala-dataset.html#cb53-6" aria-hidden="true"></a></span>
+<span id="cb53-7"><a href="introducing-the-koala-dataset.html#cb53-7" aria-hidden="true"></a><span class="kw">plot</span>(koala_states_min<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">col =</span> koala_states_min<span class="op">$</span>STATENAME)</span></code></pre></div>
 <p><img src="02-dataset_description_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>That works. This was the only other <em>real</em> data in our dataset. Let’s make up some variables :)</p>
 </div>
-<div id="creating-dummy-data" class="section level3">
+<div id="creating-dummy-data" class="section level3" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Creating dummy data</h3>
-<div id="sex-and-weight" class="section level4">
+<div id="sex-and-weight" class="section level4" number="3.3.3.1">
 <h4><span class="header-section-number">3.3.3.1</span> Sex and weight</h4>
 <p>First we want to add the weight of the animals. We want to make it realistic, so let’s check some online sources by googling:</p>
 <ul>
@@ -492,135 +554,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://koalainfo.com/average-weights-of-male-koalas" class="uri">https://koalainfo.com/average-weights-of-male-koalas</a></li>
 </ul>
 <p>Their sex ratio throughout their range seems to be 46:54 % in favor of females. Knowing the probability is great, so we can easily randomize that data over our observations:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">koala_states_min<span class="op">$</span>sex&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>), <span class="kw">nrow</span>(koala_states_min),  <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.46</span>, <span class="fl">0.54</span>), <span class="dt">replace =</span> T)<span class="op">%&gt;%</span><span class="kw">as.factor</span>()</a>
-<a class="sourceLine" id="cb54-2" title="2"></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="kw">summary</span>(koala_states_min<span class="op">$</span>sex)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="introducing-the-koala-dataset.html#cb54-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>sex&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;male&#39;</span>, <span class="st">&#39;female&#39;</span>), <span class="kw">nrow</span>(koala_states_min),  <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.46</span>, <span class="fl">0.54</span>), <span class="dt">replace =</span> T)<span class="op">%&gt;%</span><span class="kw">as.factor</span>()</span>
+<span id="cb54-2"><a href="introducing-the-koala-dataset.html#cb54-2" aria-hidden="true"></a></span>
+<span id="cb54-3"><a href="introducing-the-koala-dataset.html#cb54-3" aria-hidden="true"></a><span class="kw">summary</span>(koala_states_min<span class="op">$</span>sex)</span></code></pre></div>
 <pre><code>## female   male 
-##    125    117</code></pre>
+##    126    116</code></pre>
 <p>The weight depends on the sex and where the animal lives. Using a nested <code>ifelse()</code> statement will help us, to make assigning weights conditional on their sex:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">koala_states_min<span class="op">$</span>weight&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb56-2" title="2">                                <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">5</span>, <span class="dt">max =</span> <span class="dv">6</span>), </a>
-<a class="sourceLine" id="cb56-3" title="3">                                <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb56-4" title="4">                                       <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">6</span>, <span class="dt">max =</span> <span class="dv">8</span>), </a>
-<a class="sourceLine" id="cb56-5" title="5">                                       <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb56-6" title="6"><span class="st">                                                </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb56-7" title="7"><span class="st">                                                </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb56-8" title="8">                                              <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">7</span>, <span class="dt">max =</span> <span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb56-9" title="9">                                              <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb56-10" title="10"><span class="st">                                                       </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb56-11" title="11"><span class="st">                                                       </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb56-12" title="12">                                                     <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">15</span>, <span class="dt">max =</span> <span class="dv">18</span>), </a>
-<a class="sourceLine" id="cb56-13" title="13">                                                     <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb56-14" title="14"><span class="st">                                                              </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb56-15" title="15">                                                            <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">6</span>, <span class="dt">max =</span> <span class="dv">7</span>), </a>
-<a class="sourceLine" id="cb56-16" title="16">                                                            <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb56-17" title="17"><span class="st">                                                                     </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb56-18" title="18">                                                                   <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">8</span>, <span class="dt">max =</span> <span class="dv">10</span>),<span class="dv">100</span>))))))</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="introducing-the-koala-dataset.html#cb56-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>weight&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb56-2"><a href="introducing-the-koala-dataset.html#cb56-2" aria-hidden="true"></a>                                <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">5</span>, <span class="dt">max =</span> <span class="dv">6</span>), </span>
+<span id="cb56-3"><a href="introducing-the-koala-dataset.html#cb56-3" aria-hidden="true"></a>                                <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb56-4"><a href="introducing-the-koala-dataset.html#cb56-4" aria-hidden="true"></a>                                       <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">6</span>, <span class="dt">max =</span> <span class="dv">8</span>), </span>
+<span id="cb56-5"><a href="introducing-the-koala-dataset.html#cb56-5" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></span>
+<span id="cb56-6"><a href="introducing-the-koala-dataset.html#cb56-6" aria-hidden="true"></a><span class="st">                                                </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb56-7"><a href="introducing-the-koala-dataset.html#cb56-7" aria-hidden="true"></a><span class="st">                                                </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb56-8"><a href="introducing-the-koala-dataset.html#cb56-8" aria-hidden="true"></a>                                              <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">7</span>, <span class="dt">max =</span> <span class="dv">8</span>),</span>
+<span id="cb56-9"><a href="introducing-the-koala-dataset.html#cb56-9" aria-hidden="true"></a>                                              <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></span>
+<span id="cb56-10"><a href="introducing-the-koala-dataset.html#cb56-10" aria-hidden="true"></a><span class="st">                                                       </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb56-11"><a href="introducing-the-koala-dataset.html#cb56-11" aria-hidden="true"></a><span class="st">                                                       </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb56-12"><a href="introducing-the-koala-dataset.html#cb56-12" aria-hidden="true"></a>                                                     <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">15</span>, <span class="dt">max =</span> <span class="dv">18</span>), </span>
+<span id="cb56-13"><a href="introducing-the-koala-dataset.html#cb56-13" aria-hidden="true"></a>                                                     <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb56-14"><a href="introducing-the-koala-dataset.html#cb56-14" aria-hidden="true"></a><span class="st">                                                              </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb56-15"><a href="introducing-the-koala-dataset.html#cb56-15" aria-hidden="true"></a>                                                            <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">6</span>, <span class="dt">max =</span> <span class="dv">7</span>), </span>
+<span id="cb56-16"><a href="introducing-the-koala-dataset.html#cb56-16" aria-hidden="true"></a>                                                            <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb56-17"><a href="introducing-the-koala-dataset.html#cb56-17" aria-hidden="true"></a><span class="st">                                                                     </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb56-18"><a href="introducing-the-koala-dataset.html#cb56-18" aria-hidden="true"></a>                                                                   <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">8</span>, <span class="dt">max =</span> <span class="dv">10</span>),<span class="dv">100</span>))))))</span></code></pre></div>
 </div>
-<div id="adding-the-x-and-y-variables-and-region" class="section level4">
+<div id="adding-the-x-and-y-variables-and-region" class="section level4" number="3.3.3.2">
 <h4><span class="header-section-number">3.3.3.2</span> Adding the <code>X</code> and <code>Y</code> variables and <code>region</code></h4>
 <p>Using <code>sf</code> objects it is easy to add the coordinates using <code>st_coordinates</code>, but if we want to split them into two columns, we need to use a function:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">st_x =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">st_coordinates</span>(x)[,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb57-2" title="2">st_y =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">st_coordinates</span>(x)[,<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb57-3" title="3"></a>
-<a class="sourceLine" id="cb57-4" title="4"><span class="co">#st_x(koala_states_min)</span></a>
-<a class="sourceLine" id="cb57-5" title="5"><span class="co">#st_y(koala_states_min)</span></a>
-<a class="sourceLine" id="cb57-6" title="6"></a>
-<a class="sourceLine" id="cb57-7" title="7">koala_states_min<span class="op">$</span>X&lt;-<span class="kw">st_x</span>(koala_states_min)</a>
-<a class="sourceLine" id="cb57-8" title="8">koala_states_min<span class="op">$</span>Y&lt;-<span class="kw">st_y</span>(koala_states_min)</a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="introducing-the-koala-dataset.html#cb57-1" aria-hidden="true"></a>st_x =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">st_coordinates</span>(x)[,<span class="dv">1</span>]</span>
+<span id="cb57-2"><a href="introducing-the-koala-dataset.html#cb57-2" aria-hidden="true"></a>st_y =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">st_coordinates</span>(x)[,<span class="dv">2</span>]</span>
+<span id="cb57-3"><a href="introducing-the-koala-dataset.html#cb57-3" aria-hidden="true"></a></span>
+<span id="cb57-4"><a href="introducing-the-koala-dataset.html#cb57-4" aria-hidden="true"></a><span class="co">#st_x(koala_states_min)</span></span>
+<span id="cb57-5"><a href="introducing-the-koala-dataset.html#cb57-5" aria-hidden="true"></a><span class="co">#st_y(koala_states_min)</span></span>
+<span id="cb57-6"><a href="introducing-the-koala-dataset.html#cb57-6" aria-hidden="true"></a></span>
+<span id="cb57-7"><a href="introducing-the-koala-dataset.html#cb57-7" aria-hidden="true"></a>koala_states_min<span class="op">$</span>X&lt;-<span class="kw">st_x</span>(koala_states_min)</span>
+<span id="cb57-8"><a href="introducing-the-koala-dataset.html#cb57-8" aria-hidden="true"></a>koala_states_min<span class="op">$</span>Y&lt;-<span class="kw">st_y</span>(koala_states_min)</span></code></pre></div>
 <p>Now we can add <em>northern</em> or <em>southern</em> by a condition based on latitude:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">koala_states_min<span class="op">$</span>region&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>Y<span class="op">&gt;</span>(<span class="op">-</span><span class="dv">34</span>),<span class="st">&#39;northern&#39;</span>, <span class="st">&#39;southern&#39;</span>)<span class="op">%&gt;%</span><span class="kw">as.factor</span>()</a>
-<a class="sourceLine" id="cb58-2" title="2"></a>
-<a class="sourceLine" id="cb58-3" title="3"><span class="kw">plot</span>(states_proj<span class="op">$</span>geometry)</a>
-<a class="sourceLine" id="cb58-4" title="4"></a>
-<a class="sourceLine" id="cb58-5" title="5"><span class="kw">plot</span>(koala_states_min<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">col =</span> koala_states_min<span class="op">$</span>region)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="introducing-the-koala-dataset.html#cb58-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>region&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>Y<span class="op">&gt;</span>(<span class="op">-</span><span class="dv">34</span>),<span class="st">&#39;northern&#39;</span>, <span class="st">&#39;southern&#39;</span>)<span class="op">%&gt;%</span><span class="kw">as.factor</span>()</span>
+<span id="cb58-2"><a href="introducing-the-koala-dataset.html#cb58-2" aria-hidden="true"></a></span>
+<span id="cb58-3"><a href="introducing-the-koala-dataset.html#cb58-3" aria-hidden="true"></a><span class="kw">plot</span>(states_proj<span class="op">$</span>geometry)</span>
+<span id="cb58-4"><a href="introducing-the-koala-dataset.html#cb58-4" aria-hidden="true"></a></span>
+<span id="cb58-5"><a href="introducing-the-koala-dataset.html#cb58-5" aria-hidden="true"></a><span class="kw">plot</span>(koala_states_min<span class="op">$</span>geometry, <span class="dt">add =</span> T, <span class="dt">col =</span> koala_states_min<span class="op">$</span>region)</span></code></pre></div>
 <p><img src="02-dataset_description_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
-<div id="add-other-physiological-variables" class="section level4">
+<div id="add-other-physiological-variables" class="section level4" number="3.3.3.3">
 <h4><span class="header-section-number">3.3.3.3</span> Add other physiological variables</h4>
 <p>Some googling allows us to add the other variables based on semi-realistic data:</p>
 <ul>
 <li><a href="https://www.savethekoala.com/about-koalas/physical-characteristics-koala" class="uri">https://www.savethekoala.com/about-koalas/physical-characteristics-koala</a></li>
 </ul>
 <p>Sizes range from ~64 to over 80 cm, depending on sex and region:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">koala_states_min<span class="op">$</span>size&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;southern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb59-2" title="2">                              <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">68</span>, <span class="dt">max =</span> <span class="dv">73</span>),</a>
-<a class="sourceLine" id="cb59-3" title="3">                              <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;southern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb59-4" title="4">                                     <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">75</span>, <span class="dt">max =</span> <span class="dv">82</span>),</a>
-<a class="sourceLine" id="cb59-5" title="5">                                     <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;northern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb59-6" title="6">                                            <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">64.8</span>, <span class="dt">max =</span> <span class="fl">72.3</span>),</a>
-<a class="sourceLine" id="cb59-7" title="7">                                            <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;northern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb59-8" title="8">                                                   <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">67.4</span>, <span class="dt">max =</span> <span class="fl">73.6</span>),<span class="dv">100</span>))))</a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="introducing-the-koala-dataset.html#cb59-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>size&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;southern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb59-2"><a href="introducing-the-koala-dataset.html#cb59-2" aria-hidden="true"></a>                              <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">68</span>, <span class="dt">max =</span> <span class="dv">73</span>),</span>
+<span id="cb59-3"><a href="introducing-the-koala-dataset.html#cb59-3" aria-hidden="true"></a>                              <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;southern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb59-4"><a href="introducing-the-koala-dataset.html#cb59-4" aria-hidden="true"></a>                                     <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">75</span>, <span class="dt">max =</span> <span class="dv">82</span>),</span>
+<span id="cb59-5"><a href="introducing-the-koala-dataset.html#cb59-5" aria-hidden="true"></a>                                     <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;northern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb59-6"><a href="introducing-the-koala-dataset.html#cb59-6" aria-hidden="true"></a>                                            <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">64.8</span>, <span class="dt">max =</span> <span class="fl">72.3</span>),</span>
+<span id="cb59-7"><a href="introducing-the-koala-dataset.html#cb59-7" aria-hidden="true"></a>                                            <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;northern&#39;</span> <span class="op">&amp;</span><span class="st"> </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb59-8"><a href="introducing-the-koala-dataset.html#cb59-8" aria-hidden="true"></a>                                                   <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">67.4</span>, <span class="dt">max =</span> <span class="fl">73.6</span>),<span class="dv">100</span>))))</span></code></pre></div>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Koala" class="uri">https://en.wikipedia.org/wiki/Koala</a></li>
 </ul>
 <p>The fur color varies based on their region too with some different probabilities:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">koala_states_min<span class="op">$</span>color&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;northern&#39;</span>, </a>
-<a class="sourceLine" id="cb60-2" title="2">                               <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;light grey&#39;</span>, <span class="st">&#39;grey&#39;</span>, <span class="st">&#39;grey-brown&#39;</span>), <span class="kw">nrow</span>(koala_states_min),  </a>
-<a class="sourceLine" id="cb60-3" title="3">                                      <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T),</a>
-<a class="sourceLine" id="cb60-4" title="4">                               <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;dark grey&#39;</span>, <span class="st">&#39;light brown&#39;</span>, <span class="st">&#39;chocolate brown&#39;</span>), <span class="kw">nrow</span>(koala_states_min), </a>
-<a class="sourceLine" id="cb60-5" title="5">                                      <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T))</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="introducing-the-koala-dataset.html#cb60-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>color&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>region <span class="op">==</span><span class="st"> &#39;northern&#39;</span>, </span>
+<span id="cb60-2"><a href="introducing-the-koala-dataset.html#cb60-2" aria-hidden="true"></a>                               <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;light grey&#39;</span>, <span class="st">&#39;grey&#39;</span>, <span class="st">&#39;grey-brown&#39;</span>), <span class="kw">nrow</span>(koala_states_min),  </span>
+<span id="cb60-3"><a href="introducing-the-koala-dataset.html#cb60-3" aria-hidden="true"></a>                                      <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T),</span>
+<span id="cb60-4"><a href="introducing-the-koala-dataset.html#cb60-4" aria-hidden="true"></a>                               <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;dark grey&#39;</span>, <span class="st">&#39;light brown&#39;</span>, <span class="st">&#39;chocolate brown&#39;</span>), <span class="kw">nrow</span>(koala_states_min), </span>
+<span id="cb60-5"><a href="introducing-the-koala-dataset.html#cb60-5" aria-hidden="true"></a>                                      <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T))</span></code></pre></div>
 <ul>
 <li><a href="https://www.theanimalfiles.com/mammals/marsupials/koala.html" class="uri">https://www.theanimalfiles.com/mammals/marsupials/koala.html</a></li>
 </ul>
 <p>The tail length is constant between 1 - 2 cm, so we can randomize it throughout:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">koala_states_min<span class="op">$</span>tail&lt;-<span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="introducing-the-koala-dataset.html#cb61-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>tail&lt;-<span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>Fur thickness varies by state and sex:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">koala_states_min<span class="op">$</span>fur&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb62-2" title="2">                                <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> <span class="dv">2</span>), </a>
-<a class="sourceLine" id="cb62-3" title="3">                                <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb62-4" title="4">                                       <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">1.5</span>, <span class="dt">max =</span> <span class="fl">2.5</span>), </a>
-<a class="sourceLine" id="cb62-5" title="5">                                       <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-6" title="6"><span class="st">                                                </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb62-7" title="7"><span class="st">                                                </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb62-8" title="8">                                              <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">3</span>, <span class="dt">max =</span> <span class="dv">5</span>),</a>
-<a class="sourceLine" id="cb62-9" title="9">                                              <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb62-10" title="10"><span class="st">                                                       </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb62-11" title="11"><span class="st">                                                       </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb62-12" title="12">                                                     <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">3.5</span>, <span class="dt">max =</span> <span class="dv">6</span>), </a>
-<a class="sourceLine" id="cb62-13" title="13">                                                     <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb62-14" title="14"><span class="st">                                                              </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb62-15" title="15">                                                            <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">2</span>, <span class="dt">max =</span> <span class="dv">3</span>), </a>
-<a class="sourceLine" id="cb62-16" title="16">                                                            <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb62-17" title="17"><span class="st">                                                                     </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</a>
-<a class="sourceLine" id="cb62-18" title="18">                                                                   <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">2.5</span>, <span class="dt">max =</span> <span class="fl">3.5</span>),</a>
-<a class="sourceLine" id="cb62-19" title="19">                                                                   <span class="dv">100</span>))))))</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="introducing-the-koala-dataset.html#cb62-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>fur&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb62-2"><a href="introducing-the-koala-dataset.html#cb62-2" aria-hidden="true"></a>                                <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> <span class="dv">2</span>), </span>
+<span id="cb62-3"><a href="introducing-the-koala-dataset.html#cb62-3" aria-hidden="true"></a>                                <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Queensland&#39;</span> <span class="op">&amp;</span><span class="st">  </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb62-4"><a href="introducing-the-koala-dataset.html#cb62-4" aria-hidden="true"></a>                                       <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">1.5</span>, <span class="dt">max =</span> <span class="fl">2.5</span>), </span>
+<span id="cb62-5"><a href="introducing-the-koala-dataset.html#cb62-5" aria-hidden="true"></a>                                       <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></span>
+<span id="cb62-6"><a href="introducing-the-koala-dataset.html#cb62-6" aria-hidden="true"></a><span class="st">                                                </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb62-7"><a href="introducing-the-koala-dataset.html#cb62-7" aria-hidden="true"></a><span class="st">                                                </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb62-8"><a href="introducing-the-koala-dataset.html#cb62-8" aria-hidden="true"></a>                                              <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">3</span>, <span class="dt">max =</span> <span class="dv">5</span>),</span>
+<span id="cb62-9"><a href="introducing-the-koala-dataset.html#cb62-9" aria-hidden="true"></a>                                              <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span> <span class="op">|</span><span class="st"> </span></span>
+<span id="cb62-10"><a href="introducing-the-koala-dataset.html#cb62-10" aria-hidden="true"></a><span class="st">                                                       </span>koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;South Australia&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb62-11"><a href="introducing-the-koala-dataset.html#cb62-11" aria-hidden="true"></a><span class="st">                                                       </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb62-12"><a href="introducing-the-koala-dataset.html#cb62-12" aria-hidden="true"></a>                                                     <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">3.5</span>, <span class="dt">max =</span> <span class="dv">6</span>), </span>
+<span id="cb62-13"><a href="introducing-the-koala-dataset.html#cb62-13" aria-hidden="true"></a>                                                     <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb62-14"><a href="introducing-the-koala-dataset.html#cb62-14" aria-hidden="true"></a><span class="st">                                                              </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb62-15"><a href="introducing-the-koala-dataset.html#cb62-15" aria-hidden="true"></a>                                                            <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="dv">2</span>, <span class="dt">max =</span> <span class="dv">3</span>), </span>
+<span id="cb62-16"><a href="introducing-the-koala-dataset.html#cb62-16" aria-hidden="true"></a>                                                            <span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>STATENAME <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span> <span class="op">&amp;</span><span class="st">  </span></span>
+<span id="cb62-17"><a href="introducing-the-koala-dataset.html#cb62-17" aria-hidden="true"></a><span class="st">                                                                     </span>koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;male&#39;</span>,</span>
+<span id="cb62-18"><a href="introducing-the-koala-dataset.html#cb62-18" aria-hidden="true"></a>                                                                   <span class="kw">runif</span>(<span class="kw">nrow</span>(koala_states_min), <span class="dt">min =</span> <span class="fl">2.5</span>, <span class="dt">max =</span> <span class="fl">3.5</span>),</span>
+<span id="cb62-19"><a href="introducing-the-koala-dataset.html#cb62-19" aria-hidden="true"></a>                                                                   <span class="dv">100</span>))))))</span></code></pre></div>
 <ul>
 <li><a href="https://environment.des.qld.gov.au/wildlife/animals/living-with/koalas/facts" class="uri">https://environment.des.qld.gov.au/wildlife/animals/living-with/koalas/facts</a></li>
 </ul>
 <p>They can become up to 12 years old, let’s just randomize this throughout the range as well. The mean in that case should be around 6 years, as <code>sample()</code> assumes normally distributed data, if you do not specify the <code>prob</code>. We’re using <code>replace = TRUE</code>, to make sure ages <code>1:12</code> can be repeated and are distributed over our 242 rows.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">koala_states_min<span class="op">$</span>age&lt;-<span class="kw">sample</span>(<span class="dv">12</span>, <span class="kw">nrow</span>(koala_states_min), <span class="dt">replace =</span> T)</a>
-<a class="sourceLine" id="cb63-2" title="2"></a>
-<a class="sourceLine" id="cb63-3" title="3"><span class="kw">mean</span>(koala_states_min<span class="op">$</span>age)</a></code></pre></div>
-<pre><code>## [1] 6.756198</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">hist</span>(koala_states_min<span class="op">$</span>age)</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="introducing-the-koala-dataset.html#cb63-1" aria-hidden="true"></a>koala_states_min<span class="op">$</span>age&lt;-<span class="kw">sample</span>(<span class="dv">12</span>, <span class="kw">nrow</span>(koala_states_min), <span class="dt">replace =</span> T)</span>
+<span id="cb63-2"><a href="introducing-the-koala-dataset.html#cb63-2" aria-hidden="true"></a></span>
+<span id="cb63-3"><a href="introducing-the-koala-dataset.html#cb63-3" aria-hidden="true"></a><span class="kw">mean</span>(koala_states_min<span class="op">$</span>age)</span></code></pre></div>
+<pre><code>## [1] 6.652893</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="introducing-the-koala-dataset.html#cb65-1" aria-hidden="true"></a><span class="kw">hist</span>(koala_states_min<span class="op">$</span>age)</span></code></pre></div>
 <p><img src="02-dataset_description_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
-<div id="adding-some-more-factor-variables" class="section level4">
+<div id="adding-some-more-factor-variables" class="section level4" number="3.3.3.4">
 <h4><span class="header-section-number">3.3.3.4</span> Adding some more factor variables</h4>
 <p>Finally we can add some more factorial variables which we make up completely (with some insider knowledge ;) ). Of course only females can have a joey:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="co">#offspring</span></a>
-<a class="sourceLine" id="cb66-2" title="2"></a>
-<a class="sourceLine" id="cb66-3" title="3">koala_states_min<span class="op">$</span>joey&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</a>
-<a class="sourceLine" id="cb66-4" title="4">                              <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>), <span class="kw">nrow</span>(koala_states_min),  <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.38</span>, <span class="fl">0.62</span>), <span class="dt">replace =</span> T), <span class="st">&#39;No&#39;</span>)</a>
-<a class="sourceLine" id="cb66-5" title="5"></a>
-<a class="sourceLine" id="cb66-6" title="6"><span class="co">#behavior</span></a>
-<a class="sourceLine" id="cb66-7" title="7"></a>
-<a class="sourceLine" id="cb66-8" title="8">koala_states_min<span class="op">$</span>behav&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;Sleeping&#39;</span>, <span class="st">&#39;Feeding&#39;</span>, <span class="st">&#39;Just Chillin&#39;</span>), <span class="kw">nrow</span>(koala_states_min), </a>
-<a class="sourceLine" id="cb66-9" title="9">                               <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T)</a>
-<a class="sourceLine" id="cb66-10" title="10"></a>
-<a class="sourceLine" id="cb66-11" title="11"><span class="co">#survey tech</span></a>
-<a class="sourceLine" id="cb66-12" title="12"></a>
-<a class="sourceLine" id="cb66-13" title="13">koala_states_min<span class="op">$</span>obs&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;Spotlighting&#39;</span>, <span class="st">&#39;Stagwatching&#39;</span>, <span class="st">&#39;Opportunistic&#39;</span>), <span class="kw">nrow</span>(koala_states_min), </a>
-<a class="sourceLine" id="cb66-14" title="14">                               <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="introducing-the-koala-dataset.html#cb66-1" aria-hidden="true"></a><span class="co">#offspring</span></span>
+<span id="cb66-2"><a href="introducing-the-koala-dataset.html#cb66-2" aria-hidden="true"></a></span>
+<span id="cb66-3"><a href="introducing-the-koala-dataset.html#cb66-3" aria-hidden="true"></a>koala_states_min<span class="op">$</span>joey&lt;-<span class="kw">ifelse</span>(koala_states_min<span class="op">$</span>sex <span class="op">==</span><span class="st"> &#39;female&#39;</span>,</span>
+<span id="cb66-4"><a href="introducing-the-koala-dataset.html#cb66-4" aria-hidden="true"></a>                              <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;Yes&#39;</span>, <span class="st">&#39;No&#39;</span>), <span class="kw">nrow</span>(koala_states_min),  <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.38</span>, <span class="fl">0.62</span>), <span class="dt">replace =</span> T), <span class="st">&#39;No&#39;</span>)</span>
+<span id="cb66-5"><a href="introducing-the-koala-dataset.html#cb66-5" aria-hidden="true"></a></span>
+<span id="cb66-6"><a href="introducing-the-koala-dataset.html#cb66-6" aria-hidden="true"></a><span class="co">#behavior</span></span>
+<span id="cb66-7"><a href="introducing-the-koala-dataset.html#cb66-7" aria-hidden="true"></a></span>
+<span id="cb66-8"><a href="introducing-the-koala-dataset.html#cb66-8" aria-hidden="true"></a>koala_states_min<span class="op">$</span>behav&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;Sleeping&#39;</span>, <span class="st">&#39;Feeding&#39;</span>, <span class="st">&#39;Just Chillin&#39;</span>), <span class="kw">nrow</span>(koala_states_min), </span>
+<span id="cb66-9"><a href="introducing-the-koala-dataset.html#cb66-9" aria-hidden="true"></a>                               <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T)</span>
+<span id="cb66-10"><a href="introducing-the-koala-dataset.html#cb66-10" aria-hidden="true"></a></span>
+<span id="cb66-11"><a href="introducing-the-koala-dataset.html#cb66-11" aria-hidden="true"></a><span class="co">#survey tech</span></span>
+<span id="cb66-12"><a href="introducing-the-koala-dataset.html#cb66-12" aria-hidden="true"></a></span>
+<span id="cb66-13"><a href="introducing-the-koala-dataset.html#cb66-13" aria-hidden="true"></a>koala_states_min<span class="op">$</span>obs&lt;-<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&#39;Spotlighting&#39;</span>, <span class="st">&#39;Stagwatching&#39;</span>, <span class="st">&#39;Opportunistic&#39;</span>), <span class="kw">nrow</span>(koala_states_min), </span>
+<span id="cb66-14"><a href="introducing-the-koala-dataset.html#cb66-14" aria-hidden="true"></a>                               <span class="dt">prob=</span><span class="kw">c</span>(<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.3</span>), <span class="dt">replace =</span> T)</span></code></pre></div>
 <p>And that’s all. Of course we can make up more variables, but for our purposes of practicing data manipulation, visualization, modeling and spatial data processing, this should be sufficient.</p>
 </div>
-<div id="polishing-the-data-and-saving" class="section level4">
+<div id="polishing-the-data-and-saving" class="section level4" number="3.3.3.5">
 <h4><span class="header-section-number">3.3.3.5</span> Polishing the data and saving</h4>
 <p>Now we can remove the geometry from our <code>sf</code>, to make it a simple <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">koala_final&lt;-<span class="kw">st_drop_geometry</span>(koala_states_min)<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="dt">species =</span> Species, X, Y, <span class="dt">state =</span> STATENAME, region, sex, weight, size, fur, tail, age, color, joey, behav, obs )</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="introducing-the-koala-dataset.html#cb67-1" aria-hidden="true"></a>koala_final&lt;-<span class="kw">st_drop_geometry</span>(koala_states_min)<span class="op">%&gt;%</span><span class="kw">select</span>(<span class="dt">species =</span> Species, X, Y, <span class="dt">state =</span> STATENAME, region, sex, weight, size, fur, tail, age, color, joey, behav, obs )</span></code></pre></div>
 <p>After that we brought the data in order using <code>dplyr</code>’s <code>select()</code> and while doing so, we can also rename some columns. Next we save the data to our <code>outputs/</code> folder:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">write.csv</span>(koala_final, <span class="st">&#39;outputs/koala_final.csv&#39;</span>, <span class="dt">row.names =</span> F)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="introducing-the-koala-dataset.html#cb68-1" aria-hidden="true"></a><span class="kw">write.csv</span>(koala_final, <span class="st">&#39;outputs/koala_final.csv&#39;</span>, <span class="dt">row.names =</span> F)</span></code></pre></div>
 <p>All set for our tutorials! Let’s dive into some data manipulation in <code>dplyr</code> first! Have fun :)</p>
 
 </div>

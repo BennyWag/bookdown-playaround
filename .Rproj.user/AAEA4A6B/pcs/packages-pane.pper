@@ -1,7 +1,0 @@
-{
-    "installOptions": {
-        "installFromRepository": true,
-        "libraryPath": "C:/Users/anu6/Documents/R/win-library/3.6",
-        "installDependencies": true
-    }
-}

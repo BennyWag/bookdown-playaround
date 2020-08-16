@@ -1,5 +1,0 @@
-"0","mean(koala[koala$sex == 'male', ""age""],na.rm = TRUE)"
-"1","[1]"
-"1"," 6.626087"
-"1","
-"

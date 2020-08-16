@@ -18,7 +18,7 @@ First we need to load the dataset we're working with.
 
 
 ```r
-koala<-read.csv('data/koala.csv')
+koala<-read.csv('data/koala.csv', stringsAsFactors = T)
 ```
 
 It should contain the following columns:
@@ -146,6 +146,10 @@ That's all good, but with that many lines of code quite error prone ... `dplyr` 
 library(dplyr)
 
 mean_age_koala<-koala%>%group_by(sex)%>%summarise(mean_age = mean(age))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 
@@ -283,9 +287,10 @@ str(koala_group)
 ##  $ obs    : Factor w/ 3 levels "Opportunistic",..: 2 1 2 3 3 1 3 2 2 2 ...
 ##  - attr(*, "groups")= tibble [2 x 2] (S3: tbl_df/tbl/data.frame)
 ##   ..$ sex  : Factor w/ 2 levels "female","male": 1 2
-##   ..$ .rows:List of 2
+##   ..$ .rows: list<int> [1:2] 
 ##   .. ..$ : int [1:127] 2 5 9 10 12 13 15 17 20 22 ...
 ##   .. ..$ : int [1:115] 1 3 4 6 7 8 11 14 16 18 ...
+##   .. ..@ ptype: int(0) 
 ##   ..- attr(*, ".drop")= logi TRUE
 ```
 
@@ -298,6 +303,10 @@ The above was a bit on the uneventful side because `group_by()` is only really u
 ```r
 koala_group_sum<-koala%>%group_by(sex)%>%
   summarise(mean_age=mean(age))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 
@@ -343,6 +352,10 @@ challenge2_ext<-koala%>%group_by(state, sex)%>%
             sample_no = n())
 ```
 
+```
+## `summarise()` regrouping output by 'state' (override with `.groups` argument)
+```
+
 We can create a new dataframe with as many new variables as we want. Very useful for our initial data exploration! Let's get our hands another very useful function: `mutate()`.
 
 ### mutate()
@@ -376,6 +389,10 @@ koala_mutate_weight_size<-koala%>%mutate(weight_size_ratio = size/weight)%>%
             max_weight_size = max(weight_size_ratio))
 ```
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
 
 ```
 ## # A tibble: 2 x 5
@@ -400,8 +417,8 @@ Great! Let's end the lesson with another challenge, combining all the functions 
 ## # A tibble: 2 x 3
 ##   sex    mean_tail mean_fur
 ##   <fct>      <dbl>    <dbl>
-## 1 male        1.62     3.00
-## 2 female      1.52     2.59
+## 1 male        1.54     2.95
+## 2 female      1.47     2.48
 ```
 
 Since we are sampling randomly, these will look different for each of you.
@@ -444,12 +461,12 @@ head(koala_subsample)
 
 ```
 ##                  species   region    sex     tail age    tail2
-## 1 Phascolarctos cinereus northern   male 1.168241   8 2.391016
-## 2 Phascolarctos cinereus northern female 1.562456  10 2.918094
-## 3 Phascolarctos cinereus northern   male 1.056640   1 2.476921
-## 4 Phascolarctos cinereus northern   male 1.801244   1 2.844189
-## 5 Phascolarctos cinereus northern female 1.625600  10 2.835139
-## 6 Phascolarctos cinereus northern   male 1.086675  12 2.181466
+## 1 Phascolarctos cinereus northern   male 1.168241   8 2.176022
+## 2 Phascolarctos cinereus northern female 1.562456  10 2.128106
+## 3 Phascolarctos cinereus northern   male 1.056640   1 2.425834
+## 4 Phascolarctos cinereus northern   male 1.801244   1 2.913316
+## 5 Phascolarctos cinereus northern female 1.625600  10 2.007734
+## 6 Phascolarctos cinereus northern   male 1.086675  12 2.901951
 ```
 
 Our table is now wide, because we added a variable, that is not indexed. This can cause problems, especially when we want to visualize these two measurements. We will introduce `ggplot2` for visualizing in later tutorials, but here is just a basic boxplot
@@ -493,11 +510,11 @@ head(koala_pivot)
 ##   species                region   sex      age tail_measure tail_length
 ##   <fct>                  <fct>    <fct>  <int> <chr>              <dbl>
 ## 1 Phascolarctos cinereus northern male       8 tail                1.17
-## 2 Phascolarctos cinereus northern male       8 tail2               2.39
+## 2 Phascolarctos cinereus northern male       8 tail2               2.18
 ## 3 Phascolarctos cinereus northern female    10 tail                1.56
-## 4 Phascolarctos cinereus northern female    10 tail2               2.92
+## 4 Phascolarctos cinereus northern female    10 tail2               2.13
 ## 5 Phascolarctos cinereus northern male       1 tail                1.06
-## 6 Phascolarctos cinereus northern male       1 tail2               2.48
+## 6 Phascolarctos cinereus northern male       1 tail2               2.43
 ```
 
 We create the index column `tail_measure` to address our two measurements. The column containing the measurements is now called `tail_length`. Let's see what has changed between the first and second measurement:
@@ -541,19 +558,19 @@ head(koala_subsample2)
 
 ```
 ##                  species   region    sex age     tail joey age2    tail2
-## 1 Phascolarctos cinereus northern   male   8 1.168241   No   11 2.110620
-## 2 Phascolarctos cinereus northern female  10 1.562456  Yes   12 2.000904
-## 3 Phascolarctos cinereus northern   male   1 1.056640   No    4 2.952647
-## 4 Phascolarctos cinereus northern   male   1 1.801244   No    2 2.514815
-## 5 Phascolarctos cinereus northern female  10 1.625600   No   13 2.256471
-## 6 Phascolarctos cinereus northern   male  12 1.086675   No   14 2.600110
+## 1 Phascolarctos cinereus northern   male   8 1.168241   No    9 2.844038
+## 2 Phascolarctos cinereus northern female  10 1.562456  Yes   13 2.847502
+## 3 Phascolarctos cinereus northern   male   1 1.056640   No    4 2.486123
+## 4 Phascolarctos cinereus northern   male   1 1.801244   No    3 2.456892
+## 5 Phascolarctos cinereus northern female  10 1.625600   No   13 2.523897
+## 6 Phascolarctos cinereus northern   male  12 1.086675   No   15 2.251426
 ##      tail3 joey2 joey3
-## 1 1.081655    No    No
-## 2 1.030158    No   Yes
-## 3 1.118332    No    No
-## 4 1.073399    No    No
-## 5 1.134842    No    No
-## 6 1.294120    No    No
+## 1 1.187125    No    No
+## 2 1.079192    No   Yes
+## 3 1.313226    No    No
+## 4 1.318932    No    No
+## 5 1.318252    No   Yes
+## 6 1.322062    No    No
 ```
 
 So we continued our measurements over 3 years, each koala aged 1-3 years which is expressed in the `age2` column. When we revisited, we took additional measurements of tail length, and checked weather females had a joey. Can you *tidy* up this table? 
@@ -566,15 +583,14 @@ So we continued our measurements over 3 years, each koala aged 1-3 years which i
 
 ```
 ## # A tibble: 6 x 10
-##      ID species region sex   age_check tail_measure joey_check   age  tail
-##   <int> <fct>   <fct>  <fct> <chr>     <chr>        <chr>      <int> <dbl>
-## 1     1 Phasco~ north~ male  age       tail         joey           8  1.17
-## 2     1 Phasco~ north~ male  age       tail         joey2          8  1.17
-## 3     1 Phasco~ north~ male  age       tail         joey3          8  1.17
-## 4     1 Phasco~ north~ male  age       tail2        joey           8  2.11
-## 5     1 Phasco~ north~ male  age       tail2        joey2          8  2.11
-## 6     1 Phasco~ north~ male  age       tail2        joey3          8  2.11
-## # ... with 1 more variable: joey <chr>
+##      ID species region sex   age_check tail_measure joey_check   age  tail joey 
+##   <int> <fct>   <fct>  <fct> <chr>     <chr>        <chr>      <int> <dbl> <chr>
+## 1     1 Phasco~ north~ male  age       tail         joey           8  1.17 No   
+## 2     1 Phasco~ north~ male  age       tail         joey2          8  1.17 No   
+## 3     1 Phasco~ north~ male  age       tail         joey3          8  1.17 No   
+## 4     1 Phasco~ north~ male  age       tail2        joey           8  2.84 No   
+## 5     1 Phasco~ north~ male  age       tail2        joey2          8  2.84 No   
+## 6     1 Phasco~ north~ male  age       tail2        joey3          8  2.84 No
 ```
 
 With this meany measurements, we can illustrate the long table format well. Each individual now has 18 rows, because our maximum measurement was 3x3 for joey and tail. Each ID number is one koala. 
@@ -590,15 +606,14 @@ head(koala_pivot_wide)
 
 ```
 ## # A tibble: 6 x 10
-##      ID species region sex   tail_measure joey_check  tail joey    age
-##   <int> <fct>   <fct>  <fct> <chr>        <chr>      <dbl> <chr> <int>
-## 1     1 Phasco~ north~ male  tail         joey        1.17 No        8
-## 2     1 Phasco~ north~ male  tail         joey2       1.17 No        8
-## 3     1 Phasco~ north~ male  tail         joey3       1.17 No        8
-## 4     1 Phasco~ north~ male  tail2        joey        2.11 No        8
-## 5     1 Phasco~ north~ male  tail2        joey2       2.11 No        8
-## 6     1 Phasco~ north~ male  tail2        joey3       2.11 No        8
-## # ... with 1 more variable: age2 <int>
+##      ID species     region sex   tail_measure joey_check  tail joey    age  age2
+##   <int> <fct>       <fct>  <fct> <chr>        <chr>      <dbl> <chr> <int> <int>
+## 1     1 Phascolarc~ north~ male  tail         joey        1.17 No        8     9
+## 2     1 Phascolarc~ north~ male  tail         joey2       1.17 No        8     9
+## 3     1 Phascolarc~ north~ male  tail         joey3       1.17 No        8     9
+## 4     1 Phascolarc~ north~ male  tail2        joey        2.84 No        8     9
+## 5     1 Phascolarc~ north~ male  tail2        joey2       2.84 No        8     9
+## 6     1 Phascolarc~ north~ male  tail2        joey3       2.84 No        8     9
 ```
 
 Having each variable in a separate column is important e.g. in modeling, when you have to specify you predictor variables by column. Let's practice `pivot_wider()` with some made-up koala data data:
@@ -616,12 +631,12 @@ head(new_data)
 
 ```
 ##   ID  sex measurement     tail animal
-## 1  1 male       tail1 1.938247      1
-## 2  2 male       tail2 1.359182      1
-## 3  3 male       tail3 1.689422      1
-## 4  4 male       tail4 1.118067      1
-## 5  5 male       tail1 1.457104      2
-## 6  6 male       tail2 1.930255      2
+## 1  1 male       tail1 1.777274      1
+## 2  2 male       tail2 1.799369      1
+## 3  3 male       tail3 1.795316      1
+## 4  4 male       tail4 1.961941      1
+## 5  5 male       tail1 1.415826      2
+## 6  6 male       tail2 1.722455      2
 ```
 
 ### Challenge 5
@@ -632,13 +647,13 @@ head(new_data)
 ```
 ## # A tibble: 6 x 6
 ##   sex   animal tail1 tail2 tail3 tail4
-##   <fct>  <int> <dbl> <dbl> <dbl> <dbl>
-## 1 male       1  1.94  1.36  1.69  1.12
-## 2 male       2  1.46  1.93  1.61  1.21
-## 3 male       3  1.51  1.94  1.21  1.89
-## 4 male       4  1.23  1.43  1.48  1.18
-## 5 male       5  1.36  1.37  1.00  1.23
-## 6 male       6  1.78  1.80  1.07  1.04
+##   <chr>  <int> <dbl> <dbl> <dbl> <dbl>
+## 1 male       1  1.78  1.80  1.80  1.96
+## 2 male       2  1.42  1.72  1.60  1.91
+## 3 male       3  1.23  1.81  1.31  1.29
+## 4 male       4  1.76  1.12  1.85  1.03
+## 5 male       5  1.44  1.43  1.23  1.07
+## 6 male       6  1.62  1.26  1.91  1.78
 ```
 
 Good job on all this! Let's move on to data visualization using `ggplot2` :) 
@@ -666,6 +681,10 @@ challenge2<-koala%>%group_by(state, sex)%>%
   summarise(mean_weight = mean(weight))
 ```
 
+```
+## `summarise()` regrouping output by 'state' (override with `.groups` argument)
+```
+
 #### Challenge 3
 
 
@@ -675,6 +694,10 @@ challenge3<-koala%>%filter(state == 'New South Wales')%>%
   sample_n(20)%>%
   summarise(mean_tail = mean(tail), mean_fur = mean(fur))%>%
   arrange(desc(mean_tail))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 #### Challenge 4

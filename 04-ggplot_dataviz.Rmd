@@ -1,0 +1,196 @@
+# Introduction to data visualization in `ggplot2`
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(tidyverse)
+library(performance)
+library(corrplot)
+library(emojifont)
+```
+
+## General information about **GGPLOT**
+
+Working with **R** either with `ggplot` or *data analysis* there are three things which is most important and you will constantly go back and forth regarding three things:   
+1. Writing code - you will write codes to produce graph, data analysis and also to load data   
+2. Looking at output - your code is a set of instructions to produce graph, table or model  
+3. Taking notes - write what you are doing and what it means 
+
+### Package needed for the analysis
+
+First we load the required packages (via `tidyverse`) and data:
+
+```{r setup, eval=FALSE}
+library(tidyverse)
+```
+
+```{r}
+koala<-read.csv(file="data/koala.csv", stringsAsFactors = T)
+
+#have a peek at the data structure
+
+str(koala)
+summary(koala)
+```
+
+### Be Patient with R and yourself, its not magic but rather work
+
+Three specific things to watch out for:   
+- Make sure parentheses are balanced and that every opening "(" has a corresponding closing ")"  
+- Make sure you complete your expressions. If you think you have completed typing your code but instead of seeing the `>` command prompt at the console you see the + character, R thinks you haven't completed the expressions  
+- In ggplot specifically, you will use `+` to add character. It should always be at the end of sentence rather then beginning   
+
+**for eg:**  
+
+ggplot(data, aes(x=x, y=y))+  geom_point()$\checkmark$
+
+ggplot(data, aes(x=x, y=y))   
++geom_point() **X**
+
+
+## Make your first Graph
+
+Structure used by `ggplot` is basic.  Identify data, specify a `mapping`, and then choose an appropriate *geometry* to display data.
++ is the key to constructing sophisticated `ggplot2` graphics. It allows you to start simple, then get more and more complex, checking your work at each step.
+*aesthetic = variable* describing which variables in the layer data should be mapped to which aesthetics used by the paired geom/stat. The expression variable is evaluated within the layer data, so there is no need to refer to the original dataset (i.e., use `ggplot(df,aes(variable)`) instead of `ggplot(df,aes(df$variable)))`. The names for x and y aesthetics are typically omitted because they are so common; all other aesthetics must be named.
+
+
+```{r cars}
+koala<-read.csv(file="data/koala.csv", stringsAsFactors = T)
+
+ggplot(data = koala)
+p <- ggplot(data = koala, mapping = aes(x = size, y = weight))
+```
+
+## `geom_point`
+To see the individual points, specify the `geometry` that you would like to use. For *X,Y* data X, Y. List of name value pairs. Elements must be either quoted calls, strings, one-sided formulas or constants.
+we can use `geom_point()`.
+
+```{r}
+p + geom_point()
+p + geom_smooth()
+p+geom_point()+geom_smooth()
+```
+  
+Add other features of the geom. Try playing around with shape=, size=, alpha=. 
+*For shape*, use integer values from 0 to 20 (although there are many others to choose from). 
+*For size*, use positive non-zero values (non-integers are OK). 
+*For alpha*, use values from 0 to 1. You can use more than one of these at a time. 
+Just separate them with commas in the geom statement.
+We can also add nice (or more detailed) labeling. To do this we just need to add the labs component to the overall statement (like adding the geom_point() or geom_smooth). 
+
+```{r pressure, echo=FALSE}
+p + geom_point(colour="darkblue", size=0.75, shape=5) + geom_smooth(method='lm')
+p + geom_point() + geom_smooth() + scale_x_log10() + scale_y_log10()
+
+p + geom_point(colour = 'darkblue', size = 0.75, shape = 3) +
+  labs(x = "Weight", y = "Size", 
+       title = "Weight and size of drop BEAR ")
+```
+
+## Challenge 1
+
+- plot tail length with fur thickness and color it by sex and change the
+- x and y axis labels and add your title. Funniest title wins the prize.
+
+### `geom_boxplot`
+
+```{r}
+r<-ggplot(data=koala, aes(x=state, y=tail))
+r+geom_boxplot()
+```
+
+```Reorder``` is a generic function. The "default" method treats its first argument as a categorical variable, and reorders its levels based on the values of a second variable, usually numeric.
+
+```{r}
+r<-ggplot(data=koala, aes(x=reorder(state, tail), y=tail))
+r+geom_boxplot()
+```
+
+```stat_summary``` operates on unique x; ```stat_summary_bin``` operates on binned x. They are more flexible versions of ```stat_bin()```: instead of just counting, they can compute any aggregate.
+
+
+```{r}
+ggplot(koala, aes(x=sex,y=tail))+geom_boxplot()+
+  stat_summary(fun = mean,
+               geom="point",
+               size=3,
+               color="red")
+```
+### `coord_flip`
+
+boxplot compactly displays the distribution of a continuous variable. 
+and ```coord_flip``` flips the x axis to y and reverse
+
+```{r}
+r<-ggplot(data=koala, mapping=aes(x=state, y=tail))
+r+geom_boxplot()
+r+geom_boxplot()+coord_flip()
+```
+
+### `facet_wrap`
+If we want three different types of information for the graph. Lets try that
+
+```{r}
+
+ggplot(koala, aes(x=sex, y=weight, color=state))+
+  geom_boxplot()+
+  facet_wrap(~state)+
+  labs(title="Weight of Koala in Australia", x="Sex of Koala", y="Weight of animal")+
+  coord_flip()
+
+
+```
+
+### Reverse the condition logic
+
+Its actually very simple with R and dplyr. 
+Its **!(exclamation mark)**. And, it goes like this.
+
+```{r}
+koala%>% 
+  filter(!state=="New South Wales")%>%
+ggplot(aes(state,tail)) + 
+  geom_boxplot()+
+  stat_summary(fun.y = mean,
+               geom="point",
+               size=3,color="blue")
+
+```
+
+
+
+## Challenge2  
+
+- put your dplyr and ggplot knowledge to the test   
+- plot the weights of koalas from all states except Victoria as a boxplot!  
+- add the fun to illustrate the mean, change the color of this point  
+
+
+```{r}
+koala%>% 
+  filter(!state=="Victoria")%>%
+ggplot(aes(state,weight))+
+  geom_boxplot(aes(x=state, y=weight)) + 
+  stat_summary(fun= mean,
+               geom="point",
+               size=3,color="blue")
+
+```
+ 
+
+## Challenge3   
+
+- dplyr and ggplot together remove the weight higher than 3rd quartile    
+- plot weight and size with method glm label the axis   
+- have a tile and state as colour  
+  
+```{r}
+summary(koala)
+
+koala %>% 
+  filter(weight<=8.76)%>%
+ggplot(aes(size,weight, color=state))+
+  geom_point() + 
+  geom_smooth(method='glm', se=F)+labs(title="Weight vs Size", x= "Weight", y="Size")
+
+```  

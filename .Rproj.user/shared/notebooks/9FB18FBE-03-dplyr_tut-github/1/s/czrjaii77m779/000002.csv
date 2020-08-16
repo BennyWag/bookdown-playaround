@@ -1,5 +1,0 @@
-"0","challenge3<-koala%>%filter(state == 'New South Wales')%>%"
-"0","  group_by(sex)%>%"
-"0","  sample_n(20)%>%"
-"0","  summarise(mean_tail = mean(tail), mean_fur = mean(fur))%>%"
-"0","  arrange(desc(mean_tail))"
