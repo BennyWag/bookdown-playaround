@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Working with spatial data in R | Intro to R for Forest Ecosystem Science</title>
   <meta name="description" content="Introductory R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Working with spatial data in R | Intro to R for Forest Ecosystem Science" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 <link rel="prev" href="loops-and-apply.html"/>
 <link rel="next" href="spatial-tools-for-forestry-and-ecological-applications.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,25 +54,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +82,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -127,26 +129,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#disclaimer"><i class="fa fa-check"></i><b>1.1</b> Disclaimer</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a><ul>
+<li class="chapter" data-level="2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><i class="fa fa-check"></i><b>2</b> A few words on a productive setup and workflow in <code>R</code> with <em>R-Studio</em></a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#r-projects"><i class="fa fa-check"></i><b>2.1</b> R Projects</a></li>
 <li class="chapter" data-level="2.2" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#setting-up-the-r-studio-user-interface"><i class="fa fa-check"></i><b>2.2</b> Setting up the R-Studio User interface</a></li>
 <li class="chapter" data-level="2.3" data-path="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html"><a href="a-few-words-on-a-productive-setup-and-workflow-in-r-with-r-studio.html#code-folds-and-commenting"><i class="fa fa-check"></i><b>2.3</b> Code folds and commenting</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html"><i class="fa fa-check"></i><b>3</b> Introducing the koala dataset</a><ul>
+<li class="chapter" data-level="3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html"><i class="fa fa-check"></i><b>3</b> Introducing the koala dataset</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#data-types-and-variable-types"><i class="fa fa-check"></i><b>3.1</b> <em>data types</em> and <em>variable types</em></a></li>
 <li class="chapter" data-level="3.2" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#changing-variable-types"><i class="fa fa-check"></i><b>3.2</b> Changing <em>variable types</em></a></li>
-<li class="chapter" data-level="3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#how-the-koala-dataset-was-collated"><i class="fa fa-check"></i><b>3.3</b> How the koala dataset was collated</a><ul>
+<li class="chapter" data-level="3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#how-the-koala-dataset-was-collated"><i class="fa fa-check"></i><b>3.3</b> How the koala dataset was collated</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#loading-the-raw-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading the raw data</a></li>
 <li class="chapter" data-level="3.3.2" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#adding-the-state-names-by-location"><i class="fa fa-check"></i><b>3.3.2</b> Adding the state names by location</a></li>
 <li class="chapter" data-level="3.3.3" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#creating-dummy-data"><i class="fa fa-check"></i><b>3.3.3</b> Creating dummy data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a><ul>
+<li class="chapter" data-level="4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><i class="fa fa-check"></i><b>4</b> <code>dplyr</code> - A brief introduction to tidy data manipulation</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#loading-and-checking-the-data"><i class="fa fa-check"></i><b>4.1</b> Loading and checking the data</a></li>
-<li class="chapter" data-level="4.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>4.2</b> Working with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#working-with-dplyr"><i class="fa fa-check"></i><b>4.2</b> Working with <code>dplyr</code></a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#select-and-dplyrs-pipe"><i class="fa fa-check"></i><b>4.2.1</b> select() and dplyr’s pipe</a></li>
 <li class="chapter" data-level="4.2.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#filter"><i class="fa fa-check"></i><b>4.2.2</b> filter()</a></li>
 <li class="chapter" data-level="4.2.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>4.2.3</b> Challenge 1</a></li>
@@ -160,94 +168,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.11" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#solution-to-all-challenges"><i class="fa fa-check"></i><b>4.2.11</b> Solution to all challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Introduction to data visualization in <code>ggplot2</code></a></li>
-<li class="chapter" data-level="6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear models in R</a></li>
-<li class="chapter" data-level="7" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>7</b> Functions in R</a><ul>
-<li class="chapter" data-level="7.1" data-path="functions-in-r.html"><a href="functions-in-r.html#introduction-1"><i class="fa fa-check"></i><b>7.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Introduction to data visualization in <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#general-information-about-ggplot"><i class="fa fa-check"></i><b>5.1</b> General information about <strong>GGPLOT</strong></a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#package-needed-for-the-analysis"><i class="fa fa-check"></i><b>5.1.1</b> Package needed for the analysis</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#be-patient-with-r-and-yourself-its-not-magic-but-rather-work"><i class="fa fa-check"></i><b>5.1.2</b> Be Patient with R and yourself, its not magic but rather work</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#make-your-first-graph"><i class="fa fa-check"></i><b>5.2</b> Make your first Graph</a></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>5.3</b> <code>geom_point</code></a></li>
+<li class="chapter" data-level="5.4" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>5.4</b> Challenge 1</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>5.4.1</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#facet_wrap"><i class="fa fa-check"></i><b>5.4.2</b> <code>facet_wrap</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#reverse-the-condition-logic"><i class="fa fa-check"></i><b>5.4.3</b> Reverse the condition logic</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#challenge2"><i class="fa fa-check"></i><b>5.5</b> Challenge2</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-data-visualization-in-ggplot2.html"><a href="introduction-to-data-visualization-in-ggplot2.html#challenge3"><i class="fa fa-check"></i><b>5.6</b> Challenge3</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html"><i class="fa fa-check"></i><b>6</b> Introduction to linear models in R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#model-assumptions"><i class="fa fa-check"></i><b>6.1</b> Model Assumptions</a></li>
+<li class="chapter" data-level="6.2" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#linear-model"><i class="fa fa-check"></i><b>6.2</b> Linear model</a></li>
+<li class="chapter" data-level="6.3" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#correlation"><i class="fa fa-check"></i><b>6.3</b> Correlation</a></li>
+<li class="chapter" data-level="6.4" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#statistical-hypothesis"><i class="fa fa-check"></i><b>6.4</b> Statistical Hypothesis</a></li>
+<li class="chapter" data-level="6.5" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#anova"><i class="fa fa-check"></i><b>6.5</b> ANOVA</a></li>
+<li class="chapter" data-level="6.6" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#build-the-model"><i class="fa fa-check"></i><b>6.6</b> <strong>Build the model </strong></a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#glm"><i class="fa fa-check"></i><b>6.6.1</b> GLM</a></li>
+<li class="chapter" data-level="6.6.2" data-path="introduction-to-linear-models-in-r.html"><a href="introduction-to-linear-models-in-r.html#but-there-are-some-limitations-of-glms-too-such-as"><i class="fa fa-check"></i><b>6.6.2</b> But there are some limitations of GLMs too, such as,</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functions-in-r.html"><a href="functions-in-r.html"><i class="fa fa-check"></i><b>7</b> Functions in R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="functions-in-r.html"><a href="functions-in-r.html#mathematical-operations"><i class="fa fa-check"></i><b>7.1.1</b> Mathematical operations</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="functions-in-r.html"><a href="functions-in-r.html#what-is-an-r-function"><i class="fa fa-check"></i><b>7.2</b> What is an R function?</a></li>
-<li class="chapter" data-level="7.3" data-path="functions-in-r.html"><a href="functions-in-r.html#nesting-functions"><i class="fa fa-check"></i><b>7.3</b> Nesting functions</a><ul>
+<li class="chapter" data-level="7.3" data-path="functions-in-r.html"><a href="functions-in-r.html#nesting-functions"><i class="fa fa-check"></i><b>7.3</b> Nesting functions</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="functions-in-r.html"><a href="functions-in-r.html#some-basic-built-in-mathematical-functions"><i class="fa fa-check"></i><b>7.3.1</b> Some basic built-in mathematical functions</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="functions-in-r.html"><a href="functions-in-r.html#assigning-variables-within-functions"><i class="fa fa-check"></i><b>7.4</b> Assigning variables within functions</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-2"><i class="fa fa-check"></i><b>7.4.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.4" data-path="functions-in-r.html"><a href="functions-in-r.html#assigning-variables-within-functions"><i class="fa fa-check"></i><b>7.4</b> Assigning variables within functions</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>7.4.1</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="functions-in-r.html"><a href="functions-in-r.html#using-return"><i class="fa fa-check"></i><b>7.5</b> Using <code>return()</code></a><ul>
-<li class="chapter" data-level="7.5.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-2"><i class="fa fa-check"></i><b>7.5.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.5" data-path="functions-in-r.html"><a href="functions-in-r.html#using-return"><i class="fa fa-check"></i><b>7.5</b> Using <code>return()</code></a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>7.5.1</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="functions-in-r.html"><a href="functions-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.6</b> Solutions to challenges</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-1-3"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="7.6.2" data-path="functions-in-r.html"><a href="functions-in-r.html#challenge-2-3"><i class="fa fa-check"></i><b>7.6.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="7.6" data-path="functions-in-r.html"><a href="functions-in-r.html#solutions-to-challenges"><i class="fa fa-check"></i><b>7.6</b> Solutions to challenges</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>7.6.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="7.6.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>7.6.2</b> Challenge 2</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="loops-and-apply.html"><a href="loops-and-apply.html"><i class="fa fa-check"></i><b>8</b> Loops and <code>apply</code></a><ul>
-<li class="chapter" data-level="8.1" data-path="loops-and-apply.html"><a href="loops-and-apply.html#introduction-2"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="loops-and-apply.html"><a href="loops-and-apply.html"><i class="fa fa-check"></i><b>8</b> Loops and <code>apply</code></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="loops-and-apply.html"><a href="loops-and-apply.html#so-what-do-you-want-to-repeat"><i class="fa fa-check"></i><b>8.2</b> So, what do you want to repeat?</a></li>
 <li class="chapter" data-level="8.3" data-path="loops-and-apply.html"><a href="loops-and-apply.html#dont-use-a-loop-when-you-can-use-apply"><i class="fa fa-check"></i><b>8.3</b> DON’T USE A LOOP WHEN YOU CAN USE APPLY!</a></li>
-<li class="chapter" data-level="8.4" data-path="loops-and-apply.html"><a href="loops-and-apply.html#the-apply-family"><i class="fa fa-check"></i><b>8.4</b> The <code>apply</code> family</a><ul>
+<li class="chapter" data-level="8.4" data-path="loops-and-apply.html"><a href="loops-and-apply.html#the-apply-family"><i class="fa fa-check"></i><b>8.4</b> The <code>apply</code> family</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="loops-and-apply.html"><a href="loops-and-apply.html#sapply"><i class="fa fa-check"></i><b>8.4.1</b> <code>sapply</code></a></li>
 <li class="chapter" data-level="8.4.2" data-path="loops-and-apply.html"><a href="loops-and-apply.html#lapply"><i class="fa fa-check"></i><b>8.4.2</b> <code>lapply</code></a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="loops-and-apply.html"><a href="loops-and-apply.html#for-loops"><i class="fa fa-check"></i><b>8.5</b> <code>for</code> loops</a><ul>
+<li class="chapter" data-level="8.5" data-path="loops-and-apply.html"><a href="loops-and-apply.html#for-loops"><i class="fa fa-check"></i><b>8.5</b> <code>for</code> loops</a>
+<ul>
 <li class="chapter" data-level="8.5.1" data-path="loops-and-apply.html"><a href="loops-and-apply.html#some-for-loop-hints"><i class="fa fa-check"></i><b>8.5.1</b> Some <code>for</code> loop hints</a></li>
 <li class="chapter" data-level="8.5.2" data-path="loops-and-apply.html"><a href="loops-and-apply.html#challenge"><i class="fa fa-check"></i><b>8.5.2</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="loops-and-apply.html"><a href="loops-and-apply.html#solutions-to-challenge"><i class="fa fa-check"></i><b>8.6</b> Solutions to challenge</a></li>
 <li class="chapter" data-level="8.7" data-path="loops-and-apply.html"><a href="loops-and-apply.html#bonus-changing-plot-labels"><i class="fa fa-check"></i><b>8.7</b> Bonus: Changing plot labels</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>9</b> Working with spatial data in <code>R</code></a><ul>
+<li class="chapter" data-level="9" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html"><i class="fa fa-check"></i><b>9</b> Working with spatial data in <code>R</code></a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#transforming-a-dataset-into-an-sf-object"><i class="fa fa-check"></i><b>9.1</b> Transforming a dataset into an <code>sf</code> object</a></li>
-<li class="chapter" data-level="9.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>9.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-4"><i class="fa fa-check"></i><b>9.2.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#loading-shapefiles-into-r-transforming-and-plotting"><i class="fa fa-check"></i><b>9.2</b> Loading shapefiles into <code>R</code>, transforming and plotting</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>9.2.1</b> Challenge 1</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#simple-geometric-operations"><i class="fa fa-check"></i><b>9.3</b> Simple geometric operations</a></li>
-<li class="chapter" data-level="9.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>9.4</b> Making a map using <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="9.4.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-4"><i class="fa fa-check"></i><b>9.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#making-a-map-using-ggplot2"><i class="fa fa-check"></i><b>9.4</b> Making a map using <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>9.4.1</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.4.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#pimping-up-you-map"><i class="fa fa-check"></i><b>9.4.2</b> Pimping up you map</a></li>
+<li class="chapter" data-level="9.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-4"><i class="fa fa-check"></i><b>9.4.3</b> Challenge 4</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#r-raster-basics"><i class="fa fa-check"></i><b>9.5</b> <code>R</code> raster basics</a></li>
-<li class="chapter" data-level="9.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>9.6</b> Plotting rasters in <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="9.6.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-2"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.5" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#some-r-raster-basics"><i class="fa fa-check"></i><b>9.5</b> Some <code>R</code> raster basics</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#croppingmasking"><i class="fa fa-check"></i><b>9.5.1</b> Cropping/Masking</a></li>
+<li class="chapter" data-level="9.5.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-and-extracting-data"><i class="fa fa-check"></i><b>9.5.2</b> Plotting and extracting data</a></li>
 </ul></li>
-<li class="chapter" data-level="9.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-challenges-1"><i class="fa fa-check"></i><b>9.7</b> Solutions to Challenges</a><ul>
-<li class="chapter" data-level="9.7.1" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-1-5"><i class="fa fa-check"></i><b>9.7.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="9.7.2" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-2-5"><i class="fa fa-check"></i><b>9.7.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="9.7.3" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-3-3"><i class="fa fa-check"></i><b>9.7.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.6" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#plotting-rasters-in-ggplot2"><i class="fa fa-check"></i><b>9.6</b> Plotting rasters in <code>ggplot2</code></a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-4-1"><i class="fa fa-check"></i><b>9.6.1</b> Challenge 4</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#solutions-to-all-challenges"><i class="fa fa-check"></i><b>9.7</b> Solutions to all Challenges</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>9.7.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="9.7.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>9.7.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="9.7.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>9.7.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="9.7.4" data-path="working-with-spatial-data-in-r.html"><a href="working-with-spatial-data-in-r.html#challenge-4-2"><i class="fa fa-check"></i><b>9.7.4</b> Challenge 4</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>10</b> Spatial tools for forestry and ecological applications</a><ul>
+<li class="chapter" data-level="10" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html"><i class="fa fa-check"></i><b>10</b> Spatial tools for forestry and ecological applications</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#an-introduction-to-processing-lidar-data-in-r"><i class="fa fa-check"></i><b>10.1</b> An introduction to processing LiDAR data in <code>R</code></a></li>
 <li class="chapter" data-level="10.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#working-with-lidar-data-in-r"><i class="fa fa-check"></i><b>10.2</b> Working with LiDAR data in R</a></li>
 <li class="chapter" data-level="10.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-1.-loading-and-visualizing-pointclouds"><i class="fa fa-check"></i><b>10.3</b> Step 1. Loading and visualizing pointclouds</a></li>
-<li class="chapter" data-level="10.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>10.4</b> Step 2. Computing a canopy height model</a><ul>
+<li class="chapter" data-level="10.4" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-2.-computing-a-canopy-height-model"><i class="fa fa-check"></i><b>10.4</b> Step 2. Computing a canopy height model</a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#ground-detection-and-normalizing-a-point-cloud"><i class="fa fa-check"></i><b>10.4.1</b> Ground detection and normalizing a point cloud</a></li>
 <li class="chapter" data-level="10.4.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#building-the-initial-chm"><i class="fa fa-check"></i><b>10.4.2</b> Building the initial CHM</a></li>
-<li class="chapter" data-level="10.4.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-6"><i class="fa fa-check"></i><b>10.4.3</b> Challenge 1</a></li>
+<li class="chapter" data-level="10.4.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1"><i class="fa fa-check"></i><b>10.4.3</b> Challenge 1</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>10.5</b> Step 3. Individual tree segmentation</a><ul>
+<li class="chapter" data-level="10.5" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#step-3.-individual-tree-segmentation"><i class="fa fa-check"></i><b>10.5</b> Step 3. Individual tree segmentation</a>
+<ul>
 <li class="chapter" data-level="10.5.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#delineating-the-crowns"><i class="fa fa-check"></i><b>10.5.1</b> Delineating the crowns</a></li>
-<li class="chapter" data-level="10.5.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-6"><i class="fa fa-check"></i><b>10.5.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="10.5.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2"><i class="fa fa-check"></i><b>10.5.2</b> Challenge 2</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>10.6</b> Additional analysis: Computing a digital terrain model (DTM)</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-4"><i class="fa fa-check"></i><b>10.6.1</b> Challenge 3</a></li>
+<li class="chapter" data-level="10.6" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#additional-analysis-computing-a-digital-terrain-model-dtm"><i class="fa fa-check"></i><b>10.6</b> Additional analysis: Computing a digital terrain model (DTM)</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3"><i class="fa fa-check"></i><b>10.6.1</b> Challenge 3</a></li>
 </ul></li>
 <li class="chapter" data-level="10.7" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#wrapping-up"><i class="fa fa-check"></i><b>10.7</b> Wrapping up</a></li>
-<li class="chapter" data-level="10.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>10.8</b> Solutions to the challenges</a><ul>
-<li class="chapter" data-level="10.8.1" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-1-7"><i class="fa fa-check"></i><b>10.8.1</b> Challenge 1</a></li>
-<li class="chapter" data-level="10.8.2" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-2-7"><i class="fa fa-check"></i><b>10.8.2</b> Challenge 2</a></li>
-<li class="chapter" data-level="10.8.3" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#challenge-3-5"><i class="fa fa-check"></i><b>10.8.3</b> Challenge 3</a></li>
+<li class="chapter" data-level="10.8" data-path="spatial-tools-for-forestry-and-ecological-applications.html"><a href="spatial-tools-for-forestry-and-ecological-applications.html#solutions-to-the-challenges"><i class="fa fa-check"></i><b>10.8</b> Solutions to the challenges</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-1-1"><i class="fa fa-check"></i><b>10.8.1</b> Challenge 1</a></li>
+<li class="chapter" data-level="10.8.2" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-2-1"><i class="fa fa-check"></i><b>10.8.2</b> Challenge 2</a></li>
+<li class="chapter" data-level="10.8.3" data-path="dplyr-a-brief-introduction-to-tidy-data-manipulation.html"><a href="dplyr-a-brief-introduction-to-tidy-data-manipulation.html#challenge-3-1"><i class="fa fa-check"></i><b>10.8.3</b> Challenge 3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>11</b> Extracting raster fractions and area using a polygon mask</a><ul>
+<li class="chapter" data-level="11" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><i class="fa fa-check"></i><b>11</b> Extracting raster fractions and area using a polygon mask</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#problem-statement"><i class="fa fa-check"></i><b>11.1</b> Problem statement</a></li>
 <li class="chapter" data-level="11.2" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#creating-some-dummy-raster-data"><i class="fa fa-check"></i><b>11.2</b> Creating some dummy raster data</a></li>
 <li class="chapter" data-level="11.3" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#create-some-reserves"><i class="fa fa-check"></i><b>11.3</b> Create some reserves</a></li>
 <li class="chapter" data-level="11.4" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#extracting-data"><i class="fa fa-check"></i><b>11.4</b> Extracting data</a></li>
 <li class="chapter" data-level="11.5" data-path="extracting-raster-fractions-and-area-using-a-polygon-mask.html"><a href="extracting-raster-fractions-and-area-using-a-polygon-mask.html#plotting-the-results"><i class="fa fa-check"></i><b>11.5</b> Plotting the results</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>12</b> Calculating class area from raster</a><ul>
-<li class="chapter" data-level="12.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>12.1</b> Simple area and area fraction calculations on a classified raster</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#creating-dummy-data-1"><i class="fa fa-check"></i><b>12.1.1</b> Creating dummy data</a></li>
+<li class="chapter" data-level="12" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html"><i class="fa fa-check"></i><b>12</b> Calculating class area from raster</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#simple-area-and-area-fraction-calculations-on-a-classified-raster"><i class="fa fa-check"></i><b>12.1</b> Simple area and area fraction calculations on a classified raster</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="introducing-the-koala-dataset.html"><a href="introducing-the-koala-dataset.html#creating-dummy-data"><i class="fa fa-check"></i><b>12.1.1</b> Creating dummy data</a></li>
 <li class="chapter" data-level="12.1.2" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#preparing-the-raster-for-area-calculation"><i class="fa fa-check"></i><b>12.1.2</b> Preparing the raster for area calculation</a></li>
 <li class="chapter" data-level="12.1.3" data-path="calculating-class-area-from-raster.html"><a href="calculating-class-area-from-raster.html#compiling-a-comprehensive-table"><i class="fa fa-check"></i><b>12.1.3</b> Compiling a comprehensive table</a></li>
 </ul></li>
@@ -269,50 +335,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-spatial-data-in-r" class="section level1">
+<div id="working-with-spatial-data-in-r" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Working with spatial data in <code>R</code></h1>
-<p>Many of you will be familiar with using spatial data such as vector data in form of shapefiles or raster data in GIS software, which can handle these files intuitively. Nevertheless, GIS do have some disadvantages when it comes to either large data sets or automation processes. <code>R</code> offers a full integration of spatial tools and references such as <strong>GDAL</strong> or <strong>PROJ</strong> and some great packages to deal with this data seamlessly. Today we are going to learn how to use the package <code>sf</code> and have a brief detour towards raster data in <code>R</code>. You are going to need to install the following packages for this tutorial:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;sf&#39;</span>, <span class="st">&#39;raster&#39;</span>, <span class="st">&#39;viridis&#39;</span>))</a></code></pre></div>
+<p>Many of you will be familiar with using spatial data such as vector data in form of shapefiles or raster data in GIS software, which can handle these files intuitively. Nevertheless, GIS do have some disadvantages when it comes to either large data sets or automation processes. <code>R</code> offers a full integration of spatial tools and references such as <strong>GDAL</strong> or <strong>PROJ</strong> and some great packages to deal with this data seamlessly. Today we are going to learn how to use the package <code>sf</code> and have a brief detour towards raster data in <code>R</code>. We will mainly be looking at how to visualize spatial data and make some nice maps of both <em>shapefiles</em> and <em>rasters</em>. More spatial operations and analyses with both data types will be covered in a later tutorial. You are going to need to install the following packages for this tutorial:</p>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="working-with-spatial-data-in-r.html#cb282-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&#39;tidyverse&#39;</span>, <span class="st">&#39;sf&#39;</span>, <span class="st">&#39;raster&#39;</span>, <span class="st">&#39;viridis&#39;</span>, <span class="st">&#39;ggspatial&#39;</span>, <span class="st">&#39;mapview&#39;</span>))</span></code></pre></div>
 <p>And then call the packages:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb255-2" title="2"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb255-3" title="3"><span class="kw">library</span>(viridis)</a>
-<a class="sourceLine" id="cb255-4" title="4"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<p>We will be working on a dataset of koala observations, that you can download <a href="https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1">here</a>, as well as a basic administrative Areas shapefile of Australia, which you can find <a href="https://www.dropbox.com/s/7edsxu5eezrzrqu/Australia.rar?dl=1">here</a>. For the last part we will be looking at rasters, with a digital elevation model (DEM) file as example. You can find it for download <a href="https://www.dropbox.com/s/u2j6a73t7nv0lww/DEM.tif?dl=0">here</a>. Please make sure these are stored within a <code>data/</code> folder in an <code>R</code> project (or working directory).</p>
-<div id="transforming-a-dataset-into-an-sf-object" class="section level2">
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="working-with-spatial-data-in-r.html#cb283-1" aria-hidden="true"></a><span class="kw">library</span>(sf)</span>
+<span id="cb283-2"><a href="working-with-spatial-data-in-r.html#cb283-2" aria-hidden="true"></a><span class="kw">library</span>(raster)</span>
+<span id="cb283-3"><a href="working-with-spatial-data-in-r.html#cb283-3" aria-hidden="true"></a><span class="kw">library</span>(viridis)</span>
+<span id="cb283-4"><a href="working-with-spatial-data-in-r.html#cb283-4" aria-hidden="true"></a><span class="kw">library</span>(ggspatial)</span>
+<span id="cb283-5"><a href="working-with-spatial-data-in-r.html#cb283-5" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<p>We will be working on a dataset of koala observations, that you can download <a href="https://www.dropbox.com/s/1zhru8ui3btmg0n/koala.csv?dl=1">here</a>, as well as a basic administrative Areas shapefile of Australia, which you can find <a href="https://www.dropbox.com/s/7edsxu5eezrzrqu/Australia.rar?dl=1">here</a>. For the last part we will be looking at rasters, with a digital elevation model (DEM) file as example. You can find it for download <a href="https://www.dropbox.com/s/u2j6a73t7nv0lww/DEM.tif?dl=1">here</a>. Please make sure these are stored within a <code>data/</code> folder in an <code>R</code> project (or working directory).</p>
+<div id="transforming-a-dataset-into-an-sf-object" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Transforming a dataset into an <code>sf</code> object</h2>
 <p>Let’s first load in our dataset and have a look at it’s structure</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1">koala &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>)</a>
-<a class="sourceLine" id="cb256-2" title="2"></a>
-<a class="sourceLine" id="cb256-3" title="3"><span class="kw">head</span>(koala) <span class="co"># see the first few rows in the console</span></a></code></pre></div>
-<pre><code>##                  species        X         Y      state   region    sex
-## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male
-## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female
-## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male
-## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male
-## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female
-## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male
-##     weight     size      fur     tail age      color joey        behav
-## 1 7.119754 70.80159 1.858696 1.168241   8       grey   No     Sleeping
-## 2 5.451345 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping
-## 3 6.630577 68.65867 2.479280 1.056640   1 light grey   No Just Chillin
-## 4 6.470019 72.98919 1.923974 1.801244   1       grey   No     Sleeping
-## 5 5.620447 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping
-## 6 7.287674 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding
-##             obs
-## 1  Spotlighting
-## 2 Opportunistic
-## 3  Spotlighting
-## 4  Stagwatching
-## 5  Stagwatching
-## 6 Opportunistic</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="working-with-spatial-data-in-r.html#cb284-1" aria-hidden="true"></a>koala &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;data/koala.csv&#39;</span>, <span class="dt">stringsAsFactors =</span> T) <span class="co">#this is nesecary in R version &gt; 4.0, as the new default is loading strings as.characters</span></span>
+<span id="cb284-2"><a href="working-with-spatial-data-in-r.html#cb284-2" aria-hidden="true"></a></span>
+<span id="cb284-3"><a href="working-with-spatial-data-in-r.html#cb284-3" aria-hidden="true"></a><span class="kw">head</span>(koala) <span class="co"># see the first few rows in the console</span></span></code></pre></div>
+<pre><code>##                  species        X         Y      state   region    sex   weight
+## 1 Phascolarctos cinereus 153.2155 -27.49284 Queensland northern   male 7.119754
+## 2 Phascolarctos cinereus 148.1443 -22.47617 Queensland northern female 5.451345
+## 3 Phascolarctos cinereus 153.2285 -27.50298 Queensland northern   male 6.630577
+## 4 Phascolarctos cinereus 152.6000 -27.50000 Queensland northern   male 6.470019
+## 5 Phascolarctos cinereus 153.2817 -27.52589 Queensland northern female 5.620447
+## 6 Phascolarctos cinereus 152.8330 -27.20000 Queensland northern   male 7.287674
+##       size      fur     tail age      color joey        behav           obs
+## 1 70.80159 1.858696 1.168241   8       grey   No     Sleeping  Spotlighting
+## 2 70.38537 1.852801 1.562456  10 grey-brown  Yes     Sleeping Opportunistic
+## 3 68.65867 2.479280 1.056640   1 light grey   No Just Chillin  Spotlighting
+## 4 72.98919 1.923974 1.801244   1       grey   No     Sleeping  Stagwatching
+## 5 65.19529 1.945341 1.625600  10 grey-brown   No     Sleeping  Stagwatching
+## 6 70.56514 1.688897 1.086675  12 grey-brown   No      Feeding Opportunistic</code></pre>
 <p>As we can see it contains lots of variables related to each of the observed koalas, such as <code>sex</code>, <code>weight</code> or in which <code>state</code> the observation was made. Additionally, whoever collected this data was so kind to also include the <code>X</code> and <code>Y</code> coordinates, where the observation was made. This we can use to transform this into an <code>sf</code> (simple feature) object.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1">koala_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(koala, </a>
-<a class="sourceLine" id="cb258-2" title="2">                     <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, </a>
-<a class="sourceLine" id="cb258-3" title="3">                                <span class="st">&quot;Y&quot;</span>), </a>
-<a class="sourceLine" id="cb258-4" title="4">                     <span class="dt">crs =</span> <span class="dv">4326</span>)</a>
-<a class="sourceLine" id="cb258-5" title="5"><span class="kw">str</span>(koala_sf)</a></code></pre></div>
-<pre><code>## Classes &#39;sf&#39; and &#39;data.frame&#39;:   242 obs. of  14 variables:
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="working-with-spatial-data-in-r.html#cb286-1" aria-hidden="true"></a>koala_sf &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(koala, </span>
+<span id="cb286-2"><a href="working-with-spatial-data-in-r.html#cb286-2" aria-hidden="true"></a>                     <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;X&quot;</span>, </span>
+<span id="cb286-3"><a href="working-with-spatial-data-in-r.html#cb286-3" aria-hidden="true"></a>                                <span class="st">&quot;Y&quot;</span>), </span>
+<span id="cb286-4"><a href="working-with-spatial-data-in-r.html#cb286-4" aria-hidden="true"></a>                     <span class="dt">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb286-5"><a href="working-with-spatial-data-in-r.html#cb286-5" aria-hidden="true"></a><span class="kw">str</span>(koala_sf)</span></code></pre></div>
+<pre><code>## Classes &#39;sf&#39; and &#39;data.frame&#39;:	242 obs. of  14 variables:
 ##  $ species : Factor w/ 1 level &quot;Phascolarctos cinereus&quot;: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ state   : Factor w/ 4 levels &quot;New South Wales&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
 ##  $ region  : Factor w/ 2 levels &quot;northern&quot;,&quot;southern&quot;: 1 1 1 1 1 1 1 1 1 1 ...
@@ -329,135 +389,170 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ geometry:sfc_POINT of length 242; first list element:  &#39;XY&#39; num  153.2 -27.5
 ##  - attr(*, &quot;sf_column&quot;)= chr &quot;geometry&quot;
 ##  - attr(*, &quot;agr&quot;)= Factor w/ 3 levels &quot;constant&quot;,&quot;aggregate&quot;,..: NA NA NA NA NA NA NA NA NA NA ...
-##   ..- attr(*, &quot;names&quot;)= chr  &quot;species&quot; &quot;state&quot; &quot;region&quot; &quot;sex&quot; ...</code></pre>
+##   ..- attr(*, &quot;names&quot;)= chr [1:13] &quot;species&quot; &quot;state&quot; &quot;region&quot; &quot;sex&quot; ...</code></pre>
 <p>The <code>sf</code> object is a <code>data.frame</code> with a <em>geometry list-column</em>. It supports different format and spatial references. The file as it exists in your <code>R</code> environment is what you would call the <em>Attribute table</em> in a GIS software. In <code>R</code> you can use and manipulate it as any other <code>data.frame</code>. When converting a table into a <code>sf</code> we need to indicate the columns containing coordinates using <code>coords = c()</code> and we can decide on a coordinate reference system using <code>crs=</code>. Here we decide to use WGS84 (CRS = 4326), a standard Mercator coordinate frame for the Earth given in Latitude and Longitude. We can plot our now spatial data with the standard base R command:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1"><span class="kw">plot</span>(koala_sf)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="working-with-spatial-data-in-r.html#cb288-1" aria-hidden="true"></a><span class="kw">plot</span>(koala_sf)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>This will try to plot all columns (because they are now all spatially referenced). To only plot the geometries, you can:</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1"><span class="kw">plot</span>(koala_sf<span class="op">$</span>geometry)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="working-with-spatial-data-in-r.html#cb289-1" aria-hidden="true"></a><span class="kw">plot</span>(koala_sf<span class="op">$</span>geometry)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>So far so good, but we will need a bit more data to make a nice map!</p>
 </div>
-<div id="loading-shapefiles-into-r-transforming-and-plotting" class="section level2">
+<div id="loading-shapefiles-into-r-transforming-and-plotting" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Loading shapefiles into <code>R</code>, transforming and plotting</h2>
 <p>You can load any vector file, such as .shp or .gpkg using <code>st_read</code>. Let’s get our Australia map into the environment and check it out:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">states &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Australia/Australia_proj.shp&quot;</span>)</a></code></pre></div>
-<pre><code>## Reading layer `Australia_proj&#39; from data source `C:\Users\khh\Documents\GitHub\bookdown-playaround\data\Australia\Australia_proj.shp&#39; using driver `ESRI Shapefile&#39;
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="working-with-spatial-data-in-r.html#cb290-1" aria-hidden="true"></a>states &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;data/Australia/Australia_proj.shp&quot;</span>, <span class="dt">stringsAsFactors =</span> T)</span></code></pre></div>
+<pre><code>## Reading layer `Australia_proj&#39; from data source `D:\OneDrive\OneDrive - The University of Melbourne\Github\forest-ecology-R-book\data\Australia\Australia_proj.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 8 features and 15 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
 ## bbox:           xmin: -2063975 ymin: -4965263 xmax: 1891143 ymax: -1285856
-## proj4string:    +proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1"><span class="kw">plot</span>(states<span class="op">$</span>geometry)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+## projected CRS:  GDA94 / Geoscience Australia Lambert</code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="working-with-spatial-data-in-r.html#cb292-1" aria-hidden="true"></a><span class="kw">plot</span>(states<span class="op">$</span>geometry)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Great, we even have states column, which will we will use a bit later. To plot, simply use base <code>R</code> syntax of plotting and then plotting another graph on top using <code>add = T</code>. Instead of calling <code>plot(file$geometry)</code>, we can also call <code>st_geometry()</code></p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </a>
-<a class="sourceLine" id="cb265-2" title="2">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb265-3" title="3"></a>
-<a class="sourceLine" id="cb265-4" title="4"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="co"># why does this not work?</span></a>
-<a class="sourceLine" id="cb265-5" title="5">     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb265-6" title="6">     <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="working-with-spatial-data-in-r.html#cb293-1" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </span>
+<span id="cb293-2"><a href="working-with-spatial-data-in-r.html#cb293-2" aria-hidden="true"></a>     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb293-3"><a href="working-with-spatial-data-in-r.html#cb293-3" aria-hidden="true"></a></span>
+<span id="cb293-4"><a href="working-with-spatial-data-in-r.html#cb293-4" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="co"># why does this not work?</span></span>
+<span id="cb293-5"><a href="working-with-spatial-data-in-r.html#cb293-5" aria-hidden="true"></a>     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb293-6"><a href="working-with-spatial-data-in-r.html#cb293-6" aria-hidden="true"></a>     <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Hm, our states are plotting fine, but where are our koala locations? Maybe we should check the coordinate reference system to see if they match… Here’s how that’s done:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1"><span class="kw">st_crs</span>(states)</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="working-with-spatial-data-in-r.html#cb294-1" aria-hidden="true"></a><span class="kw">st_crs</span>(states)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
-##   No user input
+##   User input: GDA94 / Geoscience Australia Lambert 
 ##   wkt:
-## PROJCS[&quot;GDA94_Geoscience_Australia_Lambert&quot;,
-##     GEOGCS[&quot;GCS_GDA_1994&quot;,
-##         DATUM[&quot;Geocentric_Datum_of_Australia_1994&quot;,
-##             SPHEROID[&quot;GRS_1980&quot;,6378137,298.257222101]],
-##         PRIMEM[&quot;Greenwich&quot;,0],
-##         UNIT[&quot;Degree&quot;,0.017453292519943295]],
-##     PROJECTION[&quot;Lambert_Conformal_Conic_2SP&quot;],
-##     PARAMETER[&quot;standard_parallel_1&quot;,-18],
-##     PARAMETER[&quot;standard_parallel_2&quot;,-36],
-##     PARAMETER[&quot;latitude_of_origin&quot;,0],
-##     PARAMETER[&quot;central_meridian&quot;,134],
-##     PARAMETER[&quot;false_easting&quot;,0],
-##     PARAMETER[&quot;false_northing&quot;,0],
-##     UNIT[&quot;Meter&quot;,1]]</code></pre>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" title="1"><span class="kw">st_crs</span>(koala_sf)</a></code></pre></div>
+## PROJCRS[&quot;GDA94 / Geoscience Australia Lambert&quot;,
+##     BASEGEOGCRS[&quot;GDA94&quot;,
+##         DATUM[&quot;Geocentric Datum of Australia 1994&quot;,
+##             ELLIPSOID[&quot;GRS 1980&quot;,6378137,298.257222101,
+##                 LENGTHUNIT[&quot;metre&quot;,1]]],
+##         PRIMEM[&quot;Greenwich&quot;,0,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         ID[&quot;EPSG&quot;,4283]],
+##     CONVERSION[&quot;Geoscience Australia Standard National Scale Lambert Projection&quot;,
+##         METHOD[&quot;Lambert Conic Conformal (2SP)&quot;,
+##             ID[&quot;EPSG&quot;,9802]],
+##         PARAMETER[&quot;Latitude of false origin&quot;,0,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8821]],
+##         PARAMETER[&quot;Longitude of false origin&quot;,134,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8822]],
+##         PARAMETER[&quot;Latitude of 1st standard parallel&quot;,-18,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8823]],
+##         PARAMETER[&quot;Latitude of 2nd standard parallel&quot;,-36,
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+##             ID[&quot;EPSG&quot;,8824]],
+##         PARAMETER[&quot;Easting at false origin&quot;,0,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8826]],
+##         PARAMETER[&quot;Northing at false origin&quot;,0,
+##             LENGTHUNIT[&quot;metre&quot;,1],
+##             ID[&quot;EPSG&quot;,8827]]],
+##     CS[Cartesian,2],
+##         AXIS[&quot;(E)&quot;,east,
+##             ORDER[1],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##         AXIS[&quot;(N)&quot;,north,
+##             ORDER[2],
+##             LENGTHUNIT[&quot;metre&quot;,1]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;Australia - onshore&quot;],
+##         BBOX[-43.7,112.85,-9.86,153.69]],
+##     ID[&quot;EPSG&quot;,3112]]</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="working-with-spatial-data-in-r.html#cb296-1" aria-hidden="true"></a><span class="kw">st_crs</span>(koala_sf)</span></code></pre></div>
 <pre><code>## Coordinate Reference System:
 ##   User input: EPSG:4326 
 ##   wkt:
-## GEOGCS[&quot;WGS 84&quot;,
-##     DATUM[&quot;WGS_1984&quot;,
-##         SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,
-##             AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
-##         AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+## GEOGCRS[&quot;WGS 84&quot;,
+##     DATUM[&quot;World Geodetic System 1984&quot;,
+##         ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+##             LENGTHUNIT[&quot;metre&quot;,1]]],
 ##     PRIMEM[&quot;Greenwich&quot;,0,
-##         AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
-##     UNIT[&quot;degree&quot;,0.0174532925199433,
-##         AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
-##     AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</code></pre>
+##         ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     CS[ellipsoidal,2],
+##         AXIS[&quot;geodetic latitude (Lat)&quot;,north,
+##             ORDER[1],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##         AXIS[&quot;geodetic longitude (Lon)&quot;,east,
+##             ORDER[2],
+##             ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+##     USAGE[
+##         SCOPE[&quot;unknown&quot;],
+##         AREA[&quot;World&quot;],
+##         BBOX[-90,-180,90,180]],
+##     ID[&quot;EPSG&quot;,4326]]</code></pre>
 <p>Damn, they do not match. Our Australia shapefile has a different (weird) projection. If you feel it’s tedious to check the CRS in the console, simply type</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" title="1"><span class="kw">st_crs</span>(states)<span class="op">==</span><span class="kw">st_crs</span>(koala_sf)</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="working-with-spatial-data-in-r.html#cb298-1" aria-hidden="true"></a><span class="kw">st_crs</span>(states)<span class="op">==</span><span class="kw">st_crs</span>(koala_sf)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p><code>FALSE</code> is returned, so they don’t match. We need to transform one of them to be able to plot our spatial points on top of the Australia map. <code>sf</code> has a simple solution for this using <code>st_transform()</code>. Let’s do that and plot straight away.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" title="1">koala_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(koala_sf, <span class="dt">crs =</span> <span class="kw">st_crs</span>(states))</a>
-<a class="sourceLine" id="cb272-2" title="2"></a>
-<a class="sourceLine" id="cb272-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </a>
-<a class="sourceLine" id="cb272-4" title="4">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb272-5" title="5"></a>
-<a class="sourceLine" id="cb272-6" title="6"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_proj), </a>
-<a class="sourceLine" id="cb272-7" title="7">     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </a>
-<a class="sourceLine" id="cb272-8" title="8">     <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="working-with-spatial-data-in-r.html#cb300-1" aria-hidden="true"></a>koala_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(koala_sf, <span class="dt">crs =</span> <span class="kw">st_crs</span>(states))</span>
+<span id="cb300-2"><a href="working-with-spatial-data-in-r.html#cb300-2" aria-hidden="true"></a></span>
+<span id="cb300-3"><a href="working-with-spatial-data-in-r.html#cb300-3" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states), </span>
+<span id="cb300-4"><a href="working-with-spatial-data-in-r.html#cb300-4" aria-hidden="true"></a>     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb300-5"><a href="working-with-spatial-data-in-r.html#cb300-5" aria-hidden="true"></a></span>
+<span id="cb300-6"><a href="working-with-spatial-data-in-r.html#cb300-6" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_proj), </span>
+<span id="cb300-7"><a href="working-with-spatial-data-in-r.html#cb300-7" aria-hidden="true"></a>     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb300-8"><a href="working-with-spatial-data-in-r.html#cb300-8" aria-hidden="true"></a>     <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Excellent! In <code>st_transform</code> we can call any <code>crs</code> from another spatial file in the environment, our define our own using a <code>proj4string</code>. If we look at our plot, we can see that the coordinates on the axis look weird. We’d rather like latitude and longitude to make it look more comprehensive. That’s now up to you to fix it!</p>
-<div id="challenge-1-4" class="section level3">
+<div id="challenge-1" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> Challenge 1</h3>
 <p><strong>Load the Australia_proj and koala data again and plot them on top of each other in Mercator projection (CRS: 4326). Note: check the spatial reference of the maps first!</strong></p>
 <p><em>Extra challenge: color the koala points based on state! Check <code>?sf::plot</code> for tips</em></p>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Looks good! You can find the solutions to all challenges posed here at the end of the document. Don’t peek!</p>
 <p>Let’s make our maps look even better.</p>
 </div>
 </div>
-<div id="simple-geometric-operations" class="section level2">
+<div id="simple-geometric-operations" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Simple geometric operations</h2>
 <p><code>sf</code> supports any geometric operations you know from GIS software. We will just touch cropping here, but you can also merge, intersect, overlap and many more. For the purpose of mapping, <code>st_crop()</code> is most relevant. Let’s say we want to create a map of all our Koala locations, we won’t necessarily need to show all of Australia, knowing that Koalas are only distributed along the east coast. Let’s crop the Australia shapefile by the extent of our observations:</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1">australia_koala_area&lt;-<span class="kw">st_crop</span>(states_proj, koala_sf)</a></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="working-with-spatial-data-in-r.html#cb301-1" aria-hidden="true"></a>australia_koala_area&lt;-<span class="kw">st_crop</span>(states_proj, koala_sf)</span></code></pre></div>
 <pre><code>## although coordinates are longitude/latitude, st_intersection assumes that they are planar</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(australia_koala_area), <span class="dt">axes =</span> T)</a>
-<a class="sourceLine" id="cb275-2" title="2"></a>
-<a class="sourceLine" id="cb275-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="working-with-spatial-data-in-r.html#cb303-1" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(australia_koala_area), <span class="dt">axes =</span> T)</span>
+<span id="cb303-2"><a href="working-with-spatial-data-in-r.html#cb303-2" aria-hidden="true"></a></span>
+<span id="cb303-3"><a href="working-with-spatial-data-in-r.html#cb303-3" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Great. Let’s say we want to save the new cropped shapefile to an <code>outputs/</code> folder in our project. For this we simply use <code>st_write()</code>:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1"><span class="kw">st_write</span>(australia_koala_area, <span class="st">&#39;outputs/koala_shape.gpkg&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="working-with-spatial-data-in-r.html#cb304-1" aria-hidden="true"></a><span class="kw">st_write</span>(australia_koala_area, <span class="st">&#39;outputs/koala_shape.gpkg&#39;</span>)</span></code></pre></div>
 <p>You can choose different file extensions. Here we are saving a geopackage, as it results in only one file, rather than 4-6 for a .shp extension. Up to you ;) Let’s make a good looking map with our data!</p>
 </div>
-<div id="making-a-map-using-ggplot2" class="section level2">
+<div id="making-a-map-using-ggplot2" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Making a map using <code>ggplot2</code></h2>
 <p><code>ggplot2</code> supports plotting spatial data by calling <code>geom_sf()</code>, after defining your data to plot. In simple terms we can create a map of Australia by calling:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj) <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>()</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="working-with-spatial-data-in-r.html#cb305-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj) <span class="op">+</span><span class="st"> </span><span class="kw">geom_sf</span>()</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>which already looks a lot better than base R. But there are a lot of improvements to be made to create a publication-ready map. First we can assign colors based on columns in your data. We can also remove the standard grey ggplot background with a more map-friendly white grid using <code>theme_minimal()</code></p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb278-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
-<a class="sourceLine" id="cb278-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="working-with-spatial-data-in-r.html#cb306-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></span>
+<span id="cb306-2"><a href="working-with-spatial-data-in-r.html#cb306-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></span>
+<span id="cb306-3"><a href="working-with-spatial-data-in-r.html#cb306-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>We don’t really need a legend here, let’s remove it:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb279-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
-<a class="sourceLine" id="cb279-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb279-4" title="4"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="working-with-spatial-data-in-r.html#cb307-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></span>
+<span id="cb307-2"><a href="working-with-spatial-data-in-r.html#cb307-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></span>
+<span id="cb307-3"><a href="working-with-spatial-data-in-r.html#cb307-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb307-4"><a href="working-with-spatial-data-in-r.html#cb307-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Using <code>coord_sf()</code> we can even change the projection while plotting in <code>ggplot2</code>, without the need of going back to reprojecting or transforming in <code>sf</code>.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb280-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></a>
-<a class="sourceLine" id="cb280-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb280-4" title="4"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></a>
-<a class="sourceLine" id="cb280-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="working-with-spatial-data-in-r.html#cb308-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></span>
+<span id="cb308-2"><a href="working-with-spatial-data-in-r.html#cb308-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> STATENAME))<span class="op">+</span></span>
+<span id="cb308-3"><a href="working-with-spatial-data-in-r.html#cb308-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb308-4"><a href="working-with-spatial-data-in-r.html#cb308-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">guides</span>(<span class="dt">fill =</span> F)<span class="op">+</span></span>
+<span id="cb308-5"><a href="working-with-spatial-data-in-r.html#cb308-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Did you see what changed? Finally we can change the fore- and background color to make it look like proper map in a nice blue ocean:</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></a>
-<a class="sourceLine" id="cb281-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb281-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb281-4" title="4"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb281-5" title="5"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
-<div id="challenge-2-4" class="section level3">
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="working-with-spatial-data-in-r.html#cb309-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj)<span class="op">+</span></span>
+<span id="cb309-2"><a href="working-with-spatial-data-in-r.html#cb309-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></span>
+<span id="cb309-3"><a href="working-with-spatial-data-in-r.html#cb309-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb309-4"><a href="working-with-spatial-data-in-r.html#cb309-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">3112</span>)<span class="op">+</span></span>
+<span id="cb309-5"><a href="working-with-spatial-data-in-r.html#cb309-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div id="challenge-2" class="section level3" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> Challenge 2</h3>
 <p><strong>Add the koala positions on top of the Australia map in ggplot2. Only plot the area that has koalas and color the points by sex of the individual. Please also give the map in Mercator projection</strong></p>
 <p><em>You will need to:</em></p>
@@ -465,102 +560,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Add a second layer to your ggplot</li>
 <li>Define the crs</li>
 </ol>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<p>Good job! But unfortunately our cut-out looks like an island surrounded by seawater. If we want the map to look like a close-up of eastern Australia, we need to tell <code>ggplot2</code> to start plotting at x/y = 0:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb282-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Good job! But unfortunately our cut-out looks like an island surrounded by seawater. If we want the map to look like a close-up of eastern Australia, we can add <code>expand = F</code> to our <code>coord_sf</code> argument:</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="working-with-spatial-data-in-r.html#cb310-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></span>
+<span id="cb310-2"><a href="working-with-spatial-data-in-r.html#cb310-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></span>
+<span id="cb310-3"><a href="working-with-spatial-data-in-r.html#cb310-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></span>
+<span id="cb310-4"><a href="working-with-spatial-data-in-r.html#cb310-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb310-5"><a href="working-with-spatial-data-in-r.html#cb310-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>, <span class="dt">expand =</span> F)<span class="op">+</span></span>
+<span id="cb310-6"><a href="working-with-spatial-data-in-r.html#cb310-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+<div id="pimping-up-you-map" class="section level3" number="9.4.2">
+<h3><span class="header-section-number">9.4.2</span> Pimping up you map</h3>
+<div id="adding-an-inset" class="section level4" number="9.4.2.1">
+<h4><span class="header-section-number">9.4.2.1</span> Adding an inset</h4>
 <p>When working with these types of maps, you will often be asked to create an inset map that shows the entire area that you cropped from for reference. Let’s add a little Australia shape with a bounding box of our study area to our map. First we need to create the a base map with bounding box and save it to the environment:</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1">inset&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj, <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb283-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb283-3" title="3"><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">xmin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">1</span>], <span class="dt">xmax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">2</span>],</a>
-<a class="sourceLine" id="cb283-4" title="4">            <span class="dt">ymin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">3</span>], <span class="dt">ymax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">4</span>],</a>
-<a class="sourceLine" id="cb283-5" title="5">            <span class="dt">fill =</span> <span class="ot">NA</span>,  <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb283-6" title="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;&#39;</span>, <span class="dt">title =</span> <span class="st">&#39;&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb283-7" title="7"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb283-8" title="8"><span class="st">  </span><span class="kw">theme_void</span>()</a>
-<a class="sourceLine" id="cb283-9" title="9"></a>
-<a class="sourceLine" id="cb283-10" title="10">inset</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="working-with-spatial-data-in-r.html#cb311-1" aria-hidden="true"></a>inset&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj, <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></span>
+<span id="cb311-2"><a href="working-with-spatial-data-in-r.html#cb311-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>()<span class="op">+</span></span>
+<span id="cb311-3"><a href="working-with-spatial-data-in-r.html#cb311-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">xmin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">1</span>], <span class="dt">xmax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">2</span>],</span>
+<span id="cb311-4"><a href="working-with-spatial-data-in-r.html#cb311-4" aria-hidden="true"></a>            <span class="dt">ymin =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">3</span>], <span class="dt">ymax =</span> <span class="kw">extent</span>(australia_koala_area)[<span class="dv">4</span>],</span>
+<span id="cb311-5"><a href="working-with-spatial-data-in-r.html#cb311-5" aria-hidden="true"></a>            <span class="dt">fill =</span> <span class="ot">NA</span>,  <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)<span class="op">+</span></span>
+<span id="cb311-6"><a href="working-with-spatial-data-in-r.html#cb311-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;&#39;</span>, <span class="dt">title =</span> <span class="st">&#39;&#39;</span>)<span class="op">+</span></span>
+<span id="cb311-7"><a href="working-with-spatial-data-in-r.html#cb311-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></span>
+<span id="cb311-8"><a href="working-with-spatial-data-in-r.html#cb311-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_void</span>()</span>
+<span id="cb311-9"><a href="working-with-spatial-data-in-r.html#cb311-9" aria-hidden="true"></a></span>
+<span id="cb311-10"><a href="working-with-spatial-data-in-r.html#cb311-10" aria-hidden="true"></a>inset</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p><code>geom_rect</code> can create any rectangular shape within your ggplot based on <code>xmin</code>, <code>xmax</code> and so on. Since these are dependent on your scales, for mapping we can use the <code>extent</code> of our cropped area from before. <code>extent()</code> is part of the <code>raster</code> package:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" title="1"><span class="kw">extent</span>(australia_koala_area)</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="working-with-spatial-data-in-r.html#cb312-1" aria-hidden="true"></a><span class="kw">extent</span>(australia_koala_area)</span></code></pre></div>
 <pre><code>## class      : Extent 
 ## xmin       : 138.5795 
 ## xmax       : 153.5651 
 ## ymin       : -39 
 ## ymax       : -21.3906</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="working-with-spatial-data-in-r.html#cb314-1" aria-hidden="true"></a><span class="kw">extent</span>(australia_koala_area)[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] 138.5795</code></pre>
 <p>By using <code>[1]</code>, <code>[2]</code> and so on, we call the respective coordinate from the four rows that this function is giving us. Using <code>theme_void()</code> is getting rid of any axis and grids, so that we have the map only. We also need to save our map as an object:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" title="1">map&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))<span class="op">+</span><span class="st">  </span></a>
-<a class="sourceLine" id="cb286-7" title="7"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))<span class="op">+</span></a>
-<a class="sourceLine" id="cb286-8" title="8"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="working-with-spatial-data-in-r.html#cb316-1" aria-hidden="true"></a>map&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></span>
+<span id="cb316-2"><a href="working-with-spatial-data-in-r.html#cb316-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></span>
+<span id="cb316-3"><a href="working-with-spatial-data-in-r.html#cb316-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></span>
+<span id="cb316-4"><a href="working-with-spatial-data-in-r.html#cb316-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb316-5"><a href="working-with-spatial-data-in-r.html#cb316-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>, <span class="dt">expand =</span> F)<span class="op">+</span></span>
+<span id="cb316-6"><a href="working-with-spatial-data-in-r.html#cb316-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</span></code></pre></div>
 <p>We use <code>annotation_custom()</code> and <code>ggplotGrob()</code> to place an inset into the main map:</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" title="1">map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="working-with-spatial-data-in-r.html#cb317-1" aria-hidden="true"></a>map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>The size and position here is defined by <code>xmin =</code> etc. This needs a bit of fiddling around to get it right. Also be mindful that we are using a Mercator projection here and are in the southern hemisphere, so our <code>ymin</code> and <code>ymax</code> values need to be given in negative form. Now this is a proper map, ready to be put in your next publication! We will briefly talk about rasters, because you are likely to use them if you are working with shapefiles anyway. It is similarly easy to work with rasters in <code>R</code>:</p>
 </div>
+<div id="adding-a-north-arrow" class="section level4" number="9.4.2.2">
+<h4><span class="header-section-number">9.4.2.2</span> Adding a north arrow</h4>
+<p>Even though 99% of all maps are oriented with northern direction facing up, it is common practice to add north-pointing arrows to maps for orientation. The <code>ggpsatial</code> package allows us to place one into our map easily</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="working-with-spatial-data-in-r.html#cb318-1" aria-hidden="true"></a>map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)<span class="op">+</span></span>
+<span id="cb318-2"><a href="working-with-spatial-data-in-r.html#cb318-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">annotation_north_arrow</span>(<span class="dt">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="dt">which_north =</span> <span class="st">&quot;true&quot;</span>)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Easy, right? The <code>location</code> argument defines where the arrow is placed. In our case <code>'tr'</code> stands for top-right. We can also place it at the bottom right with <code>'br'</code>, or elsewhere using the same logic. Still it’s not that clean. We can change the style of the arrow. For options check ‘?north_arrow_orienteering’:</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="working-with-spatial-data-in-r.html#cb319-1" aria-hidden="true"></a>map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)<span class="op">+</span></span>
+<span id="cb319-2"><a href="working-with-spatial-data-in-r.html#cb319-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">annotation_north_arrow</span>(<span class="dt">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="dt">which_north =</span> <span class="st">&quot;true&quot;</span>,</span>
+<span id="cb319-3"><a href="working-with-spatial-data-in-r.html#cb319-3" aria-hidden="true"></a>                           <span class="dt">style =</span> north_arrow_fancy_orienteering)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><code>pad_x</code> and <code>pad_y</code> control how far the arrow is placed from the edge of the frame. Let’s bring it closer to the eastern frame and away from the coastline:</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="working-with-spatial-data-in-r.html#cb320-1" aria-hidden="true"></a>map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)<span class="op">+</span></span>
+<span id="cb320-2"><a href="working-with-spatial-data-in-r.html#cb320-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">annotation_north_arrow</span>(<span class="dt">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="dt">which_north =</span> <span class="st">&quot;true&quot;</span>,</span>
+<span id="cb320-3"><a href="working-with-spatial-data-in-r.html#cb320-3" aria-hidden="true"></a>                           <span class="dt">pad_x =</span> <span class="kw">unit</span>(<span class="fl">0.0001</span>, <span class="st">&quot;cm&quot;</span>), <span class="dt">pad_y =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;cm&quot;</span>),</span>
+<span id="cb320-4"><a href="working-with-spatial-data-in-r.html#cb320-4" aria-hidden="true"></a>                           <span class="dt">style =</span> north_arrow_fancy_orienteering)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>That looks like a professional map. One more thing I’d maybe do is place the legend within the empty space in the west and give it a frame:</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="working-with-spatial-data-in-r.html#cb321-1" aria-hidden="true"></a>map<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset), <span class="dt">xmin =</span> <span class="dv">139</span>, <span class="dt">xmax =</span> <span class="dv">144</span>, <span class="dt">ymin =</span> <span class="dv">-26</span>, <span class="dt">ymax =</span> <span class="dv">-20</span>)<span class="op">+</span></span>
+<span id="cb321-2"><a href="working-with-spatial-data-in-r.html#cb321-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">annotation_north_arrow</span>(<span class="dt">location =</span> <span class="st">&quot;tr&quot;</span>, <span class="dt">which_north =</span> <span class="st">&quot;true&quot;</span>,</span>
+<span id="cb321-3"><a href="working-with-spatial-data-in-r.html#cb321-3" aria-hidden="true"></a>                           <span class="dt">pad_x =</span> <span class="kw">unit</span>(<span class="fl">0.0001</span>, <span class="st">&quot;cm&quot;</span>), <span class="dt">pad_y =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;cm&quot;</span>),</span>
+<span id="cb321-4"><a href="working-with-spatial-data-in-r.html#cb321-4" aria-hidden="true"></a>                           <span class="dt">style =</span> north_arrow_fancy_orienteering)<span class="op">+</span></span>
+<span id="cb321-5"><a href="working-with-spatial-data-in-r.html#cb321-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.15</span>, <span class="fl">0.5</span>),</span>
+<span id="cb321-6"><a href="working-with-spatial-data-in-r.html#cb321-6" aria-hidden="true"></a>        <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb321-7"><a href="working-with-spatial-data-in-r.html#cb321-7" aria-hidden="true"></a>                                         <span class="dt">size=</span><span class="fl">0.5</span>, </span>
+<span id="cb321-8"><a href="working-with-spatial-data-in-r.html#cb321-8" aria-hidden="true"></a>                                         <span class="dt">linetype=</span><span class="st">&quot;solid&quot;</span>,</span>
+<span id="cb321-9"><a href="working-with-spatial-data-in-r.html#cb321-9" aria-hidden="true"></a>                                         <span class="dt">colour =</span><span class="st">&quot;black&quot;</span>))</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>How’s that? Time to test all your skills now! :)</p>
 </div>
-<div id="r-raster-basics" class="section level2">
-<h2><span class="header-section-number">9.5</span> <code>R</code> raster basics</h2>
-<p>Raster support in <code>R</code> is made available using the package <code>raster</code>. One called, we can load and plot a raster using the same command. Let’s get our DEM to play with:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" title="1">dem&lt;-<span class="kw">raster</span>(<span class="st">&#39;data/DEM.tif&#39;</span>)</a>
-<a class="sourceLine" id="cb288-2" title="2"></a>
-<a class="sourceLine" id="cb288-3" title="3"><span class="kw">summary</span>(dem)</a></code></pre></div>
-<pre><code>##               DEM
-## Min.       0.0000
-## 1st Qu.   88.9794
-## Median   157.2370
-## 3rd Qu.  398.5965
-## Max.    2102.0396
-## NA&#39;s       0.0000</code></pre>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" title="1"><span class="kw">plot</span>(dem)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<p>In a raster, cell (or pixel) has a spatial reference and a value. In this case we have the elevation in meters for each degree (0.01, 0.01) in southeastern Australia.</p>
-<p>Let’s say we’re only interested in Victoria. We can use a spatial vector to mask out the state area from the raster. First we need to create a mask. We already know that our Australia shapefile contains a <code>STATE</code> column. We can use that to subset the shapefile and use the subset as a mask. Simple <code>dplyr</code> commands and <code>%&gt;%</code> work on <code>sf</code> features, which makes working with them so easy in <code>R</code>!</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" title="1">vic&lt;-states_proj<span class="op">%&gt;%</span><span class="kw">filter</span>(STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem)) <span class="co"># we also transform the crs to be sure they match</span></a>
-<a class="sourceLine" id="cb291-2" title="2"></a>
-<a class="sourceLine" id="cb291-3" title="3"><span class="kw">plot</span>(dem)</a>
-<a class="sourceLine" id="cb291-4" title="4"><span class="kw">plot</span>(vic<span class="op">$</span>geometry, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="challenge-4" class="section level3" number="9.4.3">
+<h3><span class="header-section-number">9.4.3</span> Challenge 4</h3>
+<p><em>Create a map of koalas in a state (or combination of states) of your choosing only. Only show the respective area and add a logical inset figure. Please also color the points by a variable of your choosing, move the legend inside your plot and make sure the title is logical. Have fun changing colors and a other objects. The nicest maps wins :)</em></p>
+<p><strong>Extra challenge: Can you find out how to add a scale-bar? Please add it in the bottom-right corner (Hint: it is also part fo the <code>ggspatial</code> package.</strong></p>
+<pre><code>## although coordinates are longitude/latitude, st_intersection assumes that they are planar</code></pre>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<pre><code>## Scale on map varies by more than 10%, scale bar may be inaccurate</code></pre>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>That looks good :) Ready to put it into your next paper or report! Let’s move over and have a look at raster data.</p>
+</div>
+</div>
+<div id="some-r-raster-basics" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Some <code>R</code> raster basics</h2>
+<p>Raster support in <code>R</code> is made available using the package <code>raster</code>. One called, we can load and plot a raster using the same command. Let’s get our digitial elevation model (DEM) to play with:</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="working-with-spatial-data-in-r.html#cb324-1" aria-hidden="true"></a>dem&lt;-<span class="kw">raster</span>(<span class="st">&#39;data/DEM.tif&#39;</span>)</span>
+<span id="cb324-2"><a href="working-with-spatial-data-in-r.html#cb324-2" aria-hidden="true"></a></span>
+<span id="cb324-3"><a href="working-with-spatial-data-in-r.html#cb324-3" aria-hidden="true"></a><span class="kw">summary</span>(dem)</span></code></pre></div>
+<pre><code>##                 DEM
+## Min.        0.00000
+## 1st Qu.    89.28996
+## Median    157.82292
+## 3rd Qu.   400.73164
+## Max.     2099.59570
+## NA&#39;s    76084.00000</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="working-with-spatial-data-in-r.html#cb326-1" aria-hidden="true"></a><span class="kw">plot</span>(dem)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>In a raster, each cell (or pixel) has a spatial reference and a value. In this case we have the elevation in meters for each degree (0.01 * 0.01) in southeastern Australia.</p>
+<div id="croppingmasking" class="section level3" number="9.5.1">
+<h3><span class="header-section-number">9.5.1</span> Cropping/Masking</h3>
+<p>Let’s say we’re only interested in the area of Victoria. We can use a spatial vector to mask out the state area from the raster. First we need to create a mask. We already know that our Australia shapefile contains a <code>STATE</code> column. We can use that to subset the shapefile and use the subset as a mask. Simple <code>dplyr</code> commands and <code>%&gt;%</code> work on <code>sf</code> features, which makes working with them so easy in <code>R</code>!</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="working-with-spatial-data-in-r.html#cb327-1" aria-hidden="true"></a>vic&lt;-states_proj<span class="op">%&gt;%</span><span class="kw">filter</span>(STATENAME <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem)) <span class="co"># we also transform the crs to be sure they match</span></span>
+<span id="cb327-2"><a href="working-with-spatial-data-in-r.html#cb327-2" aria-hidden="true"></a></span>
+<span id="cb327-3"><a href="working-with-spatial-data-in-r.html#cb327-3" aria-hidden="true"></a><span class="kw">plot</span>(dem)</span>
+<span id="cb327-4"><a href="working-with-spatial-data-in-r.html#cb327-4" aria-hidden="true"></a><span class="kw">plot</span>(vic<span class="op">$</span>geometry, <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>To remove anything outside of Victoria, we use <code>raster</code>’s <code>mask()</code> and end up with the DEM for Victoria only:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" title="1">dem_vic&lt;-<span class="kw">mask</span>(dem, vic)</a>
-<a class="sourceLine" id="cb292-2" title="2"></a>
-<a class="sourceLine" id="cb292-3" title="3"><span class="kw">plot</span>(dem_vic)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="working-with-spatial-data-in-r.html#cb328-1" aria-hidden="true"></a>dem_vic&lt;-<span class="kw">mask</span>(dem, vic)</span>
+<span id="cb328-2"><a href="working-with-spatial-data-in-r.html#cb328-2" aria-hidden="true"></a></span>
+<span id="cb328-3"><a href="working-with-spatial-data-in-r.html#cb328-3" aria-hidden="true"></a><span class="kw">plot</span>(dem_vic)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+</div>
+<div id="plotting-and-extracting-data" class="section level3" number="9.5.2">
+<h3><span class="header-section-number">9.5.2</span> Plotting and extracting data</h3>
 <p>We can now also filter our koala dataset to only have koalas in Victoria to plot over our DEM.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" title="1">koala_vic&lt;-koala_sf<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem))</a>
-<a class="sourceLine" id="cb293-2" title="2"></a>
-<a class="sourceLine" id="cb293-3" title="3"><span class="kw">plot</span>(dem_vic)</a>
-<a class="sourceLine" id="cb293-4" title="4"></a>
-<a class="sourceLine" id="cb293-5" title="5"><span class="kw">plot</span>(koala_vic<span class="op">$</span>geometry, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">add =</span> T)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="working-with-spatial-data-in-r.html#cb329-1" aria-hidden="true"></a>koala_vic&lt;-koala_sf<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;Victoria&#39;</span>)<span class="op">%&gt;%</span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="kw">st_crs</span>(dem))</span>
+<span id="cb329-2"><a href="working-with-spatial-data-in-r.html#cb329-2" aria-hidden="true"></a></span>
+<span id="cb329-3"><a href="working-with-spatial-data-in-r.html#cb329-3" aria-hidden="true"></a><span class="kw">plot</span>(dem_vic)</span>
+<span id="cb329-4"><a href="working-with-spatial-data-in-r.html#cb329-4" aria-hidden="true"></a></span>
+<span id="cb329-5"><a href="working-with-spatial-data-in-r.html#cb329-5" aria-hidden="true"></a><span class="kw">plot</span>(koala_vic<span class="op">$</span>geometry, <span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">add =</span> T)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>Often we are using rasters and spatial vector data together to extract data that is generally stored in raster form (such as elevation, mean temperatures or other topographic variables). For example if we are interested to see at which elevation our Koalas were observed in Victoria to make assumptions about their habitat preferences or temperature tolerances. If the CRS of both the raster and shapefile match, we can use <code>extract()</code> to add data from the raster to our spatial points as a new column:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" title="1">koala_vic<span class="op">$</span>ele&lt;-raster<span class="op">::</span><span class="kw">extract</span>(dem_vic, koala_vic)</a>
-<a class="sourceLine" id="cb294-2" title="2"></a>
-<a class="sourceLine" id="cb294-3" title="3"><span class="kw">summary</span>(koala_vic<span class="op">$</span>ele)</a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="working-with-spatial-data-in-r.html#cb330-1" aria-hidden="true"></a>koala_vic<span class="op">$</span>ele&lt;-raster<span class="op">::</span><span class="kw">extract</span>(dem_vic, koala_vic)</span>
+<span id="cb330-2"><a href="working-with-spatial-data-in-r.html#cb330-2" aria-hidden="true"></a></span>
+<span id="cb330-3"><a href="working-with-spatial-data-in-r.html#cb330-3" aria-hidden="true"></a><span class="kw">summary</span>(koala_vic<span class="op">$</span>ele)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   16.62   67.95  185.34  218.54  349.87  648.06</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1"><span class="kw">hist</span>(koala_vic<span class="op">$</span>ele)</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="working-with-spatial-data-in-r.html#cb332-1" aria-hidden="true"></a><span class="kw">hist</span>(koala_vic<span class="op">$</span>ele)</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>We can see most observations were made below 200 meters. The median elevation for koalas in our dataset was 185. Again if we want to make nice and informative maps out of rasters, even in combination with spatial vector data, <code>ggplot2</code> is the way to go!</p>
 </div>
-<div id="plotting-rasters-in-ggplot2" class="section level2">
+</div>
+<div id="plotting-rasters-in-ggplot2" class="section level2" number="9.6">
 <h2><span class="header-section-number">9.6</span> Plotting rasters in <code>ggplot2</code></h2>
-<p>Before we can plot a raster, we have to make it into a <code>data.frame</code> containing of columns <code>X</code> and <code>Y</code> as coordinates and a column containing the raster value of each pixel. Since rasters can be large and the resulting dataframes even larger, we first take a sample of the raster, which reduces the resolution:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" title="1">sample_raster&lt;-<span class="kw">sampleRegular</span>(dem_vic, <span class="dt">size =</span> <span class="fl">5e5</span>, <span class="dt">asRaster =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb297-2" title="2"><span class="st">  </span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> <span class="ot">TRUE</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb297-3" title="3"><span class="st">  </span><span class="kw">setNames</span>(<span class="kw">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;layer&#39;</span>))</a></code></pre></div>
-<p>Make sure to always use <code>xy = TRUE</code>, so that the coordinates are included in the new <code>data.frame</code>. We now have a format that ggplot can work with using <code>geom_raster()</code></p>
+<p>Before we can plot a raster, we have to transform it into a <code>data.frame</code> containing of columns <code>X</code> and <code>Y</code> as coordinates and a column containing the raster value of each pixel. Since rasters can be large and the resulting data frames even larger, we first take a sample of the raster using <code>sampleRegular()</code>, which reduces the resolution:</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="working-with-spatial-data-in-r.html#cb333-1" aria-hidden="true"></a>sample_raster&lt;-<span class="kw">sampleRegular</span>(dem_vic, <span class="dt">size =</span> <span class="fl">5e5</span>, <span class="dt">asRaster =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb333-2"><a href="working-with-spatial-data-in-r.html#cb333-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">as.data.frame</span>(<span class="dt">xy =</span> <span class="ot">TRUE</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
+<span id="cb333-3"><a href="working-with-spatial-data-in-r.html#cb333-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">setNames</span>(<span class="kw">c</span>(<span class="st">&#39;x&#39;</span>, <span class="st">&#39;y&#39;</span>, <span class="st">&#39;layer&#39;</span>))</span></code></pre></div>
+<p>The <code>size</code> argument defines the amount of pixels to filter. Make sure to always use <code>xy = TRUE</code>, so that the coordinates are included in the new <code>data.frame</code>.</p>
 <pre><code>##             x        y    layer
 ## 902  140.9675 -33.9925 19.73859
 ## 1803 140.9675 -34.0025 48.89558
@@ -568,68 +713,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2704 140.9675 -34.0125 53.28782
 ## 2705 140.9775 -34.0125 27.96507
 ## 2706 140.9875 -34.0125 20.13142</code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb299-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>()</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>We now have a format that ggplot can work with using <code>geom_raster()</code>:</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="working-with-spatial-data-in-r.html#cb335-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></span>
+<span id="cb335-2"><a href="working-with-spatial-data-in-r.html#cb335-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_raster</span>()</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>Let’s make it look a bit prettier. The package <code>viridis</code> offers a few great color palettes for gradients of continuous variables:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb300-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb300-3" title="3"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&#39;A&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb300-4" title="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;Longitude&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Latitude&#39;</span>, <span class="dt">fill =</span> <span class="st">&#39;Elevation&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb300-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb300-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="working-with-spatial-data-in-r.html#cb336-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span> ( <span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></span>
+<span id="cb336-2"><a href="working-with-spatial-data-in-r.html#cb336-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_raster</span>()<span class="op">+</span></span>
+<span id="cb336-3"><a href="working-with-spatial-data-in-r.html#cb336-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&#39;A&#39;</span>)<span class="op">+</span></span>
+<span id="cb336-4"><a href="working-with-spatial-data-in-r.html#cb336-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;Longitude&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;Latitude&#39;</span>, <span class="dt">fill =</span> <span class="st">&#39;Elevation&#39;</span>)<span class="op">+</span></span>
+<span id="cb336-5"><a href="working-with-spatial-data-in-r.html#cb336-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></span>
+<span id="cb336-6"><a href="working-with-spatial-data-in-r.html#cb336-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>We can plot additional layers on top of the raster by adding more <code>geom_</code>’s. That means we can plot rasters and spatial vectors together to make great maps for your papers and reports. I’m sure you can figure it out yourself for the next and final challenge!</p>
-<div id="challenge-3-2" class="section level3">
-<h3><span class="header-section-number">9.6.1</span> Challenge 3</h3>
-<p><strong>Add koala observations, color points by a categorical variable of your choice and change the color scheme.</strong></p>
+<div id="challenge-4-1" class="section level3" number="9.6.1">
+<h3><span class="header-section-number">9.6.1</span> Challenge 4</h3>
+<p><strong>Add koala observations, color points by a categorical variable of your choice and change the color scheme. Also avoid the ‘island’ look as we’ve done before. Feel free to add any extra data/symbols you want, from what we’ve covered before</strong></p>
 <p><em>hint: to add different types of data, each data layer needs its own data source!:</em>
 <em>(geom_raster(data = sample_raster, aes(x = x, y = y, fill = layer))+…</em>)</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" title="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb301-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb301-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb301-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb301-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </a>
-<a class="sourceLine" id="cb301-6" title="6">       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </a>
-<a class="sourceLine" id="cb301-7" title="7">       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb301-8" title="8"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb301-9" title="9"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
-<p><img src="07-spatial_tut_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><img src="08-spatial_tut-update_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>Good job everyone. You’re on the best way to becoming experts in spatial data processing in <code>R</code>!</p>
 </div>
 </div>
-<div id="solutions-to-challenges-1" class="section level2">
-<h2><span class="header-section-number">9.7</span> Solutions to Challenges</h2>
-<div id="challenge-1-5" class="section level3">
+<div id="solutions-to-all-challenges" class="section level2" number="9.7">
+<h2><span class="header-section-number">9.7</span> Solutions to all Challenges</h2>
+<div id="challenge-1-1" class="section level3" number="9.7.1">
 <h3><span class="header-section-number">9.7.1</span> Challenge 1</h3>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1">states_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(states, <span class="dt">crs =</span> <span class="kw">st_crs</span>(koala_sf))</a>
-<a class="sourceLine" id="cb302-2" title="2"></a>
-<a class="sourceLine" id="cb302-3" title="3"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states_proj), </a>
-<a class="sourceLine" id="cb302-4" title="4">     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb302-5" title="5"></a>
-<a class="sourceLine" id="cb302-6" title="6"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), </a>
-<a class="sourceLine" id="cb302-7" title="7">     <span class="dt">col =</span> koala_sf<span class="op">$</span>state, </a>
-<a class="sourceLine" id="cb302-8" title="8">     <span class="dt">add =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="working-with-spatial-data-in-r.html#cb337-1" aria-hidden="true"></a>states_proj &lt;-<span class="st"> </span><span class="kw">st_transform</span>(states, <span class="dt">crs =</span> <span class="kw">st_crs</span>(koala_sf))</span>
+<span id="cb337-2"><a href="working-with-spatial-data-in-r.html#cb337-2" aria-hidden="true"></a></span>
+<span id="cb337-3"><a href="working-with-spatial-data-in-r.html#cb337-3" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(states_proj), </span>
+<span id="cb337-4"><a href="working-with-spatial-data-in-r.html#cb337-4" aria-hidden="true"></a>     <span class="dt">axes =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb337-5"><a href="working-with-spatial-data-in-r.html#cb337-5" aria-hidden="true"></a></span>
+<span id="cb337-6"><a href="working-with-spatial-data-in-r.html#cb337-6" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">st_geometry</span>(koala_sf), </span>
+<span id="cb337-7"><a href="working-with-spatial-data-in-r.html#cb337-7" aria-hidden="true"></a>     <span class="dt">col =</span> koala_sf<span class="op">$</span>state, </span>
+<span id="cb337-8"><a href="working-with-spatial-data-in-r.html#cb337-8" aria-hidden="true"></a>     <span class="dt">add =</span> T)</span></code></pre></div>
 </div>
-<div id="challenge-2-5" class="section level3">
+<div id="challenge-2-1" class="section level3" number="9.7.2">
 <h3><span class="header-section-number">9.7.2</span> Challenge 2</h3>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></a>
-<a class="sourceLine" id="cb303-2" title="2"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb303-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex))<span class="op">+</span></a>
-<a class="sourceLine" id="cb303-4" title="4"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb303-5" title="5"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb303-6" title="6"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="working-with-spatial-data-in-r.html#cb338-1" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> australia_koala_area)<span class="op">+</span></span>
+<span id="cb338-2"><a href="working-with-spatial-data-in-r.html#cb338-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></span>
+<span id="cb338-3"><a href="working-with-spatial-data-in-r.html#cb338-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex))<span class="op">+</span></span>
+<span id="cb338-4"><a href="working-with-spatial-data-in-r.html#cb338-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb338-5"><a href="working-with-spatial-data-in-r.html#cb338-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></span>
+<span id="cb338-6"><a href="working-with-spatial-data-in-r.html#cb338-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;steelblue2&#39;</span>))</span></code></pre></div>
 </div>
-<div id="challenge-3-3" class="section level3">
+<div id="challenge-3" class="section level3" number="9.7.3">
 <h3><span class="header-section-number">9.7.3</span> Challenge 3</h3>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb304-2" title="2"><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></a>
-<a class="sourceLine" id="cb304-3" title="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb304-4" title="4"><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb304-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </a>
-<a class="sourceLine" id="cb304-6" title="6">       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </a>
-<a class="sourceLine" id="cb304-7" title="7">       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb304-8" title="8"><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb304-9" title="9"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="working-with-spatial-data-in-r.html#cb339-1" aria-hidden="true"></a><span class="co">#subset your data to NSW koalas only</span></span>
+<span id="cb339-2"><a href="working-with-spatial-data-in-r.html#cb339-2" aria-hidden="true"></a></span>
+<span id="cb339-3"><a href="working-with-spatial-data-in-r.html#cb339-3" aria-hidden="true"></a>koala_sf_NSW&lt;-koala_sf<span class="op">%&gt;%</span><span class="kw">filter</span>(state <span class="op">==</span><span class="st"> &#39;New South Wales&#39;</span>)</span>
+<span id="cb339-4"><a href="working-with-spatial-data-in-r.html#cb339-4" aria-hidden="true"></a></span>
+<span id="cb339-5"><a href="working-with-spatial-data-in-r.html#cb339-5" aria-hidden="true"></a><span class="co">#create the inset figure</span></span>
+<span id="cb339-6"><a href="working-with-spatial-data-in-r.html#cb339-6" aria-hidden="true"></a></span>
+<span id="cb339-7"><a href="working-with-spatial-data-in-r.html#cb339-7" aria-hidden="true"></a>NSW_koala_area&lt;-<span class="kw">st_crop</span>(states_proj, koala_sf_NSW)</span>
+<span id="cb339-8"><a href="working-with-spatial-data-in-r.html#cb339-8" aria-hidden="true"></a></span>
+<span id="cb339-9"><a href="working-with-spatial-data-in-r.html#cb339-9" aria-hidden="true"></a>inset_NSW&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> states_proj, <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></span>
+<span id="cb339-10"><a href="working-with-spatial-data-in-r.html#cb339-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">fill =</span> <span class="st">&#39;white&#39;</span>)<span class="op">+</span></span>
+<span id="cb339-11"><a href="working-with-spatial-data-in-r.html#cb339-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">xmin =</span> <span class="kw">extent</span>(NSW_koala_area)[<span class="dv">1</span>], <span class="dt">xmax =</span> <span class="kw">extent</span>(NSW_koala_area)[<span class="dv">2</span>],</span>
+<span id="cb339-12"><a href="working-with-spatial-data-in-r.html#cb339-12" aria-hidden="true"></a>            <span class="dt">ymin =</span> <span class="kw">extent</span>(NSW_koala_area)[<span class="dv">3</span>], <span class="dt">ymax =</span> <span class="kw">extent</span>(NSW_koala_area)[<span class="dv">4</span>],</span>
+<span id="cb339-13"><a href="working-with-spatial-data-in-r.html#cb339-13" aria-hidden="true"></a>            <span class="dt">fill =</span> <span class="ot">NA</span>,  <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>)<span class="op">+</span></span>
+<span id="cb339-14"><a href="working-with-spatial-data-in-r.html#cb339-14" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;&#39;</span>, <span class="dt">title =</span> <span class="st">&#39;&#39;</span>)<span class="op">+</span></span>
+<span id="cb339-15"><a href="working-with-spatial-data-in-r.html#cb339-15" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>)<span class="op">+</span></span>
+<span id="cb339-16"><a href="working-with-spatial-data-in-r.html#cb339-16" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_void</span>()</span>
+<span id="cb339-17"><a href="working-with-spatial-data-in-r.html#cb339-17" aria-hidden="true"></a></span>
+<span id="cb339-18"><a href="working-with-spatial-data-in-r.html#cb339-18" aria-hidden="true"></a><span class="co">#create the map</span></span>
+<span id="cb339-19"><a href="working-with-spatial-data-in-r.html#cb339-19" aria-hidden="true"></a></span>
+<span id="cb339-20"><a href="working-with-spatial-data-in-r.html#cb339-20" aria-hidden="true"></a>map_NSW&lt;-<span class="kw">ggplot</span>(<span class="dt">data =</span> NSW_koala_area)<span class="op">+</span></span>
+<span id="cb339-21"><a href="working-with-spatial-data-in-r.html#cb339-21" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">size =</span> <span class="fl">0.3</span>, <span class="dt">fill =</span> <span class="st">&#39;lightgrey&#39;</span>)<span class="op">+</span></span>
+<span id="cb339-22"><a href="working-with-spatial-data-in-r.html#cb339-22" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> koala_sf_NSW, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> joey), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></span>
+<span id="cb339-23"><a href="working-with-spatial-data-in-r.html#cb339-23" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb339-24"><a href="working-with-spatial-data-in-r.html#cb339-24" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>, <span class="dt">expand =</span> F)<span class="op">+</span></span>
+<span id="cb339-25"><a href="working-with-spatial-data-in-r.html#cb339-25" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&#39;lightblue&#39;</span>))</span>
+<span id="cb339-26"><a href="working-with-spatial-data-in-r.html#cb339-26" aria-hidden="true"></a></span>
+<span id="cb339-27"><a href="working-with-spatial-data-in-r.html#cb339-27" aria-hidden="true"></a></span>
+<span id="cb339-28"><a href="working-with-spatial-data-in-r.html#cb339-28" aria-hidden="true"></a><span class="co">#combine</span></span>
+<span id="cb339-29"><a href="working-with-spatial-data-in-r.html#cb339-29" aria-hidden="true"></a></span>
+<span id="cb339-30"><a href="working-with-spatial-data-in-r.html#cb339-30" aria-hidden="true"></a>challenge4&lt;-map_NSW<span class="op">+</span><span class="kw">annotation_custom</span>(<span class="kw">ggplotGrob</span>(inset_NSW), <span class="dt">xmin =</span> <span class="dv">147</span>, <span class="dt">xmax =</span> <span class="dv">149</span>, <span class="dt">ymin =</span> <span class="dv">-30</span>, <span class="dt">ymax =</span> <span class="fl">-27.5</span>)<span class="op">+</span></span>
+<span id="cb339-31"><a href="working-with-spatial-data-in-r.html#cb339-31" aria-hidden="true"></a></span>
+<span id="cb339-32"><a href="working-with-spatial-data-in-r.html#cb339-32" aria-hidden="true"></a><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&#39;&#39;</span>, <span class="dt">y =</span> <span class="st">&#39;&#39;</span>, <span class="dt">color =</span> <span class="st">&#39;Had a joey&#39;</span>,  <span class="dt">title =</span> <span class="st">&#39;&#39;</span>)<span class="op">+</span></span>
+<span id="cb339-33"><a href="working-with-spatial-data-in-r.html#cb339-33" aria-hidden="true"></a><span class="st">        </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.81</span>, <span class="fl">0.12</span>),</span>
+<span id="cb339-34"><a href="working-with-spatial-data-in-r.html#cb339-34" aria-hidden="true"></a>              <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb339-35"><a href="working-with-spatial-data-in-r.html#cb339-35" aria-hidden="true"></a>                                         <span class="dt">size=</span><span class="fl">0.5</span>, </span>
+<span id="cb339-36"><a href="working-with-spatial-data-in-r.html#cb339-36" aria-hidden="true"></a>                                         <span class="dt">linetype=</span><span class="st">&quot;solid&quot;</span>,</span>
+<span id="cb339-37"><a href="working-with-spatial-data-in-r.html#cb339-37" aria-hidden="true"></a>                                         <span class="dt">colour =</span><span class="st">&quot;black&quot;</span>))</span>
+<span id="cb339-38"><a href="working-with-spatial-data-in-r.html#cb339-38" aria-hidden="true"></a></span>
+<span id="cb339-39"><a href="working-with-spatial-data-in-r.html#cb339-39" aria-hidden="true"></a>challenge4</span>
+<span id="cb339-40"><a href="working-with-spatial-data-in-r.html#cb339-40" aria-hidden="true"></a></span>
+<span id="cb339-41"><a href="working-with-spatial-data-in-r.html#cb339-41" aria-hidden="true"></a><span class="co">#adding a scale bar</span></span>
+<span id="cb339-42"><a href="working-with-spatial-data-in-r.html#cb339-42" aria-hidden="true"></a></span>
+<span id="cb339-43"><a href="working-with-spatial-data-in-r.html#cb339-43" aria-hidden="true"></a>challenge4<span class="op">+</span></span>
+<span id="cb339-44"><a href="working-with-spatial-data-in-r.html#cb339-44" aria-hidden="true"></a><span class="st">    </span><span class="kw">annotation_north_arrow</span>(<span class="dt">location =</span> <span class="st">&quot;bl&quot;</span>, <span class="dt">which_north =</span> <span class="st">&quot;true&quot;</span>,</span>
+<span id="cb339-45"><a href="working-with-spatial-data-in-r.html#cb339-45" aria-hidden="true"></a>                           <span class="dt">pad_x =</span> <span class="kw">unit</span>(<span class="fl">0.0001</span>, <span class="st">&quot;cm&quot;</span>), <span class="dt">pad_y =</span> <span class="kw">unit</span>(<span class="fl">0.7</span>, <span class="st">&quot;cm&quot;</span>),</span>
+<span id="cb339-46"><a href="working-with-spatial-data-in-r.html#cb339-46" aria-hidden="true"></a>                           <span class="dt">style =</span> north_arrow_fancy_orienteering)<span class="op">+</span></span>
+<span id="cb339-47"><a href="working-with-spatial-data-in-r.html#cb339-47" aria-hidden="true"></a><span class="st">    </span><span class="kw">annotation_scale</span>(<span class="dt">location =</span> <span class="st">&#39;bl&#39;</span>, <span class="dt">style =</span> <span class="st">&#39;ticks&#39;</span>, <span class="dt">text_col =</span> <span class="st">&#39;black&#39;</span>)</span></code></pre></div>
+</div>
+<div id="challenge-4-2" class="section level3" number="9.7.4">
+<h3><span class="header-section-number">9.7.4</span> Challenge 4</h3>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="working-with-spatial-data-in-r.html#cb340-1" aria-hidden="true"></a><span class="kw">ggplot</span>()<span class="op">+</span></span>
+<span id="cb340-2"><a href="working-with-spatial-data-in-r.html#cb340-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_raster</span>(<span class="dt">data =</span> sample_raster, <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">fill =</span> layer))<span class="op">+</span></span>
+<span id="cb340-3"><a href="working-with-spatial-data-in-r.html#cb340-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data=</span>koala_vic, <span class="dt">size =</span> <span class="dv">2</span>, <span class="kw">aes</span>(<span class="dt">color =</span> sex), <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span>)<span class="op">+</span></span>
+<span id="cb340-4"><a href="working-with-spatial-data-in-r.html#cb340-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>) <span class="op">+</span></span>
+<span id="cb340-5"><a href="working-with-spatial-data-in-r.html#cb340-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Longitude&quot;</span>, </span>
+<span id="cb340-6"><a href="working-with-spatial-data-in-r.html#cb340-6" aria-hidden="true"></a>       <span class="dt">y =</span> <span class="st">&quot;Latitude&quot;</span>, </span>
+<span id="cb340-7"><a href="working-with-spatial-data-in-r.html#cb340-7" aria-hidden="true"></a>       <span class="dt">fill =</span> <span class="st">&quot;Elevation&quot;</span>,</span>
+<span id="cb340-8"><a href="working-with-spatial-data-in-r.html#cb340-8" aria-hidden="true"></a>       <span class="dt">color =</span> <span class="st">&#39;Gender&#39;</span>) <span class="op">+</span></span>
+<span id="cb340-9"><a href="working-with-spatial-data-in-r.html#cb340-9" aria-hidden="true"></a><span class="st">  </span><span class="kw">coord_sf</span>(<span class="dt">crs =</span> <span class="dv">4326</span>, <span class="dt">expand =</span> F) <span class="op">+</span></span>
+<span id="cb340-10"><a href="working-with-spatial-data-in-r.html#cb340-10" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
 
 </div>
 </div>

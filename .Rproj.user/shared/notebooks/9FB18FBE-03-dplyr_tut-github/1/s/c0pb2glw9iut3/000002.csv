@@ -1,2 +1,0 @@
-"0","challenge2<-koala%>%group_by(state, sex)%>%"
-"0","  summarise(mean_weight = mean(weight))"

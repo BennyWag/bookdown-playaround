@@ -1,3 +1,0 @@
-"0","new_data_wide<-new_data%>%select(-ID)%>%pivot_wider(names_from = measurement, values_from = tail)"
-"0",""
-"0","head(new_data_wide)"

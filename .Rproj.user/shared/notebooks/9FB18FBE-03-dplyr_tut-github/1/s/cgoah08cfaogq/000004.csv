@@ -1,3 +1,0 @@
-"0","koala_subsample<-koala_subsample%>%mutate(tail2 = runif(nrow(koala_subsample), min = 2, max = 3))"
-"0",""
-"0","head(koala_subsample)"

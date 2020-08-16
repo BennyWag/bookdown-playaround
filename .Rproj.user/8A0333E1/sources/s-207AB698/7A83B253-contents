@@ -1,0 +1,175 @@
+# Introduction to linear models in R
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F)
+library(tidyverse)
+library(performance)
+library(corrplot)
+library(emojifont)
+```
+
+Let's first load packages and data:
+
+```{r setup, eval=FALSE}
+library(performance)
+library(corrplot)
+library(emojifont)
+library(tidyverse)
+```
+
+```{r}
+koala<-read.csv(file="data/koala.csv", stringsAsFactors = T)
+
+#have a peek at the data structure
+
+str(koala)
+summary(koala)
+```
+
+The main object of this session is to show how to perform basic regression
+analysis, including plots for model checking and display of confidence
+and prediction intervals.
+
+
+linear regression model is represented as:
+$$Y=a+bX$$
+
+X is the explanatory variable and Y is the dependent variable. The slope of the line is b, and a is the intercept (the value of y when x = 0).
+
+
+$$Y  = \sigma + \beta X_1 +  \epsilon $$
+
+The parameters $\alpha$, $\beta$ , and $\epsilon$ can be estimated using the method of least squares. 
+
+## Model Assumptions 
+
+Each of the model assumptions concerns the error term of the regression model. These are:
+
+1. Individual observations are independent
+2. Response data are normally distributed
+3. Variance is homogeneous across range of predictor
+4. Data are linear
+
+```{r}
+koala<-read.csv(file="data/koala.csv", stringsAsFactors = T)
+
+qplot(koala$weight)
+qplot(log(koala$weight))
+qqnorm(koala$weight)
+qqline(koala$weight)### look at the line for the pattern
+
+### qqplot with log transformed data
+qqnorm(log(koala$weight))
+qqline(log(koala$weight))
+qplot(log(koala$weight))
+qplot(koala$fur)
+```
+
+## Linear model  
+The `lm` function handles much more complicated models than simple linear
+regression. There can be many other things besides a dependent and a
+descriptive variable in a model formula.
+
+```{r}
+lm<-lm(size~fur, data=koala)
+summary(lm)
+confint(lm)
+check_model(lm, check=c("qq", "normality", "ncv", "outliers"))
+```
+  
+## Correlation    
+A **Correlation** coefficient is a symmetric, scale-invariant measure of association between two random variables. It ranges from -1 to +1, where the extremes indicate perfect correlation and 0 means no correlation. The sign is negative when large values of one variable are associated with small values of the other and positive if both variables tend to be large or small simultaneously. The reader should be warned that there are many incorrect uses of correlation coefficients, particularly when they are used in regression type settings.
+
+Correlation is a statistical technique that can show whether and how strongly pairs of variables are related.The main result of a correlation is called the correlation coefficient (or "r"). It ranges from -1.0 to +1.0. The closer r is to +1 or -1, the more closely the two variables are related.
+
+
+```{r}
+
+corkoala<-koala %>% 
+  select_if(is.numeric)%>%
+  select(-c(1,2))
+
+corMat<-cor(corkoala, use="complete.obs", method = "pearson")
+
+corrplot(corMat, 
+         method="shade",
+         type="lower",
+         diag = FALSE,
+         addCoef.col = "black")
+```
+
+  
+## Statistical Hypothesis  
+
+Determine if two or more samples are from the same population  
+H0:  
+  -Sample means are all equal(i.e., A= )   
+  -There is no effect of the factor on the response variable  
+If reject H0  
+  -Suggests that at least one sample mean is different from the others  
+If don't reject H0  
+  -No evidence that any of the sample means are different from the overall population mean
+  
+## ANOVA
+
+Test for significant differences between the group means can be
+performed by comparing two variance estimates. This is why the procedure
+is called analysis of variance even though the objective is to compare
+the group means.There are multiple ways of representing the effect of a factor variable in linear models (and one-way analysis of variance is the simplest example of a linear model with a factor variable).
+
+
+
+  
+```{r}
+summary(koala)
+anova<-aov(weight~sex, koala)
+summary(anova)
+
+anova1<-aov(tail~sex, koala)
+summary(anova1)
+
+TukeyHSD(anova1)
+
+anova(anova, anova1, test="chi")
+```
+
+## **Build the model **  
+
+### GLM  
+
+Advantages of GLMs over traditional regression  
+- We do not need to transform the response Y to have a normal distribution  
+- The choice of link is separate from the choice of random component thus we have more flexibility in modeling  
+- If the link produces additive effects, then we do not need constant variance.  
+- The models are fitted via Maximum Likelihood estimation; thus optimal properties of the estimators.  
+- All the inference tools and model checking that we will discuss for log-linear and logistic regression models apply for other GLMs too; e.g., Wald and Likelihood ratio tests, Deviance, Residuals, Confidence intervals, Overdispersion.  
+- There is often one procedure in a software package to capture all the models listed above, e.g. PROC GENMOD in SAS or glm() in R, etc... with options to vary the three components.  
+  
+### But there are some limitations of GLMs too, such as,
+
+- Linear function, e.g. can have only a linear predictor in the systematic component  
+- Responses must be independent  
+
+
+```{r}
+hist(koala$size)
+hist(log(koala$size))
+hist(koala$weight)
+hist(log(koala$weight))
+summary(koala$size)
+
+weight_sizemodel<-glm(log(weight)~size,family=gaussian(link='identity'),data=koala)
+summary(weight_sizemodel)
+anova(weight_sizemodel)
+check_model(weight_sizemodel, check=c("qq", "normality", "ncv", "outliers")) 
+confint(weight_sizemodel)
+
+prediction_matrix <- cbind.data.frame(size = 60:90)
+prediction_matrix$lp <- 0.054962 + 0.028017 * prediction_matrix$size
+prediction_matrix$mu <- exp(prediction_matrix$lp)
+ggplot(data = koala, aes(x = size, y =weight)) + geom_point() + geom_smooth(method="glm")+
+  geom_line(data = prediction_matrix, aes(size, mu))
+```
+
+`r emoji("smile_cat")`
+
