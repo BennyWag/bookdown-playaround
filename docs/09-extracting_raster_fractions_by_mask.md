@@ -175,11 +175,11 @@ head(extract_table)
 
 ```
 ##   value ID   lc
-## 1     1  1 res1
-## 2     0  1 res1
+## 1     0  1 res1
+## 2     1  1 res1
 ## 3     0  1 res1
 ## 4     0  1 res1
-## 5     0  1 res1
+## 5     1  1 res1
 ## 6     0  1 res1
 ```
 
@@ -201,14 +201,14 @@ area_habitat
 ## # A tibble: 8 x 8
 ##   lc      value pixelsum areaha   sumA   per sum_all pertotal
 ##   <fct>   <dbl>    <int>  <dbl>  <int> <dbl>   <int>    <dbl>
-## 1 outside     0    61276  61276 123560  49.6  144258   42.5  
-## 2 outside     1    62284  62284 123560  50.4  144258   43.2  
-## 3 res1        0      299    299    600  49.8  144258    0.207
-## 4 res1        1      301    301    600  50.2  144258    0.209
-## 5 res2        0     6342   6342  12784  49.6  144258    4.40 
-## 6 res2        1     6442   6442  12784  50.4  144258    4.47 
-## 7 res3        0     3690   3690   7314  50.5  144258    2.56 
-## 8 res3        1     3624   3624   7314  49.5  144258    2.51
+## 1 outside     0    62168  62168 123560  50.3  144258   43.1  
+## 2 outside     1    61392  61392 123560  49.7  144258   42.6  
+## 3 res1        0      285    285    600  47.5  144258    0.198
+## 4 res1        1      315    315    600  52.5  144258    0.218
+## 5 res2        0     6376   6376  12784  49.9  144258    4.42 
+## 6 res2        1     6408   6408  12784  50.1  144258    4.44 
+## 7 res3        0     3606   3606   7314  49.3  144258    2.50 
+## 8 res3        1     3708   3708   7314  50.7  144258    2.57
 ```
 What happens here is, we group by class (`lc` which refers to our polygon names) as well as value (0 for unsuitable and 1 for suitable habitat). We then tally all pixels using the `ID` column and calculate the area in ha from the `pixelsum`. In our case these match because the resolution is already 1 ha (each cell is 100x100 meters). Furthermore we can then tally all pixels to get the total raster area and from that calculate first the percentage of suitable and unsuitable habitat in each polygon and then (by using `ungroup()`) the fraction of this area compared to the total raster area.
 

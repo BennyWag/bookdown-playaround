@@ -221,7 +221,7 @@ output
 ```
 
 
-## Challenge 1
+### Challenge 1
 
 **Write a function that identifies the median value of a, adds the minimum value of a to the median value, and then calculates the square root of that value.**
 
@@ -275,7 +275,7 @@ output
 
 Much better!
 
-## Challenge 2
+### Challenge 2
 
 **Write a function for two vectors a and b that:**
 

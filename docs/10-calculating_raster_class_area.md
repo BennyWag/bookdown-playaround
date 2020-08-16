@@ -57,11 +57,11 @@ head(rast_df)
 
 ```
 ##       x    y layer ID
-## 1 -9950 9950     1  1
-## 2 -9850 9950     2  1
-## 3 -9750 9950     5  1
+## 1 -9950 9950     5  1
+## 2 -9850 9950     5  1
+## 3 -9750 9950     2  1
 ## 4 -9650 9950     5  1
-## 5 -9550 9950     5  1
+## 5 -9550 9950     2  1
 ## 6 -9450 9950     2  1
 ```
 
@@ -83,11 +83,11 @@ area
 ## # A tibble: 5 x 5
 ##   class pixelsum area_ha  sumA   per
 ##   <int>    <dbl>   <dbl> <dbl> <dbl>
-## 1     1     3954    3954 40000  9.88
-## 2     2    11873   11873 40000 29.7 
-## 3     3     8046    8046 40000 20.1 
-## 4     4     2011    2011 40000  5.03
-## 5     5    14116   14116 40000 35.3
+## 1     1     4035    4035 40000 10.1 
+## 2     2    12234   12234 40000 30.6 
+## 3     3     7907    7907 40000 19.8 
+## 4     4     2061    2061 40000  5.15
+## 5     5    13763   13763 40000 34.4
 ```
 
 And there we go. Each class has it's `pixelsum` calculated, then using the sum we can calculate the area in ha (or else, here you can alternate the code). In this case the pixel sum matches our `area_ha` because one pixel is already of size 1 ha. We can change the code to e.g. calculate `area_km2`.
@@ -106,11 +106,11 @@ area_km2
 ## # A tibble: 5 x 5
 ##   class pixelsum area_km2  sumA   per
 ##   <int>    <dbl>    <dbl> <dbl> <dbl>
-## 1     1     3954     39.5 40000  9.88
-## 2     2    11873    119.  40000 29.7 
-## 3     3     8046     80.5 40000 20.1 
-## 4     4     2011     20.1 40000  5.03
-## 5     5    14116    141.  40000 35.3
+## 1     1     4035     40.4 40000 10.1 
+## 2     2    12234    122.  40000 30.6 
+## 3     3     7907     79.1 40000 19.8 
+## 4     4     2061     20.6 40000  5.15
+## 5     5    13763    138.  40000 34.4
 ```
 
 Next we calculate the sum of all pixels (`sumA`) using `mutate()` to get the total raster area. This should in this case be the same as `ncell(x)` (40000). To derive the percentage of the entire each class occupies, we just need to divide the `pixelsum` of each class by the total sum and multiply by 100. This should match our probabilities we assigned for each class when filling the raster with values:

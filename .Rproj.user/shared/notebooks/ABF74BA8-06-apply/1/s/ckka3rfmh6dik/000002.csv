@@ -1,0 +1,4 @@
+"0","model_fun <- function(predictors) {"
+"0","  linearmodel = lm(weight~koala[,predictors], data=koala) #The brackets select the column to use in the koala dataframe"
+"0","  summary(linearmodel)$r.squared"
+"0","}"

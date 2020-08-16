@@ -1,0 +1,131 @@
+library(tidyverse)
+library(caret)
+library(randomForest)
+library(maptree)
+library(beepr)
+library(raster)
+library(Gmisc)
+
+
+
+# Data setup --------------------------------------------------------------
+
+#Read the relative density data frame
+dframe <- read.csv("data/mtnash_dualcover.csv")
+dframe <- dplyr::select(dframe, -v90)
+
+
+rfclass <-readRDS("Data/2016/RFclass_5.rds")
+
+classified <- predict(rfclass, newdata = dframe[,4:11], type ="response")
+
+dframe$classified <- classified
+
+
+reclass <- dframe %>% mutate(
+  cluster =  case_when (classified == "1" ~ "4",
+                             classified   == "2" ~ "3",
+                             classified   == "3" ~ "5",
+                             classified   == "4" ~ "6",
+                             classified   == "5" ~ "1",
+                             classified   == "6" ~ "2" ))
+
+write.csv(reclass, "Outputs/Dualcover_cluster5.csv")
+
+sumstats <- reclass %>% group_by(cluster) %>%
+  summarise( "10" = mean(v10), "20" = mean(v20),
+             "30" = mean(v30), "40" = mean(v40),
+             "50" = mean(v50), "60" = mean(v60), 
+             "70" = mean(v70), "80" = mean(v80))
+
+sumstats_long <- pivot_longer(sumstats, cols=2:9, names_to = "Height")
+
+#Plot and save
+g <- ggplot(sumstats_long, aes(x = Height, y = value)) +
+  geom_point() + 
+  facet_grid(~cluster) +
+  coord_flip() + 
+  ggtitle("Vertical profiles for Training clusters")
+g
+
+
+
+
+# Transition matrix -------------------------------------------------------
+#reclass <- read.csv("Outputs/Dualcover_cluster.csv")
+
+clust2007 <- filter(reclass, year == "2007")
+clust2016 <- filter(reclass, year == "2016")
+
+c2007rast <- rasterFromXYZ(clust2007[,2:14], res = 20)
+c2016rast <- rasterFromXYZ(clust2016[,2:14], res = 20)
+
+c2007 <- subset(c2007rast, 11, drop =TRUE)
+c2016 <- subset(c2016rast, 11, drop =TRUE)
+
+plot(c2007)
+plot(c2016)
+
+firedat <-brick("Data/mtnash_firesev.grd")
+fire <- subset(firedat, 11, drop =TRUE)
+
+fire <- mask(fire, c2007)
+fire <- subset(fire, 1, drop =TRUE)
+#fire <- fire %>% filter(!is.na(layer.1.2))
+
+
+c2007 <- stack(c2007rast, fire)
+c2016 <- stack(c2016rast, fire)
+
+c2007 <- as.data.frame(c2007, xy=TRUE)
+c2016 <- as.data.frame(c2016, xy=TRUE)
+
+
+names <- names(reclass[,2:14])
+names <- c( names, "fire")
+names(c2007) <- names
+names(c2016) <- names
+
+c2007 <- c2007 %>% filter(!is.na(v10))
+c2016 <- c2016 %>% filter(!is.na(v10))
+
+names <- names(reclass)
+names <- c(names, "fire")
+
+names(c2007) <- names
+names(c2016) <- names
+
+fire2007 <- c2007 %>% filter(fire < 2)
+fire2016 <- c2016 %>% filter(fire < 2)
+
+
+transitions <- table(fire2007$cluster, fire2016$cluster)
+rowss <- rowSums(transitions)
+total <- sum(rowss)
+pct <- rowss/total*100
+
+
+reltransition <- sweep(transitions, 1, FUN = "/", STATS = rowSums(transitions))
+
+rel <- reltransition*100
+rel[rel <5] <- 0
+
+transitionPlot(transitions, 
+               type_of_arrow = "simple")
+
+
+transitions2 <- table(c2007$cluster, c2016$cluster)
+
+transitionPlot(transitions2, 
+               type_of_arrow = "simple")
+
+
+
+
+sumstats <- reclass %>% group_by(cluster) %>%
+  summarise( "10" = mean(v10), "20" = mean(v20),
+             "30" = mean(v30), "40" = mean(v40),
+             "50" = mean(v50), "60" = mean(v60), 
+             "70" = mean(v70), "80" = mean(v80))
+
+sumstats_long <- pivot_longer(sumstats, cols=2:9, names_to = "Height")

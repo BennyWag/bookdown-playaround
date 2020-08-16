@@ -284,10 +284,10 @@ summary(as.factor(koala$good_bad))
 
 ```
 ## evil good 
-##    4  238
+##    2  240
 ```
 
-4 of our koalas are evil :(
+2 of our koalas are evil :(
 
 There are other *variable type*s you will encounter, such as `dates`, or `logicals` (`TRUE` and `FALSE`), but we won't go into more detail here. You're already all set to dive into data manipulation and visualization using this data set now :)
 
@@ -527,7 +527,7 @@ mean(koala_states_min$age)
 ```
 
 ```
-## [1] 6.041322
+## [1] 6.756198
 ```
 
 ```r

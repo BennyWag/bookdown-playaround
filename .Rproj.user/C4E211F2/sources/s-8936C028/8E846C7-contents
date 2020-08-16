@@ -1,0 +1,214 @@
+library(tidyverse)
+library(sf)
+library(raster)
+library(rgeos)
+
+
+
+# Sweep folders for classified plots --------------------------------------
+
+
+#Read the sample plot shapefile
+plot_shape <- read_sf("Data/Spatial", layer = "samplepoly")
+
+
+#Function that sweeps the data folders to get sample plots in each category
+fun <- function(x){
+
+files <- list.files(path = paste0("Data/SortedPlots/", year, "/", x), pattern = "*.png",
+                      full.names = TRUE,  recursive=FALSE)
+
+
+plotID <- data.frame(matrix(nrow = length(files), ncol = 2))
+
+for (i in 1:length(files)){
+  file <- files[i]
+  name <- gsub(paste0("Data/SortedPlots/", year, "/", x, "/"), "", (tools::file_path_sans_ext(file)))
+  plotID[i, 1] <- name
+  plotID[i, 2] <- x
+  }
+return(plotID)
+}
+
+
+#Get the classifications for both years
+classes  <- 1:5
+
+#2007
+year <- "2007"
+plots07 <- lapply(classes, fun)
+plots07 <- do.call(rbind.data.frame, plots07)
+names(plots07) <- c("plotID", "structure")
+
+#2016
+year <- "2016"
+plots16 <- lapply(classes, fun)
+plots16 <- do.call(rbind.data.frame, plots16)
+names(plots16) <- c("plotID", "structure")
+
+
+
+
+# Create a shapefile of the classified plots ------------------------------
+
+
+#2007
+shape07 <- merge(plot_shape, plots07)
+shape07 <- as(shape07, "Spatial")
+
+#Get the plot centroid and add to the shapefile
+centroids <- gCentroid(shape07, byid = TRUE)
+shape07$x <- centroids$x
+shape07$y <- centroids$y
+
+
+
+
+
+
+# Identify the unclassified sample plots ----------------------------------
+
+
+files <- list.files(path = paste0("Data/LASfiles2016"), pattern = "*.las",
+                    full.names = TRUE,  recursive=FALSE)
+
+
+allplots <- data.frame(matrix(nrow = length(files), ncol = 1))
+
+for (i in 1:length(files)){
+  file <- files[i]
+  name <- gsub(paste0("Data/LASfiles2016/"), "", (tools::file_path_sans_ext(file)))
+  allplots[i, 1] <- name
+}
+
+names(allplots) <- "plotID"
+
+unclassified <- allplots %>%
+                filter(!plotID %in% plots16$plotID)
+
+
+
+
+
+
+#Get the LAS files for these plots
+
+#Folders and input
+LASfiles <- "Data/LASfiles2016"
+output <- "Data/Metrics2016"
+
+files <- list.files(path = paste0(LASfiles), pattern = "*.las",
+                    full.names = TRUE,  recursive=FALSE)
+
+filefun <- function(x){
+  paste0(LASfiles, "/",  x, ".las")
+}
+
+
+files <- lapply(unclassified$plotID, filefun)
+files <- unlist(files)
+
+
+
+# Generate metrics --------------------------------------------------------
+
+
+ctg <- readLAScatalog(files)
+ext <- extent(ctg)
+rm(ctg)
+fullr1 <- raster(ext, res = 20, crs = "+proj=utm +zone=55 +south +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+
+#function for kurtosis
+kfun <- function(Z){
+  if (length(Z) < 4) {
+    return(0)
+  } else {
+    kurtosis(Z, type = 2)
+  }
+}
+
+
+#function for skewness
+sfun <- function(Z){
+  if (length(Z) < 3) {
+    return(0)
+  } else {
+    skewness(Z, type = 2)
+  }
+}
+
+
+#Function including all grid metrics
+fun <- function (files) {
+  file <- files
+  las <- readLAS(file)
+  if (is.empty(las)) return(NULL)
+  ext <- extent(las)
+  r1 <- crop(fullr1, ext)
+  r2 <- raster(extent(r1), res = 5)
+  
+  
+  print("Cropping complete")
+  
+  #Plot and sub plot density
+  dens20 <- grid_metrics(las, ~length(Z), res = r1)
+  dens5 <- grid_metrics(las, ~length(Z), res = r2)
+  
+  print("Density complete")
+  
+  #Canopy heterogeneity (subplot variance/subplot mean)
+  max_sub <- aggregate(dens5, fact = 4, fun = max, expand = TRUE)
+  max_sub <- disaggregate(max_sub, fact = 4)
+  scaled_sub <- dens5/max_sub
+  mean_sub <- aggregate(scaled_sub, fact = 4, fun = mean)
+  variance_sub <- aggregate(scaled_sub, fact = 4, fun = var)
+  canopy_het <- variance_sub/mean_sub
+  
+  print("Canopy het complete")
+  
+  #Height metrics
+  height50 <- grid_metrics(las, quantile(Z, probs = 0.50), res = r1)
+  height95 <- grid_metrics(las, quantile(Z, probs = 0.95), res = r1)
+  height99 <- grid_metrics(las, quantile(Z, probs = 0.99), res = r1)
+  
+  print("Height complete")
+  
+  #Variability of heights
+  heightmean <- grid_metrics(las, mean(Z), res = r1)
+  heightsd <- grid_metrics(las, sd(Z), res = r1)
+  IQR <- grid_metrics(las, IQR(Z), res = r1)
+  kurt <- grid_metrics(las, ~kfun(Z), res = r1)
+  skew <- grid_metrics(las, ~sfun(Z), res = r1)
+  
+  print("Height variability complete")
+  
+  #Cover
+  dens_sub2 <- grid_metrics(las, ~length(Z), res = r2, filter = ~Z > 10)
+  dens_sub2[dens_sub2 != 0] <- 1
+  canopy_prop2 <- aggregate(dens_sub2, fact = 4, fun = sum)/25
+  
+  print("Cover complete")
+  
+  #Get the extent of the las and extend all the files
+  rasts <- list(dens20, canopy_het, height50, height95, height99, heightmean, heightsd, IQR, kurt, skew, canopy_prop2)
+  
+  
+  #Stack it all together
+  rasts <- brick(rasts)
+  names(rasts) <- c("dens20m", "canopy_het", "height50", "height95",
+                    "height99", "meanheight", "sdheigt", "IQR", "kurt", "skew", "canopy_cover")
+  return(rasts)
+  #print("stacking complete... begin writing")
+  
+  #writeRaster(rasts, filename = paste0(output, "/", format(ceiling(ext[1]), scientific = FALSE), "_", format(ceiling(ext[3]), scientific = FALSE)))
+  
+}
+
+allrasts <- lapply(files, fun)
+merged <- lapply(allrasts, as.data.frame, xy = TRUE)
+merged2 <- do.call(rbind, merged)
+merged3 <- cbind(merged2, unclassified)
+
+#Write csv
+write.csv(merged3, file = "Data/2016metsUNCLASS.csv")

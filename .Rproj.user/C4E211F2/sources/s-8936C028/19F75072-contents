@@ -1,0 +1,247 @@
+library(tidyverse)
+library(caret)
+library(randomForest)
+library(factoextra)
+library(NbClust)
+library(corrplot)
+library(maptree)
+library(beepr)
+
+# Data setup --------------------------------------------------------------
+
+#Read the relative density data frame
+dframe <- read.csv("data/mtnash_dualcover.csv")
+dframe <- dplyr::select(dframe, -v90)
+#dframe <- filter(dframe, year == "2007")
+#df2016 <- filter(dframe, year == "2016")
+
+
+##Select a portion of the data to compare models
+set.seed(4911)
+
+sample <- sample.int(length(dframe$X), 5000)
+
+sample <- dframe[sample, ]
+
+
+#list the seed values used in the trials
+#seedvals <- c(406, 998, 2, 678, 212, 27, 1232, 697, 4121, 7)
+seedvals <- c(406, 927, 808, 902, 12, 28, 117, 822, 9876, 3578)
+trials <- c(1:10)
+
+
+
+
+
+# Real/Synth Models -------------------------------------------------------------
+
+
+func <- function (a, b){
+  seed <- a
+  trial <- b
+  
+  #set the seed used to produce the model
+  set.seed(seed)
+  
+  #Cut the data into training data
+  train <- createDataPartition(dframe$X, 
+                               time=1,#the number of partitions to create 
+                               p = 0.0008,#the percentage of data that goes to training
+                               list=F)
+  
+  data_train <- dframe[train,]
+  data_test <- dframe[-train,]
+  
+
+# Build the Synthetic Data model ------------------------------------------
+
+  # Create synthetic data set -----------------------------------------------
+  
+  obs <- nrow(data_train)
+  
+  f <- function(i){
+    sample(dframe[,i], obs, replace = TRUE, prob = NULL)
+  }
+  
+  synth_dat <-lapply(4:ncol(dframe), f)
+  synth_dat <-do.call(cbind, synth_dat)
+  synth_frame <-as.data.frame(synth_dat)
+  
+  names <- names(data_test)
+  names(synth_frame) <- names[4:length(names)]
+  
+  
+  ##Bind the real and synthetic data sets together 
+  synth <- synth_frame %>% mutate(ID = row_number(), real = as.factor("synth"))
+  real <- data_train %>% 
+    select(-X, -x, -y) %>%
+    mutate(ID = row_number(), real = as.factor("real"))
+  
+  
+  combined <- rbind(real, synth)
+  
+  
+  # Synthetic Data RF -------------------------------------------------------
+  #build a RF that distinguishes b/w real and synthetic data
+  rfclass <- randomForest(x = combined[,1:8],
+                          y = combined$real,
+                          ntree=1000, 
+                          proximity=TRUE, 
+                          mtry=3)
+  rfclass
+  
+  
+  #Save the model
+  saveRDS(rfclass, paste0("Data/SynthReal/synthRF_", trial, ".rds"))
+  
+  
+  
+  # Synth Data clustering and optimization ----------------------------------
+  
+  
+  #Get the proximity matrix from the RF object and convert to distance
+  proximity <- rfclass$proximity
+  prox_cut <- proximity[1:(obs), 1:(obs)] #cut to only the real data
+  prox <- as.dist(1-prox_cut)
+  saveRDS(prox, "Data/SynthRealsynthprox_1.rds")
+  
+  #Use the dissimilarity matrix to cluster
+  clust <- hclust(prox, method = "ward.D2")
+  saveRDS(clust, paste0("Data/SynthRealsynthClust_", trial, ".rds"))
+  
+# Synth data clusters -----------------------------------------------------
+
+  #Cut the tree into 5 clusters
+  sub_group <- cutree(clust, k = 6)
+  
+  #Add cluster labels to original data
+  ctrain <- data_train %>%
+    mutate(cluster = sub_group)
+  
+  #Calculate mean at height bin for each cluster
+  sumstats <- ctrain %>% group_by(cluster) %>%
+    summarise("10" = mean(v10), "20" = mean(v20),
+              "30" = mean(v30), "40" = mean(v40),
+              "50" = mean(v50), "60" = mean(v60), 
+              "70" = mean(v70), "80" = mean(v80))
+  
+  sumstats_long <- pivot_longer(sumstats, cols=2:9, names_to = "Height")
+  
+  #Plot and save
+  g <- ggplot(sumstats_long, aes(x = Height, y = value)) +
+    geom_point() + 
+    facet_grid(~cluster) +
+    coord_flip() + 
+    ggtitle("Vertical profiles for Training clusters")
+  g
+  ggsave(plot = g, filename = paste0("data/SynthReal/synthprofiles_", trial, ".jpg"), device = "jpeg")
+  
+  
+
+# Build the predictive RF -------------------------------------------------
+
+  #Turn cluster into factor
+  ctrain$cluster <- as.factor(ctrain$cluster)
+  
+  #Build a RF that classifies clusters
+  rfclust <- randomForest(x = ctrain[,4:11],
+                          y = ctrain$cluster,
+                          ntree=1000,
+                          proximity=TRUE, 
+                          mtry=3)
+  
+  
+
+# Predict structure using the model ---------------------------------------
+
+  classified_synth <- predict(rfclust, newdata = sample[,4:11], type ="response")
+  classified_synth <- as.data.frame(classified_synth)
+  
+  
+  
+# Unsup data clusters -----------------------------------------------------
+  
+  unsupRF <- randomForest(x = data_train[,4:11], mtry = 3, ntree = 1000, proximity = TRUE)
+  unsupRF
+  
+  #Save the model
+  saveRDS(unsupRF, paste0("Data/SynthReal/unsupRF_", trial,  ".rds"))
+  #unsupRF <- readRDS("Data/unsupRF.rds")
+  
+  
+  # Hierarchical Clustering -------------------------------------------------
+  
+  #Get the proximity matrix from the RF object and convert to distance
+  proximity <- unsupRF$proximity
+  prox <- as.dist(1-proximity)
+  saveRDS(prox, paste0("Data/SynthReal/unsupProx_", trial,  ".rds"))
+  
+  #Use the dissimilarity matrix to cluster
+  clust <- hclust(prox, method = "ward.D2")
+  saveRDS(clust, paste0("Data/SynthReal/unsupClust_", trial, ".rds"))
+  
+  #Cut the tree into 5 clusters
+  sub_group <- cutree(clust, k = 6)
+  
+  #Add cluster labels to original data
+  ctrain <- data_train %>%
+    mutate(cluster = sub_group)
+  
+  #Calculate mean at height bin for each cluster
+  sumstats <- ctrain %>% group_by(cluster) %>%
+    summarise( "10" = mean(v10), "20" = mean(v20),
+               "30" = mean(v30), "40" = mean(v40),
+               "50" = mean(v50), "60" = mean(v60), 
+               "70" = mean(v70), "80" = mean(v80))
+  
+  sumstats_long <- pivot_longer(sumstats, cols=2:9, names_to = "Height")
+  
+  #Plot and save
+  g <- ggplot(sumstats_long, aes(x = Height, y = value)) +
+    geom_point() + 
+    facet_grid(~cluster) +
+    coord_flip() + 
+    ggtitle("Vertical profiles for Training clusters")
+  g
+  ggsave(plot = g, filename = paste0("data/SynthReal/unsupprofiles_", trial, ".jpg"), device = "jpeg")
+  
+  
+  
+# Build the predictive RF -------------------------------------------------
+  
+  #Turn cluster into factor
+  ctrain$cluster <- as.factor(ctrain$cluster)
+  
+  #Build a RF that classifies clusters
+  rfclust <- randomForest(x = ctrain[,4:11],
+                          y = ctrain$cluster,
+                          ntree=1000,
+                          proximity=TRUE, 
+                          mtry=3)
+  
+  
+  
+# Predict structure using the model ---------------------------------------
+  
+  classified_unsup <- predict(rfclust, newdata = sample[,4:11], type ="response")
+  classified_unsup <- as.data.frame(classified_unsup)
+  
+
+  
+
+# Bind the cluster classifications to compare -----------------------------
+
+  bothclass <- cbind(classified_synth, classified_unsup)
+  bothclass$seed <- paste0(seed)
+  
+  names(bothclass) <- c(paste0("SynthTrial_", trial), paste0("UnsupTrial_", trial), paste0("SeedTrial_", trial))
+  
+  rm(unsupRF)
+  return(bothclass)
+
+}
+
+
+combinedlist <- mapply(FUN = func, a = seedvals, b = trials)
+beep()
+
